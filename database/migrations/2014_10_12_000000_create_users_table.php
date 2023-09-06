@@ -15,10 +15,27 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->enum('role', ['Pemilik', 'Penghuni', 'Pendaftar'])->default('Pendaftar');
+            $table->enum('status_akun', ['Terverifikasi', 'Belum Verifikasi', 'Diblokir'])->default('Belum Verifikasi');
+            $table->string('alamat')->nullable();
+            $table->string('hp')->nullable();
+            $table->string('hp2')->nullable();
+            $table->string('wali')->nullable();
+            $table->string('uname')->unique()->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->string('id_telegram')->nullable();
+            $table->string('mac_addr')->nullable();
+            $table->string('dokumen')->nullable();
+            $table->string('alasan_penolakan')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            // $table->id();
+            // $table->string('name');
+            // $table->string('email')->unique();
+            // $table->timestamp('email_verified_at')->nullable();
+            // $table->string('password');
+            // $table->rememberToken();
+            // $table->timestamps();
         });
     }
 
