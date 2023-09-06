@@ -38,6 +38,12 @@ Route::prefix('penghuni')
     ->group(function () {
         Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
     });
+    
+Route::prefix('penghuni')
+->middleware(['auth', 'penghuni'])
+    ->group(function () {
+        Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
+    });
 
 Auth::routes();
 
