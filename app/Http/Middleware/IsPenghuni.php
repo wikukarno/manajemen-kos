@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class IsUser
+class IsPenghuni
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class IsUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user() && Auth::user()->role == 'Pendaftar') {
+        if (Auth::user() && Auth::user()->role == 'Penghuni') {
             return $next($request);
         } else {
             return abort(403, 'Unauthorized action.');

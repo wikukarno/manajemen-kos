@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\User\DashboardUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,16 +21,22 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::prefix('admin')
+Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
     });
 
-Route::prefix('user')
+Route::prefix('pendaftar')
 ->middleware(['auth', 'user'])
     ->group(function () {
         Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
+    });
+
+Route::prefix('penghuni')
+->middleware(['auth', 'penghuni'])
+    ->group(function () {
+        Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
     });
 
 Auth::routes();

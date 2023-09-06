@@ -16,7 +16,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user() && Auth::user()->role == 'Admin'){
+        if(Auth::user() && Auth::user()->role == 'Pemilik'){
             return $next($request);
         }else{
             return abort(403, 'Unauthorized action.');
