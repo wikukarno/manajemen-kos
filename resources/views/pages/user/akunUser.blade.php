@@ -36,8 +36,8 @@
                     <div class="row">
                         <div class="col-12 col-lg-12">
                             <div class="form-group">
-                                <label for="no_wa">Nomor WA (Aktif)</label>
-                                <input type="number" class="form-control" name="no_wa" id="no_wa" value="{{ auth()->user()->hp }}">
+                                <label for="hp">Nomor WA (Aktif)</label>
+                                <input type="number" class="form-control" name="hp" id="hp" value="{{ auth()->user()->hp }}">
                             </div>
                         </div>
                     </div>

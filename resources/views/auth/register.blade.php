@@ -47,6 +47,18 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
+                                        <input id="hp" type="number"
+                                            class="form-control form-control-lg @error('hp') is-invalid @enderror"
+                                            name="hp" value="{{ old('hp') }}" required autocomplete="hp"
+                                            placeholder="Nomor Handphone Aktif (WA)">
+
+                                        @error('hp')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
                                         <input id="password" type="password"
                                             class="form-control form-control-lg @error('password') is-invalid @enderror"
                                             name="password" required autocomplete="new-password"
