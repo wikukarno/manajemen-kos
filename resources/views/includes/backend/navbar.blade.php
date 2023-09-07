@@ -32,28 +32,26 @@
 						<p class="mb-1 text-black">{{ Auth::user()->name ?? '' }}</p>
 					</div>
 				</a>
-				@if (Auth::user()->role == 'Pemilik')
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-					<a class="dropdown-item" href="{{ route('akun-admin') }}">
+				@if (Auth::user()->tipe == 'Pemilik')
+					<a class="dropdown-item" href="{{ route('') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					<div class="dropdown-divider"></div>
 				@endif
-				@if (Auth::user()->role == 'Penghuni')
-				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-					<a class="dropdown-item" href="{{ route('akun-penghuni') }}">
+				@if (Auth::user()->tipe == 'Penghuni')
+					<a class="dropdown-item" href="{{ route('akun') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					<div class="dropdown-divider"></div>
 				@endif
-				@if (Auth::user()->role == 'Pendaftar')
-				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-					<a class="dropdown-item" href="{{ route('akun-user') }}">
+				@if (Auth::user()->tipe == 'Pendaftar')
+					<a class="dropdown-item" href="{{ route('akun') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					<div class="dropdown-divider"></div>
 				@endif
-					<a class="dropdown-item" href="#">
+					{{--  <a class="dropdown-item" href="#">  --}}
 						<form action="{{route('logout')}}" method="post">
 							@csrf
 							<button class="btn btn-primary" type="submit"><i class="mdi mdi-logout me-2 text-white"></i>
