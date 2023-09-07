@@ -20,7 +20,11 @@
 				<a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown"
 					aria-expanded="false">
 					<div class="nav-profile-img">
-						<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
+						@if($item->profil != null)
+							<img src="{{ Storage::url($item->profil) }}" alt="image"/>
+						@else
+							<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
+						@endif
 						{{-- @if (Auth::user()->foto_profile == null)
 							<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
 						@else
@@ -34,15 +38,15 @@
 				</a>
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
 					@if (Auth::user()->role == 'Penghuni')
-					<a class="dropdown-item" href="{{ route('akun-penghuni') }}">
+					<a class="dropdown-item" href="{{ route('akun-penghuni.index') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					@elseif(Auth::user()->role == 'Pendaftar')
-					<a class="dropdown-item" href="{{ route('akun-user') }}">
+					<a class="dropdown-item" href="{{ route('akun.user') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
-					@elseif(Auth::user()->role == 'Pemilik')
-					<a class="dropdown-item" href="{{ route('akun-admin') }}">
+					@else(Auth::user()->role == 'Pemilik')
+					<a class="dropdown-item" href="{{ route('akun.admin') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					@endif

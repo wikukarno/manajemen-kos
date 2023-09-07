@@ -6,14 +6,18 @@
 <div class="row">
     <div class="col-12 col-lg-12">
         <div class="card">
-            <form action="#" method="POST" enctype="multipart/form-data" id="form-akun">
+            <form action="{{ route('akun-penghuni.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+                @method('put')
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-lg-12 text-center">
                             <div class="profile mb-5">
-                                <img src="#" class="img-fluid w-25 h-25" alt="Foto Profil">
+                                @if($item->profil != null)
+                                    <img src="{{ Storage::url($item->profil) }}" alt="image" name="profil" width="150" class="rounded"/>
+                                @else
+                                    <img src="#" class="img-fluid w-25 h-25" alt="Foto Profil">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -44,8 +48,8 @@
                     <div class="row">
                         <div class="col-12 col-lg-12">
                             <div class="form-group">
-                                <label for="foto_profile">Foto Profile</label>
-                                <input type="file" class="form-control" name="foto_profile" id="foto_profile">
+                                <label for="profil">Foto Profile</label>
+                                <input type="file" class="form-control" name="profil" id="profil">
                             </div>
                         </div>
                     </div>

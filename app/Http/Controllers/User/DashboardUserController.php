@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardUserController extends Controller
 {
     public function index()
     {
-        return view('pages.user.dashboard');
+        $item=User::find(auth()->user()->id);
+        return view('pages.user.dashboard', compact('item'));
     }
+
+
 }
