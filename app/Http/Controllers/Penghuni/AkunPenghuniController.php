@@ -58,7 +58,7 @@ class AkunPenghuniController extends Controller
     {
         $item = User::findOrFail($id);
         if($request->hasFile('profil')){
-            $profil =  $request->file('profil')->store('assets/profile', 'public');
+            $profil =  $request->file('profil')->store('assets/profile/penghuni', 'public');
         }
         else {
             $profil = $item->profil;
