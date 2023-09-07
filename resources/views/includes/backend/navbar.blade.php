@@ -33,25 +33,20 @@
 					</div>
 				</a>
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-				@if (Auth::user()->tipe == 'Pemilik')
-					<a class="dropdown-item" href="{{ route('') }}">
+					@if (Auth::user()->role == 'Penghuni')
+					<a class="dropdown-item" href="{{ route('akun-penghuni') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
-					<div class="dropdown-divider"></div>
-				@endif
-				@if (Auth::user()->tipe == 'Penghuni')
-					<a class="dropdown-item" href="{{ route('akun') }}">
+					@elseif(Auth::user()->role == 'Pendaftar')
+					<a class="dropdown-item" href="{{ route('akun-user') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
-					<div class="dropdown-divider"></div>
-				@endif
-				@if (Auth::user()->tipe == 'Pendaftar')
-					<a class="dropdown-item" href="{{ route('akun') }}">
+					@elseif(Auth::user()->role == 'Pemilik')
+					<a class="dropdown-item" href="{{ route('akun-admin') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
-					<div class="dropdown-divider"></div>
-				@endif
-					{{--  <a class="dropdown-item" href="#">  --}}
+					@endif
+					<a class="dropdown-item" href="#">
 						<form action="{{route('logout')}}" method="post">
 							@csrf
 							<button class="btn btn-primary" type="submit"><i class="mdi mdi-logout me-2 text-white"></i>
