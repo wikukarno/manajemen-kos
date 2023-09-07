@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AkunAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
+use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\User\DashboardUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,21 +29,21 @@ Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
-        Route::get('/akun', [AkunController::class, 'index'])->name('akun');
+        Route::get('/akun', [AkunAdminController::class, 'index'])->name('akun-admin');
     });
 
 Route::prefix('pendaftar')
 ->middleware(['auth', 'user'])
     ->group(function () {
         Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
-        Route::get('/akun', [AkunController::class, 'index'])->name('akun');
+        Route::get('/akun', [AkunUserController::class, 'index'])->name('akun-user');
     });
 
 Route::prefix('penghuni')
 ->middleware(['auth', 'penghuni'])
     ->group(function () {
         Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
-        Route::get('/akun', [AkunController::class, 'index'])->name('akun');
+        Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun-penghuni');
     });
 
 Auth::routes();

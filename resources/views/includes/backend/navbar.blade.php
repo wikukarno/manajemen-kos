@@ -32,12 +32,27 @@
 						<p class="mb-1 text-black">{{ Auth::user()->name ?? '' }}</p>
 					</div>
 				</a>
+				@if (Auth::user()->tipe == 'Pemilik')
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-					<a class="dropdown-item" href="{{ route('akun') }}">
+					<a class="dropdown-item" href="{{ route('akun-admin') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					<div class="dropdown-divider"></div>
-
+				@endif
+				@if (Auth::user()->tipe == 'Penghuni')
+				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+					<a class="dropdown-item" href="{{ route('akun-penghuni') }}">
+						<i class="fas fa-user me-2 text-success"></i> Akun
+					</a>
+					<div class="dropdown-divider"></div>
+				@endif
+				@if (Auth::user()->tipe == 'Pendaftar')
+				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+					<a class="dropdown-item" href="{{ route('akun-user') }}">
+						<i class="fas fa-user me-2 text-success"></i> Akun
+					</a>
+					<div class="dropdown-divider"></div>
+				@endif
 					<a class="dropdown-item" href="#">
 						<form action="{{route('logout')}}" method="post">
 							@csrf
