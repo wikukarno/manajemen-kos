@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('id_telegram')->nullable();
             $table->string('mac_addr')->nullable();
             $table->string('dokumen')->nullable();
+            $table->string('profil')->nullable();
             $table->string('alasan_penolakan')->nullable();
             $table->timestamps();
             $table->softDeletes();

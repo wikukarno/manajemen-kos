@@ -29,21 +29,24 @@ Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
-        Route::get('/akun', [AkunAdminController::class, 'index'])->name('akun-admin');
+        Route::get('/akun', [AkunAdminController::class, 'index'])->name('akun.admin');
+        Route::resource('akun-admin', AkunAdminController::class);
     });
 
 Route::prefix('pendaftar')
 ->middleware(['auth', 'user'])
     ->group(function () {
         Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
-        Route::get('/akun', [AkunUserController::class, 'index'])->name('akun-user');
+        Route::get('/akun', [AkunUserController::class, 'index'])->name('akun.user');
+        Route::resource('akun-pendaftar', AkunUserController::class);
     });
 
 Route::prefix('penghuni')
 ->middleware(['auth', 'penghuni'])
     ->group(function () {
         Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
-        Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun-penghuni');
+        Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
+        Route::resource('akun-penghuni', AkunPenghuniController::class);
     });
 
 Auth::routes();
