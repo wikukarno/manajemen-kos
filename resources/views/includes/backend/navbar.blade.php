@@ -33,7 +33,7 @@
 					</div>
 				</a>
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-					<a class="dropdown-item" href="#">
+					<a class="dropdown-item" href="{{ route('akun') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					<div class="dropdown-divider"></div>

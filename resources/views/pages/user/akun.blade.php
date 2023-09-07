@@ -21,7 +21,7 @@
                         <div class="col-12 col-lg-12">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" name="name" id="nama" value="#">
+                                <input type="text" class="form-control" name="name" id="nama" value="{{ auth()->user()->name }}">
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="col-12 col-lg-12">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" value="#">
+                                <input type="email" class="form-control" name="email" id="email" value="{{ auth()->user()->email }}">
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="col-12 col-lg-12">
                             <div class="form-group">
                                 <label for="no_wa">Nomor WA (Aktif)</label>
-                                <input type="number" class="form-control" name="no_wa" id="no_wa" value="#">
+                                <input type="number" class="form-control" name="no_wa" id="no_wa" value="{{ auth()->user()->hp }}">
                             </div>
                         </div>
                     </div>
@@ -49,16 +49,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{--  <div class="row">
                         <div class="col-12 col-lg-12">
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" id="alamat" value="#">
+                                <input type="text" class="form-control" name="alamat" id="alamat" value="{{ auth()->user()->alamat }}">
                             </div>
                         </div>
-                    </div>
+                    </div>  --}}
                     <div class="d-grid gap-2 d-flex">
-                        <a href="{{ route('customer.dashboard') }}" class="btn btn-secondary col">Batal</a>
+                        <a href="#" class="btn btn-secondary col">Batal</a>
                         <button type="submit" class="btn btn-gradient-primary col" id="btnSave">Update</button>
                     </div>
                 </div>

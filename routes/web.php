@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\User\DashboardUserController;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,7 @@ Route::prefix('penghuni')
 ->middleware(['auth', 'penghuni'])
     ->group(function () {
         Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
+        Route::get('/akun', [AkunController::class, 'index'])->name('akun');
     });
 
 Auth::routes();
