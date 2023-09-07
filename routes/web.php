@@ -26,12 +26,14 @@ Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/akun', [AkunController::class, 'index'])->name('akun');
     });
 
 Route::prefix('pendaftar')
 ->middleware(['auth', 'user'])
     ->group(function () {
         Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
+        Route::get('/akun', [AkunController::class, 'index'])->name('akun');
     });
 
 Route::prefix('penghuni')
