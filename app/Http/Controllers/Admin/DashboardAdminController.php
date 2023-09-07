@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardAdminController extends Controller
 {
     public function index()
     {
-        return view('pages.admin.dashboard');
+        $item=User::find(auth()->user()->id);
+        return view('pages.admin.dashboard', compact('item'));
     }
 }

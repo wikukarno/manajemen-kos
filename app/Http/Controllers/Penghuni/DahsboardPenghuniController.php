@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Penghuni;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DahsboardPenghuniController extends Controller
 {
     public function index()
     {
-        return view('pages.penghuni.dashboard');
+        $item=User::find(auth()->user()->id);
+        return view('pages.penghuni.dashboard', compact('item'));
     }
 }
