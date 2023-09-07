@@ -32,21 +32,21 @@
 						<p class="mb-1 text-black">{{ Auth::user()->name ?? '' }}</p>
 					</div>
 				</a>
-				@if (Auth::user()->tipe == 'Pemilik')
+				@if (Auth::user()->role == 'Pemilik')
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
 					<a class="dropdown-item" href="{{ route('akun-admin') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					<div class="dropdown-divider"></div>
 				@endif
-				@if (Auth::user()->tipe == 'Penghuni')
+				@if (Auth::user()->role == 'Penghuni')
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
 					<a class="dropdown-item" href="{{ route('akun-penghuni') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
 					</a>
 					<div class="dropdown-divider"></div>
 				@endif
-				@if (Auth::user()->tipe == 'Pendaftar')
+				@if (Auth::user()->role == 'Pendaftar')
 				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
 					<a class="dropdown-item" href="{{ route('akun-user') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun
