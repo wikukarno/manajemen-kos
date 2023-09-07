@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
-            $table->integer('no');
+            $table->integer('nomor_kamar');
             $table->string('tipe');
             $table->string('deskripsi');
             $table->string('status');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->integer('harga');
             $table->timestamps();
         });
