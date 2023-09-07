@@ -248,7 +248,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="room-item shadow rounded overflow-hidden">
                             <div class="position-relative">
                                 <img class="img-fluid" src="img/room-2.jpg" alt="">
@@ -277,8 +277,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
-                    {{-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="room-item shadow rounded overflow-hidden">
                             <div class="position-relative">
                                 <img class="img-fluid" src="img/room-3.jpg" alt="">
@@ -307,7 +307,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div> 
                 </div>
             </div>
         </div>
