@@ -25,12 +25,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/', function () {
-//     return view('kamar', [
-//         "kosHome" => Kamar::all()
-//     ]);
+Route::get('/', function () {
+    return view('kamar', [
+        "kosHome" => Kamar::all()
+    ]);
 
-// });
+});
 
 Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
