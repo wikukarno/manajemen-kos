@@ -7,7 +7,6 @@ use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\User\DashboardUserController;
-use App\Models\kamar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +27,7 @@ Route::get('/', function () {
 
 Route::get('/', function () {
     return view('kamar', [
-        "kosHome" => kamar::all()
+        "kosHome" => Kamar::all()
     ]);
 
 });
@@ -58,3 +57,4 @@ Route::prefix('penghuni')
     });
 
 Auth::routes();
+
