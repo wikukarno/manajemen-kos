@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AkunAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\KamarController;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\User\AkunUserController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\User\DashboardUserController;
 use App\Models\kamar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +24,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 
-// Route::get('/', function () {
-//     return view('kamar', [
-//         "kosHome" => kamar::all()
-//     ]);
+Route::get('/', function() {
+    return view('kamar', [
+        "kamar" => kamar::all()
+    ]);
+});
 
 
 
@@ -58,6 +61,8 @@ Route::prefix('penghuni')
     });
 
 // Route::get('/kamar', [KamarController::class, 'show']);
+
+Route::get('/', [KamarController::class, 'show']);
 
 
 

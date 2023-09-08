@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('status');
             $table->string('slug');
-            $table->integer('harga');
+            $table->bigInteger('harga');
             $table->timestamps();
         });
     }
