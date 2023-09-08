@@ -36,7 +36,7 @@
 						<p class="mb-1 text-black">{{ Auth::user()->name ?? '' }}</p>
 					</div>
 				</a>
-				<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+				<div class="dropdown-menu navbar-dropdown dropdown-menu-lg-end" aria-labelledby="profileDropdown">
 					@if (Auth::user()->role == 'Penghuni')
 					<a class="dropdown-item" href="{{ route('akun-penghuni.index') }}">
 						<i class="fas fa-user me-2 text-success"></i> Akun

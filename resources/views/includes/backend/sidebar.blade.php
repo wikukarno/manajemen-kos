@@ -29,7 +29,7 @@
 			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
 				href="{{ route('penghuni.dashboard') }}">
 				<span class="menu-title">Form</span>
-				<i class="mdi mdi-book menu-icon"></i>
+				<i class="mdi mdi-file-document-box menu-icon"></i>
 			</a>
 			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
 				href="{{ route('penghuni.dashboard') }}">
@@ -92,12 +92,12 @@
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Tipe Kamar</span>
-				<i class="mdi mdi-book menu-icon"></i>
+				<i class="mdi mdi-table menu-icon"></i>
 			</a>
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Nomor Kamar</span>
-				<i class="mdi mdi-book menu-icon"></i>
+				<i class="mdi mdi-format-list-bulleted menu-icon"></i>
 			</a>
 		</li>
 		
