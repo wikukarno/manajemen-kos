@@ -62,7 +62,7 @@
                         </div>
                     </div>  --}}
                     <div class="d-grid gap-2 d-flex">
-                        <a href="#" class="btn btn-secondary col">Batal</a>
+                        <a href="{{ route('akun-penghuni.index') }}" class="btn btn-secondary col">Batal</a>
                         <button type="submit" class="btn btn-gradient-primary col" id="btnSave">Update</button>
                     </div>
                 </div>

@@ -19,15 +19,22 @@
 		</li>
 
 
-
-
-
-		@if (Auth::user()->role == 'Admin')
+		@if (Auth::user()->role == 'Penghuni')
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
-				href="{{ route('admin.dashboard') }}">
+			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
+				href="{{ route('penghuni.dashboard') }}">
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
+			</a>
+			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
+				href="{{ route('penghuni.dashboard') }}">
+				<span class="menu-title">Form</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
+				href="{{ route('penghuni.dashboard') }}">
+				<span class="menu-title">Pembayaran</span>
+				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
 		<li class="nav-item sidebar-actions">
@@ -43,15 +50,54 @@
 		@endif
 
 
+		@if (Auth::user()->role == 'Pemilik')
+		<li class="nav-item">
+			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
+				href="{{ route('admin.dashboard') }}">
+				<span class="menu-title">Dashboard</span>
+				<i class="mdi mdi-home menu-icon"></i>
+			</a>
+			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
+				href="{{ route('admin.dashboard') }}">
+				<span class="menu-title">Form</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
+				href="{{ route('admin.dashboard') }}">
+				<span class="menu-title">Pembayaran</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+		</li>
+		<li class="nav-item sidebar-actions">
+			<span class="nav-link d-grid">
+				<form action="{{ route('logout') }}" method="POST">
+					@csrf
+					<button type="submit" class="btn btn-block col btn-lg btn-gradient-primary mt-4">
+						Keluar
+					</button>
+				</form>
+			</span>
+		</li>
+		@endif
 
 
-		@if (Auth::user()->role == 'User')
+		@if (Auth::user()->role == 'Pendaftar')
 			
 		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
+			</a>
+			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
+				href="{{ route('user.dashboard') }}">
+				<span class="menu-title">Tipe Kamar</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
+				href="{{ route('user.dashboard') }}">
+				<span class="menu-title">Nomor Kamar</span>
+				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
 		
