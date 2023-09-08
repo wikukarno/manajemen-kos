@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
+use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Models\kamar;
@@ -55,6 +56,7 @@ Route::prefix('penghuni')
         Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
         Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
         Route::resource('akun-penghuni', AkunPenghuniController::class);
+        Route::resource('form-penghuni', FormPenghuniController::class);
     });
 
 // Route::get('/kamar', [KamarController::class, 'show']);
