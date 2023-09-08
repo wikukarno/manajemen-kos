@@ -26,12 +26,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/', function () {
-    return view('kamar', [
-        "kosHome" => kamar::all()
-    ]);
+// Route::get('/', function () {
+//     return view('kamar', [
+//         "kosHome" => kamar::all()
+//     ]);
 
-});
+
 
 Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
@@ -56,5 +56,9 @@ Route::prefix('penghuni')
         Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
         Route::resource('akun-penghuni', AkunPenghuniController::class);
     });
+
+// Route::get('/kamar', [KamarController::class, 'show']);
+
+
 
 Auth::routes();
