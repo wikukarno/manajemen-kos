@@ -70,8 +70,8 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
-				href="{{ route('admin.dashboard') }}">
+			<a class="nav-link {{ (request()->is('admin/data-user') ? 'active' : '') }}"
+				href="{{ route('data-user.index') }}">
 				<span class="menu-title">Data User</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>

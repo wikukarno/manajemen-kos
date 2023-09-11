@@ -45,7 +45,7 @@ Route::prefix('pemilik')
         Route::get('/akun', [AkunAdminController::class, 'index'])->name('akun.admin');
         Route::resource('akun-admin', AkunAdminController::class);
         // untuk DataUser
-        Route::resource('datauser', DataUserController::class);
+        Route::resource('data-user', DataUserController::class);
     });
 
 Route::prefix('pendaftar')

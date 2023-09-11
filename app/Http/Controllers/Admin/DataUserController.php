@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,7 +14,8 @@ class DataUserController extends Controller
     public function index()
     {
         // $item=DataUserController::find(auth()->user()->id);
-        return view('pages.admin.datauser.datauser');
+        $item=User::find(auth()->user()->id);
+        return view('pages.admin.datauser.datauser', compact('item'));
         // , compact('item')
     }
 
