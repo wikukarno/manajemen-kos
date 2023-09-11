@@ -3,17 +3,16 @@
 		<li class="nav-item nav-profile">
 			<a href="#" class="nav-link">
 				<div class="nav-profile-image">
-					{{--  @if (Auth::user()->profil == null)
+					@if (Auth::user()->profil == null)
 						<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
 						@else
 						<img src="{{ Storage::url($item->profil) }}" alt="image" />
 						<span class="login-status online"></span>
-					@endif  --}}
+					@endif
 				</div>
 				<div class="nav-profile-text d-flex flex-column">
 					<span class="font-weight-bold mb-2">{{ Auth::user()->name ?? '' }}</span>
-					<span class="text-secondary text-small">{{ Auth::user()->role ?? '' }}</span>
-					<span class="text-secondary text-small">{{ Auth::user()->status_akun ?? '' }}</span>
+					<span class="text-secondary text-small">{{ Auth::user()->role ?? '' }} | {{ Auth::user()->status_akun ?? '' }}</span>
 				</div>
 				{{--  <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>  --}}
 			</a>
@@ -46,7 +45,7 @@
 			<span class="nav-link d-grid">
 				<form action="{{ route('logout') }}" method="POST">
 					@csrf
-					<button type="submit" class="btn btn-block col btn-lg btn-gradient-primary mt-4">
+					<button type="submit" class="btn btn-block col btn-lg btn-gradient-dark mt-4">
 						Keluar
 					</button>
 				</form>

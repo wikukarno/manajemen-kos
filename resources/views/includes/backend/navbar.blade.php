@@ -25,11 +25,6 @@
 						@else
 							<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
 						@endif
-						{{-- @if (Auth::user()->foto_profile == null)
-							<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
-						@else
-							<img src="{{ Storage::url(Auth::user()->foto_profile) }}" alt="image" />
-						@endif --}}
 						<span class="availability-status online"></span>
 					</div>
 					<div class="nav-profile-text">
