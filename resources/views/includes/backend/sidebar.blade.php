@@ -60,7 +60,12 @@
 			</a>
 			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
 				href="{{ route('admin.dashboard') }}">
-				<span class="menu-title">Form</span>
+				<span class="menu-title">Data Kamar</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
+				href="{{ route('admin.dashboard') }}">
+				<span class="menu-title">Data Penghuni</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
