@@ -27,17 +27,21 @@
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
 			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('form-penghuni') ? 'active' : '') }}"
 				href="{{ route('form-penghuni.index') }}">
 				<span class="menu-title">Form</span>
 				<i class="mdi mdi-file-document-box menu-icon"></i>
 			</a>
-			{{--  <a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
+		</li>
+		{{--  <li class="nav-item">
+			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
 				href="{{ route('penghuni.dashboard') }}">
 				<span class="menu-title">Pembayaran</span>
 				<i class="mdi mdi-book menu-icon"></i>
-			</a>  --}}
-		</li>
+			</a>
+		</li>  --}}
 		<li class="nav-item sidebar-actions">
 			<span class="nav-link d-grid">
 				<form action="{{ route('logout') }}" method="POST">
@@ -58,21 +62,22 @@
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
 			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
 				href="{{ route('admin.dashboard') }}">
 				<span class="menu-title">Data Kamar</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
 				href="{{ route('admin.dashboard') }}">
 				<span class="menu-title">Data Penghuni</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
-			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
-				href="{{ route('admin.dashboard') }}">
-				<span class="menu-title">Pembayaran</span>
-				<i class="mdi mdi-book menu-icon"></i>
-			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
 				href="{{ route('admin.dashboard') }}">
 				<span class="menu-title">Pembayaran</span>
@@ -99,18 +104,21 @@
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
 			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Tipe Kamar</span>
 				<i class="mdi mdi-table menu-icon"></i>
 			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Nomor Kamar</span>
 				<i class="mdi mdi-format-list-bulleted menu-icon"></i>
 			</a>
 		</li>
-		
 		<li class="nav-item sidebar-actions">
 			<span class="nav-link d-grid">
 				<form action="{{ route('logout') }}" method="POST">
