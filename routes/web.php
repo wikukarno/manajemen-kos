@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AkunAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
@@ -43,6 +44,8 @@ Route::prefix('pemilik')
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
         Route::get('/akun', [AkunAdminController::class, 'index'])->name('akun.admin');
         Route::resource('akun-admin', AkunAdminController::class);
+        // untuk DataUser
+        Route::resource('datauser', DataUserController::class);
     });
 
 Route::prefix('pendaftar')
@@ -65,6 +68,9 @@ Route::prefix('penghuni')
 // Route::get('/kamar', [KamarController::class, 'show']);
 
 Route::get('/', [KamarController::class, 'show']);
+
+
+
 
 
 
