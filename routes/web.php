@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\AkunAdminController;
-use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\Admin\DataUserController;
-use App\Http\Controllers\AkunController;
-use App\Http\Controllers\KamarController;
-use App\Http\Controllers\Penghuni\AkunPenghuniController;
-use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
-use App\Http\Controllers\Penghuni\FormPenghuniController;
-use App\Http\Controllers\User\AkunUserController;
-use App\Http\Controllers\User\DashboardUserController;
 use App\Models\kamar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AkunController;
+use App\Http\Controllers\KamarController;
+use App\Http\Controllers\User\AkunUserController;
+use App\Http\Controllers\Admin\DataUserController;
+use App\Http\Controllers\Admin\AkunAdminController;
+use App\Http\Controllers\User\DashboardUserController;
+use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Penghuni\AkunPenghuniController;
+use App\Http\Controllers\Penghuni\FormPenghuniController;
+use App\Http\Controllers\Penghuni\FormPembayaranController;
+use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 
 
 /*
