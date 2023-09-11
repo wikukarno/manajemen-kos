@@ -73,6 +73,11 @@
 				<span class="menu-title">Pembayaran</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
+			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
+				href="{{ route('admin.dashboard') }}">
+				<span class="menu-title">Pembayaran</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
 		</li>
 		<li class="nav-item sidebar-actions">
 			<span class="nav-link d-grid">
