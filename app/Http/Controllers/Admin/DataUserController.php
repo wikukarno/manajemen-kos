@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DataUser;
 
 class DataUserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -15,8 +17,12 @@ class DataUserController extends Controller
     {
         // $item=DataUserController::find(auth()->user()->id);
         $item=User::find(auth()->user()->id);
+        // $item = [
+        //     'DataUser' => $this->$DataUser->allData(),
+        // ];
         return view('pages.admin.datauser.datauser', compact('item'));
-        // , compact('item')
+        // return view('pages.admin.datauser.datauser', $item);
+        
     }
 
     /**

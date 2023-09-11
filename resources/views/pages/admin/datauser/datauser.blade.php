@@ -8,7 +8,7 @@
     <div class="card">
       <div class="card-body" style="overflow-x: auto">
         <h4 class="card-title">Data Pendaftar</h4>
-        <table class="table table-bordered" >
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         {{--  <table id="tabel-data" class="table table-striped table-bordered" cellspacing="0" width="150%">  --}}
 
           <thead>
@@ -23,17 +23,48 @@
             </tr>
           </thead>
           <tbody>
-            {{--  <tr>
-                <td> 1 </td>
-                <td> Herman Beck </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td> $ 77.99 </td>
-                <td> May 15, 2015 </td>
-              </tr>  --}}
+            {{--  @if($items)
+                @foreach ($items as $item)  --}}
+                    <tr>
+                        <td> 1 </td>
+                        {{--  <td class="py-1">
+                            @if($item->profil != null)
+                                <img src="{{ Storage::url($item->profil) }}" alt="image"/>
+                            @else
+                                <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
+                            @endif
+                        </td>  --}}
+                        <td> {{ $item->name }} </td>
+                        <td> {{ $item->email }} </td>
+                        <td> {{ $item->role }} </td>
+                        <td> {{ $item->status_akun }} </td>
+                        <td> {{ $item->hp }} </td>
+                        <td>
+                            {{--  <a href="#" class="badge bg-info text-white" >  --}}
+                            <a href="" class="btn btn-outline-info btn-sm" >
+                                <i data-feather="eye"></i>
+                                <script>
+                                feather.replace();
+                                </script>
+                            </a>
+                            {{--  <a href="#" class="badge bg-info text-white" >  --}}
+                            <a href="" class="btn btn-outline-warning btn-sm" >
+                                <i data-feather="edit"></i>
+                                <script>
+                                feather.replace();
+                                </script>
+                            </a>
+                            {{--  <a href="#" class="badge bg-info text-white" >  --}}
+                            <a onclick="return confirm('Are You Sure To Delete This Data')" href="" class="btn btn-outline-danger btn-sm" >
+                                <i data-feather="x-circle"></i>
+                                <script>
+                                feather.replace();
+                                </script>
+                            </a>
+                        </td>
+                    </tr>
+                {{--  @endforeach
+            @endif  --}}
           </tbody>
         </table>
       </div>
