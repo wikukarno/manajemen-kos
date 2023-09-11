@@ -62,7 +62,8 @@
                             <div class="navbar-nav mr-auto py-0 ">
                                 <a href="index.html" class="nav-item nav-link active">Home</a>
                                 <a href="about.html" class="nav-item nav-link">Kamar</a>
-                                <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger">Login</button></a>
+                                {{-- <a href="about.html" class="nav-item nav-link"><button ast>Login</button></a> --}}
+                                <a href="/login" class="nav-item nav-link"><button type="button" class="btn sm-btn-danger">Login</button></a>
                                 
                                 
                                 
