@@ -63,6 +63,7 @@ Route::prefix('penghuni')
         Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
         Route::resource('akun-penghuni', AkunPenghuniController::class);
         Route::resource('form-penghuni', FormPenghuniController::class);
+        Route::resource('form-pembayaran-penghuni', FormPembayaranController::class);
     });
 
 // Route::get('/kamar', [KamarController::class, 'show']);

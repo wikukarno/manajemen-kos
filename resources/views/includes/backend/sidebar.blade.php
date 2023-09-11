@@ -21,26 +21,26 @@
 
 		@if (Auth::user()->role == 'Penghuni')
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('dashboard') ? 'active' : '') }}"
+			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
 				href="{{ route('penghuni.dashboard') }}">
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('form-penghuni') ? 'active' : '') }}"
+			<a class="nav-link {{ (request()->is('penghuni/form-penghuni') ? 'active' : '') }}"
 				href="{{ route('form-penghuni.index') }}">
 				<span class="menu-title">Form</span>
 				<i class="mdi mdi-file-document-box menu-icon"></i>
 			</a>
 		</li>
-		{{--  <li class="nav-item">
-			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
-				href="{{ route('penghuni.dashboard') }}">
+		<li class="nav-item">
+			<a class="nav-link {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}"
+				href="{{ route('form-pembayaran-penghuni.index') }}">
 				<span class="menu-title">Pembayaran</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
-		</li>  --}}
+		</li>
 		<li class="nav-item sidebar-actions">
 			<span class="nav-link d-grid">
 				<form action="{{ route('logout') }}" method="POST">
@@ -66,6 +66,13 @@
 			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
 				href="{{ route('admin.dashboard') }}">
 				<span class="menu-title">Data Kamar</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
+				href="{{ route('admin.dashboard') }}">
+				<span class="menu-title">Data User</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
