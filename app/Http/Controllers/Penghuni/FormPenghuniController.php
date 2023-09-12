@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Penghuni;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FormPenghuniController extends Controller
 {
@@ -57,12 +59,17 @@ class FormPenghuniController extends Controller
     public function update(Request $request, string $id)
     {
         $data=$request->all();
-        $item=User::findOrFail($id);    
+        $item = User::findOrFail($id);
 
-        if($request->hasFile('dokumen')){
-            $data['dokumen'] = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
-        }   
-        
+        if ($request->hasFile('dokumen')) {
+            if (Auth::user()->dokumen != null) {
+                Storage::disk('public')->delete(Auth::user()->dokumen);
+                $data['dokumen'] = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
+            } else {
+                $data['dokumen'] = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
+            }
+        }
+
         $item->update($data);
         return redirect()->route('form-penghuni.index')->with('success', 'Data has been updated!');
     }

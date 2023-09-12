@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AkunAdminController extends Controller
@@ -57,18 +58,24 @@ class AkunAdminController extends Controller
     public function update(Request $request, string $id)
     {
         $item = User::findOrFail($id);
-        if($request->hasFile('profil')){
-            $profil =  $request->file('profil')->store('assets/profile/admin', 'public');
-        }
-        else {
+
+        if ($request->hasFile('profil')) {
+            if (Auth::user()->profil != null) {
+                Storage::disk('public')->delete(Auth::user()->profil);
+                $profil = $request->file('profil')->store('assets/profile/admin', 'public');
+            } else {
+                $profil = $request->file('profil')->store('assets/profile/admin', 'public');
+            }
+        } else {
             $profil = $item->profil;
         }
+
         $item->update([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'hp'=>$request->hp,
-            'profil'=>$profil
-        ]);
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'hp'=>$request->hp,
+                'profil'=>$profil
+            ]);
 
         return back();
     }

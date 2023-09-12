@@ -13,8 +13,8 @@
                     <div class="row">
                         <div class="col-12 col-lg-12 text-center">
                             <div class="profile mb-5">
-                                @if($item->profil != null)
-                                    <img src="{{ Storage::url($item->profil) }}" alt="image" name="profil" width="150" class="rounded"/>
+                                @if($item->profil)
+                                    <img src="{{ asset('storage/' . $item->profil) }}" alt="image" width="150" class="rounded">
                                 @else
                                     <img src="#" class="img-fluid w-25 h-25" alt="Foto Profil">
                                 @endif

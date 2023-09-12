@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Penghuni;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AkunPenghuniController extends Controller
 {
@@ -57,18 +59,24 @@ class AkunPenghuniController extends Controller
     public function update(Request $request, string $id)
     {
         $item = User::findOrFail($id);
-        if($request->hasFile('profil')){
-            $profil =  $request->file('profil')->store('assets/profile/penghuni', 'public');
-        }
-        else {
+
+        if ($request->hasFile('profil')) {
+            if (Auth::user()->profil != null) {
+                Storage::disk('public')->delete(Auth::user()->profil);
+                $profil = $request->file('profil')->store('assets/profile/penghuni', 'public');
+            } else {
+                $profil = $request->file('profil')->store('assets/profile/penghuni', 'public');
+            }
+        } else {
             $profil = $item->profil;
         }
+
         $item->update([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'hp'=>$request->hp,
-            'profil'=>$profil
-        ]);
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'hp'=>$request->hp,
+                'profil'=>$profil
+            ]);
 
         return back();
     }
@@ -78,6 +86,10 @@ class AkunPenghuniController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = User::findOrFail($id);
+        
+        if($item->profil) {
+            Storage::delete($item->profil);
+        }
     }
 }

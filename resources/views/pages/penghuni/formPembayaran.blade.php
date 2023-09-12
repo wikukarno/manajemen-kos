@@ -7,12 +7,11 @@
   <div class="col-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Basic form elements</h4>
-        <p class="card-description"> Basic form elements </p>
+        <h4 class="card-title">Form Pembayaran</h4>
         <form class="forms-sample">
           <div class="form-group">
             <label for="exampleInputName1">Nama Penghuni Kos</label>
-            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nama Lengkap + Nomor Kamar">
+            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nama Lengkap">
           </div>
           <div class="form-group">
             <label for="exampleSelectGender">Masa Pembayaran</label>
@@ -44,17 +43,16 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Bordered table</h4>
-        <p class="card-description"> Add class <code>.table-bordered</code>
+        <h4 class="card-title">Riwayat Pembayaran</h4>
         </p>
         <table class="table table-bordered">
           <thead>
             <tr>
               <th> # </th>
-              <th> First name </th>
-              <th> Progress </th>
-              <th> Amount </th>
-              <th> Deadline </th>
+              <th> Nama </th>
+              <th> Masa Pembayaran </th>
+              <th> Bukti </th>
+              <th> Tanggal Pembayaran </th>
             </tr>
           </thead>
           <tbody>
