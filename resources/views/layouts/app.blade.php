@@ -36,5 +36,6 @@
     @stack('before-script')
     @include('includes.backend.script')
     @stack('after-script')
+    {{-- <h1>yeyeyey tolol</h1> --}}
   </body>
 </html>
