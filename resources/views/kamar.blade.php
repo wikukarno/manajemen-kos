@@ -19,6 +19,7 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -158,8 +159,8 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-center text-primary text-uppercase">Our Rooms</h6>
-                    <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
+                    <h6 class="section-title text-center text-primary text-uppercase">Tipe Kamar</h6>
+                    <h1 class="mb-5">Pilihan Tipe<span class="text-primary text-uppercase"> Kamar</span></h1>
                 </div>
 
                
@@ -184,8 +185,8 @@
                                     <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>2 bed</small>
                                         
                                     @endif
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>bathroom</small>
-                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                                    <small ><i class="fa fa-bath text-primary me-2"></i>Kamarmandi di dalam kamar</small>
+                                    
                                 </div>
                                
                                 <div class="d-flex justify-content-between">
@@ -209,8 +210,8 @@
         <div class="container-xxl py-5 mb-6">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-center text-primary text-uppercase">Our Services</h6>
-                    <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Services</span></h1>
+                    <h6 class="section-title text-center text-primary text-uppercase">Fasilitas</h6>
+                    <h1 class="mb-5">Lihat Fasilitas <span class="text-primary text-uppercase">kamar</span></h1>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -221,62 +222,95 @@
                                 </div>
                             </div>
                             <h5 class="mb-3">Daket dengan kampus UIR</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <a class="service-item rounded" href="">
-                            <div class="service-icon bg-transparent border rounded p-1">
-                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                    <i class="fa bi-shop fa-3x text-primary "></i>
-                                </div>
-                            </div>
-                            <h5 class="mb-3">Dekat Toshz Cafe</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <p class="text-body mb-0">250 Meter dari Universitas Islam Riau</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <a class="service-item rounded" href="">
                             <div class="service-icon bg-transparent border rounded p-1">
                                 <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                    <i class="fa fa-spa fa-2x text-primary"></i>
+                                    <i class="fa-regular fa-2x fa-hospital"></i>
                                 </div>
                             </div>
-                            <h5 class="mb-3">Rumah Sakit Mesra</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                        <a class="service-item rounded" href="">
-                            <div class="service-icon bg-transparent border rounded p-1">
-                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                    <i class="fa fa-swimmer fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                            <h5 class="mb-3">Sports & Gaming</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <a class="service-item rounded" href="">
-                            <div class="service-icon bg-transparent border rounded p-1">
-                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                    <i class="fa fa-glass-cheers fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                            <h5 class="mb-3">Event & Party</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 class="mb-3">Dekat Rumah Sakit Mesra</h5>
+                            <p class="text-body mb-0">260 Meter dari Rumah Sakit Mesra</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                         <a class="service-item rounded" href="">
                             <div class="service-icon bg-transparent border rounded p-1">
                                 <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                    <i class="fa fa-dumbbell fa-2x text-primary"></i>
+                                    <i class="fa-solid fa-2x fa-wifi"></i>
                                 </div>
                             </div>
-                            <h5 class="mb-3">GYM & Yoga</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 class="mb-3">Free Wi-Fi</h5>
+                            
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <a class="service-item rounded" href="">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-2x fa-kitchen-set"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Dapur Bersama</h5>
+                            <p class="text-body mb-0">Dilengkapi dengan fasilitas kompor gas dan kulkas</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                        <a class="service-item rounded" href="">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-2x fa-bolt-lightning"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Free Listrik dan Air</h5>
+                            
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <a class="service-item rounded" href="">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-2x fa-video"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Kamanan CCTV</h5>
+                            <p class="text-body mb-0">Keamanan kos dengan kamera cctv 24 jam.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <a class="service-item rounded" href="">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-2x fa-bed"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Kamar full furnished</h5>
+                            <p class="text-body mb-0">Di lengkapi dengan kasur, ranjang, meja, kursi, lemari.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <a class="service-item rounded" href="">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-2x fa-shower"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Kamar mandi di dalam kamar</h5>
+                            <p class="text-body mb-0">Kamar mandi di dalam kamar yang memiliki kloset duduk dan shower</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <a class="service-item rounded" href="">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-2x fa-fingerprint"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Keamanan Fingerprint</h5>
+                            <p class="text-body mb-0">Pintu dengan keamanan fingerprint.</p>
                         </a>
                     </div>
                 </div>
