@@ -10,7 +10,9 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/logo-eventplan-sm.png') }}" />
     <title>@yield('title')</title>
 
-
+    @stack('before-style')
+    @include('includes.backend.style')
+    @stack('after-style')
 
     <!--  feather icon  -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
