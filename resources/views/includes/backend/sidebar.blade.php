@@ -34,6 +34,15 @@
 				<i class="mdi mdi-file-document-box menu-icon"></i>
 			</a>
 		</li>
+		@if(Auth::user()->status_akun == 'Terverifikasi')
+		<li class="nav-item">
+			<a class="nav-link {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}"
+				href="{{ route('form-pembayaran-penghuni.index') }}">
+				<span class="menu-title">Sewa Kamar</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+		</li>
+		@endif
 		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}"
 				href="{{ route('form-pembayaran-penghuni.index') }}">

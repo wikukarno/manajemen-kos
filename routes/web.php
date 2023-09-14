@@ -59,7 +59,7 @@ Route::prefix('pendaftar')
 
 Route::prefix('penghuni')
 ->middleware(['auth', 'penghuni'])
-    ->group(function () {
+->group(function () {
         Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
         Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
         Route::resource('akun-penghuni', AkunPenghuniController::class);
