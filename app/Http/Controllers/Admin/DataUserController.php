@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\DataUser;
 
 class DataUserController extends Controller
 {
@@ -15,13 +14,8 @@ class DataUserController extends Controller
      */
     public function index()
     {
-        // $item=DataUserController::find(auth()->user()->id);
         $item=User::find(auth()->user()->id);
-        // $item = [
-        //     'DataUser' => $this->$DataUser->allData(),
-        // ];
-        return view('pages.admin.datauser.datauser', compact('item'));
-        // return view('pages.admin.datauser.datauser', $item);
+        return view('pages.admin.datauser.index', compact('item'));
         
     }
 
@@ -30,7 +24,9 @@ class DataUserController extends Controller
      */
     public function create()
     {
-        //
+        $item=User::find(auth()->user()->id);
+        // untuk mengubah bagian create nya
+        return view('pages.admin.datauser.create', compact('item'));
     }
 
     /**
@@ -38,7 +34,18 @@ class DataUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // untuk mengengisi data nya
+        $item=new User();
+        $item->name=$request->name;
+        $item->email=$request->email;
+        $item->role=$request->role;
+        $item->status_akun=$request->status_akun;
+        $item->hp=$request->hp;
+        $item->password=$request->password;
+        $item->alasan_penolakan=$request->alasan_penolakan;
+        $item->save();
+
+        return redirect('pemilik/data-user')->with('success', 'Data Hass Been Added');
     }
 
     /**
@@ -46,7 +53,8 @@ class DataUserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item=User::find(auth()->user()->id);
+        return view('pages.admin.datauser.show', compact('item'));
     }
 
     /**

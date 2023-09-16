@@ -11,16 +11,18 @@ class DataUser extends Model
 {
     // use HasFactory;
 
-    // function User() {
-    //     return $this->belongsTo(User::class, 'id');
-    // }
+    // untuk menggabungkan 2 tabel dengan foreign key
+    function User() {
+        return $this->belongsTo(User::class, 'id');
+    }
 
     // public function allData()
     // {
     //     return DB::table('users')->get();
     // }
-    public function allData()
-    {
-        return DB::table('users')->get();
-    }
+    
+    // public function allData()
+    // {
+    //     return DB::table('data_users')->get();
+    // }
 }
