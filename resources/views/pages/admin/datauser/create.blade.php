@@ -46,9 +46,9 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Role</label>
+                        <label class="col-sm-3 col-form-label" >Role</label>
                         <div class="col-sm-9">
-                          <select class="form-control" name="role" id="role">
+                          <select class="form-control" name="role" id="role" style="height: 45px">
                             <option value="">Pilih</option>
                             <option value="Pemilik">Pemilik</option>
                             <option value="Pendaftar">Pendaftar</option>
@@ -61,7 +61,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Status Akun</label>
                         <div class="col-sm-9">
-                          <select class="form-control" name="status_akun" id="status_akun">
+                          <select class="form-control" name="status_akun" id="status_akun" style="height: 45px">
                             <option value="">Pilih</option>
                             <option value="Terverifikasi">Terverifikasi</option>
                             <option value="Belum Verifikasi">Tidak Terverifikasi</option>
