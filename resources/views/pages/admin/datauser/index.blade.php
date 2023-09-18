@@ -45,6 +45,8 @@
     function btnUpdateDataUser(id){
         alert(id);
     }
+
+    
 </script>
 <script>
     $('#tb_datauser').DataTable({
@@ -69,5 +71,46 @@
             { data: 'action', name: 'action' },
         ],
     });
+</script>
+
+<script>
+    // hapus pengurus
+    function btnDeleteDataUser(id){
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Data yang dihapus tidak dapat dikembalikan!",
+            icon: 'danger',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type:'POST',
+                    url: "{{ url('pages.admin.datauser') }}",
+                    data: {
+                        id: id,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success:function(id){
+                        Swal.fire(
+                            'Terhapus!',
+                            'Data berhasil dihapus.',
+                            'success'
+                        )
+                        $('#tb_datauser').DataTable().ajax.reload();
+                    },
+                    error:function(id){
+                        Swal.fire(
+                            'Gagal!',
+                            'Data gagal dihapus.',
+                            'error'
+                        )
+                    }
+                });
+            }
+        })
+    }
 </script>
 @endpush
