@@ -36,6 +36,11 @@ Route::get('/', function() {
         "kamar" => kamar::all()
     ]);
 });
+Route::get('/availability', function() {
+    return view('availability', [
+        "kamar" => kamar::all()
+    ]);
+});
 
 
 
@@ -71,6 +76,7 @@ Route::prefix('penghuni')
 // Route::get('/kamar', [KamarController::class, 'show']);
 
 Route::get('/', [KamarController::class, 'show']);
+Route::get('/availability', [KamarController::class, 'show']);
 
 
 
