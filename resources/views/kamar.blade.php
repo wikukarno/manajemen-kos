@@ -61,8 +61,8 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0 ">
-                                <a href="index.html" class="nav-item nav-link active">Home</a>
-                                <a href="about.html" class="nav-item nav-link">Kamar</a>
+                                <a href="/" class="nav-item nav-link active">Home</a>
+                                <a href="/availability" class="nav-item nav-link">Kamar</a>
                             </div>
                             <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a>
                             <a href="/register" class="nav-item nav-link" style="margin-left: -0.4cm"><button type="button" class="btn btn-outline-primary btn-sm">Buat Akun</button></a>
