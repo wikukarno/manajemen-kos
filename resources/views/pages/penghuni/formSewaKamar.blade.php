@@ -10,28 +10,12 @@
             <h4 class="card-title">Sewa Kamar</h4>
             <form class="forms-sample">
               <div class="form-group">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" placeholder="Nama Lengkap" name="name">
+                <label for="harga">Tipe Kamar</label>
+                <input type="text" class="form-control" id="harga" placeholder="" name="harga">
               </div>
               <div class="form-group">
-                <label for="noktp">No. KTP</label>
-                <input type="number" class="form-control" id="noktp" placeholder="No. KTP" name="no_ktp">
-              </div>
-              <div class="form-group">
-                <label for="tempatlahir">Tempat Lahir</label>
-                <input type="text" class="form-control" id="tempatlahir" placeholder="Tempat Lahir" name="tempat_lahir">
-              </div>
-              <div class="form-group">
-                <label for="tanggal">Tanggal Lahir</label>
-                <input type="date" class="form-control" id="tanggal" placeholder="dd/mm/yyyy" name="tanggal_lahir">
-              </div>
-              <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" placeholder="Alamat" name="alamat">
-              </div>
-              <div class="form-group">
-                <label for="hp">Nomor Handphone</label>
-                <input type="number" class="form-control" id="hp" placeholder="Nomor Handphone" name="hp">
+                <label for="harga">Nomor Kamar</label>
+                <input type="text" class="form-control" id="harga" placeholder="" name="harga">
               </div>
               <div class="form-group">
                 <label for="harga">Harga Kamar</label>

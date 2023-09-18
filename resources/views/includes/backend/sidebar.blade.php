@@ -34,11 +34,11 @@
 				<i class="mdi mdi-file-document-box menu-icon"></i>
 			</a>
 		</li>
-		@if(Auth::user()->status_akun == 'Terverifikasi')
+		@if(Auth::user()->status_akun == 'Belum Verifikasi')
 		<li class="nav-item">
 			<a class="nav-link {{ (request()->is('penghuni/form-permintaan-penghuni') ? 'active' : '') }}"
 				href="{{ route('form-permintaan-penghuni.index') }}">
-				<span class="menu-title">Sewa Kamar</span>
+				<span class="menu-title">Fasilitas Kamar</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
