@@ -36,8 +36,8 @@
 		</li>
 		@if(Auth::user()->status_akun == 'Terverifikasi')
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}"
-				href="{{ route('form-pembayaran-penghuni.index') }}">
+			<a class="nav-link {{ (request()->is('penghuni/form-permintaan-penghuni') ? 'active' : '') }}"
+				href="{{ route('form-permintaan-penghuni.index') }}">
 				<span class="menu-title">Sewa Kamar</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>

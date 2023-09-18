@@ -14,7 +14,7 @@ use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
-
+use App\Http\Controllers\Penghuni\SewaKamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,12 +59,13 @@ Route::prefix('pendaftar')
 
 Route::prefix('penghuni')
 ->middleware(['auth', 'penghuni'])
-->group(function () {
+    ->group(function () {
         Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
         Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
         Route::resource('akun-penghuni', AkunPenghuniController::class);
         Route::resource('form-penghuni', FormPenghuniController::class);
         Route::resource('form-pembayaran-penghuni', FormPembayaranController::class);
+        Route::resource('form-permintaan-penghuni', SewaKamarController::class);
     });
 
 // Route::get('/kamar', [KamarController::class, 'show']);
