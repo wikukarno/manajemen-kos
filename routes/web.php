@@ -53,7 +53,7 @@ Route::prefix('pemilik')
         // untuk DataUser
         Route::resource('data-user', DataUserController::class);
         // untuk delete
-        Route::get('data-user/{id}/delete',[RoomController::class, 'destroy']);
+        Route::get('data-user/{id}/delete',[DataUserController::class, 'destroy']);
     });
 
 Route::prefix('pendaftar')

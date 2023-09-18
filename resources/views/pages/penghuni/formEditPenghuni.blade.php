@@ -87,10 +87,27 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Tempat Lahir</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="tempatlahir" name="tempat_lahir">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" id="tanggallahir" name="tanggal_lahir">
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
                     <label class="col-sm-3 col-form-label">KTP</label>
                     <div class="col-sm-9">
                         <div class="mt-2 justify-content-center">
-                          <input type="hidden" name="oldDokumen" value="{{ $item->dokumen }}">
                             @if ($item->dokumen != null)
                             <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
                             @else
@@ -129,7 +146,21 @@
 </div>
 </form>
 
+<script>
+  function previewImage() {
+    const dokumen = document.querySelector('#dokumen');
+    const imgPreview = document.querySelector('.img-preview');
 
+    imgPreview.style.display = 'block';
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(dokumen.files[0]);
+
+    oFReader.onload = function(oFREvent) {
+      imgPreview.src = oFREvent.target.result;
+    }
+  }
+</script>
 
 
 @endsection
