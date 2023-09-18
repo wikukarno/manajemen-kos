@@ -75,6 +75,7 @@
 <script>
     // hapus pengurus
     function btnDeleteDataUser(id) {
+    
         Swal.fire({
             title: 'Apakah anda yakin?',
             text: "Data yang dihapus tidak dapat dikembalikan!",
@@ -93,8 +94,7 @@
                         id: id,
                         _token: "{{ csrf_token() }}"
                     },
-                    dataType: 'json',
-                    success: (res) => {
+                    success: (ress) => {
                         Swal.fire(
                             'Berhasil!',
                             'Data berhasil dihapus.',

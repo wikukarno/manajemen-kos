@@ -133,16 +133,4 @@ class DataUserController extends Controller
             return Response()->json(['status' => false, 'message' => 'Data gagal dihapus!']);
         }
     }
-
-    public function hapusUser(Request $request)
-    {
-        $item = User::findOrFail($request->id);
-        $item->delete();
-
-        if ($item) {
-            return Response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
-        } else {
-            return Response()->json(['status' => false, 'message' => 'Data gagal dihapus!']);
-        }
-    }
 }

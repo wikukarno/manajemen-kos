@@ -52,7 +52,7 @@ Route::prefix('pemilik')
         Route::resource('akun-admin', AkunAdminController::class);
         // untuk DataUser
         Route::resource('data-user', DataUserController::class);
-        Route::delete('data-user/delete', [DataUserController::class, 'hapusUser']);
+        Route::delete('data-user/delete', [DataUserController::class, 'destroy']);
     });
 
 Route::prefix('pendaftar')
