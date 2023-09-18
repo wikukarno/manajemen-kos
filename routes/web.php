@@ -78,7 +78,7 @@ Route::prefix('penghuni')
 // Route::get('/kamar', [KamarController::class, 'show']);
 
 Route::get('/', [KamarController::class, 'show']);
-Route::get('/availability', [KamarController::class, 'show']);
+// Route::get('/availability', [KamarController::class, 'show']);
 
 
 
