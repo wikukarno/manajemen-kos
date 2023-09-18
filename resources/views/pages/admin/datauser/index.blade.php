@@ -45,9 +45,8 @@
     function btnUpdateDataUser(id){
         alert(id);
     }
-
-    
 </script>
+
 <script>
     $('#tb_datauser').DataTable({
         processing: true,
@@ -75,33 +74,35 @@
 
 <script>
     // hapus pengurus
-    function btnDeleteDataUser(id){
+    function btnDeleteDataUser(id) {
         Swal.fire({
             title: 'Apakah anda yakin?',
             text: "Data yang dihapus tidak dapat dikembalikan!",
-            icon: 'danger',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus data!'
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    type:'POST',
-                    url: "{{ url('pages.admin.datauser') }}",
+                    type: 'DELETE',
+                    url: "{{ url('pemilik/data-user/delete') }}",
                     data: {
                         id: id,
-                        _token: "{{ csrf_token() }}",
+                        _token: "{{ csrf_token() }}"
                     },
-                    success:function(id){
+                    dataType: 'json',
+                    success: (res) => {
                         Swal.fire(
-                            'Terhapus!',
+                            'Berhasil!',
                             'Data berhasil dihapus.',
                             'success'
                         )
                         $('#tb_datauser').DataTable().ajax.reload();
                     },
-                    error:function(id){
+                    error: (err) => {
                         Swal.fire(
                             'Gagal!',
                             'Data gagal dihapus.',

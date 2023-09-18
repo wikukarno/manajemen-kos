@@ -35,13 +35,12 @@ class DataUserController extends Controller
                                     <a href="' . route('data-user.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Hapus Perlombaan" onClick="btnDeleteDataUser(' . $item->id . ')">
+                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataUser(' . $item->id . ')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div> 
                             ';
 
-                    
                 })
                 ->rawColumns(['alamat', 'photo', 'phone', 'action'])
                 ->make(true);
@@ -123,9 +122,21 @@ class DataUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $item = User::findOrFail('id',$id);
+        $item = User::findOrFail($request->id);
+        $item->delete();
+
+        if ($item) {
+            return Response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
+        } else {
+            return Response()->json(['status' => false, 'message' => 'Data gagal dihapus!']);
+        }
+    }
+
+    public function hapusUser(Request $request)
+    {
+        $item = User::findOrFail($request->id);
         $item->delete();
 
         if ($item) {
