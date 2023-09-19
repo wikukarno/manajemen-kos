@@ -60,8 +60,8 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0 ">
-                                <a href="/" class="nav-item nav-link active">Home</a>
-                                <a href="/availability" class="nav-item nav-link">Kamar</a>
+                                <a href="/" class="nav-item nav-link ">Home</a>
+                                <a href="/availability" class="nav-item nav-link active">Kamar</a>
                             </div>
                             <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a>
                             <a href="/register" class="nav-item nav-link" style="margin-left: -0.4cm"><button type="button" class="btn btn-outline-primary btn-sm">Buat Akun</button></a>
@@ -91,45 +91,47 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-center text-primary text-uppercase">Tipe Kamar</h6>
-                    <h1 class="mb-5">Pilihan Tipe<span class="text-primary text-uppercase"> Kamar</span></h1>
+                    <h6 class="section-title text-center text-primary text-uppercase">Kamar Tersedia</h6>
+                    <h1 class="mb-5">Pilihanan<span class="text-primary text-uppercase"> Kamar</span></h1>
                 </div>
 
                
                 <div class="row mb-5 justify-content-center">
-                    {{-- @foreach ($kamars as $availability) --}}
+                    @foreach ($availabilitys as $availability)
                     <div class="col-md-4">
                         <div class="room-item shadow rounded overflow-hidden">
                             
                             <div class="position-relative">
                                 <img class="img-fluid" src="img/room-1.jpg" alt="">
-                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">Rp</small>
+                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">Rp {{ $availability->harga }}</small>
+                                <p class="position-absolute end-0  top-100 translate-middle-y bg-primary text-white rounded py-4 px-3 fs-5">{{ $availability->nomor_kamar }}</p>
                             </div>
+                           
                             <div class="p-4 mt-2">
                                 <div class="d-flex justify-content-between mb-3">
-                                    {{-- <h5 class="mb-0">{{ $availability->tipe }}</h5> --}}
+                                    <h5 class="mb-0">{{ $availability->tipe }}</h5>
                                    
                                 </div>
                                 <div class="d-flex mb-3">
-                                    {{-- @if ($availability->tipe=='Tipe 1') --}}
+                                    @if ($availability->tipe=='Tipe 1')
                                     <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1 bed</small>
-                                    {{-- @elseif ($availability->tipe=='Tipe 2') --}}
+                                    @elseif ($availability->tipe=='Tipe 2')
                                     <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>2 bed</small>
-                                        
-                                    {{-- @endif --}}
-                                    <small ><i class="fa fa-bath text-primary me-2"></i>Kamarmandi di dalam kamar</small>
+                                    @endif
+
+                                    <small ><i class="fa fa-bath text-primary me-2"></i>Kamar mandi di dalam kamar</small>
                                     
                                 </div>
                                
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">View Rooms</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Lihat Ditel</a>
                                     {{-- <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                         
-                    {{-- @endforeach --}}
+                    @endforeach
                 </div>
             </div>
         </div>

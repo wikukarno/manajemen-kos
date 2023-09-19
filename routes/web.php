@@ -10,11 +10,13 @@ use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Admin\AkunAdminController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\Penghuni\SewaKamarController;
+use App\Models\Availability;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,7 +79,7 @@ Route::prefix('penghuni')
 // Route::get('/kamar', [KamarController::class, 'show']);
 
 Route::get('/', [KamarController::class, 'show']);
-// Route::get('/availability', [KamarController::class, 'show']);
+Route::get('/availability', [AvailabilityController::class, 'show']);
 
 
 
