@@ -39,7 +39,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Email address</label>
                         <div class="col-sm-9">
-                          <input name="email" id="email" type="email" class="form-control" placeholder="Masukkan Email"/>
+                          <input name="email" id="email" type="email" class="form-control" value="{{ $item->email }}"/>
                         </div>
                       </div>
                     </div>
@@ -50,7 +50,7 @@
                         <label class="col-sm-3 col-form-label" >Role</label>
                         <div class="col-sm-9">
                           <select class="form-control" name="role" id="role" style="height: 45px">
-                            <option value="">Pilih</option>
+                            <option value="{{ $item->role }}" selected>{{ $item->role }}</option>
                             <option value="Pemilik">Pemilik</option>
                             <option value="Pendaftar">Pendaftar</option>
                             <option value="Penghuni">Penghuni</option>
@@ -63,7 +63,7 @@
                         <label class="col-sm-3 col-form-label">Status Akun</label>
                         <div class="col-sm-9">
                           <select class="form-control" name="status_akun" id="status_akun" style="height: 45px">
-                            <option value="">Pilih</option>
+                            <option value="{{ $item->status_akun }}" selected>{{ $item->status_akun }}</option>
                             <option value="Terverifikasi">Terverifikasi</option>
                             <option value="Belum Verifikasi">Tidak Terverifikasi</option>
                             <option value="Diblokir">Ditolak</option>
@@ -77,29 +77,21 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Nomor Handphone</label>
                         <div class="col-sm-9">
-                          <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73"/>
+                          <input name="hp" id="hp" type="text" class="form-control" value="{{ $item->hp }}"/>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Password</label>
+                        <label class="col-sm-3 col-form-label">Alasan Penolakan</label>
                         <div class="col-sm-9">
-                          <input name="password" id="password" type="password" class="form-control" placeholder="Masukkan Password"/>
+                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" >{{ $item->alasan_penolakan }}</textarea></td>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Alasan Penolakan</label>
-                        <div class="col-sm-9">
-                          {{--  <input type="text-area" class="form-control" placeholder="Masukkan Alasan Penolakan"/>  --}}
-                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan"></textarea></td>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
                   <td colspan="2">
                     <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
