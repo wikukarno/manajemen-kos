@@ -20,7 +20,7 @@
             <div class="card">
               <div class="card-body">
                 @if(Session::has('success'))
-                <p class="text-success">{{ session('success') }}</p>
+                  <p class="text-success">{{ session('success') }}</p>
                 @endif
                 <h4 class="card-title">Data User Pendaftar</h4>
                 <form class="form-sample" action="{{ url('pemilik/data-user') }}" method="POST">

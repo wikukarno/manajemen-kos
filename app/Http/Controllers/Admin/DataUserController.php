@@ -98,6 +98,7 @@ class DataUserController extends Controller
         $item=User::find(auth()->user()->id);
         // untuk menampilkan ke halaman show nya
         return view('pages.admin.datauser.edit', compact('item'));
+        
     }
 
     /**
@@ -106,17 +107,34 @@ class DataUserController extends Controller
     public function update(Request $request, string $id)
     {
         // untuk mengengisi data nya
-        $item=User::find(auth()->user()->id);
-        $item->name=$request->name;
-        $item->email=$request->email;
-        $item->role=$request->role;
-        $item->status_akun=$request->status_akun;
-        $item->hp=$request->hp;
-        $item->password=$request->password;
-        $item->alasan_penolakan=$request->alasan_penolakan;
-        $item->save();
+        $item=User::findOrFail($id);
+        if ($request->email != $item->email) {
+            $rules['email'] = 'required|unique:email';
+        }
+        $item->update([
+            'name'=>$request->name,
+            'email'=>$rules,
+            'role'=>$request->role,
+            'status_akun'=>$request->status_akun,
+            'hp'=>$request->hp,
+            'password'=>$request->password,
+            'alasan_penolakan'=>$request->alasan_penolakan
+        ]);
 
         return redirect('pemilik/data-user')->with('success', 'Data Hass Been Update');
+
+        // $data=$request->all();
+        // $item = User::findOrFail($id);
+
+        // if ($request->email != $item->email) {
+        //     $rules['email'] = 'required|unique:email';
+        // }
+
+        // $data = $request->validate($rules);
+
+        // $item->update($data);
+        // return redirect()->route('data-user.index')->with('success', 'Data has been updated!');
+
     }
 
     /**
