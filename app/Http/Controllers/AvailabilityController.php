@@ -13,7 +13,9 @@ class AvailabilityController extends Controller
      */
     public function index()
     {
-        return view('availability');
+        return view('availability', [
+           
+        ]);
     }
 
     /**
@@ -40,6 +42,7 @@ class AvailabilityController extends Controller
         return view('availability', [
             "availabilitys"=> Kamar::all()
         ]);
+   
     }
 
     /**
