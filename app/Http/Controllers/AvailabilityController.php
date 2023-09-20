@@ -42,6 +42,7 @@ class AvailabilityController extends Controller
         return view('availability', [
             "availabilitys"=> Kamar::all()
         ]);
+   
     }
 
     /**

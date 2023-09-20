@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AkunAdminController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\AvailabilityController;
+use App\Http\Controllers\detailKamar;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
@@ -38,10 +39,15 @@ Route::get('/', function() {
         "kamar" => kamar::all()
     ]);
 });
+
 Route::get('/availability', function() {
     return view('availability', [
         "kamar" => kamar::all()
     ]);
+});
+
+Route::get('/detailKamar', function() {
+    return view('detailKamar');
 });
 
 
@@ -80,6 +86,7 @@ Route::prefix('penghuni')
 
 Route::get('/', [KamarController::class, 'show']);
 Route::get('/availability', [AvailabilityController::class, 'show']);
+Route::get('/detailKamar', [detailKamar::class, 'show']);
 
 
 
