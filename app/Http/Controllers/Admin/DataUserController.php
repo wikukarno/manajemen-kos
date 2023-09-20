@@ -20,11 +20,11 @@ class DataUserController extends Controller
             return datatables()->of($query)
                 ->addIndexColumn()
                 
-                ->editColumn('phone', function ($item) {
-                    return $item->phone ?? '-';
+                ->editColumn('name', function ($item) {
+                    return $item->name ?? '-';
                 })
-                ->editColumn('alamat', function ($item) {
-                    return $item->alamat ?? '-';
+                ->editColumn('email', function ($item) {
+                    return $item->email ?? '-';
                 })
                 ->editColumn('action', function ($item) {
                     return '
@@ -42,7 +42,8 @@ class DataUserController extends Controller
                             ';
 
                 })
-                ->rawColumns(['alamat', 'photo', 'phone', 'action'])
+                // memenghilangkan tag html
+                ->rawColumns(['action'])
                 ->make(true);
         }
 
@@ -85,7 +86,7 @@ class DataUserController extends Controller
      */
     public function show(string $id)
     {
-        $item=User::find(auth()->user()->id);
+        $item=User::find($id);
         return view('pages.admin.datauser.show', compact('item'));
     }
 
@@ -94,10 +95,16 @@ class DataUserController extends Controller
      */
     public function edit(string $id)
     {
-        // untuk mencari data nya
-        $item=User::find(auth()->user()->id);
-        // untuk menampilkan ke halaman show nya
-        return view('pages.admin.datauser.edit', compact('item'));
+        // // untuk mencari data nya
+        // $item=User::find(auth()->user()->id);
+        // // untuk menampilkan ke halaman show nya
+        // return view('pages.admin.datauser.edit', compact('item'));
+
+        $item = User::findOrFail($id);
+
+        return view('pages.admin.datauser.edit', [
+            'item' => $item
+        ]);
         
     }
 
@@ -106,35 +113,11 @@ class DataUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // untuk mengengisi data nya
-        $item=User::findOrFail($id);
-        if ($request->email != $item->email) {
-            $rules['email'] = 'required|unique:email';
-        }
-        $item->update([
-            'name'=>$request->name,
-            'email'=>$rules,
-            'role'=>$request->role,
-            'status_akun'=>$request->status_akun,
-            'hp'=>$request->hp,
-            'password'=>$request->password,
-            'alasan_penolakan'=>$request->alasan_penolakan
-        ]);
+        $data=$request->all();
+        $item = User::findOrFail($id);
 
-        return redirect('pemilik/data-user')->with('success', 'Data Hass Been Update');
-
-        // $data=$request->all();
-        // $item = User::findOrFail($id);
-
-        // if ($request->email != $item->email) {
-        //     $rules['email'] = 'required|unique:email';
-        // }
-
-        // $data = $request->validate($rules);
-
-        // $item->update($data);
-        // return redirect()->route('data-user.index')->with('success', 'Data has been updated!');
-
+        $item->update($data);
+        return redirect()->route('datauser.index')->with('success', 'Data has been updated!');
     }
 
     /**

@@ -19,82 +19,39 @@
 		</li>
 
 
-		@if (Auth::user()->role == 'Penghuni')
-		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
-				href="{{ route('penghuni.dashboard') }}">
-				<span class="menu-title">Dashboard</span>
-				<i class="mdi mdi-home menu-icon"></i>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('penghuni/form-penghuni') ? 'active' : '') }}"
-				href="{{ route('form-penghuni.index') }}">
-				<span class="menu-title">Form</span>
-				<i class="mdi mdi-file-document-box menu-icon"></i>
-			</a>
-		</li>
-		@if(Auth::user()->status_akun == 'Belum Verifikasi')
-		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('penghuni/form-permintaan-penghuni') ? 'active' : '') }}"
-				href="{{ route('form-permintaan-penghuni.index') }}">
-				<span class="menu-title">Fasilitas Kamar</span>
-				<i class="mdi mdi-book menu-icon"></i>
-			</a>
-		</li>
-		@endif
-		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}"
-				href="{{ route('form-pembayaran-penghuni.index') }}">
-				<span class="menu-title">Pembayaran</span>
-				<i class="mdi mdi-book menu-icon"></i>
-			</a>
-		</li>
-		<li class="nav-item sidebar-actions">
-			<span class="nav-link d-grid">
-				<form action="{{ route('logout') }}" method="POST">
-					@csrf
-					<button type="submit" class="btn btn-block col btn-lg btn-gradient-dark mt-4">
-						Keluar
-					</button>
-				</form>
-			</span>
-		</li>
-		@endif
-
-
 		@if (Auth::user()->role == 'Pemilik')
-		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
-				href="{{ route('admin.dashboard') }}">
+		<li class="nav-item {{ (request()->is('pemilik/dashboard') ? 'active' : '') }}">
+			<a class="nav-link ">
+				{{--  href="{{ route('admin.dashboard') }}">  --}}
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
-				href="{{ route('admin.dashboard') }}">
+			<a class="nav-link"
+				{{--  href="{{ route('admin.dashboard') }}">  --}}
 				<span class="menu-title">Data Kamar</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('admin/data-user') ? 'active' : '') }}"
-				href="{{ route('data-user.index') }}">
+		{{--  akses link  --}}
+		<li class="nav-item {{ (request()->is('pemilik/data-user') ? 'active' : '') }} {{ (request()->is('pemilik/data-user/*') ? 'active' : '') }}">
+			<a class="nav-link"
+				href="/pemilik/data-user">
 				<span class="menu-title">Data User</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
-				href="{{ route('admin.dashboard') }}">
+			<a class="nav-link"
+				{{--  href="{{ route('admin.dashboard') }}">  --}}
 				<span class="menu-title">Data Penghuni</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link {{ (request()->is('admin/dashboard') ? 'active' : '') }}"
-				href="{{ route('admin.dashboard') }}">
+			<a class="nav-link"
+				{{--  href="{{ route('admin.dashboard') }}">  --}}
 				<span class="menu-title">Pembayaran</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
@@ -111,43 +68,83 @@
 		</li>
 		@endif
 
-
 		@if (Auth::user()->role == 'Pendaftar')
-		<li class="nav-item">
+			<li class="nav-item">
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Dashboard</span>
 				<i class="mdi mdi-home menu-icon"></i>
 			</a>
-		</li>
-		<li class="nav-item">
+			</li>
+			<li class="nav-item">
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Tipe Kamar</span>
 				<i class="mdi mdi-table menu-icon"></i>
 			</a>
-		</li>
-		<li class="nav-item">
+			</li>
+			<li class="nav-item">
 			<a class="nav-link {{ (request()->is('user/dashboard') ? 'active' : '') }}"
 				href="{{ route('user.dashboard') }}">
 				<span class="menu-title">Nomor Kamar</span>
 				<i class="mdi mdi-format-list-bulleted menu-icon"></i>
 			</a>
-		</li>
-		<li class="nav-item sidebar-actions">
+			</li>
+			<li class="nav-item sidebar-actions">
 			<span class="nav-link d-grid">
 				<form action="{{ route('logout') }}" method="POST">
-					@csrf
-					<button type="submit" class="btn btn-block col btn-lg btn-gradient-primary mt-4">
-						Keluar
-					</button>
+				@csrf
+				<button type="submit" class="btn btn-block col btn-lg btn-gradient-primary mt-4">
+					Keluar
+				</button>
 				</form>
 			</span>
-		</li>
-
-
-
+			</li>
 		@endif
+
+		@if (Auth::user()->role == 'Penghuni')
+			<li class="nav-item">
+			<a class="nav-link {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}"
+				href="{{ route('penghuni.dashboard') }}">
+				<span class="menu-title">Dashboard</span>
+				<i class="mdi mdi-home menu-icon"></i>
+			</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link {{ (request()->is('penghuni/form-penghuni') ? 'active' : '') }}"
+				href="{{ route('form-penghuni.index') }}">
+				<span class="menu-title">Form</span>
+				<i class="mdi mdi-file-document-box menu-icon"></i>
+			</a>
+			</li>
+			@if(Auth::user()->status_akun == 'Belum Verifikasi')
+			<li class="nav-item">
+			<a class="nav-link {{ (request()->is('penghuni/form-permintaan-penghuni') ? 'active' : '') }}"
+				href="{{ route('form-permintaan-penghuni.index') }}">
+				<span class="menu-title">Fasilitas Kamar</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+			</li>
+			@endif
+			<li class="nav-item">
+			<a class="nav-link {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}"
+				href="{{ route('form-pembayaran-penghuni.index') }}">
+				<span class="menu-title">Pembayaran</span>
+				<i class="mdi mdi-book menu-icon"></i>
+			</a>
+			</li>
+			<li class="nav-item sidebar-actions">
+			<span class="nav-link d-grid">
+				<form action="{{ route('logout') }}" method="POST">
+				@csrf
+				<button type="submit" class="btn btn-block col btn-lg btn-gradient-dark mt-4">
+					Keluar
+				</button>
+				</form>
+			</span>
+			</li>
+		@endif
+
 
 	</ul>
 </nav>
