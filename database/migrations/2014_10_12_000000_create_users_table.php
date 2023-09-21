@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->enum('role', ['Pemilik', 'Penghuni', 'Pendaftar'])->default('Pendaftar');
             $table->enum('status_akun', ['Terverifikasi', 'Belum Verifikasi', 'Diblokir'])->default('Belum Verifikasi');
             $table->string('alamat')->nullable();
@@ -27,6 +29,7 @@ return new class extends Migration
             $table->string('mac_addr')->nullable();
             $table->string('dokumen')->nullable();
             $table->string('profil')->nullable();
+            $table->string('fasilitas')->nullable();
             $table->string('alasan_penolakan')->nullable();
             $table->timestamps();
             $table->softDeletes();

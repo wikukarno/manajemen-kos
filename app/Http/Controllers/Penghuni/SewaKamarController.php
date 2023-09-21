@@ -54,7 +54,13 @@ class SewaKamarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = User::findOrFail($id);
+
+        $item->update([
+                'fasilitas'=>$request->fasilitas,
+            ]);
+
+        return back();
     }
 
     /**

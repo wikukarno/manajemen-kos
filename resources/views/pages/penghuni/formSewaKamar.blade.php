@@ -11,11 +11,11 @@
             <form class="forms-sample">
               <div class="form-group">
                 <label for="harga">Tipe Kamar</label>
-                <input type="text" class="form-control" id="harga" placeholder="" name="harga">
+                <input type="text" class="form-control" id="tipe" placeholder="" name="tipe">
               </div>
               <div class="form-group">
                 <label for="harga">Nomor Kamar</label>
-                <input type="text" class="form-control" id="harga" placeholder="" name="harga">
+                <input type="text" class="form-control" id="nomor" placeholder="" name="nomor">
               </div>
               <div class="form-group">
                 <label for="harga">Harga Kamar</label>
@@ -28,27 +28,27 @@
                     <div class="form-group">
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Listrik </label>
+                          <input type="checkbox" class="form-check-input" name="fasilitas[]"> Listrik </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Air </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Air </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Wifi </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Wifi </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Tempat Tidur </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Tempat Tidur </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Kasur </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Kasur </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Lemari </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Lemari </label>
                       </div>
                     </div>
                   </div>
@@ -56,27 +56,27 @@
                     <div class="form-group">
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Meja Belajar </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Meja Belajar </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Kursi Belajar </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Kursi Belajar </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Kipas Angin </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Kipas Angin </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Kloset Kamar Mandi </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Kloset Kamar Mandi </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Keran </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Keran </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Shower </label>
+                          <input type="checkbox" class="form-check-input"  name="fasilitas[]"> Shower </label>
                       </div>
                     </div>
                   </div>

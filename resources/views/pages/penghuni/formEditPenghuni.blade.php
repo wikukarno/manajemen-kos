@@ -89,7 +89,7 @@
                   <div class="form-group row">
                       <label class="col-sm-3 col-form-label">Tempat Lahir</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="tempatlahir" name="tempat_lahir">
+                      <input type="text" class="form-control" id="tempatlahir" name="tempat_lahir" value="{{ auth()->user()->tempat_lahir }}">
                     </div>
                   </div>
                 </div>
@@ -97,7 +97,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
                   <div class="col-sm-9">
-                    <input type="date" class="form-control" id="tanggallahir" name="tanggal_lahir">
+                    <input type="date" class="form-control" id="tanggallahir" name="tanggal_lahir" value="{{ auth()->user()->tanggal_lahir }}">
                   </div>
                 </div>
                 </div>
