@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\AvailabilityController;
-use App\Http\Controllers\DataPenghuniController;
+use App\Http\Controllers\Admin\DataPenghuniController;
 use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Admin\AkunAdminController;
