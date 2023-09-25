@@ -11,7 +11,7 @@
     <!-- DataTales Example -->
     <div class="card shadow">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary mt-2">Data User
+            <h6 class="m-0 font-weight-bold text-primary mt-2">Data User ( {{ $item->name }} )
                 <a href="{{ url('pemilik/data-user') }}" class="float-end btn btn-outline-success btn-sm" >View All</a>
             </h6>
         </div>

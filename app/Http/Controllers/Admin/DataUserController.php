@@ -26,6 +26,18 @@ class DataUserController extends Controller
                 ->editColumn('email', function ($item) {
                     return $item->email ?? '-';
                 })
+                ->editColumn('role', function ($item) {
+                    return $item->role ?? '-';
+                })
+                ->editColumn('status_akun', function ($item) {
+                    return $item->status_akun ?? '-';
+                })
+                ->editColumn('hp', function ($item) {
+                    return $item->hp ?? '-';
+                })
+                ->editColumn('alasan_penolakan', function ($item) {
+                    return $item->alasan_penolakan ?? '-';
+                })
                 ->editColumn('action', function ($item) {
                     return '
                                 <div class="d-flex">
@@ -95,13 +107,8 @@ class DataUserController extends Controller
      */
     public function edit(string $id)
     {
-        // // untuk mencari data nya
-        // $item=User::find(auth()->user()->id);
-        // // untuk menampilkan ke halaman show nya
-        // return view('pages.admin.datauser.edit', compact('item'));
-
         $item = User::findOrFail($id);
-
+        // untuk menampilkan ke halaman edit nya
         return view('pages.admin.datauser.edit', [
             'item' => $item
         ]);
@@ -113,11 +120,13 @@ class DataUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data=$request->all();
         $item = User::findOrFail($id);
+        $item->name=$request->name;
+        $item->hp=$request->hp;
+        $item->alasan_penolakan=$request->alasan_penolakan;
+        $item->save();
 
-        $item->update($data);
-        return redirect()->route('datauser.index')->with('success', 'Data has been updated!');
+        return redirect('pemilik/data-user')->with('success', 'Data Hass Been Updated');
     }
 
     /**
