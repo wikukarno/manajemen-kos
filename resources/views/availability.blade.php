@@ -42,8 +42,8 @@
         </div>
         <!-- Spinner End -->
 
-        <!-- Header Start -->
-    <div class="container-fluid bg-dark px-0">
+    <!-- Header Start -->
+        <div class="container-fluid bg-dark px-0">
             <div class="row gx-0">
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
                     <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
@@ -63,7 +63,7 @@
                                 <a href="/" class="nav-item nav-link ">Home</a>
                                 <a href="/availability" class="nav-item nav-link active">Kamar</a>
                             </div>
-                            <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a>
+                            <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-sm text-light" style="background-color: orange">Masuk</button></a>
                             <a href="/register" class="nav-item nav-link" style="margin-left: -0.4cm"><button type="button" class="btn btn-outline-primary btn-sm">Buat Akun</button></a>
                             
                         </div>
@@ -72,7 +72,6 @@
             </div>
         </div>
         <!-- Header End -->
-
 
         <!-- Page Header Start -->
         <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/carousel-1.jpg);">
@@ -124,7 +123,7 @@
                                 </div>
                                
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Lihat Ditel</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/detailKamar/{{$availability->slug}}">Lihat Ditel</a>
                                     {{-- <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a> --}}
                                 </div>
                             </div>

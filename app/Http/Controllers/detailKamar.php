@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 
 class detailKamar extends Controller
 {
-        public function index()
+    
+    
+    
+    public function index()
     {
         return view('detailKamar', [
            
@@ -19,7 +22,7 @@ class detailKamar extends Controller
     public function show(detailKamar $detailKamar)
     {
         return view('detailKamar', [
-            'availabilitys'=>Kamar::all()
+            'availability'=>Kamar::all()
         ]);
     }
 }

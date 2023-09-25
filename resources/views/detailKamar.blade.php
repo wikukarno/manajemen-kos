@@ -33,6 +33,7 @@
 </head>
 
 <body>
+    
     <div class="container-xxl bg-white p-0">
        <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -63,7 +64,7 @@
                                 <a href="/" class="nav-item nav-link ">Home</a>
                                 <a href="/availability" class="nav-item nav-link active">Kamar</a>
                             </div>
-                            <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a>
+                            <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-sm text-light" style="background-color: orange">Masuk</button></a>
                             <a href="/register" class="nav-item nav-link" style="margin-left: -0.4cm"><button type="button" class="btn btn-outline-primary btn-sm">Buat Akun</button></a>
                             
                         </div>
@@ -116,15 +117,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <h4 class="text-secondary mt-2">Nomor Kamar :</h4>
-                        <p class="fs-3">Tipe :</p>
-                        <p class="fs-6">Rp. 0283028</p>
+                    
+                    <div class="col-md-6 mt-3">
+                        <h3 class="text-secondary mt-2">Nomor Kamar : {{ $availability->nomor_kamar }} </h3>
+                        <p class="fs-4">Tipe :</p>
+                        <p class="fs-2 text-danger">Rp. 0283028</p>
+                        {{-- <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a> --}}
+                        <a href="" type="button" class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</a>
                     </div>
                     
                 </div>
                 <div class="row mb-5 justify-content-center">
-                    <h3>Deskripsi Kamar</h3>
+                    <h3 style="color: orange">Deskripsi Kamar</h3>
+                </div>
+                <div class="row mb-5 justify-content-center">
+                    <h3 style="color: orange">Peraturan Kos</h3>
+                    <div>
+                    <ul>
+                        <li>Jam malam diberlakukan setiap hari pukul 22:00 - 07:00 WIB. Apabila ada keperluan mendesak, dapat menghubungi PIHAK KOS.</li>
+                        <li>Tamu lawan jenis dilarang masuk kedalam kos. Apabila kuliarga terdekat (Ayah, Abang laki-laki, atau Adik laki-laki) ingin mengunjungi, silahkan meminta izin di grup WhatsApp Kos.</li>
+                        <li>Tidak diperbolehkan membawa dispenser ke dalam kamar untuk meminimalisir potensi kebaran.</li>
+                        <li>Tidak diperkenankan untuk memindah sewakan kos atau memberikan perubahan dan tambahan fasilitas pada bangunan yang disewakan, kecuali atas izin PIHAK KOS</li>
+                        <li>Untuk pemutusan masa kontrak, harusn memberitahu PIHAK KOS selambat-lambatnya sebulan sebelum pemutusan masa kontrak dilakukan.</li>
+                    </ul>
+                </div>
                 </div>
             </div>
         </div>

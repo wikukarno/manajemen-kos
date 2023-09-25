@@ -47,7 +47,9 @@ Route::get('/availability', function() {
 });
 
 Route::get('/detailKamar', function() {
-    return view('detailKamar');
+    return view('detailKamar', [
+        "kamar" => kamar::all()
+    ]);
 });
 
 
@@ -86,7 +88,7 @@ Route::prefix('penghuni')
 
 Route::get('/', [KamarController::class, 'show']);
 Route::get('/availability', [AvailabilityController::class, 'show']);
-Route::get('/detailKamar', [detailKamar::class, 'show']);
+// Route::get('/availbality/detailKamar', [detailKamar::class, 'show']);
 
 
 

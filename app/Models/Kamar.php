@@ -14,4 +14,5 @@ class Kamar extends Model
     {
         return $this->hasMany(Availability::class);
     }
+
 }
