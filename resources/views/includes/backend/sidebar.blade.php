@@ -42,9 +42,9 @@
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
-		<li class="nav-item">
+		<li class="nav-item {{ (request()->is('pemilik/data-penghuni') ? 'active' : '') }}">
 			<a class="nav-link"
-				{{--  href="{{ route('admin.dashboard') }}">  --}}
+				href="/pemilik/data-penghuni">
 				<span class="menu-title">Data Penghuni</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>

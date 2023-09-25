@@ -3,13 +3,14 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<section class="main-content">
+<h1>hallo</h1>
+{{--  <section class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mt-3">Data Pendaftar <a href="{{ route('data-user.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
+                        <h3 class="card-title mt-3">Data Penghuni <a href="{{ route('data-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
                     </div>
                     <div class="card-body">
                         @if(Session::has('success'))
@@ -39,10 +40,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>  --}}
 @endsection
 
-@push('after-script')
+{{--  @push('after-script')
 <script>
     function btnUpdateDataUser(id){
         alert(id);
@@ -116,4 +117,4 @@
         })
     }
 </script>
-@endpush
+@endpush  --}}
