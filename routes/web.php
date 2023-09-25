@@ -1,23 +1,24 @@
 <?php
 
 use App\Models\kamar;
+use App\Models\Availability;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\detailKamar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\AvailabilityController;
+use App\Http\Controllers\DataPenghuniController;
 use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Admin\AkunAdminController;
+use App\Http\Controllers\Penghuni\SewaKamarController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\AvailabilityController;
-use App\Http\Controllers\detailKamar;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
-use App\Http\Controllers\Penghuni\SewaKamarController;
-use App\Models\Availability;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,10 @@ Route::prefix('pemilik')
         // untuk DataUser
         Route::resource('data-user', DataUserController::class);
         Route::delete('data-user/delete', [DataUserController::class, 'destroy']);
+        // untuk DataPenghuni
+        Route::resource('data-penghuni', DataPenghuniController::class);
+        Route::delete('data-penghuni/delete', [DataPenghuniController::class, 'destroy']);
+
     });
 
 Route::prefix('pendaftar')
