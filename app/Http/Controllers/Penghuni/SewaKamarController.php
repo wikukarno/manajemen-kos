@@ -15,6 +15,7 @@ class SewaKamarController extends Controller
     {
             $item=User::find(auth()->user()->id);
             return view('pages.penghuni.formSewaKamar', compact('item'));
+            
     }
 
     /**
@@ -55,9 +56,11 @@ class SewaKamarController extends Controller
     public function update(Request $request, string $id)
     {
         $item = User::findOrFail($id);
+        $memberString = implode(",", $request->get('fasilitas'));
 
         $item->update([
-                'fasilitas'=>$request->fasilitas,
+                'fasilitas'=>$memberString
+                // 'fasilitas' => $request->fasilitas,
             ]);
 
         return back();
