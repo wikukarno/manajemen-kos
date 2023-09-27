@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class DataPenyewaController extends Controller
 {
@@ -13,12 +11,7 @@ class DataPenyewaController extends Controller
      */
     public function index()
     {
-        // $item=User::find(auth()->user()->id);
-        // return view('pages.admin.datapenghuni.index', compact('item'));
-        // untuk menampilkan semua data nya
-        $item=User::all();
-        // untuk menampilkan ke halaman roometype nya
-        return view('datapenghuni.index', ['item'=>$item]);
+        //
     }
 
     /**
