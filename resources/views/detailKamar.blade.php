@@ -119,9 +119,9 @@
                     </div>
                     
                     <div class="col-md-6 mt-3">
-                        <h3 class="text-secondary mt-2">Nomor Kamar : {{ $availability->nomor_kamar }} </h3>
+                        <h3 class="text-secondary mt-2">Nomor Kamar : {{ $kamar->nomor_kamar }} </h3>
                         <p class="fs-4">Tipe :</p>
-                        <p class="fs-2 text-danger">Rp. 0283028</p>
+                        <p class="fs-2 text-danger">Rp. {{ $kamar->harga }}</p>
                         {{-- <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a> --}}
                         <a href="" type="button" class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</a>
                     </div>

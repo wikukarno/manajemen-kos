@@ -15,7 +15,7 @@ class KamarController extends Controller
     {
 
         return view('kamar', [
-            // "kamars" => Kamar::all()
+            
         ]);
 
     }

@@ -47,7 +47,7 @@ Route::get('/availability', function() {
     ]);
 });
 
-Route::get('/detailKamar', function() {
+Route::get('/availability/detailKamar/{{$kamar->slug}}', function() {
     return view('detailKamar', [
         "kamar" => kamar::all()
     ]);
