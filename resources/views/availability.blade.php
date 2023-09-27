@@ -123,8 +123,8 @@
                                 </div>
                                
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/availability/detailKamar/{{$availability->slug}}">Lihat Ditel</a>
-                                    {{-- <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a> --}}
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('detail', $availability->slug)}}">Lihat Ditel</a>
+                                    
                                 </div>
                             </div>
                         </div>

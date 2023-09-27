@@ -9,11 +9,5 @@ class Kamar extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    
-    public function availability()
-    {
-        return $this->hasMany(Availability::class);
-        
-    }
 
 }

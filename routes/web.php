@@ -35,23 +35,25 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+//halaman awal
 Route::get('/', function() {
     return view('kamar', [
         "kamar" => kamar::all()
     ]);
 });
 
+
+//kamar tersedia
 Route::get('/availability', function() {
     return view('availability', [
         "kamar" => kamar::all()
     ]);
 });
 
-Route::get('/availability/detailKamar/{{$kamar->slug}}', function() {
-    return view('detailKamar', [
-        "kamar" => kamar::all()
-    ]);
-});
+
+
+//detail kamar
+Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
 
 
 
@@ -93,7 +95,7 @@ Route::prefix('penghuni')
 
 Route::get('/', [KamarController::class, 'show']);
 Route::get('/availability', [AvailabilityController::class, 'show']);
-// Route::get('/availbality/detailKamar', [detailKamar::class, 'show']);
+// Route::get('/availbality/detailKamar/{slug}', [detailKamar::class, 'show']);
 
 
 

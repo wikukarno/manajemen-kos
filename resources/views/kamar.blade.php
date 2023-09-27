@@ -166,7 +166,11 @@
                
                 <div class="row mb-5 justify-content-center">
                     @foreach ($kamars as $kamar)
-                    <div class="col-md-4">
+
+
+
+                    
+                    {{-- <div class="col-md-4">
                         <div class="room-item shadow rounded overflow-hidden">
                             
                             <div class="position-relative">
@@ -191,11 +195,11 @@
                                
                                 <div class="d-flex justify-content-between">
                                     <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/availability">Lihat Kamar</a>
-                                    {{-- <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a> --}}
+                                   
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                         
                     @endforeach
                 </div>
