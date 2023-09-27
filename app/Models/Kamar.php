@@ -13,6 +13,7 @@ class Kamar extends Model
     public function availability()
     {
         return $this->hasMany(Availability::class);
+        
     }
 
 }

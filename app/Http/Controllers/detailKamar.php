@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Availability;
 use App\Models\Kamar;
 
 
 use Illuminate\Http\Request;
 
 class detailKamar extends Controller
-{
-    
-    
-    
+{    
     public function index()
     {
         return view('detailKamar', [
