@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\AvailabilityController;
-use App\Http\Controllers\Admin\DataPenghuniController;
+use App\Http\Controllers\Admin\DataPenyewaController;
 use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Admin\AkunAdminController;
@@ -65,8 +65,8 @@ Route::prefix('pemilik')
         Route::resource('data-user', DataUserController::class);
         Route::delete('data-user/delete', [DataUserController::class, 'destroy']);
         // untuk DataPenghuni
-        Route::resource('data-penghuni', DataPenghuniController::class);
-        Route::delete('data-penghuni/delete', [DataPenghuniController::class, 'destroy']);
+        Route::resource('data-penghuni', DataPenyewaController::class);
+        Route::delete('data-penghuni/delete', [DataPenyewaController::class, 'destroy']);
 
     });
 
