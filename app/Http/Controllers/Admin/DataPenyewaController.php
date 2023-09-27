@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DataPenyewaController extends Controller
 {
@@ -11,7 +13,72 @@ class DataPenyewaController extends Controller
      */
     public function index()
     {
-        //
+
+        if (request()->ajax()) {
+            $query = User::query();
+
+            return datatables()->of($query)
+                ->addIndexColumn()
+                
+                ->editColumn('name', function ($item) {
+                    return $item->name ?? '-';
+                })
+                ->editColumn('email', function ($item) {
+                    return $item->email ?? '-';
+                })
+                ->editColumn('role', function ($item) {
+                    return $item->role ?? '-';
+                })
+                ->editColumn('status_akun', function ($item) {
+                    return $item->status_akun ?? '-';
+                })
+                ->editColumn('alamat', function ($item) {
+                    return $item->alamat ?? '-';
+                })
+                ->editColumn('hp', function ($item) {
+                    return $item->hp ?? '-';
+                })
+                ->editColumn('wali', function ($item) {
+                    return $item->wali ?? '-';
+                })
+                ->editColumn('hp2', function ($item) {
+                    return $item->hp2 ?? '-';
+                })
+                ->editColumn('uname', function ($item) {
+                    return $item->uname ?? '-';
+                })
+                ->editColumn('id_telegram', function ($item) {
+                    return $item->id_telegram ?? '-';
+                })
+                ->editColumn('mac_addr', function ($item) {
+                    return $item->mac_addr ?? '-';
+                })
+                ->editColumn('dokumen', function ($item) {
+                    return $item->dokumen ?? '-';
+                })
+                ->editColumn('action', function ($item) {
+                    return '
+                                <div class="d-flex">
+                                    <a href="' . route('data-user.show', $item->id) . '" title="Tampil Detail" class="btn btn-outline-primary btn-sm mb-0 mx-1 ">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="' . route('data-user.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataPenyewa(' . $item->id . ')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div> 
+                            ';
+
+                })
+                // memenghilangkan tag html
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        $item=User::find(auth()->user()->id);
+        return view('pages.admin.datapenyewa.index', compact('item'));
     }
 
     /**
@@ -19,7 +86,9 @@ class DataPenyewaController extends Controller
      */
     public function create()
     {
-        //
+        $item=User::find(auth()->user()->id);
+        // untuk mengubah bagian create nya
+        return view('pages.admin.datapenyewa.create', compact('item'));
     }
 
     /**
