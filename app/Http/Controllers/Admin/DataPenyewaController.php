@@ -96,7 +96,24 @@ class DataPenyewaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // untuk mengengisi data nya
+        $item=new User();
+        $item->name=$request->name;
+        $item->email=$request->email;
+        $item->role=$request->role;
+        $item->status_akun=$request->status_akun;
+        $item->alamat=$request->alamat;
+        $item->hp=$request->hp;
+        $item->wali=$request->wali;
+        $item->hp2=$request->hp2;
+        $item->uname=$request->uname;
+        $item->password=$request->password;
+        $item->id_telegram=$request->id_telegram;
+        $item->mac_addr=$request->mac_addr;
+        $item->dokumen=$request->dokumen;
+        $item->save();
+
+        return redirect('pemilik/data-penghuni')->with('success', 'Data Hass Been Added');
     }
 
     /**
