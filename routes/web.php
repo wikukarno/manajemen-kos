@@ -7,11 +7,12 @@ use App\Http\Controllers\detailKamar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\TipeKamarController;
 use App\Http\Controllers\AvailabilityController;
-use App\Http\Controllers\Admin\DataPenyewaController;
 use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Admin\AkunAdminController;
+use App\Http\Controllers\Admin\DataPenyewaController;
 use App\Http\Controllers\Penghuni\SewaKamarController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardAdminController;
@@ -54,6 +55,7 @@ Route::get('/availability', function() {
 
 //detail kamar
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
+Route::get('/detail-tipe', [TipeKamarController::class, 'detail'])->name('detail-tipe');
 
 
 
