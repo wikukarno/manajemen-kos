@@ -18,12 +18,5 @@ class detailKamar extends Controller
             'kamar' => $kamar,
         ]);
     }
-    
-    public function show(detailKamar $detailKamar)
-    {
-        return view('detailKamar', [
-            "kamar"=> Kamar::all()
 
-        ]);
-    }
 }

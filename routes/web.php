@@ -46,7 +46,7 @@ Route::get('/', function() {
 //kamar tersedia
 Route::get('/availability', function() {
     return view('availability', [
-        "kamar" => kamar::all()
+        "availabilitys" => kamar::all()
     ]);
 });
 
@@ -90,15 +90,6 @@ Route::prefix('penghuni')
         Route::resource('form-pembayaran-penghuni', FormPembayaranController::class);
         Route::resource('form-permintaan-penghuni', SewaKamarController::class);
     });
-
-// Route::get('/kamar', [KamarController::class, 'show']);
-
-Route::get('/', [KamarController::class, 'show']);
-Route::get('/availability', [AvailabilityController::class, 'show']);
-// Route::get('/availbality/detailKamar/{slug}', [detailKamar::class, 'show']);
-
-
-
 
 
 
