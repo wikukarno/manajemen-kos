@@ -165,7 +165,7 @@
 
                
                 <div class="row mb-5 justify-content-center">
-                    @foreach ($kamars as $kamar)
+                    {{-- @foreach ($kamars as $kamar) --}}
 
 
 
@@ -201,7 +201,7 @@
                         </div>
                     </div> --}}
                         
-                    @endforeach
+                    {{-- @endforeach --}}
                 </div>
             </div>
         </div>

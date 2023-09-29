@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{asset('img/favicon.ico')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,15 +21,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="{{asset('css/lib/animate/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -120,7 +120,7 @@
                     
                     <div class="col-md-6 mt-3">
                         <h3 class="text-secondary mt-2">Nomor Kamar : {{$kamar->nomor_kamar}} </h3>
-                        <p class="fs-4">Tipe :</p>
+                        <p class="fs-4">Tipe : {{ $kamar->tipe }}</p>
                         <p class="fs-2 text-danger">Rp. {{ $kamar->harga }}</p>
                         {{-- <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a> --}}
                         <a href="/login" type="button" class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</a>
@@ -129,6 +129,7 @@
                 </div>
                 <div class="row mb-5 justify-content-center">
                     <h3 style="color: orange">Deskripsi Kamar</h3>
+                    <p>{{ $kamar->deskripsi }}</p>
                 </div>
                 <div class="row mb-5 justify-content-center">
                     <h3 style="color: orange">Peraturan Kos</h3>
@@ -227,19 +228,20 @@
     </div>
 
     <!-- JavaScript Libraries -->
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ asset('js/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('js/lib/easing/easing.min.js')}}"></script>
+    <script src="{{ asset('js/lib/waypoints/waypoints.min.js')}} "></script>
+    <script src="{{ asset('js/lib/counterup/counterup.min.js')}}"></script>
+    <script src="{{asset('js/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('js/lib/tempusdominus/js/moment.min.js')}}"></script>
+    <script src="{{ asset('js/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
+    <script src="{{asset('js/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 </body>
 
 </html>
