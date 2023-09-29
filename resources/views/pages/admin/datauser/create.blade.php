@@ -28,7 +28,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                        <label class="col-sm-3 col-form-label">Nama Lengkap*</label>
                         <div class="col-sm-9">
                           <input name="name" id="name" type="text" class="form-control" placeholder="Masukkan Nama"/>
                         </div>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email address</label>
+                        <label class="col-sm-3 col-form-label">Email address*</label>
                         <div class="col-sm-9">
                           <input name="email" id="email" type="email" class="form-control" placeholder="Masukkan Email"/>
                         </div>
@@ -46,7 +46,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" >Role</label>
+                        <label class="col-sm-3 col-form-label" >Role*</label>
                         <div class="col-sm-9">
                           <select class="form-control" name="role" id="role" style="height: 45px">
                             <option value="">Pilih</option>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Status Akun</label>
+                        <label class="col-sm-3 col-form-label">Status Akun*</label>
                         <div class="col-sm-9">
                           <select class="form-control" name="status_akun" id="status_akun" style="height: 45px">
                             <option value="">Pilih</option>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Password</label>
+                        <label class="col-sm-3 col-form-label">Password*</label>
                         <div class="col-sm-9">
                           <input name="password" id="password" type="password" class="form-control" placeholder="Masukkan Password"/>
                         </div>
@@ -101,7 +101,9 @@
                     </div>
                   </div>
                   <td colspan="2">
-                    <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
+                    <p style="font-size: 10px">Catatan : Yang bertanda (*) harus diisi
+                      <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
+                    </p>
                   </td>
                 </form>
               </div>

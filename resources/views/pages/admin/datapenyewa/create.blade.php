@@ -118,14 +118,22 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Id Telegram</label>
+                        <label class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-9">
-                          <input name="id_telegram" id="id_telegram" type="text" class="form-control" placeholder="Masukkan Id Telegram"/>
+                            <input name="password" id="password" type="password" class="form-control" placeholder="Masukkan Password"/>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Id Telegram</label>
+                          <div class="col-sm-9">
+                            <input name="id_telegram" id="id_telegram" type="text" class="form-control" placeholder="Masukkan Id Telegram"/>
+                          </div>
+                        </div>
+                      </div>
                     <div class="col-md-6">
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Mac Address</label>
@@ -134,6 +142,8 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">KTP</label>
@@ -142,7 +152,7 @@
                                 @if ($item->dokumen != null)
                                 <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
                                 @else
-                                <img src="https://source.unsplash.com/500x200?" class="img-fluid">
+                                <img src="" class="img-fluid">
                                 <input type="hidden">
                                 @endif
                                 <div class="mt-3">
