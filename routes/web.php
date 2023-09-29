@@ -90,7 +90,7 @@ Route::prefix('penghuni')
         Route::resource('akun-penghuni', AkunPenghuniController::class);
         Route::resource('form-penghuni', FormPenghuniController::class);
         Route::resource('form-pembayaran-penghuni', FormPembayaranController::class);
-        Route::resource('form-permintaan-penghuni', SewaKamarController::class);
+        Route::resource('form-permintaan-penghuni', SewaKamarController::class)->middleware('belumverifikasi');
     });
 
 
