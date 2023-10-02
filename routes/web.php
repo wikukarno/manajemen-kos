@@ -55,7 +55,8 @@ Route::get('/availability', function() {
 
 //detail kamar
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
-Route::get('/detail-tipe', [TipeKamarController::class, 'detail'])->name('detail-tipe');
+// Route::get('/detail-tipe', [TipeKamarController::class, 'detail'])->name('detail-tipe');
+Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
 
 
 
