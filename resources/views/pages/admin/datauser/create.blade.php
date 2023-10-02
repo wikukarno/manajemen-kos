@@ -28,17 +28,29 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Lengkap*</label>
+                        <label class="col-sm-3 col-form-label"><b>Nama Lengkap*</b></label>
                         <div class="col-sm-9">
-                          <input name="name" id="name" type="text" class="form-control" placeholder="Masukkan Nama"/>
+                          <input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama" autocomplete="off" required value="{{ old('name') }}"/>
+                          @error('name')
+                          {{-- untuk info yang salah yang mana --}}
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>            
+                          @enderror
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email address*</label>
+                        <label class="col-sm-3 col-form-label"><b>Email address*</b></label>
                         <div class="col-sm-9">
-                          <input name="email" id="email" type="email" class="form-control" placeholder="Masukkan Email"/>
+                          <input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email" autocomplete="off" required value="{{ old('email') }}"/>
+                          @error('email')
+                          {{-- untuk info yang salah yang mana --}}
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>            
+                          @enderror
                         </div>
                       </div>
                     </div>
@@ -46,27 +58,39 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" >Role*</label>
+                        <label class="col-sm-3 col-form-label" ><b>Role*</b></label>
                         <div class="col-sm-9">
-                          <select class="form-control" name="role" id="role" style="height: 45px">
+                          <select class="form-control @error('role') is-invalid @enderror" name="role" id="role" style="height: 45px" required value="{{ old('role') }}">
                             <option value="">Pilih</option>
                             <option value="Pemilik">Pemilik</option>
                             <option value="Pendaftar">Pendaftar</option>
                             <option value="Penghuni">Penghuni</option>
                           </select>
+                          @error('role')
+                          {{-- untuk info yang salah yang mana --}}
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>            
+                          @enderror
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Status Akun*</label>
+                        <label class="col-sm-3 col-form-label"><b>Status Akun*</b></label>
                         <div class="col-sm-9">
-                          <select class="form-control" name="status_akun" id="status_akun" style="height: 45px">
+                          <select class="form-control @error('status_akun') is-invalid @enderror" name="status_akun" id="status_akun" style="height: 45px" required value="{{ old('status_akun') }}">
                             <option value="">Pilih</option>
                             <option value="Terverifikasi">Terverifikasi</option>
                             <option value="Belum Verifikasi">Tidak Terverifikasi</option>
                             <option value="Diblokir">Ditolak</option>
                           </select>
+                          @error('status_akun')
+                          {{-- untuk info yang salah yang mana --}}
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>            
+                          @enderror
                         </div>
                       </div>
                     </div>
@@ -74,17 +98,23 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nomor Handphone</label>
+                        <label class="col-sm-3 col-form-label"><b>Nomor Handphone</b></label>
                         <div class="col-sm-9">
-                          <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73"/>
+                          <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73" autocomplete="off"/>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Password*</label>
+                        <label class="col-sm-3 col-form-label"><b>Password*</b></label>
                         <div class="col-sm-9">
-                          <input name="password" id="password" type="password" class="form-control" placeholder="Masukkan Password"/>
+                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" required value="{{ old('status_akun') }}"/>
+                          @error('password')
+                          {{-- untuk info yang salah yang mana --}}
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>            
+                          @enderror
                         </div>
                       </div>
                     </div>
@@ -92,16 +122,16 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Alasan Penolakan</label>
+                        <label class="col-sm-3 col-form-label"><b>Alasan Penolakan</b></label>
                         <div class="col-sm-9">
                           {{--  <input type="text-area" class="form-control" placeholder="Masukkan Alasan Penolakan"/>  --}}
-                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan"></textarea></td>
+                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan" autocomplete="off"></textarea></td>
                         </div>
                       </div>
                     </div>
                   </div>
                   <td colspan="2">
-                    <p style="font-size: 10px">Catatan : Yang bertanda (*) harus diisi
+                    <p style="font-size: 10px"><b>Catatan : </b> Yang bertanda (*) harus diisi
                       <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
                     </p>
                   </td>

@@ -37,6 +37,14 @@ class UserSeeder extends Seeder
                 'password'=>bcrypt('123'),
                 'role'=>"Penghuni",
                 'status_akun'=>"Terverifikasi",
+            ],
+            [
+                'id'=>4,
+                'email'=>"salmah@gmail.com",
+                'name'=>"salmah",
+                'password'=>bcrypt('123'),
+                'role'=>"Penghuni",
+                'status_akun'=>"Belum Verifikasi",
             ]
         ];
         User::insert($user);
