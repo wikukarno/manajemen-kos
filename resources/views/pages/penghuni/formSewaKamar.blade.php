@@ -27,6 +27,15 @@
                 <div class="form-group">
                   <label for="fasilitas">Fasilitas</label>
                   <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-check">
+                        {{--  Untuk mencentang semua checkbox  --}}
+                          <b><label class="form-check-label">
+                              <input type="checkbox" class="form-check-input select-all-checkbox" id="select-all"> Select All
+                          </label></b>
+                      </div>
+                    </div>
+                    {{--  Membuat checkbox secara otomatis dengan menggnakan foreach  --}}
                     @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
                         <div class="col-md-6">
                             <div class="form-check">
@@ -112,5 +121,25 @@
         $('#btnSave').attr('disabled', 'disabled');
         $('#btnSave').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Menyimpan...');
     });
+</script>
+<script>
+  // Handle the "Select All" checkbox
+  const selectAllCheckbox = document.getElementById('select-all'); 
+  const checkboxes = document.querySelectorAll('input[name="fasilitas[]"]');
+
+  selectAllCheckbox.addEventListener('change', function () {
+      checkboxes.forEach(function (checkbox) {
+          checkbox.checked = selectAllCheckbox.checked;
+      });
+  });
+
+  checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+          // Uncheck "Select All" if any checkbox is unchecked
+          if (!checkbox.checked) {
+              selectAllCheckbox.checked = false;
+          }
+      });
+  });
 </script>
 @endpush

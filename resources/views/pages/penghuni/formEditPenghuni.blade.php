@@ -105,13 +105,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">KTP</label>
+                    <label class="col-sm-3 col-form-label">KTP</label>+
                     <div class="col-sm-9">
                         <div class="mt-2 justify-content-center">
                             @if ($item->dokumen != null)
-                            <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
+                            <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid" id="dokumen-preview">
                             @else
-                            <img src="https://source.unsplash.com/500x200?" class="img-fluid">
+                            <img src="https://source.unsplash.com/500x200?" class="img-fluid" id="dokumen-preview" style="display: none;">
                             <input type="hidden">
                             @endif
                             <div class="mt-3">
@@ -146,22 +146,8 @@
 </div>
 </form>
 
-<script>
-  function previewImage() {
-    const dokumen = document.querySelector('#dokumen');
-    const imgPreview = document.querySelector('.img-preview');
 
-    imgPreview.style.display = 'block';
-
-    const oFReader = new FileReader();
-    oFReader.readAsDataURL(dokumen.files[0]);
-
-    oFReader.onload = function(oFREvent) {
-      imgPreview.src = oFREvent.target.result;
-    }
-  }
-</script>
-
+<form action="" id="" name="" method=""</form>
 
 @endsection
 
@@ -171,5 +157,25 @@
         $('#btnSave').attr('disabled', 'disabled');
         $('#btnSave').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Menyimpan...');
     });
+</script>
+<script>
+  // Fungsi untuk menampilkan pratinjau dokumen
+  function previewDocument() {
+      const inputDokumen = document.getElementById('#dokumen');
+      const dokumenPreview = document.getElementById('.dokumen-preview');
+
+      if (inputDokumen.files && inputDokumen.files[0]) {
+          const reader = new FileReader();
+
+          reader.onload = function(e) {
+              dokumenPreview.src = e.target.result;
+              dokumenPreview.style.display = 'block';
+          };
+
+          reader.readAsDataURL(inputDokumen.files[0]);
+      } else {
+          dokumenPreview.style.display = 'none';
+      }
+  }
 </script>
 @endpush
