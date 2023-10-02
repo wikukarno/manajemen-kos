@@ -105,7 +105,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">KTP</label>+
+                    <label class="col-sm-3 col-form-label">KTP</label>
                     <div class="col-sm-9">
                         <div class="mt-2 justify-content-center">
                             @if ($item->dokumen != null)
