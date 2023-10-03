@@ -28,7 +28,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                        <label class="col-sm-3 col-form-label"><b>Nama Lengkap*</b></label>
                         <div class="col-sm-9">
                           <input name="name" id="name" type="text" class="form-control" placeholder="Masukkan Nama"/>
                         </div>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email address</label>
+                        <label class="col-sm-3 col-form-label"><b>Email Address*</b></label>
                         <div class="col-sm-9">
                           <input name="email" id="email" type="email" class="form-control" placeholder="Masukkan Email"/>
                         </div>
@@ -46,7 +46,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" >Role</label>
+                        <label class="col-sm-3 col-form-label" ><b>Role*</b></label>
                         <div class="col-sm-9">
                           <select class="form-control" name="role" id="role" style="height: 45px">
                             <option value="">Pilih</option>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Status Akun</label>
+                        <label class="col-sm-3 col-form-label"><b>Status Akun*</b></label>
                         <div class="col-sm-9">
                           <select class="form-control" name="status_akun" id="status_akun" style="height: 45px">
                             <option value="">Pilih</option>
@@ -74,7 +74,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Alamat</label>
+                        <label class="col-sm-3 col-form-label"><b>Alamat</b></label>
                         <div class="col-sm-9">
                           <input name="alamat" id="alamat" type="text" class="form-control" placeholder="Jl. xxxxx No.xx RT/RW xx/xx"/>
                         </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Nomor Handphone</label>
+                            <label class="col-sm-3 col-form-label"><b>Nomor Handphone</b></label>
                             <div class="col-sm-9">
                               <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73"/>
                             </div>
@@ -92,7 +92,7 @@
                   <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Nama Wali</label>
+                            <label class="col-sm-3 col-form-label"><b>Nama Wali</b></label>
                             <div class="col-sm-9">
                               <input name="wali" id="wali" type="text" class="form-control" placeholder="Masukkan Nama Wali"/>
                             </div>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Nomor Handphone Wali</label>
+                            <label class="col-sm-3 col-form-label"><b>Nomor Handphone Wali</b></label>
                             <div class="col-sm-9">
                               <input name="hp2" id="hp2" type="text" class="form-control" placeholder="0821xxxxxx73"/>
                             </div>
@@ -110,7 +110,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Username</label>
+                        <label class="col-sm-3 col-form-label"><b>Username</b></label>
                         <div class="col-sm-9">
                           <input name="uname" id="uname" type="text" class="form-control" placeholder="contoh123"/>
                         </div>
@@ -118,7 +118,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Password</label>
+                        <label class="col-sm-3 col-form-label"><b>Password*</b></label>
                         <div class="col-sm-9">
                             <input name="password" id="password" type="password" class="form-control" placeholder="Masukkan Password"/>
                         </div>
@@ -128,7 +128,7 @@
                   <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Id Telegram</label>
+                          <label class="col-sm-3 col-form-label"><b>Id Telegram</b></label>
                           <div class="col-sm-9">
                             <input name="id_telegram" id="id_telegram" type="text" class="form-control" placeholder="Masukkan Id Telegram"/>
                           </div>
@@ -136,7 +136,7 @@
                       </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Mac Address</label>
+                        <label class="col-sm-3 col-form-label"><b>Mac Address</b></label>
                         <div class="col-sm-9">
                           <input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26"/>
                         </div>
@@ -146,7 +146,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">KTP</label>
+                        <label class="col-sm-3 col-form-label"><b>KTP</b></label>
                         <div class="col-sm-9">
                             <div class="mt-2 justify-content-center">
                                 @if ($item->dokumen != null)
@@ -187,7 +187,9 @@
                   </div>  --}}
 
                   <td colspan="2">
-                    <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
+                    <p style="font-size: 10px"><b>Catatan : </b> Yang bertanda (*) harus diisi
+                      <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
+                    </p>
                   </td>
                 </form>
               </div>

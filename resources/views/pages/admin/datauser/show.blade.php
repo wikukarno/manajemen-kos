@@ -28,7 +28,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                        <label class="col-sm-3 col-form-label"><b>Nama Lengkap</b></label>
                         <div class="col-sm-9 mt-3">
                           {{--  <input name="name" id="name" type="text" class="form-control" placeholder="Masukkan Nama"/>  --}}
                           <td> {{ $item->name }} </td>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email address</label>
+                        <label class="col-sm-3 col-form-label"><b>Email Address</b></label>
                         <div class="col-sm-9 mt-3">
                           {{--  <input name="email" id="email" type="email" class="form-control" placeholder="Masukkan Email"/>  --}}
                           <td> {{ $item->email }} </td>
@@ -48,7 +48,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Role</label>
+                        <label class="col-sm-3 col-form-label"><b>Role</b></label>
                         <div class="col-sm-9 mt-3">
                           {{--  <select class="form-control" name="role" id="role">
                             <option value="">Pilih</option>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Status Akun</label>
+                        <label class="col-sm-3 col-form-label"><b>Status Akun</b></label>
                         <div class="col-sm-9 mt-3">
                           {{--  <select class="form-control" name="status_akun" id="status_akun">
                             <option value="">Pilih</option>
@@ -78,7 +78,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nomor Handphone</label>
+                        <label class="col-sm-3 col-form-label"><b>Nomor Handphone</b></label>
                         <div class="col-sm-9 mt-3">
                           {{--  <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73"/>  --}}
                           <td> {{ $item->hp }} </td>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Alasan Penolakan</label>
+                        <label class="col-sm-3 col-form-label"><b>Alasan Penolakan</b></label>
                         <div class="col-sm-9 mt-3">
                           {{--  <input type="text-area" class="form-control" placeholder="Masukkan Alasan Penolakan"/>  --}}
                           {{--  <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan"></textarea></td>  --}}

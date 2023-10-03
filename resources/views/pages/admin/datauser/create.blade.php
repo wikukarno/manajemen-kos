@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label"><b>Email address*</b></label>
+                        <label class="col-sm-3 col-form-label"><b>Email Address*</b></label>
                         <div class="col-sm-9">
                           <input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email" autocomplete="off" required value="{{ old('email') }}"/>
                           @error('email')
