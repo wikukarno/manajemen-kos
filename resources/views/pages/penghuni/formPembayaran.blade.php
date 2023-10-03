@@ -27,10 +27,10 @@
             <label>Unggah Bukti Transfer</label>
             <input type="file" name="img[]" class="file-upload-default">
             <div class="input-group col-xs-12">
-              <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Gambar">
-              <span class="input-group-append">
+              <input type="file" class="form-control file-upload-info"  placeholder="Unggah Gambar">
+              {{--  <span class="input-group-append">
                 <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-              </span>
+              </span>  --}}
             </div>
           </div>
           <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>

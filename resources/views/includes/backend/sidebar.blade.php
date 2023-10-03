@@ -31,7 +31,7 @@
 			<a class="nav-link"
 				{{--  href="{{ route('admin.dashboard') }}">  --}}
 				<span class="menu-title">Data Kamar</span>
-				<i class="mdi mdi-book menu-icon"></i>
+				<i class="mdi mdi-hotel menu-icon"></i>
 			</a>
 		</li>
 		{{--  akses link  --}}
@@ -53,7 +53,7 @@
 			<a class="nav-link"
 				{{--  href="{{ route('admin.dashboard') }}">  --}}
 				<span class="menu-title">Pembayaran</span>
-				<i class="mdi mdi-book menu-icon"></i>
+				<i class="mdi mdi-cash-multiple menu-icon"></i>
 			</a>
 		</li>
 		<li class="nav-item sidebar-actions">
@@ -130,7 +130,7 @@
 			<a class="nav-link"
 				href="{{ route('form-pembayaran-penghuni.index') }}">
 				<span class="menu-title">Pembayaran</span>
-				<i class="mdi mdi-book menu-icon"></i>
+				<i class="mdi mdi-cash-multiple menu-icon"></i>
 			</a>
 			</li>
 			<li class="nav-item sidebar-actions">

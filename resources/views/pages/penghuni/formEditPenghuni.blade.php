@@ -107,13 +107,6 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">KTP</label>
                     <div class="col-sm-9">
-                        <div class="mt-2 justify-content-center">
-                            @if ($item->dokumen != null)
-                            <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid" id="dokumen-preview">
-                            @else
-                            <img src="https://source.unsplash.com/500x200?" class="img-fluid" id="dokumen-preview" style="display: none;">
-                            <input type="hidden">
-                            @endif
                             <div class="mt-3">
                               <input class="form-control 
                               @error('dokumen') 
@@ -125,7 +118,6 @@
                               </div>
                               @enderror
                             </div>
-                        </div>
                     </div>
                   </div>
                 </div>
