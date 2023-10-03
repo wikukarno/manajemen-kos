@@ -32,10 +32,10 @@
                         <div class="col-sm-9">
                           <input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama" autocomplete="off" required value="{{ old('name') }}"/>
                           @error('name')
-                          {{-- untuk info yang salah yang mana --}}
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>            
+                            {{-- untuk info yang salah yang mana --}}
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>            
                           @enderror
                         </div>
                       </div>
@@ -46,10 +46,10 @@
                         <div class="col-sm-9">
                           <input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email" autocomplete="off" required value="{{ old('email') }}"/>
                           @error('email')
-                          {{-- untuk info yang salah yang mana --}}
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>            
+                            {{-- untuk info yang salah yang mana --}}
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>            
                           @enderror
                         </div>
                       </div>
@@ -67,10 +67,10 @@
                             <option value="Penghuni">Penghuni</option>
                           </select>
                           @error('role')
-                          {{-- untuk info yang salah yang mana --}}
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>            
+                            {{-- untuk info yang salah yang mana --}}
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>            
                           @enderror
                         </div>
                       </div>
@@ -86,10 +86,10 @@
                             <option value="Diblokir">Ditolak</option>
                           </select>
                           @error('status_akun')
-                          {{-- untuk info yang salah yang mana --}}
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>            
+                            {{-- untuk info yang salah yang mana --}}
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>            
                           @enderror
                         </div>
                       </div>
@@ -100,7 +100,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Alamat</b></label>
                         <div class="col-sm-9">
-                          <textarea name="alamat" id="alamat" type="text" class="form-control" placeholder="Jl. xxxxx No.xx RT/RW xx/xx" autocomplete="off" required value="{{ old('alamat') }}"></textarea>
+                          <textarea name="alamat" id="alamat" type="text" class="form-control" placeholder="Jl. xxxxx No.xx RT/RW xx/xx" autocomplete="off"></textarea>
                         </div>
                       </div>
                     </div>
@@ -108,7 +108,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Nomor Handphone</b></label>
                         <div class="col-sm-9">
-                          <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ old('hp') }}"/>
+                          <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73" autocomplete="off"/>
                         </div>
                       </div>
                     </div>
@@ -118,7 +118,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Nama Wali</b></label>
                         <div class="col-sm-9">
-                          <input name="wali" id="wali" type="text" class="form-control" placeholder="Masukkan Nama Wali" autocomplete="off" required value="{{ old('wali') }}"/>
+                          <input name="wali" id="wali" type="text" class="form-control" placeholder="Masukkan Nama Wali" autocomplete="off"/>
                         </div>
                       </div>
                     </div>
@@ -126,7 +126,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Nomor Handphone Wali</b></label>
                         <div class="col-sm-9">
-                          <input name="hp2" id="hp2" type="text" class="form-control" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ old('hp2') }}"/>
+                          <input name="hp2" id="hp2" type="text" class="form-control" placeholder="0821xxxxxx73" autocomplete="off"/>
                         </div>
                       </div>
                     </div>
@@ -136,7 +136,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Username</b></label>
                         <div class="col-sm-9">
-                          <input name="uname" id="uname" type="text" class="form-control" placeholder="contoh123" required value="{{ old('uname') }}" autocomplete="off"/>
+                          <input name="uname" id="uname" type="text" class="form-control" placeholder="contoh123" autocomplete="off"/>
                         </div>
                       </div>
                     </div>
@@ -144,12 +144,12 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Password*</b></label>
                         <div class="col-sm-9">
-                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" required value="{{ old('password') }}" autocomplete="off"/>
+                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Min. 8" required value="{{ old('password') }}" autocomplete="off"/>
                           @error('password')
-                          {{-- untuk info yang salah yang mana --}}
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>            
+                            {{-- untuk info yang salah yang mana --}}
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>            
                           @enderror
                         </div>
                       </div>
@@ -160,7 +160,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Id Telegram</b></label>
                         <div class="col-sm-9">
-                          <input name="id_telegram" id="id_telegram" type="text" class="form-control" placeholder="Masukkan Id Telegram" autocomplete="off" required value="{{ old('id_telegram') }}"/>
+                          <input name="id_telegram" id="id_telegram" type="text" class="form-control" placeholder="Masukkan Id Telegram" autocomplete="off"/>
                         </div>
                       </div>
                     </div>
@@ -168,7 +168,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Mac Address</b></label>
                         <div class="col-sm-9">
-                          <input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" required value="{{ old('mac_addr') }}"/>
+                          <input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off"/>
                         </div>
                       </div>
                     </div>
@@ -186,14 +186,11 @@
                                 <input type="hidden">
                                 @endif
                                 <div class="mt-3">
-                                  <input class="form-control 
-                                  @error('dokumen') 
-                                  is-invalid
-                                  @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
+                                  <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
                                   @error('dokumen')
-                                  <div class="invalid-feedback">
-                                      {{ $message }}
-                                  </div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                   @enderror
                                 </div>
                             </div>

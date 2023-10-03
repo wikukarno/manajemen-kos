@@ -108,7 +108,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Password*</b></label>
                         <div class="col-sm-9">
-                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" required value="{{ old('password') }}" autocomplete="off"/>
+                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Min. 8" required value="{{ old('password') }}" autocomplete="off"/>
                           @error('password')
                           {{-- untuk info yang salah yang mana --}}
                           <div class="invalid-feedback">

@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mt-3">Data Penghuni <a href="{{ route('data-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
+                        <h3 class="card-title mt-3">Data Penghuni <a href="{{ route('data-penyewa.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
                     </div>
                     <div class="card-body">
                         @if(Session::has('success'))
@@ -56,7 +56,7 @@
 </script>
 
 <script>
-    $('#tb_datauser').DataTable({
+    $('#tb_datapenyewa').DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
