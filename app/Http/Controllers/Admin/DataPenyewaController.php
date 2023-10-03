@@ -59,10 +59,10 @@ class DataPenyewaController extends Controller
                 ->editColumn('action', function ($item) {
                     return '
                                 <div class="d-flex">
-                                    <a href="' . route('data-user.show', $item->id) . '" title="Tampil Detail" class="btn btn-outline-primary btn-sm mb-0 mx-1 ">
+                                    <a href="' . route('data-penyewa.show', $item->id) . '" title="Tampil Detail" class="btn btn-outline-primary btn-sm mb-0 mx-1 ">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="' . route('data-user.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
+                                    <a href="' . route('data-penyewa.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataPenyewa(' . $item->id . ')">
@@ -113,7 +113,7 @@ class DataPenyewaController extends Controller
         $item->dokumen=$request->dokumen;
         $item->save();
 
-        return redirect('pemilik/data-penghuni')->with('success', 'Data Hass Been Added');
+        return redirect('pemilik/data-penyewa')->with('success', 'Data Hass Been Added');
     }
 
     /**

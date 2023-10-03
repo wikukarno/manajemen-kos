@@ -42,10 +42,10 @@
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
-		<li class="nav-item {{ (request()->is('pemilik/data-penghuni*') ? 'active' : '') }}">
+		<li class="nav-item {{ (request()->is('pemilik/data-penyewa*') ? 'active' : '') }}">
 			<a class="nav-link"
-				href="/pemilik/data-penghuni">
-				<span class="menu-title">Data Penghuni</span>
+				href="/pemilik/data-penyewa">
+				<span class="menu-title">Data Penyewa</span>
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>

@@ -100,7 +100,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Nomor Handphone</b></label>
                         <div class="col-sm-9">
-                          <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73" autocomplete="off"/>
+                          <input name="hp" id="hp" type="text" class="form-control" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ old('hp') }}"/>
                         </div>
                       </div>
                     </div>
@@ -108,7 +108,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Password*</b></label>
                         <div class="col-sm-9">
-                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" required value="{{ old('status_akun') }}"/>
+                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" required value="{{ old('password') }}" autocomplete="off"/>
                           @error('password')
                           {{-- untuk info yang salah yang mana --}}
                           <div class="invalid-feedback">
@@ -125,7 +125,7 @@
                         <label class="col-sm-3 col-form-label"><b>Alasan Penolakan</b></label>
                         <div class="col-sm-9">
                           {{--  <input type="text-area" class="form-control" placeholder="Masukkan Alasan Penolakan"/>  --}}
-                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan" autocomplete="off"></textarea></td>
+                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan" autocomplete="off" required value="{{ old('alasan_penolakan') }}"></textarea></td>
                         </div>
                       </div>
                     </div>
