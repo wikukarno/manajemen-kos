@@ -11,24 +11,35 @@ class TipeKamarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('detail-tipe');
+         $kamar = Kamar::all();
+         $tipeKamar = TipeKamar::all();
+       
+        return view('kamar', [
+            'kamar' => $kamar,
+            'type' => $tipeKamar
+        ]);
     }
-    public function detailTipe($tipe)
+    public function detailTipe(Request $request, $slug)
     {   
-        // $tipes = Kamar::all();
-        // $tipe = Kamar::where('tipe', $tipe)->firstOrFail();
-        // $kamar = Kamar::where('tipe', $tipe->tipe);
-        // return view('detail-tipe', [
-        //     'tipe' => $tipe,
-        //     'tipes' => $tipes,
-        //     'kamar' => $kamar
-        // ]);
+       $types = TipeKamar::all();
+       $tipeKamar = TipeKamar::where('slug', $slug)->firstOrFail();
+       $kamar = Kamar::where('id_tipe', $tipeKamar->id)->paginate(2);
 
-        $detailTipe = Kamar::where('tipe', $tipe)->get();
-        return view('detail-tipe', compact('detailTipe', 'tipe'));
+       return view('detail-tipe', [
+        'types' => $types,
+        'kamar' => $kamar,
+        'tipeKamar' => $tipeKamar
+       ]);
+
+       
+        //code jika ingin manampilkan macam2 kamar dari tipe kamarnya jika dalam 1 tabel database
+        // $detailTipe = Kamar::where('tipe', $tipe)->get();
+        // return view('detail-tipe', compact('detailTipe', 'tipe'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.

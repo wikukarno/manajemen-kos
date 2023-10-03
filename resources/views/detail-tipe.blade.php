@@ -80,13 +80,13 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-center text-primary text-uppercase">Tipe Kamar {{$tipe}}</h6>
+                    <h6 class="section-title text-center text-primary text-uppercase">Tipe Kamar {{$tipeKamar->name }}</h6>
                     <h1 class="mb-5">Pilihanan<span class="text-primary text-uppercase"> Kamar</span></h1>
                 </div>
 
                
                 <div class="row mb-5 justify-content-center">
-                     @foreach ($detailTipe as $kamar)
+                     @foreach ($kamar as $kamar)
                     <div class="col-md-4">
                         <div class="room-item shadow rounded overflow-hidden">
                             

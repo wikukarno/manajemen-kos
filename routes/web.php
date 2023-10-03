@@ -20,6 +20,7 @@ use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
+use App\Models\TipeKamar;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,8 @@ Route::get('/login', function () {
 //halaman awal
 Route::get('/', function() {
     return view('kamar', [
-        "kamar" => kamar::all()
+        "kamar" => kamar::all(),
+        "types" => tipeKamar::all()
     ]);
 });
 
@@ -60,6 +62,7 @@ Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->n
 
 
 
+
 Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
     ->group(function () {
@@ -70,8 +73,8 @@ Route::prefix('pemilik')
         Route::resource('data-user', DataUserController::class);
         Route::delete('data-user/delete', [DataUserController::class, 'destroy']);
         // untuk DataPenghuni
-        Route::resource('data-penghuni', DataPenyewaController::class);
-        Route::delete('data-penghuni/delete', [DataPenyewaController::class, 'destroy']);
+        Route::resource('data-penyewa', DataPenyewaController::class);
+        Route::delete('data-penyewa/delete', [DataPenyewaController::class, 'destroy']);
 
     });
 

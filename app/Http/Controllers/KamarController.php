@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kamar;
+use App\Models\TipeKamar;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -14,9 +15,12 @@ class KamarController extends Controller
     public function index()
     {
 
+        $type = TipeKamar::all()->take(2);
         return view('kamar', [
-            
+                'tipe' => $type
         ]);
+            
+        
 
     }
 

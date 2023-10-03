@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TipeKamar extends Model
 {
     use HasFactory;
+        public function kamar()
+    {
+        return $this->belongsTo(Kamar::class, 'id_tipe', 'id');
+    }
 }
