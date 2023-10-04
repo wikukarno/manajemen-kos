@@ -113,7 +113,7 @@
                                 </div>
                                
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('detail', $kamar->slug)}}">Lihat Ditel</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('detail', $kamar->slug)}}">Lihat Ditel Kamar</a>
                                     
                                 </div>
                             </div>

@@ -14,8 +14,8 @@ class AvailabilityController extends Controller
     public function index()
     {
         return view('availability', [
-           
-        ]);
+            "availabilitys" => kamar::all()
+    ]);
     }
 
     /**

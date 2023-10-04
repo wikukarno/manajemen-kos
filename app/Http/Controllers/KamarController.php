@@ -17,7 +17,7 @@ class KamarController extends Controller
 
         $type = TipeKamar::all()->take(2);
         return view('kamar', [
-                'tipe' => $type
+                'types' => $type
         ]);
             
         
