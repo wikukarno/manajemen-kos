@@ -21,6 +21,7 @@ use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Models\TipeKamar;
+use Database\Factories\KamarFactory;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,27 +38,13 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-//halaman awal
-Route::get('/', function() {
-    return view('kamar', [
-        "kamar" => kamar::all(),
-        "types" => tipeKamar::all()
-    ]);
-});
-
-
+//home
+Route::get('/', [KamarController::class, 'index'])->name('home');
 //kamar tersedia
-Route::get('/availability', function() {
-    return view('availability', [
-        "availabilitys" => kamar::all()
-    ]);
-});
-
-
-
+Route::get('/availability', [AvailabilityController::class, 'index'])->name('availabality');
 //detail kamar
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
-// Route::get('/detail-tipe', [TipeKamarController::class, 'detail'])->name('detail-tipe');
+// tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
 
 

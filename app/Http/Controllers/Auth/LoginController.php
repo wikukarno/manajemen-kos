@@ -28,17 +28,22 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-
+    // protected $redirectTo = '/';
+    
+    
     public function Authenticated()
     {
         if(Auth::user()->role == 'Pemilik') {
-            return redirect()->route('admin.dashboard');
+            // return redirect()->route('admin.dashboard');
+            return redirect()->route('home');
         } 
         elseif (Auth::user()->role == 'Penghuni') {
-            return redirect()->route('penghuni.dashboard');
+            // return redirect()->route('penghuni.dashboard');
+            return redirect()->route('home');
         }
         else{
-            return redirect()->route('user.dashboard');
+            return redirect()->route('home');
+            // return redirect()->route('user.dashboard');
         }
     }
     /**
