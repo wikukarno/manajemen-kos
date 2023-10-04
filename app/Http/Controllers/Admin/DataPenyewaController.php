@@ -26,6 +26,12 @@ class DataPenyewaController extends Controller
                 ->editColumn('email', function ($item) {
                     return $item->email ?? '-';
                 })
+                ->editColumn('tempat_lahir', function ($item) {
+                    return $item->tempat_lahir ?? '-';
+                })
+                ->editColumn('tanggal_lahir', function ($item) {
+                    return $item->tanggal_lahir ?? '-';
+                })
                 ->editColumn('role', function ($item) {
                     return $item->role ?? '-';
                 })
@@ -55,6 +61,9 @@ class DataPenyewaController extends Controller
                 })
                 ->editColumn('dokumen', function ($item) {
                     return $item->dokumen ?? '-';
+                })
+                ->editColumn('fasilitas', function ($item) {
+                    return $item->fasilitas ?? '-';
                 })
                 ->editColumn('action', function ($item) {
                     return '
@@ -100,6 +109,8 @@ class DataPenyewaController extends Controller
         $item=new User();
         $item->name=$request->name;
         $item->email=$request->email;
+        $item->tempat_lahir=$request->tempat_lahir;
+        $item->tanggal_lahir=$request->tanggal_lahir;
         $item->role=$request->role;
         $item->status_akun=$request->status_akun;
         $item->alamat=$request->alamat;
@@ -111,6 +122,7 @@ class DataPenyewaController extends Controller
         $item->id_telegram=$request->id_telegram;
         $item->mac_addr=$request->mac_addr;
         $item->dokumen=$request->dokumen;
+        $item->fasilitas=$request->fasilitas;
         $item->save();
 
         return redirect('pemilik/data-penyewa')->with('success', 'Data Hass Been Added');
@@ -121,7 +133,8 @@ class DataPenyewaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item=User::find($id);
+        return view('pages.admin.datapenyewa.show', compact('item'));
     }
 
     /**
@@ -143,8 +156,15 @@ class DataPenyewaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $item = User::findOrFail($request->id);
+        $item->delete();
+
+        if ($item) {
+            return Response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
+        } else {
+            return Response()->json(['status' => false, 'message' => 'Data gagal dihapus!']);
+        }
     }
 }

@@ -58,6 +58,24 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Tempat Lahir</b></label>
+                        <div class="col-sm-9">
+                          <input name="tempat_lahir" id="tempat_lahir" type="text" class="form-control" placeholder="Masukkan Tempat Lahir" autocomplete="off"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Tanggal Lahir</b></label>
+                        <div class="col-sm-9">
+                          <input name="tanggal_lahir" id="tanggal_lahir" type="date" class="form-control" autocomplete="off"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
                         <label class="col-sm-3 col-form-label" ><b>Role*</b></label>
                         <div class="col-sm-9">
                           <select class="form-control @error('role') is-invalid @enderror" name="role" id="role" style="height: 45px" required value="{{ old('role') }}">

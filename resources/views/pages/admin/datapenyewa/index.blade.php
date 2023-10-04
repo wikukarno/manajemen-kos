@@ -22,6 +22,8 @@
                                         <th> No </th>
                                         <th> Nama Lengkap </th>
                                         <th> Email </th>
+                                        <th> Tempat Lahir </th>
+                                        <th> Tanggal Lahir </th>
                                         <th> Role </th>
                                         <th> Status Akun </th>
                                         <th> Alamat </th>
@@ -32,6 +34,7 @@
                                         <th> Id Telegram </th>
                                         <th> Mac Address </th>
                                         <th> KTP </th>
+                                        <th> Fasilitas </th>
                                         <th> Action </th>
                                     </tr>
                                 </thead>
@@ -71,6 +74,8 @@
             { data: 'DT_RowIndex', name: 'id' },
             { data: 'name', name: 'name' },
             { data: 'email', name: 'email' },
+            { data: 'tempat_lahir', name: 'tempat_lahir' },
+            { data: 'tanggal_lahir', name: 'tanggal_lahir' },
             { data: 'role', name: 'role' },
             { data: 'status_akun', name: 'status_akun' },
             { data: 'alamat', name: 'alamat' },
@@ -81,6 +86,7 @@
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
             { data: 'dokumen', name: 'dokumen' },
+            { data: 'fasilitas', name: 'fasilitas' },
             { data: 'action', name: 'action' },
         ],
     });
