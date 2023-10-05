@@ -34,16 +34,16 @@ class LoginController extends Controller
     public function Authenticated()
     {
         if(Auth::user()->role == 'Pemilik') {
-            return redirect()->route('admin.dashboard');
-            // return redirect()->route('home');
+            // return redirect()->route('admin.dashboard');
+            return redirect()->route('home');
         } 
         elseif (Auth::user()->role == 'Penghuni') {
-            return redirect()->route('penghuni.dashboard');
-            // return redirect()->route('home');
+            // return redirect()->route('penghuni.dashboard');
+            return redirect()->route('home');
         }
         else{
-            // return redirect()->route('home');
-            return redirect()->route('user.dashboard');
+            return redirect()->route('home');
+            // return redirect()->route('user.dashboard');
         }
     }
     /**

@@ -14,6 +14,7 @@
                         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+                        
                         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0 ">
                                 <a href="/" class="nav-item nav-link active">Home</a>
@@ -42,24 +43,29 @@
                                     </div>
                                 @endauth
                                 </a>
-                                
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li>
-                                        @auth
-                                            @if (Auth::user()->role == 'Pemilik')
-                                            <a href="{{route('admin.dashboard')}}" class="dropdown-item">Akun saya</a>
-                                            @elseif (Auth::user()->role == 'Penghuni')
-                                            <a href="{{route('penghuni.dashboard')}}" class="dropdown-item">Akun saya</a>
-                                            @else
-                                            <a href="{{route('user.dashboard')}}" class="dropdown-item">Akun saya</a>
-                                            @endif
-                                        @endauth
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="dropdowan-item" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                        >Keluar</a>
-                                    </li>
-                                </ul>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li>
+                                            @auth
+                                                @if (Auth::user()->role == 'Penghuni')
+                                                <a href="{{route('akun-penghuni.index')}}" class="dropdown-item">
+                                                    <i class="fas fa-user me-2 text-success"></i>Akun saya</a>
+                                                @elseif (Auth::user()->role == 'Pendaftar')
+                                                <a href="{{route('akun-pendaftar.index')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
+                                                @else
+                                                <a href="{{route('akun-admin.index')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
+                                                @endif
+                                            @endauth
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="dropdown-item" href="#">
+                                                <form action="{{route('logout')}}" method="post">
+                                                    @csrf
+                                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-logout me-2 text-white"></i>
+                                                        Keluar</button>
+                                                </form>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
