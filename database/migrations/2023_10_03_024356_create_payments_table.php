@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('id_user');
-            $table->string('masa');
+            $table->string('bulan');
+            $table->integer('tahun');
             $table->bigInteger('jumlah');
+            $table->bigInteger('sisa')->default(0);
             $table->string('bukti_bayar')->nullable();
+            $table->date('tanggal_bayar')->nullable();
             $table->date('tanggal_validasi')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();

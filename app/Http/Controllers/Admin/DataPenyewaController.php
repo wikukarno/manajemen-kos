@@ -142,7 +142,11 @@ class DataPenyewaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = User::findOrFail($id);
+        // untuk menampilkan ke halaman edit nya
+        return view('pages.admin.datapenyewa.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -150,7 +154,11 @@ class DataPenyewaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data=$request->all();
+        $item = User::findOrFail($id);
+
+        $item->update($data);
+        return redirect()->route('data-penyewa.index')->with('success', 'Data has been updated!');
     }
 
     /**

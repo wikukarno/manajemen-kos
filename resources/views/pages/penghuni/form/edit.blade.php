@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Akun')
+@section('title', 'Form')
 
 @section('content')
 <form action="{{ route('form-penghuni.update', $item->id) }}" method="post" enctype="multipart/form-data">
@@ -17,7 +17,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Nama Lengkap</label>
 							<div class="col-sm-9">
-								<input type="name" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->name }}" name="name">
+								<input type="name" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->name }}" name="name" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -25,7 +25,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Uname</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->uname }}" name="uname">
+								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->uname }}" name="uname" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Email</label>
 							<div class="col-sm-9">
-								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->email }}" name="email">
+								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->email }}" name="email" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -43,7 +43,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Alamat Lengkap</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->alamat }}" name="alamat">
+								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->alamat }}" name="alamat" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -53,7 +53,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Nomor Handphone</label>
 							<div class="col-sm-9">
-								<input type="number" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->hp }}" name="hp">
+								<input type="number" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->hp }}" name="hp" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -61,7 +61,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Nomor Handphone Wali</label>
 							<div class="col-sm-9">
-								<input type="number" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->hp2 }}" name="hp2">
+								<input type="number" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->hp2 }}" name="hp2" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -71,7 +71,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Nama Wali</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->wali }}" name="wali">
+								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->wali }}" name="wali" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -79,7 +79,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Id Telegram</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->id_telegram }}" name="id_telegram">
+								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->id_telegram }}" name="id_telegram" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -89,7 +89,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Tempat Lahir</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="tempatlahir" name="tempat_lahir" value="{{ auth()->user()->tempat_lahir }}">
+								<input type="text" class="form-control" id="tempatlahir" name="tempat_lahir" value="{{ auth()->user()->tempat_lahir }}" required autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -97,7 +97,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Tanggal Lahir</label>
 							<div class="col-sm-9">
-								<input type="date" class="form-control" id="tanggallahir" name="tanggal_lahir" value="{{ auth()->user()->tanggal_lahir }}">
+								<input type="date" class="form-control" id="tanggallahir" name="tanggal_lahir" value="{{ auth()->user()->tanggal_lahir }}" required autocomplete="off">
 							</div>
 						</div>
 					</div>

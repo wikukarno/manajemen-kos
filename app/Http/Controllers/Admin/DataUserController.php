@@ -120,13 +120,21 @@ class DataUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = User::findOrFail($id);
-        $item->name=$request->name;
-        $item->hp=$request->hp;
-        $item->alasan_penolakan=$request->alasan_penolakan;
-        $item->save();
+        // $item = User::findOrFail($id);
+        // $item->name=$request->name;
+        // // $item->role=$request->role;
+        // // $item->status_akun=$request->status_akun;
+        // $item->hp=$request->hp;
+        // $item->alasan_penolakan=$request->alasan_penolakan;
+        // $item->save();
 
-        return redirect('pemilik/data-user')->with('success', 'Data Hass Been Updated');
+        // return redirect('pemilik/data-user')->with('success', 'Data Hass Been Updated');
+
+        $data=$request->all();
+        $item = User::findOrFail($id);
+
+        $item->update($data);
+        return redirect()->route('data-user.index')->with('success', 'Data has been updated!');
     }
 
     /**

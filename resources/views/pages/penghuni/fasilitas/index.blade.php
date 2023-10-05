@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sewa Kamar')
+@section('title', 'Kamar')
 
 @section('content')
 <form action="{{ route('form-permintaan-penghuni.update', $item->id) }}" method="post">
@@ -14,15 +14,15 @@
 					<form class="forms-sample">
 						<div class="form-group">
 							<label for="harga">Tipe Kamar</label>
-							<input type="text" class="form-control" id="tipe" placeholder="" name="tipe">
+							<input type="text" class="form-control" id="tipe" placeholder="" name="tipe" disabled>
 						</div>
 						<div class="form-group">
 							<label for="harga">Nomor Kamar</label>
-							<input type="text" class="form-control" id="nomor" placeholder="" name="nomor">
+							<input type="text" class="form-control" id="nomor" placeholder="" name="nomor" disabled>
 						</div>
 						<div class="form-group">
 							<label for="harga">Harga Kamar</label>
-							<input type="text" class="form-control" id="harga" placeholder="" name="harga">
+							<input type="text" class="form-control" id="harga" placeholder="" name="harga" disabled>
 						</div>
 						<div class="form-group">
 							<label for="fasilitas">Fasilitas</label>
@@ -31,7 +31,7 @@
 									<div class="form-check">
 										{{--  Untuk mencentang semua checkbox  --}}
 										<b><label class="form-check-label">
-											<input type="checkbox" class="form-check-input select-all-checkbox" id="select-all"> Select All
+											<input type="checkbox" class="form-check-input select-all-checkbox" id="select-all"> Pilih Semua
 										</label></b>
 									</div>
 								</div>
