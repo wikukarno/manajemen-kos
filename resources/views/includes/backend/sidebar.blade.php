@@ -29,7 +29,7 @@
 		</li>
 		<li class="nav-item">
 			<a class="nav-link"
-				{{--  href="{{ route('admin.dashboard') }}">  --}}
+				href="#">
 				<span class="menu-title">Data Kamar</span>
 				<i class="mdi mdi-hotel menu-icon"></i>
 			</a>
@@ -51,7 +51,7 @@
 		</li>
 		<li class="nav-item">
 			<a class="nav-link"
-				{{--  href="{{ route('admin.dashboard') }}">  --}}
+				href="#">
 				<span class="menu-title">Pembayaran</span>
 				<i class="mdi mdi-cash-multiple menu-icon"></i>
 			</a>
@@ -70,68 +70,68 @@
 
 		@if (Auth::user()->role == 'Pendaftar')
 			<li class="nav-item {{ (request()->is('user/dashboard') ? 'active' : '') }}">
-			<a class="nav-link"
-				href="{{ route('user.dashboard') }}">
-				<span class="menu-title">Dashboard</span>
-				<i class="mdi mdi-home menu-icon"></i>
-			</a>
+				<a class="nav-link"
+					href="{{ route('user.dashboard') }}">
+					<span class="menu-title">Dashboard</span>
+					<i class="mdi mdi-home menu-icon"></i>
+				</a>
 			</li>
 			<li class="nav-item {{ (request()->is('user/dashboard') ? 'active' : '') }}">
-			<a class="nav-link"
-				href="{{ route('user.dashboard') }}">
-				<span class="menu-title">Tipe Kamar</span>
-				<i class="mdi mdi-table menu-icon"></i>
-			</a>
+				<a class="nav-link"
+					href="{{ route('user.dashboard') }}">
+					<span class="menu-title">Tipe Kamar</span>
+					<i class="mdi mdi-table menu-icon"></i>
+				</a>
 			</li>
 			<li class="nav-item {{ (request()->is('user/dashboard') ? 'active' : '') }}">
-			<a class="nav-link"
-				href="{{ route('user.dashboard') }}">
-				<span class="menu-title">Nomor Kamar</span>
-				<i class="mdi mdi-format-list-bulleted menu-icon"></i>
-			</a>
+				<a class="nav-link"
+					href="{{ route('user.dashboard') }}">
+					<span class="menu-title">Nomor Kamar</span>
+					<i class="mdi mdi-format-list-bulleted menu-icon"></i>
+				</a>
 			</li>
 			<li class="nav-item sidebar-actions">
-			<span class="nav-link d-grid">
-				<form action="{{ route('logout') }}" method="POST">
-				@csrf
-				<button type="submit" class="btn btn-block col btn-lg btn-gradient-primary mt-4">
-					Keluar
-				</button>
-				</form>
-			</span>
+				<span class="nav-link d-grid">
+					<form action="{{ route('logout') }}" method="POST">
+					@csrf
+					<button type="submit" class="btn btn-block col btn-lg btn-gradient-primary mt-4">
+						Keluar
+					</button>
+					</form>
+				</span>
 			</li>
 		@endif
 
 		@if (Auth::user()->role == 'Penghuni')
 			<li class="nav-item {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}">
-			<a class="nav-link"
-				href="{{ route('penghuni.dashboard') }}">
-				<span class="menu-title">Dashboard</span>
-				<i class="mdi mdi-home menu-icon"></i>
-			</a>
+				<a class="nav-link"
+					href="{{ route('penghuni.dashboard') }}">
+					<span class="menu-title">Dashboard</span>
+					<i class="mdi mdi-home menu-icon"></i>
+				</a>
 			</li>
 			<li class="nav-item {{ (request()->is('penghuni/form-penghuni*') ? 'active' : '') }}">
-			<a class="nav-link"
-				href="{{ route('form-penghuni.index') }}">
-				<span class="menu-title">Form</span>
-				<i class="mdi mdi-file-document-box menu-icon"></i>
-			</a>
+				<a class="nav-link"
+					href="{{ route('form-penghuni.index') }}">
+					<span class="menu-title">Form</span>
+					<i class="mdi mdi-file-document-box menu-icon"></i>
+				</a>
 			</li>
 			@if(Auth::user()->status_akun == 'Belum Verifikasi')
 			<li class="nav-item {{ (request()->is('penghuni/form-permintaan-penghuni*') ? 'active' : '') }}">
-			<a class="nav-link"
-				href="{{ route('form-permintaan-penghuni.index') }}">
-				<span class="menu-title">Fasilitas Kamar</span>
-				<i class="mdi mdi-book menu-icon"></i>
-			</a>
+				<a class="nav-link"
+					href="{{ route('form-permintaan-penghuni.index') }}">
+					<span class="menu-title">Fasilitas Kamar</span>
+					<i class="mdi mdi-book menu-icon"></i>
+				</a>
 			</li>
 			@endif
 			<li class="nav-item {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}">
-			<a class="nav-link"
-				href="{{ route('form-pembayaran-penghuni.index') }}">
-				<span class="menu-title">Pembayaran</span>
-				<i class="mdi mdi-cash-multiple menu-icon"></i>
-			</a>
+				<a class="nav-link"
+					href="{{ route('form-pembayaran-penghuni.index') }}">
+					<span class="menu-title">Pembayaran</span>
+					<i class="mdi mdi-cash-multiple menu-icon"></i>
+				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link"
@@ -139,7 +139,7 @@
 					<span class="menu-title">Halaman Utama</span>
 					<i class="mdi mdi-format-list-bulleted menu-icon"></i>
 				</a>
-				</li>
+			</li>
 			<li class="nav-item sidebar-actions">
 			<span class="nav-link d-grid">
 				<form action="{{ route('logout') }}" method="POST">
@@ -151,7 +151,5 @@
 			</span>
 			</li>
 		@endif
-
-
 	</ul>
 </nav>

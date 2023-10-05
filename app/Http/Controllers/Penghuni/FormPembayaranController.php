@@ -16,8 +16,14 @@ class FormPembayaranController extends Controller
     public function index()
     {
         $item=User::find(auth()->user()->id);
-        $payments = $item->payments;
-        return view('pages.penghuni.payment.index', compact('payments', 'item'));
+        // $payments = Payment::all();
+        // return view('pages.penghuni.payment.index', compact('item'));
+        // return view('pages.penghuni.payment.index', compact('payments', 'item'));
+        return view('pages.penghuni.payment.index', compact('item'), 
+            [
+                'payments' => Payment::where('id_user', auth()->user()->id)->get()
+            ]
+        );
         
 
     }
@@ -40,6 +46,8 @@ class FormPembayaranController extends Controller
         $data['bukti_bayar'] = $request->file('bukti_bayar')->store(
             'assets/buktiBayar', 'public'
         );
+        $data['tanggal_bayar'] = now();
+        $data['bulan'] = implode(", ", $request->get('bulan'));
         Payment::create($data);
         
         return redirect()->route('form-pembayaran-penghuni.index')->with('success', 'Kategori Berhasil Ditambahkan!');
