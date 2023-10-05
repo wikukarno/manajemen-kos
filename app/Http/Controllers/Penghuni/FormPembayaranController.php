@@ -17,7 +17,7 @@ class FormPembayaranController extends Controller
     {
         $item=User::find(auth()->user()->id);
         $payments = $item->payments;
-        return view('pages.penghuni.formPembayaran', compact('payments', 'item'));
+        return view('pages.penghuni.payment.index', compact('payments', 'item'));
         
 
     }

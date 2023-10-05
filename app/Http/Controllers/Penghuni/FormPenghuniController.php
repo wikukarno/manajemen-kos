@@ -17,7 +17,7 @@ class FormPenghuniController extends Controller
     {
         $item=User::find(auth()->user()->id);
 
-        return view('pages.penghuni.formPenghuni', compact('item'));
+        return view('pages.penghuni.form.index', compact('item'));
     }
 
     /**
@@ -50,7 +50,7 @@ class FormPenghuniController extends Controller
     public function edit(string $id)
     {
         $item=User::find(auth()->user()->id);
-        return view('pages.penghuni.formEditPenghuni', compact('item'));
+        return view('pages.penghuni.form.edit', compact('item'));
     }
 
     /**

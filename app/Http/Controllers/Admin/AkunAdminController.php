@@ -17,7 +17,7 @@ class AkunAdminController extends Controller
     {
         $item=User::find(auth()->user()->id);
 
-        return view('pages.admin.akunAdmin', compact('item'));
+        return view('pages.admin.akun.index', compact('item'));
     }
 
     /**

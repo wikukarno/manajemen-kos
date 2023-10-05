@@ -23,12 +23,12 @@
 				</div>
 				<div class="form-group">
 				<label for="jumlah">Jumlah Bayar</label>
-				<input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="">
+				<input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="" >
 				</div>
 				<div class="form-group">
 				<label>Unggah Bukti Transfer</label>
 				<div class="input-group col-xs-12">
-					<input type="file" class="form-control file-upload-info" name="bukti_bayar" placeholder="Unggah Gambar">
+					<input type="file" class="form-control file-upload-info" name="bukti_bayar" placeholder="Unggah Gambar" required>
 				</div>
 				</div>
 				<button type="submit" class="btn btn-gradient-primary me-2">Submit</button>

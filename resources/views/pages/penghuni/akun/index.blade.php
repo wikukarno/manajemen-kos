@@ -53,14 +53,6 @@
                             </div>
                         </div>
                     </div>
-                    {{--  <div class="row">
-                        <div class="col-12 col-lg-12">
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" id="alamat" value="{{ auth()->user()->alamat }}">
-                            </div>
-                        </div>
-                    </div>  --}}
                     <div class="d-grid gap-2 d-flex">
                         <a href="{{ route('akun-penghuni.index') }}" class="btn btn-secondary col">Batal</a>
                         <button type="submit" class="btn btn-gradient-primary col" id="btnSave">Update</button>

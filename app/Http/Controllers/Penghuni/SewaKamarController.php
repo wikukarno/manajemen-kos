@@ -14,7 +14,7 @@ class SewaKamarController extends Controller
     public function index()
     {
             $item=User::find(auth()->user()->id);
-            return view('pages.penghuni.formSewaKamar', compact('item'));
+            return view('pages.penghuni.fasilitas.index', compact('item'));
             
     }
 

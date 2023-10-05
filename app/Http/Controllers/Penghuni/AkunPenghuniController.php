@@ -17,7 +17,7 @@ class AkunPenghuniController extends Controller
     {
         $item=User::find(auth()->user()->id);
 
-        return view('pages.penghuni.akunPenghuni', compact('item'));
+        return view('pages.penghuni.akun.index', compact('item'));
     }
 
     /**
