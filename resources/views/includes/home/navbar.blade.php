@@ -17,14 +17,14 @@
                         
                         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0 ">
-                                <a href="/" class="nav-item nav-link active">Home</a>
-                                <a href="/availability" class="nav-item nav-link ">Kamar</a>
+                                <a href="/" class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}">Home</a>
+                                <a href="/availability" class="nav-item nav-link {{ (request()->is('availability')) ? 'active' : '' }}">Kamar</a>
                             </div>
                             @guest
                             <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-sm text-light" style="background-color: orange">Masuk</button></a>
                             <a href="/register" class="nav-item nav-link" style="margin-left: -0.4cm"><button type="button" class="btn btn-outline-primary btn-sm">Buat Akun</button></a> 
                             @endguest
-                            <div class="navbar-nav ms-2">
+                            <div class="navbar-nav ms-2" style="margin-right: 0.4cm">
                                 <div class="dropdown" style="margin-right: 1cm">
                                 <a href="#" class="ms-3 d-none d-lg-block" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
                                 >

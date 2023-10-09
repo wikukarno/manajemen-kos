@@ -6,11 +6,10 @@
         <!-- Room Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title text-center text-primary text-uppercase">Kamar Tersedia</h6>
-                    <h1 class="mb-5">Detail<span class="text-primary text-uppercase"> Kamar</span></h1>
+                    <h1 class="mb-5">Pilihanan<span class="text-primary text-uppercase"> Kamar</span></h1>
                 </div>
-               
                 <div class="row mb-5 justify-content-start">
                
                     <div class="col-md-6">
@@ -43,12 +42,154 @@
                     
                     <div class="col-md-6 mt-3">
                         <h3 class="text-secondary mt-2">Nomor Kamar : {{$kamar->nomor_kamar}} </h3>
-                        <p class="fs-4">Tipe : {{ $kamar->tipe }}</p>
+                        <p class="fs-4">Tipe : {{ $kamar->id_tipe }}</p>
                         <p class="fs-2 text-danger">Rp. {{ $kamar->harga }}</p>
-                        {{-- <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-danger btn-sm" style="background-color: orange">Masuk</button></a> --}}
-                        <a href="/login" type="button" class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</a>
-                    </div>
-                    
+
+                       
+
+                        {{-- <button href="" type="button" class="btn text-light rounded-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: orange; width:5cm"><a href="{{route('login')}}"></a>Pesan</button> --}}
+
+
+                        @if (Auth::user()->role == 'Pendaftar')
+                            <button href="" type="button" class="btn text-light rounded-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: orange; width:5cm">Pesan</button> 
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabelTogel1">isi data</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-labelledby="#exampleModalLabel"></button>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+                                                    <div class="modal-body">
+                                                        <form>
+                                                        <div class="mb-3">
+                                                            <label for="username" class="col-form-label">Username: </label>
+                                                            <input type="text" class="form-control" name="username" id="username" value="{{auth()->user()->name}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="email" class="col-form-label">Email:</label>
+                                                            <input type="email" class="form-control" id="email" name="email" value="{{auth()->user()->email}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="hp" class="col-form-label">Nomor HP:</label>
+                                                            <input type="number" class="form-control" id="hp" name="hp" value="{{auth()->user()->hp}}">
+                                                        </div>
+                                                        <div class="form-group mb-3 mt-3">
+                                                            <label for="ktp">KTP</label>
+                                                            <input type="file" class="form-control" name="ktp" id="ktp" style="background-color: white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">  
+                                                    <div class="modal-body">  
+                                                            <div class="form-group mb-3 mt-3">
+                                                                <label for="nokamar">Nomor kamar</label>
+                                                                <input type="number" class="form-control" name="nokamar" id="nokamar" style="background-color: white" value="{{$kamar->nomor_kamar}}" disabled>
+                                                            </div>
+                                                            <div class="form-group mb-3 mt-3">
+                                                                <label for="tipe">Tipe Kamar</label>
+                                                                <input type="text" class="form-control" name="tipe" id="tipe" style="background-color: white" value="Tipe {{$kamar->id_tipe}}" disabled>
+                                                            </div>
+                                                            <label for="username" class="col-form-label">Fasilitas:</label>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="MasterCheckbox">
+                                                                <label class="form-check-label" for="MasterCheckbox">All</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="kasur" checked>
+                                                                <label class="form-check-label" for="kasur">Kasur</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="meja">
+                                                                <label class="form-check-label" for="meja">Meja</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="kursi">
+                                                                <label class="form-check-label" for="kursi">kursi</label>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">Close</button>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" data-bs-target="#exampleModalLabel2" data-bs-toggle="modal">Next</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="exampleModalLabel2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabelTogel1">pembayaran</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-labelledby="#exampleModalLabel"></button>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+                                                    <div class="modal-body">
+                                                        <form>
+                                                        
+                                                        <div class="form-group mb-3 mt-3">
+                                                            <label for="ktp">Bukti Pembayaran</label>
+                                                            <input type="file" class="form-control" name="ktp" id="ktp" style="background-color: white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">  
+                                                    <div class="modal-body">  
+                                                            <div class="form-group mb-3 mt-3">
+                                                                <label for="nokamar">Nomor kamar</label>
+                                                                <input type="number" class="form-control" name="nokamar" id="nokamar" style="background-color: white" value="{{$kamar->nomor_kamar}}" disabled>
+                                                            </div>
+                                                            <div class="form-group mb-3 mt-3">
+                                                                <label for="tipe">Tipe Kamar</label>
+                                                                <input type="text" class="form-control" name="tipe" id="tipe" style="background-color: white" value="Tipe {{$kamar->id_tipe}}" disabled>
+                                                            </div>
+                                                            <label for="username" class="col-form-label">Fasilitas:</label>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="MasterCheckbox">
+                                                                <label class="form-check-label" for="MasterCheckbox">All</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="kasur" checked>
+                                                                <label class="form-check-label" for="kasur">Kasur</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="meja">
+                                                                <label class="form-check-label" for="meja">Meja</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="kursi">
+                                                                <label class="form-check-label" for="kursi">kursi</label>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">Close</button>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal">Back</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+
+
+                                
+                        @else
+                        @guest
+                        <a href="{{route('login')}}"><button class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</button></a>
+                        @endguest
+                        @endif
+
                 </div>
                 <div class="row mb-5 justify-content-center">
                     <h3 style="color: orange">Deskripsi Kamar</h3>
