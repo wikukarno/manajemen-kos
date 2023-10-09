@@ -200,76 +200,44 @@
                         <label class="col-sm-3 col-form-label"><b>KTP</b></label>
                         <div class="col-sm-9">
                             <div class="mt-2 justify-content-center">
-                                @if ($item->dokumen != null)
-                                <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
-                                @else
+
+                              {{--  @if ($item->dokumen != null)
+                                <img src="{{ asset('storage/'. $item->dokumen) }}"class="img-fluid">
+                              @else
                                 <img src="" class="img-fluid">
                                 <input type="hidden">
-                                @endif
-                                <div class="mt-3">
-                                  <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
-                                  @error('dokumen')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
+                              @endif
+                              <div class="mt-3">
+                                <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
+                                @error('dokumen')
+                                  <div class="invalid-feedback">
+                                    {{ $message }}
+                                  </div>
+                                @enderror
+                              </div>  --}}
+
+                              @if ($item->dokumen != null)
+                                <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image">
+                              @else
+                                <img src="" class="img-fluid" id="preview-image">
+                              @endif
+                              <div class="mt-3">
+                                <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
+                                <input type="hidden" id="hidden-input" name="hidden-input">
+                                @error('dokumen')
+                                  <div class="invalid-feedback">
+                                    {{ $message }}
+                                  </div>
+                                @enderror
+                              </div>
+
                             </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  {{--  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label"><b>Id Telegram</b></label>
-                        <div class="col-sm-9">
-                          <input name="id_telegram" id="id_telegram" type="text" class="form-control" placeholder="Masukkan Id Telegram" autocomplete="off"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-check row">
-                        <div class="form-check form-check-success">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" checked> Success </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>  --}}
-
-                  {{--  <div class="form-group">
-                    <label for="fasilitas"><b>Fasilitas</b></label>
-
-                    <div class="row">
-
-                      <div class="col-md-6">  --}}
-                        {{--  form-check  --}}
-                        {{--  <div class="">  --}}
-                          {{--  Untuk mencentang semua checkbox  --}}
-                            {{--  <b><label class="form-check-label" for="select-all">
-                                <input type="checkbox" class="form-check-input select-all-checkbox" id="select-all"> Select All
-                            </label></b>
-                        </div>
-                      </div>  --}}
-                      {{--  Membuat checkbox secara otomatis dengan menggnakan foreach  --}}
-                      {{--  @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
-                          <div class="col-md-6">  --}}
-                            {{--  form-check  --}}
-                              {{--  <div class="">
-                                  <label class="form-check-label">
-                                      <input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
-                                  </label>
-                              </div>
-                          </div>
-                      @endforeach
-                    </div>
-                  </div>  --}}
-
                   
-
-
                   <td colspan="2">
                     <p style="font-size: 10px"><b>Catatan : </b> Yang bertanda (*) harus diisi
                       <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
@@ -285,3 +253,28 @@
 <!-- /.container-fluid -->
 
 @endsection
+
+@push('after-script')
+<script>
+  function previewImage() {
+    var input = document.getElementById('dokumen');
+    var img = document.getElementById('preview-image');
+    var hiddenInput = document.getElementById('hidden-input');
+
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        img.src = e.target.result;
+        hiddenInput.value = e.target.result;
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      img.src = '';
+      hiddenInput.value = '';
+    }
+  }
+</script>
+
+@endpush

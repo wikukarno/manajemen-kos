@@ -16,6 +16,7 @@ class DataUserController extends Controller
     {
         if (request()->ajax()) {
             $query = User::query();
+            // $query = User::where('role', 'pendaftar');
 
             return datatables()->of($query)
                 ->addIndexColumn()
