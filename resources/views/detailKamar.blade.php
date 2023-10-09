@@ -91,23 +91,7 @@
                                                                 <label for="tipe">Tipe Kamar</label>
                                                                 <input type="text" class="form-control" name="tipe" id="tipe" style="background-color: white" value="Tipe {{$kamar->id_tipe}}" disabled>
                                                             </div>
-                                                            <label for="username" class="col-form-label">Fasilitas:</label>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="MasterCheckbox">
-                                                                <label class="form-check-label" for="MasterCheckbox">All</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="kasur" checked>
-                                                                <label class="form-check-label" for="kasur">Kasur</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="meja">
-                                                                <label class="form-check-label" for="meja">Meja</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="kursi">
-                                                                <label class="form-check-label" for="kursi">kursi</label>
-                                                            </div>
+                                                            
                                                         </form>
                                                     </div>
                                                 </div>
@@ -149,29 +133,32 @@
                                                                 <label for="tipe">Tipe Kamar</label>
                                                                 <input type="text" class="form-control" name="tipe" id="tipe" style="background-color: white" value="Tipe {{$kamar->id_tipe}}" disabled>
                                                             </div>
-                                                            <label for="username" class="col-form-label">Fasilitas:</label>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="MasterCheckbox">
-                                                                <label class="form-check-label" for="MasterCheckbox">All</label>
+                                                             <div class="modal-body">
+                                                                <label for="username" class="col-form-label">Fasilitas:</label>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="MasterCheckbox">
+                                                                    <label class="form-check-label" for="MasterCheckbox">All</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="kasur" checked>
+                                                                    <label class="form-check-label" for="kasur">Kasur</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="meja">
+                                                                    <label class="form-check-label" for="meja">Meja</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="kursi">
+                                                                    <label class="form-check-label" for="kursi">kursi</label>
                                                             </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="kasur" checked>
-                                                                <label class="form-check-label" for="kasur">Kasur</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="meja">
-                                                                <label class="form-check-label" for="meja">Meja</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="kursi">
-                                                                <label class="form-check-label" for="kursi">kursi</label>
-                                                            </div>
+                                                </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">Close</button>
+                                               
                                                 <div class="modal-footer">
                                                     <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal">Back</button>
                                                 </div>

@@ -47,12 +47,12 @@
                                         <li>
                                             @auth
                                                 @if (Auth::user()->role == 'Penghuni')
-                                                <a href="{{route('akun-penghuni.index')}}" class="dropdown-item">
+                                                <a href="{{route('penghuni.dashboard')}}" class="dropdown-item">
                                                     <i class="fas fa-user me-2 text-success"></i>Akun saya</a>
                                                 @elseif (Auth::user()->role == 'Pendaftar')
-                                                <a href="{{route('akun-pendaftar.index')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
+                                                <a href="{{route('user.dashboard')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
                                                 @else
-                                                <a href="{{route('akun-admin.index')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
+                                                <a href="{{route('admin.dashboard')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
                                                 @endif
                                             @endauth
                                         </li>
