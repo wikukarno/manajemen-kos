@@ -23,7 +23,7 @@
                   <p class="text-success">{{ session('success') }}</p>
                 @endif
                 <h4 class="card-title">Data User Penyewa</h4>
-                <form class="form-sample" action="{{ url('pemilik/data-penyewa') }}" method="POST">
+                <form class="form-sample" action="{{ url('pemilik/data-penyewa') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
                     <div class="col-md-6">
@@ -197,76 +197,57 @@
                         <label class="col-sm-3 col-form-label"><b>KTP</b></label>
                         <div class="col-sm-9">
                             <div class="mt-2 justify-content-center">
-                                @if ($item->dokumen != null)
-                                <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
+                                {{--  @if ($item->dokumen != null)  --}}
+                                  {{--  <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">  --}}
+                                  {{--  <img src="{{ asset('storage/'. $item->dokumen) }}"class="img-fluid">
                                 @else
-                                <img src="" class="img-fluid">
-                                <input type="hidden">
+                                  <img src="https://source.unsplash.com/500x200?" class="img-fluid">
+                                  <input type="hidden">
+                                @endif  --}}
+
+                                @if ($item->dokumen != null)
+                                  <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
+                                @else
+                                  <img src="" class="img-fluid">
+                                  <input type="hidden">
                                 @endif
-                                <div class="mt-3">
-                                  <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
-                                  @error('dokumen')
-                                    <div class="invalid-feedback">
+                                  <div class="mt-3">
+                                    <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
+                                    @error('dokumen')
+                                      <div class="invalid-feedback">
                                         {{ $message }}
-                                    </div>
-                                  @enderror
-                                </div>
+                                      </div>
+                                    @enderror
+                                  </div>
                             </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label"><b>Id Telegram</b></label>
-                        <div class="col-sm-9">
-                          <input name="id_telegram" id="id_telegram" type="text" class="form-control" placeholder="Masukkan Id Telegram" autocomplete="off"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-check row">
-                        <div class="form-check form-check-success">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" checked> Success </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   <div class="form-group">
                     <label for="fasilitas"><b>Fasilitas</b></label>
-
                     <div class="row">
-
                       <div class="col-md-6">
-                        {{--  form-check  --}}
-                        <div class="">
+                        <div class="form-check">
                           {{--  Untuk mencentang semua checkbox  --}}
-                            <b><label class="form-check-label" for="select-all">
-                                <input type="checkbox" class="form-check-input select-all-checkbox" id="select-all"> Select All
-                            </label></b>
+                          <b><label class="form-check-label">
+                            <input type="checkbox" class="form-check-input select-all-checkbox" id="select-all"> Pilih Semua
+                          </label></b>
                         </div>
                       </div>
                       {{--  Membuat checkbox secara otomatis dengan menggnakan foreach  --}}
                       @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
-                          <div class="col-md-6">
-                            {{--  form-check  --}}
-                              <div class="">
-                                  <label class="form-check-label">
-                                      <input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
-                                  </label>
-                              </div>
+                        <div class="col-md-6">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
+                            </label>
                           </div>
+                        </div>
                       @endforeach
                     </div>
                   </div>
-
-                  
-
-
                   <td colspan="2">
                     <p style="font-size: 10px"><b>Catatan : </b> Yang bertanda (*) harus diisi
                       <input type="submit" class="float-end btn btn-gradient-primary btn-sm">
@@ -282,3 +263,26 @@
 <!-- /.container-fluid -->
 
 @endsection
+
+@push('after-script')
+<script>
+  // Handle the "Select All" checkbox
+  const selectAllCheckbox = document.getElementById('select-all'); 
+  const checkboxes = document.querySelectorAll('input[name="fasilitas[]"]');
+
+  selectAllCheckbox.addEventListener('change', function () {
+      checkboxes.forEach(function (checkbox) {
+          checkbox.checked = selectAllCheckbox.checked;
+      });
+  });
+
+  checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+          // Uncheck "Select All" if any checkbox is unchecked
+          if (!checkbox.checked) {
+              selectAllCheckbox.checked = false;
+          }
+      });
+  });
+</script>
+@endpush

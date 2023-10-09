@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DataPenyewaController extends Controller
 {
@@ -15,7 +17,8 @@ class DataPenyewaController extends Controller
     {
 
         if (request()->ajax()) {
-            $query = User::query();
+            // $query = User::query();
+            $query = User::where('role', 'penghuni');
 
             return datatables()->of($query)
                 ->addIndexColumn()
@@ -121,10 +124,19 @@ class DataPenyewaController extends Controller
         $item->password=$request->password;
         $item->id_telegram=$request->id_telegram;
         $item->mac_addr=$request->mac_addr;
-        $item->dokumen=$request->dokumen;
+        // $item->dokumen=$request->dokumen;
         $item->fasilitas=$request->fasilitas;
-        $item->save();
 
+        if ($request->hasFile('dokumen')) {
+            if (Auth::user()->dokumen != null) {
+                Storage::disk('public')->delete(Auth::user()->dokumen);
+                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            } else {
+                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            }
+        }
+
+        $item->save();
         return redirect('pemilik/data-penyewa')->with('success', 'Data Hass Been Added');
     }
 
@@ -156,6 +168,15 @@ class DataPenyewaController extends Controller
     {
         $data=$request->all();
         $item = User::findOrFail($id);
+
+        if ($request->hasFile('dokumen')) {
+            if (Auth::user()->dokumen != null) {
+                Storage::disk('public')->delete(Auth::user()->dokumen);
+                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            } else {
+                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            }
+        }
 
         $item->update($data);
         return redirect()->route('data-penyewa.index')->with('success', 'Data has been updated!');
