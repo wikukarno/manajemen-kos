@@ -233,26 +233,29 @@
                   
                   <div class="form-group">
                     <label for="fasilitas"><b>Fasilitas</b></label>
+                    
                     <div class="row">
+                      {{-- Membuat checkbox untuk memilih semua fasilitas --}}
                       <div class="col-md-6">
-                        <div class="form-check">
-                          {{--  Untuk mencentang semua checkbox  --}}
-                          <b><label class="form-check-label">
-                            <input type="checkbox" class="form-check-input select-all-checkbox" id="select-all"> Pilih Semua
-                          </label></b>
-                        </div>
-                      </div>
-                      {{--  Membuat checkbox secara otomatis dengan menggnakan foreach  --}}
-                      @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
-                        <div class="col-md-6">
                           <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
-                            </label>
+                              <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input select-all-checkbox"> Pilih Semua
+                              </label>
                           </div>
-                        </div>
+                      </div>
+                  
+                      {{-- Membuat checkbox untuk setiap fasilitas --}}
+                      @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
+                          <div class="col-md-6">
+                              <div class="form-check">
+                                  <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
+                                  </label>
+                              </div>
+                          </div>
                       @endforeach
                     </div>
+
                   </div>
                   <td colspan="2">
                     <p style="font-size: 10px"><b>Catatan : </b> Yang bertanda (*) harus diisi
@@ -271,26 +274,18 @@
 @endsection
 
 @push('after-script')
+
 <script>
-  function previewImage() {
-    var input = document.getElementById('dokumen');
-    var img = document.getElementById('preview-image');
-    var hiddenInput = document.getElementById('hidden-input');
-
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function(e) {
-        img.src = e.target.result;
-        hiddenInput.value = e.target.result;
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      img.src = '';
-      hiddenInput.value = '';
-    }
-  }
+  // Menangani peristiwa klik pada checkbox "Pilih Semua"
+  document.querySelector('.select-all-checkbox').addEventListener('click', function () {
+      // Dapatkan semua checkbox fasilitas
+      const checkboxes = document.querySelectorAll('input[name="fasilitas[]"]');
+      
+      // Setel status checked sesuai dengan checkbox "Pilih Semua"
+      checkboxes.forEach(function (checkbox) {
+          checkbox.checked = document.querySelector('.select-all-checkbox').checked;
+      });
+  });
 </script>
 
 @endpush

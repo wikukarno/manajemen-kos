@@ -125,8 +125,9 @@ class DataPenyewaController extends Controller
         $item->id_telegram=$request->id_telegram;
         $item->mac_addr=$request->mac_addr;
         // $item->dokumen=$request->dokumen;
-        $item->fasilitas=$request->fasilitas;
+        // $item->fasilitas=$request->fasilitas;
 
+        // untuk KTP
         if ($request->hasFile('dokumen')) {
             if (Auth::user()->dokumen != null) {
                 Storage::disk('public')->delete(Auth::user()->dokumen);
@@ -135,6 +136,16 @@ class DataPenyewaController extends Controller
                 $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
             }
         }
+
+        // untuk fasilitas
+        // Ambil data dari form
+        $fasilitasArray = $request->input('fasilitas', []);
+
+        // Gabungkan data menjadi satu string
+        $fasilitasString = implode(',', $fasilitasArray);
+
+        // Buat record baru dalam tabel database
+        $item->fasilitas = $fasilitasString;
 
         $item->save();
         return redirect('pemilik/data-penyewa')->with('success', 'Data Hass Been Added');
@@ -179,6 +190,14 @@ class DataPenyewaController extends Controller
             $dokumen = $item->dokumen;
         }
 
+        // untuk fasilitas
+        // Ambil data dari form
+        $fasilitasArray = $request->input('fasilitas', []);
+
+        // Gabungkan data menjadi satu string
+        $fasilitasString = implode(',', $fasilitasArray);
+
+
         $item->update([
             'nama'=>$request->name,
             'tempat_lahir'=>$request->tempat_lahir,
@@ -193,7 +212,7 @@ class DataPenyewaController extends Controller
             'id_telegram'=>$request->id_telegram,
             'mac_addr'=>$request->mac_addr,
             'dokumen'=>$dokumen,
-            'fasilitas'=>$request->fasilitas
+            'fasilitas'=>$fasilitasString
         ]);
 
         return redirect()->route('data-penyewa.index')->with('success', 'Data has been updated!');

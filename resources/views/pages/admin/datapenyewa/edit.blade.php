@@ -201,21 +201,6 @@
                         <div class="col-sm-9">
                             <div class="mt-2 justify-content-center">
 
-                              {{--  @if ($item->dokumen != null)
-                                <img src="{{ asset('storage/'. $item->dokumen) }}"class="img-fluid">
-                              @else
-                                <img src="" class="img-fluid">
-                                <input type="hidden">
-                              @endif
-                              <div class="mt-3">
-                                <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
-                                @error('dokumen')
-                                  <div class="invalid-feedback">
-                                    {{ $message }}
-                                  </div>
-                                @enderror
-                              </div>  --}}
-
                               @if ($item->dokumen != null)
                                 <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image" width="100px">
                               @else
@@ -235,6 +220,33 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fasilitas"><b>Fasilitas</b></label>
+                    
+                    <div class="row">
+                      {{-- Membuat checkbox untuk memilih semua fasilitas --}}
+                      <div class="col-md-6">
+                          <div class="form-check">
+                              <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input select-all-checkbox"> Pilih Semua
+                              </label>
+                          </div>
+                      </div>
+                  
+                      {{-- Membuat checkbox untuk setiap fasilitas --}}
+                      @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
+                          <div class="col-md-6">
+                              <div class="form-check">
+                                  <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
+                                  </label>
+                              </div>
+                          </div>
+                      @endforeach
+                    </div>
+
                   </div>
                   
                   
@@ -275,6 +287,19 @@
       hiddenInput.value = '';
     }
   }
+</script>
+
+<script>
+  // Menangani peristiwa klik pada checkbox "Pilih Semua"
+  document.querySelector('.select-all-checkbox').addEventListener('click', function () {
+      // Dapatkan semua checkbox fasilitas
+      const checkboxes = document.querySelectorAll('input[name="fasilitas[]"]');
+      
+      // Setel status checked sesuai dengan checkbox "Pilih Semua"
+      checkboxes.forEach(function (checkbox) {
+          checkbox.checked = document.querySelector('.select-all-checkbox').checked;
+      });
+  });
 </script>
 
 @endpush
