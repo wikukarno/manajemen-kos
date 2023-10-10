@@ -147,26 +147,13 @@
                           <label class="col-sm-3 col-form-label"><b>KTP</b></label>
                           <div class="col-sm-9 mt-3">
                               <div class="mt-2 justify-content-center">
-                                  {{--  @if ($item->dokumen != null)  --}}
-                                  	{{--  <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">  --}}
-                                  	{{--  <img src="{{ asset('storage/'. $item->dokumen) }}"class="img-fluid">
-                                  @else
-                                  	<img src="" class="img-fluid">
-                                  	<input type="hidden">
-                                  @endif  --}}
+                                  
                                   @if ($item->dokumen != null)
-                                    <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" width="300px">
+                                    <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" width="200px">
                                   @else
                                     <p>Gambar tidak tersedia</p>
                                   @endif
-                                  {{--  <div class="mt-3">
-                                  <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" disabled>
-                                  @error('dokumen')
-                                    <div class="invalid-feedback">
-                                      {{ $message }}
-                                    </div>
-                                  @enderror
-                                  </div>  --}}
+
                               </div>
                           </div>
                         </div>

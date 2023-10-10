@@ -205,11 +205,17 @@
                                   <input type="hidden">
                                 @endif  --}}
 
-                                @if ($item->dokumen != null)
+                                {{--  @if ($item->dokumen != null)
                                   <img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
                                 @else
                                   <img src="" class="img-fluid">
                                   <input type="hidden">
+                                @endif  --}}
+
+                                @if ($item->dokumen != null)
+                                  <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image" width="100px">
+                                @else
+                                  <img src="" class="img-fluid" id="preview-image" width="100px">
                                 @endif
                                   <div class="mt-3">
                                     <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
@@ -266,23 +272,25 @@
 
 @push('after-script')
 <script>
-  // Handle the "Select All" checkbox
-  const selectAllCheckbox = document.getElementById('select-all'); 
-  const checkboxes = document.querySelectorAll('input[name="fasilitas[]"]');
+  function previewImage() {
+    var input = document.getElementById('dokumen');
+    var img = document.getElementById('preview-image');
+    var hiddenInput = document.getElementById('hidden-input');
 
-  selectAllCheckbox.addEventListener('change', function () {
-      checkboxes.forEach(function (checkbox) {
-          checkbox.checked = selectAllCheckbox.checked;
-      });
-  });
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-  checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('change', function () {
-          // Uncheck "Select All" if any checkbox is unchecked
-          if (!checkbox.checked) {
-              selectAllCheckbox.checked = false;
-          }
-      });
-  });
+      reader.onload = function(e) {
+        img.src = e.target.result;
+        hiddenInput.value = e.target.result;
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      img.src = '';
+      hiddenInput.value = '';
+    }
+  }
 </script>
+
 @endpush

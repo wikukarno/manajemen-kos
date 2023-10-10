@@ -166,19 +166,36 @@ class DataPenyewaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data=$request->all();
         $item = User::findOrFail($id);
 
         if ($request->hasFile('dokumen')) {
             if (Auth::user()->dokumen != null) {
                 Storage::disk('public')->delete(Auth::user()->dokumen);
-                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
             } else {
-                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
             }
+        } else {
+            $dokumen = $item->dokumen;
         }
 
-        $item->update($data);
+        $item->update([
+            'nama'=>$request->name,
+            'tempat_lahir'=>$request->tempat_lahir,
+            'tanggal_lahir'=>$request->tanggal_lahir,
+            'role'=>$request->role,
+            'status_akun'=>$request->status_akun,
+            'alamat'=>$request->alamat,
+            'hp'=>$request->hp,
+            'wali'=>$request->wali,
+            'hp2'=>$request->hp2,
+            'uname'=>$request->uname,
+            'id_telegram'=>$request->id_telegram,
+            'mac_addr'=>$request->mac_addr,
+            'dokumen'=>$dokumen,
+            'fasilitas'=>$request->fasilitas
+        ]);
+
         return redirect()->route('data-penyewa.index')->with('success', 'Data has been updated!');
     }
 

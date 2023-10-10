@@ -217,9 +217,9 @@
                               </div>  --}}
 
                               @if ($item->dokumen != null)
-                                <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image">
+                                <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image" width="100px">
                               @else
-                                <img src="" class="img-fluid" id="preview-image">
+                                <img src="" class="img-fluid" id="preview-image" width="100px">
                               @endif
                               <div class="mt-3">
                                 <input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
