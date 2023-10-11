@@ -161,27 +161,6 @@
                       
                       <div class="form-group">
                         <label for="fasilitas"><b>Fasilitas</b></label>
-                        
-                        {{--  <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-check">  --}}
-                              {{--  Untuk mencentang semua checkbox  --}}
-                              {{--  <b><label class="form-check-label">
-                                <input type="checkbox" class="form-check-input select-all-checkbox" id="select-all" disabled> Pilih Semua
-                              </label></b>
-                            </div>
-                          </div>  --}}
-                          {{--  Membuat checkbox secara otomatis dengan menggnakan foreach  --}}
-                          {{--  @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
-                            <div class="col-md-6">
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
-                                </label>
-                              </div>
-                            </div>
-                          @endforeach
-                        </div>  --}}
 
                         <div class="row">
                           <div class="col-md-6">

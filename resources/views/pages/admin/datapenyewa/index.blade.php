@@ -86,7 +86,17 @@
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
             { data: 'dokumen', name: 'dokumen' },
-            { data: 'fasilitas', name: 'fasilitas' },
+            {
+                data: 'fasilitas',
+                name: 'fasilitas',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 20 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                    }
+                    return data;
+                }
+            },
             { data: 'action', name: 'action' },
         ],
     });

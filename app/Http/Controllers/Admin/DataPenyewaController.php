@@ -127,15 +127,7 @@ class DataPenyewaController extends Controller
         // $item->dokumen=$request->dokumen;
         // $item->fasilitas=$request->fasilitas;
 
-        // untuk KTP
-        if ($request->hasFile('dokumen')) {
-            if (Auth::user()->dokumen != null) {
-                Storage::disk('public')->delete(Auth::user()->dokumen);
-                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-            } else {
-                $item['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-            }
-        }
+        $item->dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
 
         // untuk fasilitas
         // Ambil data dari form
@@ -178,15 +170,29 @@ class DataPenyewaController extends Controller
     public function update(Request $request, string $id)
     {
         $item = User::findOrFail($id);
+       
+        // if ($request->hasFile('dokumen')) {
+        //     if (Auth::user()->dokumen != null) {
+        //         Storage::disk('public')->delete(Auth::user()->dokumen);
+        //         $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+        //     } else {
+        //         $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+        //     }
+        // } else {
+        //     $dokumen = $item->dokumen;
+        // }
 
         if ($request->hasFile('dokumen')) {
-            if (Auth::user()->dokumen != null) {
-                Storage::disk('public')->delete(Auth::user()->dokumen);
-                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-            } else {
-                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            // Hapus dokumen lama jika ada
+            $oldDokumen = $request->input('oldDokumen');
+            if (!empty($oldDokumen)) {
+                Storage::delete($oldDokumen); // Menghapus dokumen lama
             }
-        } else {
+    
+            // Unggah dokumen yang baru
+            $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            // Simpan $newDokumen ke basis data atau sesuai kebutuhan Anda
+        }else {
             $dokumen = $item->dokumen;
         }
 
@@ -224,12 +230,18 @@ class DataPenyewaController extends Controller
     public function destroy(Request $request)
     {
         $item = User::findOrFail($request->id);
-        $item->delete();
+        
+
+        if ($item->dokumen) {
+            Storage::delete($item->dokumen);
+        }
 
         if ($item) {
             return Response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
         } else {
             return Response()->json(['status' => false, 'message' => 'Data gagal dihapus!']);
         }
+
+        $item->delete();
     }
 }
