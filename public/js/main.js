@@ -104,6 +104,11 @@
             }
         }
     });
+
+    //Modal checkbox
+
+
     
 })(jQuery);
+
 

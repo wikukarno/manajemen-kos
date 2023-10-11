@@ -14,7 +14,6 @@
                         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        
                         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0 ">
                                 <a href="/" class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}">Home</a>
@@ -30,7 +29,7 @@
                                 >
                                 @auth
                                     <div class="d-flex align-item-center">
-                                        <div class="flex-shrink-0 pt-2">
+                                        <div class="flex-shrink-0 pt-1">
                                             Hi, {{Auth::user()->name}}
                                         </div> 
                                         <div class="flex-grow-1 ms-2">

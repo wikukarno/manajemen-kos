@@ -52,11 +52,11 @@
 
                         @if (Auth::user()->role == 'Pendaftar')
                             <button href="" type="button" class="btn text-light rounded-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: orange; width:5cm">Pesan</button> 
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-xl">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabelTogel1">isi data</h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabelTogel1">Form Pendaftaran</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-labelledby="#exampleModalLabel"></button>
                                             </div>
                                             <div class="row">
@@ -75,31 +75,46 @@
                                                             <label for="hp" class="col-form-label">Nomor HP:</label>
                                                             <input type="number" class="form-control" id="hp" name="hp" value="{{auth()->user()->hp}}">
                                                         </div>
-                                                        <div class="form-group mb-3 mt-3">
-                                                            <label for="ktp">KTP</label>
-                                                            <input type="file" class="form-control" name="ktp" id="ktp" style="background-color: white">
+                                                        
+                                                        <div class="mb-3">
+                                                            <label for="namawali" class="col-form-label">Tempat lahir:</label>
+                                                            <input type="text" class="form-control" id="namawali" name="namawali" >
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="namawali" class="col-form-label">Tangggal Lahir:</label>
+                                                            <input type="date" class="form-control" id="namawali" name="namawali" >
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">  
                                                     <div class="modal-body">  
-                                                            <div class="form-group mb-3 mt-3">
-                                                                <label for="nokamar">Nomor kamar</label>
-                                                                <input type="number" class="form-control" name="nokamar" id="nokamar" style="background-color: white" value="{{$kamar->nomor_kamar}}" disabled>
-                                                            </div>
-                                                            <div class="form-group mb-3 mt-3">
-                                                                <label for="tipe">Tipe Kamar</label>
-                                                                <input type="text" class="form-control" name="tipe" id="tipe" style="background-color: white" value="Tipe {{$kamar->id_tipe}}" disabled>
-                                                            </div>
-                                                            
+                                                        <div class="mb-3">
+                                                            <label for="alamat" class="col-form-label">Alamat lengkap:</label>
+                                                            <input type="text" class="form-control" id="alamat" name="alamat" >
+                                                        </div>
+                                                        
+                                                        <div class="mb-3">
+                                                            <label for="namawali" class="col-form-label">Nama wali:</label>
+                                                            <input type="text" class="form-control" id="namawali" name="namawali" >
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="nohpwali" class="col-form-label">Nomor hp wali:</label>
+                                                            <input type="number" class="form-control" id="nohpwali" name="nohpwali" >
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="idtelegram" class="col-form-label">ID telegram:</label>
+                                                            <input type="text" class="form-control" id="idtelegram" name="idtelegram" >
+                                                        </div>
+                                                        <div class="form-group mb-3" style="margin-top:0.8cm">
+                                                            <label for="ktp">KTP</label>
+                                                            <input type="file" class="form-control" name="ktp" id="ktp" style="background-color: white">
+                                                        </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">Close</button>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-primary" data-bs-target="#exampleModalLabel2" data-bs-toggle="modal">Next</button>
+                                                <button class="btn btn-primary" data-bs-target="#exampleModalLabel2" data-bs-toggle="modal">Next</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,22 +124,13 @@
                                     <div class="modal-dialog modal-xl">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabelTogel1">pembayaran</h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabelTogel1">Form Pembayaran</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-labelledby="#exampleModalLabel"></button>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
                                                     <div class="modal-body">
                                                         <form>
-                                                        
-                                                        <div class="form-group mb-3 mt-3">
-                                                            <label for="ktp">Bukti Pembayaran</label>
-                                                            <input type="file" class="form-control" name="ktp" id="ktp" style="background-color: white">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">  
-                                                    <div class="modal-body">  
                                                             <div class="form-group mb-3 mt-3">
                                                                 <label for="nokamar">Nomor kamar</label>
                                                                 <input type="number" class="form-control" name="nokamar" id="nokamar" style="background-color: white" value="{{$kamar->nomor_kamar}}" disabled>
@@ -133,52 +139,90 @@
                                                                 <label for="tipe">Tipe Kamar</label>
                                                                 <input type="text" class="form-control" name="tipe" id="tipe" style="background-color: white" value="Tipe {{$kamar->id_tipe}}" disabled>
                                                             </div>
-                                                             <div class="modal-body">
-                                                                <label for="username" class="col-form-label">Fasilitas:</label>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="" id="MasterCheckbox">
-                                                                    <label class="form-check-label" for="MasterCheckbox">All</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="" id="kasur" checked>
-                                                                    <label class="form-check-label" for="kasur">Kasur</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="" id="meja">
-                                                                    <label class="form-check-label" for="meja">Meja</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="" id="kursi">
-                                                                    <label class="form-check-label" for="kursi">kursi</label>
+                                                            <label for="username" class="col-form-label">Fasilitas:</label>
+                                                            <div class="form-check">
+                                                                
+                                                                <input class="form-check-input" type="checkbox" value="" id="select-all">
+                                                                <label class="form-check-label" for="MasterCheckbox">All</label>
                                                             </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value=""  checked>
+                                                                <label class="form-check-label" for="kasur">Kasur</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="checkbox-item">
+                                                                <label class="form-check-label" for="meja">Meja</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" id="checkbox-item">
+                                                                <label class="form-check-label" for="kursi">kursi</label>
+                                                            </div>
+                                                            <script>
+                                                                // Ambil referensi ke elemen "Select All" dan semua checkbox
+                                                                const selectAllCheckbox = document.getElementById('select-all');
+                                                                const checkboxes = document.querySelectorAll('.form-check-input');
+
+                                                                // Tambahkan event listener untuk checkbox "Select All"
+                                                                selectAllCheckbox.addEventListener('change', function() {
+                                                                    // Atur status centang semua checkbox sesuai dengan status checkbox "Select All"
+                                                                    checkboxes.forEach(checkbox => {
+                                                                        checkbox.checked = selectAllCheckbox.checked;
+                                                                    });
+                                                                });
+
+                                                                // Tambahkan event listener untuk semua checkbox lainnya
+                                                                checkboxes.forEach(checkbox => {
+                                                                    checkbox.addEventListener('change', function() {
+                                                                        // Periksa apakah semua checkbox lainnya dicentang
+                                                                        const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                                                                        // Jika semua dicentang, centang juga checkbox "Select All", jika tidak, hilangkan centangnya
+                                                                        selectAllCheckbox.checked = allChecked;
+                                                                    });
+                                                                });
+                                                            </script>
+
+                                                           
+                                                    </div>
                                                 </div>
+                                                <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">  
+                                                    <div class="modal-body">
+                                                            <div class="form-group mb-3 mt-3">
+                                                                <label for="tipe">Harga Kamar</label>
+                                                                <input type="text" class="form-control" name="tipe" id="tipe" style="background-color: white" value="Rp {{$kamar->harga}} /bulan" disabled>
+                                                            </div>
+                                                             <div class="form-group mb-3 mt-3">
+                                                                <label for="ktp" for="form-label">Bukti Pembayaran</label>
+                                                                <img class="img-preview img-fluid mb-3 col-sm-5">
+                                                                <input class="form-control @error('ktp') is-invalid
+                                                                @enderror"type="file" name="ktp" id="ktp" style="background-color: white" onchange="previewImage()">
+                                                                @error('ktp')
+                                                                    <div class="invalid-feedback">
+                                                                        {{$message}}
+                                                                    </div>
+                                                                @enderror
+
+                                                            </div>
+                                                            
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">Close</button>
-                                               
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal">Back</button>
-                                                </div>
+                                                <button class="btn btn-secondary" data-bs-target="#exampleModal" data-bs-toggle="modal">Back</button>
+                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="closeButton">Kirim</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-
-
-
-                                
+                            </div>  
                         @else
                         @guest
                         <a href="{{route('login')}}"><button class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</button></a>
                         @endguest
                         @endif
-
                 </div>
-                <div class="row mb-5 justify-content-center">
+
+                <div class="row mb-3 mt-5 justify-content-center">
                     <h3 style="color: orange">Deskripsi Kamar</h3>
                     <p>{{ $kamar->deskripsi }}</p>
                 </div>
@@ -198,7 +242,12 @@
         </div>
         <!-- Room End -->
 
+        <!-- WhatsApp -->
+        <a class="btn btn-lg btn-primary btn-lg-square back-to-top btn-social rounded-circle border-success" style="margin-right: 30cm; margin-bottom:4cm; background-color:rgb(12, 203, 12)"  href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F" id="social"><i class="fab fa-whatsapp"></i></a>
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    
     </div>
 @endsection

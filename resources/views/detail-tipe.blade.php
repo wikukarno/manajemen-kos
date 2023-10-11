@@ -56,6 +56,12 @@
             </div>
         </div>
         <!-- Room End -->
+
+        <!-- WhatsApp -->
+        <a class="btn btn-lg btn-primary btn-lg-square back-to-top btn-social rounded-circle border-success" style="margin-right: 30cm; margin-bottom:4cm; background-color:rgb(12, 203, 12)"  href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F" id="social"><i class="fab fa-whatsapp"></i></a>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     
 @endsection
 
