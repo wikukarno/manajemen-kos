@@ -171,38 +171,22 @@ class DataPenyewaController extends Controller
     {
         $item = User::findOrFail($id);
        
-        // if ($request->hasFile('dokumen')) {
-        //     if (Auth::user()->dokumen != null) {
-        //         Storage::disk('public')->delete(Auth::user()->dokumen);
-        //         $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-        //     } else {
-        //         $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-        //     }
-        // } else {
-        //     $dokumen = $item->dokumen;
-        // }
-
         if ($request->hasFile('dokumen')) {
-            // Hapus dokumen lama jika ada
-            $oldDokumen = $request->input('oldDokumen');
-            if (!empty($oldDokumen)) {
-                Storage::delete($oldDokumen); // Menghapus dokumen lama
+            if (Auth::user()->dokumen != null) {
+                Storage::disk('public')->delete(Auth::user()->dokumen);
+                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            } else {
+                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
             }
-    
-            // Unggah dokumen yang baru
-            $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-            // Simpan $newDokumen ke basis data atau sesuai kebutuhan Anda
-        }else {
+        }else{
             $dokumen = $item->dokumen;
         }
 
         // untuk fasilitas
         // Ambil data dari form
         $fasilitasArray = $request->input('fasilitas', []);
-
         // Gabungkan data menjadi satu string
         $fasilitasString = implode(',', $fasilitasArray);
-
 
         $item->update([
             'nama'=>$request->name,
@@ -231,17 +215,24 @@ class DataPenyewaController extends Controller
     {
         $item = User::findOrFail($request->id);
         
-
-        if ($item->dokumen) {
-            Storage::delete($item->dokumen);
-        }
-
         if ($item) {
+
+            // Hapus dokumen jika ada
+            if (!empty($item->dokumen)) {
+                // Hapus dokumen dari sistem file
+                if (file_exists(public_path('assets/penyewa/dokumen-ktp' . $item->dokumen))) {
+                    unlink(public_path('assets/penyewa/dokumen-ktp' . $item->dokumen));
+                }
+            }
+
+            $item->delete();
+
             return Response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
         } else {
             return Response()->json(['status' => false, 'message' => 'Data gagal dihapus!']);
         }
 
-        $item->delete();
+        
     }
+
 }

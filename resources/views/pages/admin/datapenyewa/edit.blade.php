@@ -303,19 +303,4 @@
   });
 </script>
 
-function previewImage() {
-  var dokumenInput = document.getElementById('dokumen');
-  var hiddenInput = document.getElementById('hidden-input');
-
-  if (dokumenInput.files.length > 0) {
-      var oldDokumen = hiddenInput.value;
-      if (oldDokumen !== '') {
-          // Hapus dokumen lama saat dokumen baru dipilih
-          // Lakukan permintaan HTTP ke server untuk menghapus dokumen lama
-          // Setelah itu, kosongkan input hidden
-          hiddenInput.value = '';
-      }
-  }
-}
-
 @endpush

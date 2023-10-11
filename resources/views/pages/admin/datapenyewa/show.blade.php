@@ -149,7 +149,7 @@
                               <div class="mt-2 justify-content-center">
                                   
                                   @if ($item->dokumen != null)
-                                    <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" width="200px">
+                                    <img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid">
                                   @else
                                     <p>Gambar tidak tersedia</p>
                                   @endif
