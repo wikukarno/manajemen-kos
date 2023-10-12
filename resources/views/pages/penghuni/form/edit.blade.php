@@ -35,7 +35,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Email</label>
 							<div class="col-sm-9">
-								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->email }}" name="email" required autocomplete="off">
+								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->email }}" name="email" required autocomplete="off" disabled>
 							</div>
 						</div>
 					</div>
@@ -108,12 +108,19 @@
 							<label class="col-sm-3 col-form-label">KTP</label>
 							<div class="col-sm-9">
 								<div class="mt-3">
-									<input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()"> 
-									@error('dokumen')
-									<div class="invalid-feedback">
-										{{ $message }}
-									</div>
-									@enderror
+									@if ($item->dokumen != null)
+										<img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image">
+									@else
+										<img src="" class="img-fluid" id="preview-image">
+									@endif
+									<div class="mt-3">
+										<input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
+										<input type="hidden" id="hidden-input" name="hidden-input">
+										@error('dokumen')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+										@enderror
 								</div>
 							</div>
 						</div>
@@ -149,22 +156,24 @@
 </script>
 <script>
   // Fungsi untuk menampilkan pratinjau dokumen
-  function previewDocument() {
-      const inputDokumen = document.getElementById('#dokumen');
-      const dokumenPreview = document.getElementById('.dokumen-preview');
+  function previewImage() {
+    var input = document.getElementById('dokumen');
+    var img = document.getElementById('preview-image');
+    var hiddenInput = document.getElementById('hidden-input');
 
-      if (inputDokumen.files && inputDokumen.files[0]) {
-          const reader = new FileReader();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-          reader.onload = function(e) {
-              dokumenPreview.src = e.target.result;
-              dokumenPreview.style.display = 'block';
-          };
+      reader.onload = function(e) {
+        img.src = e.target.result;
+        hiddenInput.value = e.target.result;
+      };
 
-          reader.readAsDataURL(inputDokumen.files[0]);
-      } else {
-          dokumenPreview.style.display = 'none';
-      }
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      img.src = '';
+      hiddenInput.value = '';
+    }
   }
 </script>
 @endpush

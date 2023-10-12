@@ -14,21 +14,28 @@
 					<div class="form-group">
 						<label for="bulan">Pembayaran Untuk Bulan</label>
 						<div class="row">
-							{{--  Membuat checkbox secara otomatis dengan menggnakan foreach  --}}
-							@foreach (['Januari', 'Juli', 'Februari', 'Agustus', 'Maret', 'September', 'April', 'Oktober', 'Mei', 'November', 'Juni', 'Desember'] as $bulan)
-								<div class="col-md-6">
-									<div class="form-check">
-										<label class="form-check-label">
-											<input type="checkbox" class="form-check-input" name="bulan[]" value="{{ $bulan }}" @if (in_array($bulan, explode(',', $item->bulan))) checked @endif> {{ $bulan }}
-										</label>
-									</div>
+							@php
+								$bulanNames = [];
+								for ($i = 1; $i <= 12; $i++) {
+									$bulan = \Carbon\Carbon::create()->month($i)->locale('id_ID')->monthName;
+									array_push($bulanNames, $bulan);
+								}
+							@endphp
+							@foreach ($bulanNames as $index => $bulan)
+							<div class="col-md-6">
+								<div class="form-check">
+									<label class="form-check-label">
+										{{--  ($data=['keterangan'] == null)  --}}
+										<input type="checkbox" class="form-check-input" name="bulan[]" value="{{ $index + 1 }}" @if  ($bulan != now()->locale('id_ID')->monthName)  disabled @endif> {{ $bulan }}
+									</label>
 								</div>
+							</div>
 							@endforeach
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="tahun">Tahun</label>
-						<input type="number" class="form-control" id="tahun" name="tahun" placeholder="" required autocomplete="off">
+						<input type="number" class="form-control" id="tahun" name="tahun" placeholder="" required autocomplete="off" value="{{ \Carbon\Carbon::now()->format('Y') }}" disabled>
 					</div>
 					<div class="form-group">
 						<label for="jumlah">Jumlah Bayar</label>
@@ -50,37 +57,25 @@
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Riwayat Pembayaran</h4>
-				<p class="card-description"> {{ $item->name }} </code>
-				</p>
-			<table class="table table-striped">
-				<thead>
-				<tr>
-					<th> No </th>
-					{{--  <th> Kwitansi </th>  --}}
-					<th> Bulan </th>
-					<th> Tahun </th>
-					<th> Tanggal Bayar </th>
-					<th> Tanggal Validasi </th>
-					<th> Jumlah Bayar </th>
-					<th> Sisa </th>
-					<th> Status </th>
-				</tr>
-				</thead>
-				<tbody>
-					@foreach ($payments as  $payment)
-						<tr>
-							<td>{{ $loop->iteration }}</td>
-							<td>{{ $payment->bulan }}</td>
-							<td>{{ $payment->tahun }}</td>
-							<td>{{ $payment->tanggal_bayar }}</td>
-							<td>{{ $payment->tanggal_validasi }}</td>
-							<td>{{ $payment->jumlah }}</td>
-							<td>{{ $payment->sisa }}</td>
-							<td>{{ $payment->keterangan }}</td>
-						</tr>
-                     @endforeach
-				</tbody>
-			</table>
+				<div class="table-responsive">
+					<table id="tb_datapembayaran" class="table table-hover scroll-horizontal-vertical w-100">
+						<thead>
+							<tr>
+								<th> No </th>
+								<th> Bulan </th>
+								<th> Tahun </th>
+								<th> Tanggal Bayar </th>
+								<th> Tanggal Validasi </th>
+								<th> Jumlah Bayar </th>
+								<th> Sisa </th>
+								<th> Status </th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -92,6 +87,30 @@
     $('#form-akun').on('submit', function() {
         $('#btnSave').attr('disabled', 'disabled');
         $('#btnSave').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Menyimpan...');
+    });
+</script>
+<script>
+    $('#tb_datapembayaran').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        
+        ordering: [[1, 'asc']],
+        ajax: {
+            url: "{!! url()->current() !!}",
+        },
+        columns: [
+            { data: 'DT_RowIndex', name: 'id' },
+            { data: 'bulan', name: 'bulan' },
+            { data: 'tahun', name: 'tahun' },
+            { data: 'tanggal_bayar', name: 'tanggal_bayar' },
+            { data: 'tanggal_validasi', name: 'tanggal_validasi' },
+            { data: 'jumlah', name: 'jumlah' },
+            { data: 'sisa', name: 'sisa' },
+            { data: 'keterangan', name: 'keterangan' },
+        ],
     });
 </script>
 @endpush

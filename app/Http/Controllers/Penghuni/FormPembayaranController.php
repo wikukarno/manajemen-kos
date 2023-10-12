@@ -7,6 +7,7 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class FormPembayaranController extends Controller
 {
@@ -15,10 +16,40 @@ class FormPembayaranController extends Controller
      */
     public function index()
     {
+        if (request()->ajax()) {
+            $query = Payment::query();
+            $query = Payment::where('id_user', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+
+            return datatables()->of($query)
+                ->addIndexColumn()
+                
+                ->editColumn('bulan', function ($item) {
+                    return $item->bulan ?? '-';
+                })
+                ->editColumn('tahun', function ($item) {
+                    return $item->tahun ?? '-';
+                })
+                ->editColumn('tanggal_bayar', function ($item) {
+                    return $item->tanggal_bayar ?? '-';
+                })
+                ->editColumn('tanggal_validasi', function ($item) {
+                    return $item->tanggal_validasi ?? '-';
+                })
+                ->editColumn('jumlah', function ($item) {
+                    return $item->jumlah ?? '-';
+                })
+                ->editColumn('sisa', function ($item) {
+                    return $item->sisa ?? '-';
+                })
+                ->editColumn('keterangan', function ($item) {
+                    return $item->keterangan ?? '-';
+
+                })
+                // memenghilangkan tag html
+                // ->rawColumns(['action'])
+                ->make(true);
+        }
         $item=User::find(auth()->user()->id);
-        // $payments = Payment::all();
-        // return view('pages.penghuni.payment.index', compact('item'));
-        // return view('pages.penghuni.payment.index', compact('payments', 'item'));
         return view('pages.penghuni.payment.index', compact('item'), 
             [
                 'payments' => Payment::where('id_user', auth()->user()->id)->get()
@@ -41,15 +72,35 @@ class FormPembayaranController extends Controller
      */
     public function store(Request $request)
     {
+        $item=Payment::all();
         $data = $request->all();
         $data['id_user'] = Auth::user()->id;
-        $data['bukti_bayar'] = $request->file('bukti_bayar')->store(
-            'assets/buktiBayar', 'public'
-        );
+        $data['bukti_bayar'] = $request->file('bukti_bayar')->store('assets/buktiBayar', 'public');
         $data['tanggal_bayar'] = now();
-        $data['bulan'] = implode(", ", $request->get('bulan'));
+        $data['bulan'] = now()->locale('id_ID')->monthName;
+        $data['tahun'] = now()->format('Y');
+
+
+
+        $currentMonthPayments = Payment::where('bulan', now()->locale('id_ID')->monthName)->where('tahun', date('Y'))->get();
+        $isPaymentLunas = $currentMonthPayments->contains(function ($data) {
+            return $data->keterangan === 'Lunas';
+        });
+
+        if ($data['sisa'] == 0) {
+            $data['keterangan'] = 'Menunggu Validasi';
+        } elseif ($data['sisa'] > 0) {
+            $data['keterangan'] = 'Sisa Pembayaran';
+        } elseif ($data['sisa'] == 0 && $data['tanggal_validasi'] !== null) {
+            $data['keterangan'] = 'Lunas';
+        } else {
+            $data['keterangan'] = 'Belum Lunas';
+        }
+        
         Payment::create($data);
         
+        // Jika pembayaran sisa, lakukan pemrosesan sisa di sini
+
         return redirect()->route('form-pembayaran-penghuni.index')->with('success', 'Kategori Berhasil Ditambahkan!');
     }
 

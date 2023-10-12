@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('bulan');
             $table->integer('tahun');
             $table->bigInteger('jumlah');
-            $table->bigInteger('sisa')->default(0);
+            $table->bigInteger('sisa')->nullable();
             $table->string('bukti_bayar')->nullable();
             $table->date('tanggal_bayar')->nullable();
             $table->date('tanggal_validasi')->nullable();
