@@ -4,13 +4,13 @@
 @endsection
 
 @section('content')
-<div class="container-xxl bg-white p-0">
+{{-- <div class="container bg-white p-0"> --}}
         <!-- Carousel Start -->
-        <div class="container-fluid p-0 mb-5">
+        <div class="container-fluid bg-white p-0 mb-5">
             <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                        <img class="w-100" src="../image/img/carousel-1.jpg" alt="Image">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                        <img class="w-100" src="../image/img/carousel-2.jpg" alt="Image">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
@@ -51,7 +51,7 @@
 
 
         <!-- About Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5 bg-white">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
@@ -252,8 +252,11 @@
         <!-- Service End -->
 
         <!-- WhatsApp -->
-        <a class="btn btn-lg btn-primary btn-lg-square back-to-top btn-social rounded-circle border-success position-absolute top-50 start-0 translate-middle" style="margin-left:1cm ;background-color:rgb(12, 203, 12)"  href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F" id="social"><i class="fab fa-whatsapp"></i></a>
-
+        <div class="row">
+            <div class="col">
+            <a class="btn btn-lg btn-primary btn-lg-square back-to-top btn-social rounded-circle border-success" style="background-color:rgb(12, 203, 12)"  href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F" id="social"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
         
 
         <!-- Back to Top -->

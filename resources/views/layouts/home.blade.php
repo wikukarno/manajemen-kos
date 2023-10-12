@@ -10,7 +10,7 @@
     @include('includes.home.style')
     
 </head>
-<body>
+<body class="bg-white">
     @include('includes.home.navbar')
     @yield('content')
     @include('includes.backend.script')

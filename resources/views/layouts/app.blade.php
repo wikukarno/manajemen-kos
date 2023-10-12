@@ -18,7 +18,7 @@
     <!--  feather icon  -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
   </head>
-  <body>
+  <body class="bg-white">
     <div class="container-scroller">
      
    @include('includes.backend.navbar')

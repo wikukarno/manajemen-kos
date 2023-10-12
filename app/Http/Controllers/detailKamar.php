@@ -21,5 +21,22 @@ class detailKamar extends Controller
             'user' => $user,
         ]);
     }
+    public function store(Request $request)
+    {
+        
+        $validateData = $request->validate([
+            'wali' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamt' => 'required',
+            'hp2' => 'required',
+            'id_telegram' => 'required',
+            'fasilitas' => 'required'
+            
+        ]);
 
+        $validateData = User::find(auth()->user()->id);
+        
+
+    }
 }

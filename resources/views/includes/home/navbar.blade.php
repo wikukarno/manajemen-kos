@@ -34,9 +34,9 @@
                                         </div> 
                                         <div class="flex-grow-1 ms-2">
                                             @if (Auth::user()->profil == true)
-                                                <img src="{{ Storage::url(Auth::user()->profil) }}" class="img-fluid ms-2 rounded-circle w-100 h-100" style="max-height: 40px; max-width:40px; border-radius:50px; background-size:cover" alt=""/>
+                                                <img src="{{ Storage::url(Auth::user()->profil) }}" class="img-fluid ms-2 rounded-circle w-100 h-100" style="max-height: 40px; max-width: 40px; border-radius: 50px; background-size: cover" alt="">
                                                 @else
-                                                <img src="{{url('/images/user-regular.svg')}}" class="img-fluid ms-2 rounded-circle w-100 h-100" style="max-height: 40px; border-radius:50px; background-size:cover" alt="">
+                                                <img src="../image/profile.svg" class="img-fluid ms-2 rounded-circle w-100 h-100" style="max-height: 40px; border-radius:40px; background-size:cover" alt="">
                                             @endif
                                         </div>
                                     </div>
@@ -59,8 +59,7 @@
                                             <a class="dropdown-item" href="#">
                                                 <form action="{{route('logout')}}" method="post">
                                                     @csrf
-                                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-logout me-2 text-white"></i>
-                                                        Keluar</button>
+                                                    <button class="btn btn-primary btn-sm " type="submit">Keluar</button>
                                                 </form>
                                             </a>
                                         </li>
