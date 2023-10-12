@@ -10,10 +10,10 @@
 
     <!-- DataTales Example -->
     <div class="card shadow">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary mt-2">Tambah Data Penyewa
-                <a href="{{ url('pemilik/data-penyewa') }}" class="float-end btn btn-outline-success btn-sm" >View All</a>
-            </h6>
+        <div class="card-header">
+            <h3 class="m-0 font-weight-bold mt-3">Tambah Data Penyewa
+                <a href="{{ url('pemilik/data-penyewa') }}" class="float-end btn btn-outline-success btn-sm mb-2" >View All</a>
+            </h3>
         </div>
 
         <div class="col-12">
@@ -22,7 +22,7 @@
                 @if(Session::has('success'))
                   <p class="text-success">{{ session('success') }}</p>
                 @endif
-                <h4 class="card-title">Data User Penyewa</h4>
+                <h4 class="card-title mb-5"><u>Data Penyewa</u></h4>
                 <form class="form-sample" action="{{ url('pemilik/data-penyewa') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="row">

@@ -25,4 +25,8 @@
             max-height: 50px !important;
             object-fit: contain;
         }
+
+        .img-ktp{
+            border-radius: 0px !important;
+        }
     </style>

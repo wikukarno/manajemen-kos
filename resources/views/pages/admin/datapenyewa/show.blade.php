@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-12">
-            <div class="card">
+            <div class="card"> 
               <div class="card-body">
                 @if(Session::has('success'))
                   <p class="text-success">{{ session('success') }}</p>

@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mt-3">Data Penghuni <a href="{{ route('data-penyewa.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
+                        <h3 class="card-title mt-3">Data Penyewa <a href="{{ route('data-penyewa.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
                     </div>
                     <div class="card-body">
                         @if(Session::has('success'))
@@ -85,18 +85,42 @@
             { data: 'uname', name: 'uname' },
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
+            {{--  { data: 'dokumen', name: 'dokumen' },  --}}
             
             {
                 data: 'dokumen',
                 name: 'dokumen',
                 render: function (data, type, full, meta) {
-                  if (type === 'display') {
-                    // Tampilkan gambar sebagai tag img jika tipe display
-                    return '<img src="' + data + '" alt="Gambar" width="100" />';
-                  }
-                  return data; // Kembalikan URL gambar untuk tipe lain
+                    if (type === 'display') {
+                        // Periksa apakah data gambar ada
+                        if (data) {
+                            // Tampilkan gambar dengan lebar dan tinggi tertentu (misalnya 50px)
+                            return '<img src="../storage/' + data + '" alt="Gambar" class="img-ktp">';
+                        } else {
+                            return 'Tidak ada gambar';
+                        }
+                    }
+                    return data;
                 }
-              },
+            },
+
+            {{--  {
+                data: 'dokumen', // Gantilah 'dokumen' dengan nama kolom gambar di sumber data Anda
+                name: 'dokumen',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Periksa apakah data gambar ada
+                        if (data) {
+                            // Tampilkan gambar dengan lebar dan tinggi tertentu (misalnya 50px)
+                            // return '<img src="' + data + '" alt="Gambar" width="50" height="50">';
+                            return '<a href="../storage/' + data + '" target="_blank">Lihat Dokumen </a> <img src="' + data + '" alt="Gambar" width="50" height="50">';
+                        } else {
+                            return 'Tidak ada gambar';
+                        }
+                    }
+                    return data;
+                }
+            },  --}}
 
             {
                 data: 'fasilitas',
