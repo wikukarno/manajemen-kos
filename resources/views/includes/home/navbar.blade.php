@@ -14,6 +14,7 @@
                         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+                        
                         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0 ">
                                 <a href="/" class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}">Home</a>
@@ -23,25 +24,30 @@
                             <a href="/login" class="nav-item nav-link"><button type="button" class="btn btn-sm text-light" style="background-color: orange">Masuk</button></a>
                             <a href="/register" class="nav-item nav-link" style="margin-left: -0.4cm"><button type="button" class="btn btn-outline-primary btn-sm">Buat Akun</button></a> 
                             @endguest
+                        
                             <div class="navbar-nav ms-2" style="margin-right: 0.4cm">
                                 <div class="dropdown" style="margin-right: 1cm">
-                                <a href="#" class="ms-3 d-none d-lg-block" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
-                                >
-                                @auth
-                                    <div class="d-flex align-item-center">
-                                        <div class="flex-shrink-0 pt-1">
-                                            Hi, {{Auth::user()->name}}
-                                        </div> 
-                                        <div class="flex-grow-1 ms-2">
-                                            @if (Auth::user()->profil == true)
-                                                <img src="{{ Storage::url(Auth::user()->profil) }}" class="img-fluid ms-2 rounded-circle w-100 h-100" style="max-height: 40px; max-width: 40px; border-radius: 50px; background-size: cover" alt="">
-                                                @else
-                                                <img src="../image/profile.svg" class="img-fluid ms-2 rounded-circle w-100 h-100" style="max-height: 40px; border-radius:40px; background-size:cover" alt="">
-                                            @endif
+                                    {{-- <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false"> --}}
+                                    <a href="#" class="ms-3 d-none d-lg-block" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
+                                    >
+                                    <div class="nav-profile-img">
+                                    @auth
+                                        <div class="d-flex align-item-center">
+                                            <div class="flex-shrink-0 pt-1">
+                                                Hi, {{Auth::user()->name}}
+                                            </div> 
+                                            <div class="flex-grow-1 ms-2">
+                                                @if (Auth::user()->profil == true)
+                                                    <img src="{{ Storage::url(Auth::user()->profil) }}" class="img-fluid ms-2 rounded-circle" id="profile-image" style="max-width:40px; max-height:40px; border-radius: 50px; background-size: cover" alt="">
+                                                    @else
+                                                    <img src="../image/profile.svg" class="img-fluid ms-2 rounded-circle" id="profile-image" style="max-height: 40px; border-radius:40px; background-size:cover" alt="">
+                                                @endif
+                                            </div>
                                         </div>
+                                    @endauth
                                     </div>
-                                @endauth
-                                </a>
+                                    </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <li>
                                             @auth

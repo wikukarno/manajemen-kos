@@ -472,6 +472,15 @@
     border-right: none;
 }
 
+#profile-image {
+    
+  width: 30px; /* Sesuaikan ukuran sesuai kebutuhan */
+  height: 30px; /* Sesuaikan ukuran sesuai kebutuhan */
+  border-radius: 50%; /* Membuat gambar berbentuk bulan purnama */
+  background-color: #000; /* Warna latar belakang hitam untuk gambar bulan */
+
+
+}
 
 
 
