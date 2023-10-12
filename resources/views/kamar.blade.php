@@ -13,10 +13,8 @@
                         <img class="w-100" src="../image/img/carousel-1.jpg" alt="Image">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
-                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
-                                <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious Hotel</h1>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Akira Kos</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">Kos Nyaman dan Murah</h1>
                             </div>
                         </div>
                     </div>
@@ -24,10 +22,8 @@
                         <img class="w-100" src="../image/img/carousel-2.jpg" alt="Image">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
-                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
-                                <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious Hotel</h1>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Akira Kos</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">Kos Nyaman dan Murah</h1>
                             </div>
                         </div>
                     </div>
@@ -63,16 +59,16 @@
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg" style="margin-top: 25%;">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="../image/img/about-1.jpg" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="../image/img/about-2.jpg">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
+                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="../image/img/about-3.jpg">
                             </div>
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="../image/img/about-4.jpg">
                             </div>
                         </div>
                     </div>
@@ -96,11 +92,11 @@
                
                 <div class="row mb-5 justify-content-center">
                      @foreach ($types as $tipe)
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="margin-bottom: 40px">
                         <div class="room-item shadow rounded overflow-hidden">
                             
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/room-1.jpg" alt="">
+                                <img class="img-fluid" src="../image/img/room-1.jpg" alt="">
                                 {{-- <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">Rp. {} </small> --}}
                                 <p class="position-absolute end-0  top-100 translate-middle-y bg-primary text-white rounded py-4 px-3 fs-5">{{ $tipe->name }}</p>
                             </div>

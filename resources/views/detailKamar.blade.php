@@ -18,13 +18,13 @@
                                 <div id="carouselExample" class="carousel slide">
                                     <div class="carousel-inner" >
                                         <div class="carousel-item active">
-                                        <img src="../image/coba gambar.jpg" class="d-block w-100" alt="...">
+                                        <img src="/image/img/room-1.jpg" class="d-block w-100" alt="...">
                                         </div>
                                         <div class="carousel-item">
-                                        <img src="../image/coba gambar.jpg" class="d-block w-100" alt="...">
+                                        <img src="/image/img/room-2.jpg" class="d-block w-100" alt="...">
                                         </div>
                                         <div class="carousel-item">
-                                        <img src="../image/coba gambar.jpg" class="d-block w-100" alt="...">
+                                        <img src="/image/img/room-3.jpg" class="d-block w-100" alt="...">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -50,7 +50,7 @@
                         {{-- <button href="" type="button" class="btn text-light rounded-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: orange; width:5cm"><a href="{{route('login')}}"></a>Pesan</button> --}}
 
 
-                        @if (Auth::user()->role == 'Pendaftar')
+                        @auth
                             <button href="" type="button" class="btn text-light rounded-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: orange; width:5cm">Pesan</button> 
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-xl">
@@ -62,9 +62,10 @@
                                             <div class="row">
                                                 <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
                                                     <div class="modal-body">
-                                                        <form>
+                                                        <form class="{{route('simpan-data')}}" method="POST">
+                                                        @csrf
                                                         <div class="mb-3">
-                                                            <label for="username" class="col-form-label">Username: </label>
+                                                            <label for="username" class="col-form-label">Nama Lengkap: </label>
                                                             <input type="text" class="form-control" name="username" id="username" value="{{auth()->user()->name}}">
                                                         </div>
                                                         <div class="mb-3">
@@ -113,8 +114,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                             <div class="modal-footer">
-                                                <button class="btn btn-primary" data-bs-target="#exampleModalLabel2" data-bs-toggle="modal">Next</button>
+                                                <button class="btn btn-primary" data-bs-target="#exampleModalLabel2" data-bs-toggle="modal" type="submit" >Next</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,7 +132,7 @@
                                             <div class="row">
                                                 <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
                                                     <div class="modal-body">
-                                                        <form>
+                                                        <form action="{{route('simpan-data')}}" method="POST">
                                                             <div class="form-group mb-3 mt-3">
                                                                 <label for="nokamar">Nomor kamar</label>
                                                                 <input type="number" class="form-control" name="nokamar" id="nokamar" style="background-color: white" value="{{$kamar->nomor_kamar}}" disabled>
@@ -215,11 +217,17 @@
                                     </div>
                                 </div>
                             </div>  
-                        @else
+                        @endauth
                         @guest
                         <a href="{{route('login')}}"><button class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</button></a>
                         @endguest
+                        @if (session('success'))
+                        <div class="alert alert-success">
+                            {{session('success')}}
+                        </div>
+                            
                         @endif
+                        
                 </div>
 
                 <div class="row mb-3 mt-5 justify-content-center">

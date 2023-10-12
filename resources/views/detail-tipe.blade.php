@@ -22,7 +22,7 @@
                         <div class="room-item shadow rounded overflow-hidden">
                             
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/room-1.jpg" alt="">
+                                <img class="img-fluid" src="/image/img/room-1.jpg" alt="">
                                 <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">Rp {{ $kamar->harga }}</small>
                                 <p class="position-absolute end-0  top-100 translate-middle-y bg-primary text-white rounded py-4 px-3 fs-5">{{ $kamar->nomor_kamar }}</p>
                             </div>
