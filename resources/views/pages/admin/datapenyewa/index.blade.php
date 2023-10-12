@@ -85,7 +85,19 @@
             { data: 'uname', name: 'uname' },
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
-            { data: 'dokumen', name: 'dokumen' },
+            
+            {
+                data: 'dokumen',
+                name: 'dokumen',
+                render: function (data, type, full, meta) {
+                  if (type === 'display') {
+                    // Tampilkan gambar sebagai tag img jika tipe display
+                    return '<img src="' + data + '" alt="Gambar" width="100" />';
+                  }
+                  return data; // Kembalikan URL gambar untuk tipe lain
+                }
+              },
+
             {
                 data: 'fasilitas',
                 name: 'fasilitas',

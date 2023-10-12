@@ -268,6 +268,8 @@
 @endsection
 
 @push('after-script')
+
+{{--  untuk melihat ktp yang di upload  --}}
 <script>
   function previewImage() {
     var input = document.getElementById('dokumen');

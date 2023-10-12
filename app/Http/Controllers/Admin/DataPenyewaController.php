@@ -171,13 +171,22 @@ class DataPenyewaController extends Controller
     {
         $item = User::findOrFail($id);
        
+    //     if ($request->hasFile('dokumen')){
+    //         if($item->dokumen != null){
+    //             // dd($item->dokumen);
+    //             Storage::disk('public')->delete($item->dokumen);
+    //         }
+    //         $newFile = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+    //    } else {
+    //         $oldFile = $item->dokumen;
+    //    }
+
         if ($request->hasFile('dokumen')) {
-            if (Auth::user()->dokumen != null) {
-                Storage::disk('public')->delete(Auth::user()->dokumen);
-                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-            } else {
+            if ($item->dokumen != null) {
+                Storage::disk('public')->delete($item->dokumen);
                 $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
             }
+            // $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
         }else{
             $dokumen = $item->dokumen;
         }
@@ -201,6 +210,7 @@ class DataPenyewaController extends Controller
             'uname'=>$request->uname,
             'id_telegram'=>$request->id_telegram,
             'mac_addr'=>$request->mac_addr,
+            // 'dokumen'=>$oldFile ?? $newFile,
             'dokumen'=>$dokumen,
             'fasilitas'=>$fasilitasString
         ]);
@@ -217,12 +227,8 @@ class DataPenyewaController extends Controller
         
         if ($item) {
 
-            // Hapus dokumen jika ada
-            if (!empty($item->dokumen)) {
-                // Hapus dokumen dari sistem file
-                if (file_exists(public_path('assets/penyewa/dokumen-ktp' . $item->dokumen))) {
-                    unlink(public_path('assets/penyewa/dokumen-ktp' . $item->dokumen));
-                }
+            if($item->dokumen){
+                Storage::disk('public')->delete($item->dokumen);
             }
 
             $item->delete();

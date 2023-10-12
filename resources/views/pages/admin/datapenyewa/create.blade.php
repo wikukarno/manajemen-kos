@@ -275,6 +275,29 @@
 
 @push('after-script')
 
+{{--  untuk melihat ktp yang di upload  --}}
+<script>
+  function previewImage() {
+    var input = document.getElementById('dokumen');
+    var img = document.getElementById('preview-image');
+    var hiddenInput = document.getElementById('hidden-input');
+
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        img.src = e.target.result;
+        hiddenInput.value = e.target.result;
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      img.src = '';
+      hiddenInput.value = '';
+    }
+  }
+</script>
+
 <script>
   // Menangani peristiwa klik pada checkbox "Pilih Semua"
   document.querySelector('.select-all-checkbox').addEventListener('click', function () {
