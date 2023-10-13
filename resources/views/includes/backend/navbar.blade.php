@@ -21,7 +21,7 @@
 					aria-expanded="false">
 					<div class="nav-profile-img">
 						@if(Auth::user()->profil != null)
-							<img src="{{ Storage::url($item->profil) }}" alt="image"/>
+							<img src="{{ Storage::url(Auth::user()->profil) }}" alt="image"/>
 						@else
 							<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
 						@endif

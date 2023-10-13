@@ -6,7 +6,7 @@
 					@if (Auth::user()->profil == null)
 						<img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image" />
 						@else
-						<img src="{{ Storage::url($item->profil) }}" alt="image" />
+						<img src="{{ Storage::url(Auth::user()->profil) }}" alt="image" />
 						<span class="login-status online"></span>
 					@endif
 				</div>
