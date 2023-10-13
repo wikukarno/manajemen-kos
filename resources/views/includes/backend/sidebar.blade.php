@@ -27,13 +27,27 @@
 				<i class="mdi mdi-home menu-icon"></i>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link"
-				href="#">
-				<span class="menu-title">Data Kamar</span>
-				<i class="mdi mdi-hotel menu-icon"></i>
+
+		<li class="nav-item {{ (request()->is('pemilik/data-kamar*') ? 'active' : '') }}">
+			<a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+			  <span class="menu-title">Data Kamar</span>
+			  <i class="menu-arrow"></i>
+			  <i class="mdi mdi-hotel menu-icon"></i>
 			</a>
-		</li>
+			<div class="collapse" id="ui-basic">
+			  <ul class="nav flex-column sub-menu">
+				<li class="nav-item {{ (request()->is('pemilik/data-kamar*') ? 'active' : '') }}">
+					{{--  <a class="nav-link">Kamar</a>  --}}
+					<a class="nav-link"
+						href="/pemilik/data-kamar">
+						<span>Kamar</span>
+					</a>
+				</li>
+				<li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Tipe Kamar</a></li>
+			  </ul>
+			</div>
+		  </li>
+
 		{{--  akses link  --}}
 		<li class="nav-item {{ (request()->is('pemilik/data-user*') ? 'active' : '') }} ">
 			<a class="nav-link"
@@ -126,7 +140,7 @@
 				</a>
 			</li>
 			@endif
-			<li class="nav-item {{ (request()->is('penghuni/pembayaran-penghuni') ? 'active' : '') }}">
+			<li class="nav-item {{ (request()->is('penghuni/pembayaran-penghuni*') ? 'active' : '') }}">
 				<a class="nav-link"
 					href="{{ route('pembayaran-penghuni.index') }}">
 					<span class="menu-title">Pembayaran</span>

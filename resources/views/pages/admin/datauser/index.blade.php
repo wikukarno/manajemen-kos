@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mt-3"><b>Data Pendaftar </b><a href="{{ route('data-user.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
+                        <h3 class="card-title mt-3"><b>Data User </b><a href="{{ route('data-user.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
                     </div>
 
                     <div class="card-body">
@@ -64,8 +64,28 @@
         },
         columns: [
             { data: 'DT_RowIndex', name: 'id' },
-            { data: 'name', name: 'name' },
-            { data: 'email', name: 'email' },
+            {
+                data: 'name',
+                name: 'name',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 20 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                    }
+                    return data;
+                }
+            },
+            {
+                data: 'email',
+                name: 'email',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 20 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                    }
+                    return data;
+                }
+            },
             { data: 'role', name: 'role' },
             { data: 'status_akun', name: 'status_akun' },
             { data: 'hp', name: 'hp' },

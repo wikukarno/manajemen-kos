@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\DataPenyewaController;
 use App\Http\Controllers\Penghuni\SewaKamarController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\DataKamarController;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
@@ -65,6 +66,9 @@ Route::prefix('pemilik')
         // untuk DataPenghuni
         Route::resource('data-penyewa', DataPenyewaController::class);
         Route::delete('data-penyewa/delete', [DataPenyewaController::class, 'destroy']);
+        // untuk DataKamar
+        Route::resource('data-kamar', DataKamarController::class);
+        Route::delete('data-kamar/delete', [DataKamarController::class, 'destroy']);
 
     });
 
