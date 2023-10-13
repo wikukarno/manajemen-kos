@@ -16,11 +16,13 @@ return new class extends Migration
             $table->string('id_user');
             $table->string('bulan');
             $table->integer('tahun');
-            $table->bigInteger('jumlah');
-            $table->bigInteger('sisa')->nullable();
+            $table->string('tipe_kamar_penghuni');
+            $table->string('nomor_kamar_penghuni');
+            $table->bigInteger('harga_bayar');
             $table->string('bukti_bayar')->nullable();
             $table->date('tanggal_bayar')->nullable();
             $table->date('tanggal_validasi')->nullable();
+            $table->enum('status', ['Menunggu Validasi', 'Lunas', 'Belum Lunas'])->default('Menunggu Validasi');
             $table->string('keterangan')->nullable();
             $table->timestamps();
             $table->softDeletes();

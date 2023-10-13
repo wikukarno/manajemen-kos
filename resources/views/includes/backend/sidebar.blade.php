@@ -126,9 +126,9 @@
 				</a>
 			</li>
 			@endif
-			<li class="nav-item {{ (request()->is('penghuni/form-pembayaran-penghuni') ? 'active' : '') }}">
+			<li class="nav-item {{ (request()->is('penghuni/pembayaran-penghuni') ? 'active' : '') }}">
 				<a class="nav-link"
-					href="{{ route('form-pembayaran-penghuni.index') }}">
+					href="{{ route('pembayaran-penghuni.index') }}">
 					<span class="menu-title">Pembayaran</span>
 					<i class="mdi mdi-cash-multiple menu-icon"></i>
 				</a>

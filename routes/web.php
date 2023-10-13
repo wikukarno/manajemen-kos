@@ -20,6 +20,7 @@ use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
+use App\Http\Controllers\Penghuni\PaymentsController;
 use App\Models\TipeKamar;
 use Database\Factories\KamarFactory;
 
@@ -82,7 +83,7 @@ Route::prefix('penghuni')
         Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
         Route::resource('akun-penghuni', AkunPenghuniController::class);
         Route::resource('form-penghuni', FormPenghuniController::class);
-        Route::resource('form-pembayaran-penghuni', FormPembayaranController::class);
+        Route::resource('pembayaran-penghuni', PaymentsController::class);
         Route::resource('form-permintaan-penghuni', SewaKamarController::class)->middleware('belumverifikasi');
     });
 

@@ -50,6 +50,8 @@ class FormPembayaranController extends Controller
                 ->make(true);
         }
         $item=User::find(auth()->user()->id);
+        $payments = Payment::all();
+
         return view('pages.penghuni.payment.index', compact('item'), 
             [
                 'payments' => Payment::where('id_user', auth()->user()->id)->get()
@@ -64,7 +66,8 @@ class FormPembayaranController extends Controller
      */
     public function create()
     {
-        //
+        $item=User::find(auth()->user()->id);
+        return view('pages.penghuni.payment.create', compact('item'));
     }
 
     /**
@@ -74,34 +77,31 @@ class FormPembayaranController extends Controller
     {
         $item=Payment::all();
         $data = $request->all();
+
         $data['id_user'] = Auth::user()->id;
+        $data['harga_bayar'] = Auth::kamar()->harga;
         $data['bukti_bayar'] = $request->file('bukti_bayar')->store('assets/buktiBayar', 'public');
         $data['tanggal_bayar'] = now();
         $data['bulan'] = now()->locale('id_ID')->monthName;
         $data['tahun'] = now()->format('Y');
+        // $data['sisa'] = 2000000 - $data['jumlah']
+
+        // if ($data['sisa'] == 0) {
+        //     $data['keterangan'] = 'Menunggu Validasi';
+        // } elseif ($data['sisa'] > 0) {
+        //     $data['keterangan'] = 'Sisa Pembayaran';
+        // } elseif ($data['sisa'] == 0 && $data['tanggal_validasi'] !== null) {
+        //     $data['keterangan'] = 'Lunas';
+        // } else {
+        //     $data['keterangan'] = 'Belum Lunas';
+        // }
 
 
-
-        $currentMonthPayments = Payment::where('bulan', now()->locale('id_ID')->monthName)->where('tahun', date('Y'))->get();
-        $isPaymentLunas = $currentMonthPayments->contains(function ($data) {
-            return $data->keterangan === 'Lunas';
-        });
-
-        if ($data['sisa'] == 0) {
-            $data['keterangan'] = 'Menunggu Validasi';
-        } elseif ($data['sisa'] > 0) {
-            $data['keterangan'] = 'Sisa Pembayaran';
-        } elseif ($data['sisa'] == 0 && $data['tanggal_validasi'] !== null) {
-            $data['keterangan'] = 'Lunas';
-        } else {
-            $data['keterangan'] = 'Belum Lunas';
-        }
-        
         Payment::create($data);
         
         // Jika pembayaran sisa, lakukan pemrosesan sisa di sini
 
-        return redirect()->route('form-pembayaran-penghuni.index')->with('success', 'Kategori Berhasil Ditambahkan!');
+        return view('pages.penghuni.payment.index')->with('success', 'Kategori Berhasil Ditambahkan!');
     }
 
     /**

@@ -5,70 +5,27 @@
 @section('content')
 
 <div class="row">
-  	<div class="col-12 grid-margin stretch-card">
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Form Pembayaran</h4>
-				<form action="{{ route('form-pembayaran-penghuni.store') }}" method="POST" enctype="multipart/form-data">
-					@csrf
-					<div class="form-group">
-						<label for="bulan">Pembayaran Untuk Bulan</label>
-						<div class="row">
-							@php
-								$bulanNames = [];
-								for ($i = 1; $i <= 12; $i++) {
-									$bulan = \Carbon\Carbon::create()->month($i)->locale('id_ID')->monthName;
-									array_push($bulanNames, $bulan);
-								}
-							@endphp
-							@foreach ($bulanNames as $index => $bulan)
-							<div class="col-md-6">
-								<div class="form-check">
-									<label class="form-check-label">
-										{{--  ($data=['keterangan'] == null)  --}}
-										<input type="checkbox" class="form-check-input" name="bulan[]" value="{{ $index + 1 }}" @if  ($bulan != now()->locale('id_ID')->monthName)  disabled @endif> {{ $bulan }}
-									</label>
-								</div>
-							</div>
-							@endforeach
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="tahun">Tahun</label>
-						<input type="number" class="form-control" id="tahun" name="tahun" placeholder="" required autocomplete="off" value="{{ \Carbon\Carbon::now()->format('Y') }}" disabled>
-					</div>
-					<div class="form-group">
-						<label for="jumlah">Jumlah Bayar</label>
-						<input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="" required autocomplete="off">
-					</div>
-					<div class="form-group">
-						<label>Unggah Bukti Transfer</label>
-						<div class="input-group col-xs-12">
-							<input type="file" class="form-control file-upload-info" name="bukti_bayar" placeholder="Unggah Gambar" required>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-					<button class="btn btn-light">Cancel</button>
-				</form>
-			</div>
-		</div>
-	</div>
 	<div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title mt-3">Riwayat Pembayaran <a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah Pembayaran</a></h3>
+			</div>
 			<div class="card-body">
-				<h4 class="card-title">Riwayat Pembayaran</h4>
+				{{--  <h4 class="card-title">Riwayat Pembayaran</h4>  --}}
 				<div class="table-responsive">
 					<table id="tb_datapembayaran" class="table table-hover scroll-horizontal-vertical w-100">
 						<thead>
 							<tr>
 								<th> No </th>
+								<th> Tipe Kamar </th>
+								<th> Nomor Kamar </th>
 								<th> Bulan </th>
 								<th> Tahun </th>
 								<th> Tanggal Bayar </th>
 								<th> Tanggal Validasi </th>
 								<th> Jumlah Bayar </th>
-								<th> Sisa </th>
 								<th> Status </th>
+								<th> Keterangan </th>
 							</tr>
 						</thead>
 						<tbody>
@@ -103,12 +60,14 @@
         },
         columns: [
             { data: 'DT_RowIndex', name: 'id' },
+            { data: 'tipe_kamar_penghuni', name: 'tipe_kamar_penghuni' },
+            { data: 'nomor_kamar_penghuni', name: 'nomor_kamar_penghuni' },
             { data: 'bulan', name: 'bulan' },
             { data: 'tahun', name: 'tahun' },
             { data: 'tanggal_bayar', name: 'tanggal_bayar' },
             { data: 'tanggal_validasi', name: 'tanggal_validasi' },
             { data: 'jumlah', name: 'jumlah' },
-            { data: 'sisa', name: 'sisa' },
+            { data: 'status', name: 'status' },
             { data: 'keterangan', name: 'keterangan' },
         ],
     });
