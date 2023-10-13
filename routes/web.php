@@ -1,7 +1,10 @@
 <?php
 
-use App\Models\kamar;
+use App\Models\Kamar;
+use App\Models\DataUser;
+use App\Models\TipeKamar;
 use App\Models\Availability;
+use Database\Factories\KamarFactory;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\detailKamar;
 use Illuminate\Support\Facades\Route;
@@ -12,19 +15,17 @@ use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\User\AkunUserController;
 use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Admin\AkunAdminController;
+use App\Http\Controllers\Admin\DataKamarController;
 use App\Http\Controllers\Admin\DataPenyewaController;
+use App\Http\Controllers\Penghuni\PaymentsController;
 use App\Http\Controllers\Penghuni\SewaKamarController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\Admin\DataKamarController;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
-use App\Http\Controllers\Penghuni\PaymentsController;
-use App\Models\DataUser;
-use App\Models\TipeKamar;
-use Database\Factories\KamarFactory;
+use App\Http\Controllers\Admin\TipeKamarController as AdminTipeKamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,9 @@ Route::prefix('pemilik')
         // untuk DataKamar
         Route::resource('data-kamar', DataKamarController::class);
         Route::delete('data-kamar/delete', [DataKamarController::class, 'destroy']);
+        // untuk TipeKamar
+        Route::resource('tipe-kamar', AdminTipeKamarController::class);
+        Route::delete('tipe-kamar/delete', [AdminTipeKamarController::class, 'destroy']);
 
     });
 
