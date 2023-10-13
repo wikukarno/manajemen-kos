@@ -22,7 +22,7 @@
                 @if(Session::has('success'))
                   <p class="text-success">{{ session('success') }}</p>
                 @endif
-                <h4 class="card-title mb-5"><u>Data Penyewa <b>{{ $item->name }}</u></b></h4>
+                <h4 class="card-title mb-5"><u>Data Penyewa <b class="text-primary">{{ $item->name }}</u></b></h4>
                 {{--  <form class="form-sample" action="{{ url('pemilik/data-penyewa') }}" method="POST">  --}}
                 <form action="{{ route('data-penyewa.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                   @csrf
@@ -165,7 +165,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label"><b>Password*</b></label>
                         <div class="col-sm-9">
-                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Min. 8" required value="{{ old('password') }}" autocomplete="off" disabled/>
+                          <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Min. 8" required value="{{ $item->password }}" autocomplete="off" disabled/>
                           @error('password')
                             {{-- untuk info yang salah yang mana --}}
                             <div class="invalid-feedback">

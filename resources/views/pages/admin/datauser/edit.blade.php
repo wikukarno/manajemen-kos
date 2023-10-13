@@ -10,11 +10,11 @@
 
     <!-- DataTales Example -->
     <div class="card shadow">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary mt-2">Edit Data User ( {{ $item->name }} )
-                <a href="{{ url('pemilik/data-user') }}" class="float-end btn btn-outline-success btn-sm" >View All</a>
-            </h6>
-        </div>
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold mt-3">Edit Data Pendaftar
+            <a href="{{ url('pemilik/data-user') }}" class="float-end btn btn-outline-success btn-sm mb-2" >View All</a>
+        </h3>
+      </div>
 
         <div class="col-12">
             <div class="card">
@@ -22,7 +22,7 @@
                 @if(Session::has('success'))
                   <p class="text-success">{{ session('success') }}</p>
                 @endif
-                <h4 class="card-title">Data User Pendaftar ({{ $item->name }})</h4>
+                <h4 class="card-title mb-5"><u>Data Pendaftar <b class="text-primary">{{ $item->name }}</u></b></h4>
                 {{--  <form class="form-sample" action="{{ url('pemilik/data-user') }}" method="POST">  --}}
                   <form action="{{ route('data-user.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                   @csrf
@@ -122,7 +122,7 @@
                         <label class="col-sm-3 col-form-label"><b>Alasan Penolakan</b></label>
                         <div class="col-sm-9">
                           {{--  <input type="text-area" class="form-control" placeholder="Masukkan Alasan Penolakan"/>  --}}
-                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" value="{{ $item->alasan_penolakan }}" autocomplete="off" placeholder="Masukkan Alasan Penolakan"></textarea></td>
+                          <td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" autocomplete="off" placeholder="Masukkan Alasan Penolakan">{{ $item->alasan_penolakan }}</textarea></td>
                         </div>
                       </div>
                     </div> 

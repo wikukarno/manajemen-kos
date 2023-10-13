@@ -170,7 +170,7 @@ class DataPenyewaController extends Controller
     public function update(Request $request, string $id)
     {
         $item = User::findOrFail($id);
-       
+       // kode bag wiku
     //     if ($request->hasFile('dokumen')){
     //         if($item->dokumen != null){
     //             // dd($item->dokumen);
@@ -181,6 +181,7 @@ class DataPenyewaController extends Controller
     //         $oldFile = $item->dokumen;
     //    }
 
+        // untuk ktp
         if ($request->hasFile('dokumen')) {
             if ($item->dokumen != null) {
                 Storage::disk('public')->delete($item->dokumen);

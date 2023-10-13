@@ -9,8 +9,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mt-3">Data Pendaftar <a href="{{ route('data-user.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
+                        <h3 class="card-title mt-3"><b>Data Pendaftar </b><a href="{{ route('data-user.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
                     </div>
+
                     <div class="card-body">
                         @if(Session::has('success'))
                             <p class="text-success">{{ session('success') }}</p>
@@ -68,7 +69,17 @@
             { data: 'role', name: 'role' },
             { data: 'status_akun', name: 'status_akun' },
             { data: 'hp', name: 'hp' },
-            { data: 'alasan_penolakan', name: 'alasan_penolakan' },
+            {
+                data: 'alasan_penolakan',
+                name: 'alasan_penolakan',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 20 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                    }
+                    return data;
+                }
+            },
             { data: 'action', name: 'action' },
         ],
     });
