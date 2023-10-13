@@ -22,6 +22,7 @@ use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\Penghuni\PaymentsController;
+use App\Models\DataUser;
 use App\Models\TipeKamar;
 use Database\Factories\KamarFactory;
 
@@ -46,10 +47,11 @@ Route::get('/', [KamarController::class, 'index'])->name('home');
 Route::get('/availability', [AvailabilityController::class, 'index'])->name('availabality');
 //detail kamar
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
+// Route::post('/availability/detail-kamar/{slug}', [detailKamar::class, 'store']);
+Route::resource('pesanan', DataUserController::class);
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
 
-Route::get('detailKamar', [detailKamar::class,'store'])->name('pemesanan');
 
 
 
