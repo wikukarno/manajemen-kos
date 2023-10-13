@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kamar;
+use App\Models\TipeKamar;
 use Illuminate\Http\Request;
 
-class DataKamarController extends Controller
+class TipeKamarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,42 +14,27 @@ class DataKamarController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = Kamar::query();
+            $query = TipeKamar::query();
             // $query = User::where('role', 'pendaftar');
 
             return datatables()->of($query)
                 ->addIndexColumn()
                 
-                ->editColumn('nomor_kamar', function ($item) {
-                    return $item->nomor_kamar ?? '-';
-                })
-                ->editColumn('id_tipe', function ($item) {
-                    return $item->id_tipe ?? '-';
-                })
-                ->editColumn('deskripsi', function ($item) {
-                    return $item->deskripsi ?? '-';
-                })
-                ->editColumn('status', function ($item) {
-                    return $item->status ?? '-';
+                ->editColumn('name', function ($item) {
+                    return $item->name ?? '-';
                 })
                 ->editColumn('slug', function ($item) {
                     return $item->slug ?? '-';
                 })
-                ->editColumn('harga', function ($item) {
-                    return $item->harga ?? '-';
-                })
                 ->editColumn('action', function ($item) {
                     return '
                                 <div class="d-flex">
-                                    <a href="' . route('data-kamar.show', $item->id) . '" title="Tampil Detail" class="btn btn-outline-primary btn-sm mb-0 mx-1 ">
+                                    <a href="' . route('tipe-kamar.show', $item->id) . '" title="Tampil Detail" class="btn btn-outline-primary btn-sm mb-0 mx-1 ">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="' . route('data-kamar.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
+                                    <a href="' . route('tipe-kamar.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataKamar(' . $item->id . ')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
                                 </div> 
                             ';
 
@@ -59,8 +44,8 @@ class DataKamarController extends Controller
                 ->make(true);
         }
 
-        $item=Kamar::find(auth()->user()->id);
-        return view('pages.admin.datakamar.index', compact('item'));
+        $item=TipeKamar::find(auth()->user()->id);
+        return view('pages.admin.tipekamar.index', compact('item'));
     }
 
     /**
@@ -106,15 +91,8 @@ class DataKamarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request)
+    public function destroy(string $id)
     {
-        $item = Kamar::findOrFail($request->id);
-        $item->delete();
-
-        if ($item) {
-            return Response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
-        } else {
-            return Response()->json(['status' => false, 'message' => 'Data gagal dihapus!']);
-        }
+        //
     }
 }

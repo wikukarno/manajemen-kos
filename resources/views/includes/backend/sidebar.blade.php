@@ -43,7 +43,13 @@
 						<span>Kamar</span>
 					</a>
 				</li>
-				<li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Tipe Kamar</a></li>
+				<li class="nav-item {{ (request()->is('pemilik/data-kamar*') ? 'active' : '') }}">
+					{{--  <a class="nav-link">Kamar</a>  --}}
+					<a class="nav-link"
+						href="/pemilik/tipe-kamar">
+						<span>Tipe Kamar</span>
+					</a>
+				</li>
 			  </ul>
 			</div>
 		  </li>

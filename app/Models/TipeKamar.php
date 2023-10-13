@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Kamar;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TipeKamar extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
         public function kamar()
     {
         return $this->belongsTo(Kamar::class, 'id_tipe', 'id');
