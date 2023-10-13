@@ -48,8 +48,8 @@ Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
 
-Route::get('detailKamar', [detailKamar::class,'index']);
-Route::post('detailKamar', [detailKamar::class, 'store'])->name('simpan-data');
+Route::get('detailKamar', [detailKamar::class,'store'])->name('pemesanan');
+
 
 
 
