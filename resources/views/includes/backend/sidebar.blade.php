@@ -36,6 +36,14 @@
 			</a>
 			<div class="collapse" id="ui-basic">
 			  <ul class="nav flex-column sub-menu">
+
+				<li class="nav-item {{ (request()->is('pemilik/tipe-kamar*') ? 'active' : '') }}">
+					{{--  <a class="nav-link">Kamar</a>  --}}
+					<a class="nav-link"
+						href="/pemilik/tipe-kamar">
+						<span>Tipe Kamar</span>
+					</a>
+				</li>
 				<li class="nav-item {{ (request()->is('pemilik/data-kamar*') ? 'active' : '') }}">
 					{{--  <a class="nav-link">Kamar</a>  --}}
 					<a class="nav-link"
@@ -43,13 +51,7 @@
 						<span>Kamar</span>
 					</a>
 				</li>
-				<li class="nav-item {{ (request()->is('pemilik/data-kamar*') ? 'active' : '') }}">
-					{{--  <a class="nav-link">Kamar</a>  --}}
-					<a class="nav-link"
-						href="/pemilik/tipe-kamar">
-						<span>Tipe Kamar</span>
-					</a>
-				</li>
+				
 			  </ul>
 			</div>
 		  </li>
