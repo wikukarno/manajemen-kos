@@ -75,6 +75,8 @@ Route::prefix('pemilik')
         // untuk TipeKamar
         Route::resource('tipe-kamar', AdminTipeKamarController::class);
         Route::delete('tipe-kamar/delete', [AdminTipeKamarController::class, 'destroy']);
+        // untuk slug
+        Route::get('/pemilik/tipe-kamar/checkSlug', [AdminTipeKamarController::class, 'checkSlug'])->middleware('auth');
 
     });
 
