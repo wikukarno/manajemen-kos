@@ -44,7 +44,7 @@ class TipeKamarController extends Controller
                 ->make(true);
         }
 
-        $item=TipeKamar::find(auth()->user()->id);
+        $item=TipeKamar::all();
         return view('pages.admin.tipekamar.index', compact('item'));
     }
 
@@ -53,7 +53,9 @@ class TipeKamarController extends Controller
      */
     public function create()
     {
-        //
+        $item=TipeKamar::all();
+        // untuk mengubah bagian create nya
+        return view('pages.admin.tipekamar.create', compact('item'));
     }
 
     /**
