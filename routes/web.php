@@ -48,12 +48,12 @@ Route::get('/', [KamarController::class, 'index'])->name('home');
 Route::get('/availability', [AvailabilityController::class, 'index'])->name('availabality');
 //detail kamar
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
-// Route::post('/availability/detail-kamar/{slug}', [detailKamar::class, 'store']);
-Route::resource('pesanan', DataUserController::class);
+Route::post('/availability/detail-kamar/pemesanan', [detailKamar::class,'store'])->name('availability.detail-kamar.pemesanan');
+
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
 
-
+                                                         
 
 
 

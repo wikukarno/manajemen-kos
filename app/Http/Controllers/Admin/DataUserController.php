@@ -94,6 +94,8 @@ class DataUserController extends Controller
         return redirect('pemilik/data-user')->with('success', 'Data Hass Been Added');
     }
 
+    
+
     /**
      * Display the specified resource.
      */
