@@ -16,7 +16,7 @@ class FormPenghuniController extends Controller
     public function index()
     {
         $item=User::find(auth()->user()->id);
-
+        
         return view('pages.penghuni.form.index', compact('item'));
     }
 

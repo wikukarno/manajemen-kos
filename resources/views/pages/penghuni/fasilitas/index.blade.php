@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Kamar')
+@section('title', 'Fasilitas Kamar')
 
 @section('content')
-<form action="{{ route('form-permintaan-penghuni.update', $item->id) }}" method="post">
+<form action="{{ route('fasilitas-penghuni.update', $item->id) }}" method="post">
   @csrf
   @method('put')
   <div class="row">
       	<div class="col-12">  
           	<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Sewa Kamar</h4>
+					<h4 class="card-title">Fasilitas Kamar</h4>
 					<form class="forms-sample">
 						<div class="form-group">
 							<label for="harga">Tipe Kamar</label>
@@ -106,7 +106,7 @@
 						</div>  --}}
 						</div>
 						<button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-						<button class="btn btn-light">Cancel</button>
+						<a href="{{ route('fasilitas-penghuni.index') }}" class="btn btn-light">Cancel</a>
 					</form>
 				</div>
           	</div>

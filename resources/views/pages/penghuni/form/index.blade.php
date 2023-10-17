@@ -7,6 +7,11 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
           	<div class="card-body">
+			@if(session()->has('success'))
+				<div class="alert alert-success col-lg-12" role="alert">
+				{{ session('success') }}
+				</div>
+			@endif
             <h3 class="card-title">Form Penghuni</h3>
             <form class="form-sample">
 				<div class="row">
@@ -108,7 +113,7 @@
 									@if ($item->dokumen != null)
 									<img src="{{ Storage::url($item->dokumen) }}"class="img-fluid">
 									@else
-									<img src="https://source.unsplash.com/500x200?" class="img-fluid">
+									<p><b>Tidak ada file KTP</b></p>
 									<input type="hidden">
 									@endif
 								</div>

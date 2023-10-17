@@ -111,7 +111,7 @@
 									@if ($item->dokumen != null)
 										<img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image">
 									@else
-										<img src="" class="img-fluid" id="preview-image">
+										<p><b>Tidak ada file KTP</b></p>
 									@endif
 									<div class="mt-3">
 										<input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()">
@@ -131,6 +131,7 @@
 						<div class="form-group row mt-5">
 							<div class="col-sm-9">
 								<button type="submit" class="btn btn-primary mt-4">Save</button>
+								<a href="{{ route('form-penghuni.index') }}" class="btn btn-light mt-4 ms-1">Cancel</a>
 							</div>
 						</div>
 					</div>

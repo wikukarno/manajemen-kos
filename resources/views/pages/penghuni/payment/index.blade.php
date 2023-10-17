@@ -8,17 +8,26 @@
 	<div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title mt-3">Riwayat Pembayaran <a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah Pembayaran</a></h3>
+				<h3 class="card-title mt-3">Riwayat Pembayaran 
+					@if($tambahPembayaranDisabled)
+						<a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2 disabled">Tambah Pembayaran</a>
+					@else
+						<a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah Pembayaran</a>
+					@endif
+					</h3>
 			</div>
 			<div class="card-body">
-				{{--  <h4 class="card-title">Riwayat Pembayaran</h4>  --}}
+				@if(session()->has('success'))
+					<div class="alert alert-success col-lg-12" role="alert">
+					{{ session('success') }}
+					</div>
+				@endif
+				<p>Pembayaran ke rekening : <b style="color: red">123456788797 - NA</b></p>
 				<div class="table-responsive">
 					<table id="tb_datapembayaran" class="table table-hover scroll-horizontal-vertical w-100">
 						<thead>
 							<tr>
 								<th> No </th>
-								<th> Tipe Kamar </th>
-								<th> Nomor Kamar </th>
 								<th> Bulan </th>
 								<th> Tahun </th>
 								<th> Tanggal Bayar </th>
@@ -40,12 +49,12 @@
 @endsection
 
 @push('after-script')
-<script>
+{{--  <script>
     $('#form-akun').on('submit', function() {
         $('#btnSave').attr('disabled', 'disabled');
         $('#btnSave').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Menyimpan...');
     });
-</script>
+</script>  --}}
 <script>
     $('#tb_datapembayaran').DataTable({
         processing: true,
@@ -60,8 +69,6 @@
         },
         columns: [
             { data: 'DT_RowIndex', name: 'id' },
-            { data: 'tipe_kamar_penghuni', name: 'tipe_kamar_penghuni' },
-            { data: 'nomor_kamar_penghuni', name: 'nomor_kamar_penghuni' },
             { data: 'bulan', name: 'bulan' },
             { data: 'tahun', name: 'tahun' },
             { data: 'tanggal_bayar', name: 'tanggal_bayar' },

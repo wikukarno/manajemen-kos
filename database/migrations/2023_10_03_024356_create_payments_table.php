@@ -16,9 +16,7 @@ return new class extends Migration
             $table->string('id_user');
             $table->string('bulan');
             $table->integer('tahun');
-            $table->string('tipe_kamar_penghuni');
-            $table->string('nomor_kamar_penghuni');
-            $table->bigInteger('harga_bayar');
+            $table->bigInteger('harga_bayar')->nullable();
             $table->string('bukti_bayar')->nullable();
             $table->date('tanggal_bayar')->nullable();
             $table->date('tanggal_validasi')->nullable();

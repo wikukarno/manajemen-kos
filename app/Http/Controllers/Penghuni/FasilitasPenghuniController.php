@@ -6,16 +6,15 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SewaKamarController extends Controller
+class FasilitasPenghuniController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-            $item=User::find(auth()->user()->id);
-            return view('pages.penghuni.fasilitas.index', compact('item'));
-            
+        $item=User::find(auth()->user()->id);
+        return view('pages.penghuni.fasilitas.index', compact('item'));
     }
 
     /**
