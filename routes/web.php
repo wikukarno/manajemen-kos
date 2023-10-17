@@ -27,6 +27,7 @@ use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\Admin\TipeKamarController as AdminTipeKamarController;
 use App\Http\Controllers\PemesananIsiDataController;
+use App\Http\Controllers\Penghuni\FasilitasPenghuniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +100,7 @@ Route::prefix('penghuni')
         Route::resource('akun-penghuni', AkunPenghuniController::class);
         Route::resource('form-penghuni', FormPenghuniController::class);
         Route::resource('pembayaran-penghuni', PaymentsController::class);
-        Route::resource('form-permintaan-penghuni', SewaKamarController::class)->middleware('belumverifikasi');
+        Route::resource('fasilitas-penghuni', FasilitasPenghuniController::class)->middleware('belumverifikasi');
     });
 
 

@@ -140,9 +140,9 @@
 				</a>
 			</li>
 			@if(Auth::user()->status_akun == 'Belum Verifikasi')
-			<li class="nav-item {{ (request()->is('penghuni/form-permintaan-penghuni*') ? 'active' : '') }}">
+			<li class="nav-item {{ (request()->is('penghuni/fasilitas-penghuni*') ? 'active' : '') }}">
 				<a class="nav-link"
-					href="{{ route('form-permintaan-penghuni.index') }}">
+					href="{{ route('fasilitas-penghuni.index') }}">
 					<span class="menu-title">Fasilitas Kamar</span>
 					<i class="mdi mdi-book menu-icon"></i>
 				</a>
