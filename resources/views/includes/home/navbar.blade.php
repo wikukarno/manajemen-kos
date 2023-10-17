@@ -48,7 +48,7 @@
                                     @endauth
                                     </div>
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuLink">
                                         <li>
                                             @auth
                                                 @if (Auth::user()->role == 'Penghuni')
@@ -65,7 +65,7 @@
                                             <a class="dropdown-item" href="#">
                                                 <form action="{{route('logout')}}" method="post">
                                                     @csrf
-                                                    <button class="btn btn-primary btn-sm" type="submit">Keluar</button>
+                                                    <button class="btn btn-primary btn-sm">Keluar <i class="fa-solid fa-right-from-bracket"></i></button>
                                                 </form>
                                             </a>
                                         </li>
