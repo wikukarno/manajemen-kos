@@ -51,7 +51,7 @@
 
 
                         @auth
-                            <a href="pemesanan/isi-data" type="button" class="btn text-light rounded-5 mt-5"  style="background-color: orange; width:5cm">Pesan</a> 
+                            <a type="button" class="btn text-light rounded-5 mt-5"  style="background-color: orange; width:5cm" href="/isi-data">Pesan</a> 
                             
                         @endauth
                         @guest

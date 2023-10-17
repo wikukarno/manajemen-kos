@@ -51,8 +51,9 @@ Route::get('/availability', [AvailabilityController::class, 'index'])->name('ava
 //detail kamar
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
 
-Route::post('/isi-data', [PemesananIsiDataController::class, 'index'])->name('IsiData');
-// Route::get('/isi-data')
+Route::resource('isi-data', PemesananIsiDataController::class);
+// Route::post('/isi-data', [PemesananIsiDataController::class, 'index'])->name('IsiData');
+// // Route::get('/isi-data')
 
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
