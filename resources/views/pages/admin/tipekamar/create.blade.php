@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Data User')
+@section('title', 'Tambah Tipe Kamar')
 
 @section('content')
 
@@ -27,40 +27,26 @@
                   @csrf
                   <div class="card">
                     <div class="form-group">
-                      <label for="exampleInputName1">Nama Kamar</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                      <label for="name">Nama Tipe Kamar</label>
+                      <input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama Tipe Kamar" autocomplete="off" required value="{{ old('name') }}"/>
+                          @error('name')
+                          {{-- untuk info yang salah yang mana --}}
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>            
+                          @enderror
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                      <label for="slug" class="form-label">Slug</label>
+                      <input name="slug" id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Masukkan Slug" autocomplete="off" required value="{{ old('slug') }}"/>
+                          @error('slug')
+                            {{-- untuk info yang salah yang mana --}}
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>            
+                          @enderror
                     </div>
-                    <div class="form-group">
-                      <label for="exampleSelectGender">Gender</label>
-                      <select class="form-control" id="exampleSelectGender">
-                        <option>Male</option>
-                        <option>Female</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>File upload</label>
-                      <input type="file" name="img[]" class="file-upload-default">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputCity1">City</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleTextarea1">Textarea</label>
-                      <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    
                   </div>
                   <td colspan="2">
                     <input type="submit" class="float-end btn btn-gradient-primary btn-sm">

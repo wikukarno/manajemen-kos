@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\TipeKamar;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Egulias\EmailValidator\Warning\TLD;
 
 class TipeKamarController extends Controller
 {
@@ -63,7 +65,14 @@ class TipeKamarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // untuk mengengisi data nya
+        $item=new TipeKamar();
+        $item->name=$request->name;
+        $item->slug=$request->slug;
+        
+        $item->save();
+
+        return redirect('pemilik/tipe-kamar')->with('success', 'Data Hass Been Added');
     }
 
     /**
@@ -71,7 +80,8 @@ class TipeKamarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item=TipeKamar::find(auth()->user()->id);
+        return view('pages.admin.tipekamar.show', compact('item'));
     }
 
     /**
@@ -97,4 +107,16 @@ class TipeKamarController extends Controller
     {
         //
     }
+
+    /**
+     * untuk mengecek slug
+     */
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(TipeKamar::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
+        
+    }
+
+    
 }
