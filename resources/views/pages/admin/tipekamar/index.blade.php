@@ -24,6 +24,8 @@
                                         <th> No </th>
                                         <th> Nama Kamar </th>
                                         <th> Slug </th>
+                                        <th> Detail </th>
+                                        <th> Harga </th>
                                         <th> Action </th>
                                     </tr>
                                 </thead>
@@ -63,6 +65,18 @@
             { data: 'DT_RowIndex', name: 'id' },
             { data: 'name', name: 'name' },
             { data: 'slug', name: 'slug' },
+            {
+                data: 'detail',
+                name: 'detail',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 20 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                    }
+                    return data;
+                }
+            },
+            { data: 'harga', name: 'harga' },
             { data: 'action', name: 'action' },
         ],
     });

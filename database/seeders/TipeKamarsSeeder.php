@@ -18,11 +18,15 @@ class TipeKamarsSeeder extends Seeder
                 'id'=>1,
                 'name'=>"Tipe 1",
                 'slug'=>"tipe-1",
+                'detail'=>'Tempat tidur 1, Meja Belajar 1, Kamar mandi di dalam kamar',
+                'harga'=>500000
             ],
             [
                 'id'=>2,
                 'name'=>"Tipe 2",
                 'slug'=>"tipe-2",
+                'detail'=>'Tempat tidur 2, Meja Belajar 2, Kamar mandi di dalam kamar',
+                'harga'=>700000
             ]
         ];
         TipeKamar::insert($types);

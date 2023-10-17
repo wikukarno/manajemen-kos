@@ -68,7 +68,9 @@ class DataKamarController extends Controller
      */
     public function create()
     {
-        //
+        $item=Kamar::all();
+        // untuk mengubah bagian create nya
+        return view('pages.admin.datakamar.create', compact('item'));
     }
 
     /**
@@ -76,7 +78,17 @@ class DataKamarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // untuk mengengisi data nya
+        $item=new Kamar();
+        $item->nomor_kamar=$request->nomor_kamar;
+        $item->id_tipe=$request->id_tipe;
+        $item->deskripsi=$request->deskripsi;
+        $item->status=$request->status;
+        $item->slug=$request->slug;
+        $item->harga=$request->harga;
+        $item->save();
+
+        return redirect('pemilik/data-kamar')->with('success', 'Data Hass Been Added');
     }
 
     /**
@@ -84,7 +96,9 @@ class DataKamarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item=Kamar::find($id);
+        // untuk mengubah bagian create nya
+        return view('pages.admin.datakamar.show', compact('item'));
     }
 
     /**
