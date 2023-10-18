@@ -102,6 +102,7 @@ class PaymentsController extends Controller
 
         // Membuat array untuk status pembayaran setiap bulan
         $statusPembayaran = [];
+        $tanggalSekarang = Carbon::now()->isoFormat('D-MMMM-Y');
 
         // untuk mendeteksi bulan yang status pembayarannya Lunas
         foreach ($bulanNames as $bulan) {
@@ -109,7 +110,7 @@ class PaymentsController extends Controller
             $statusPembayaran[$bulan] = $status;
         }
 
-        return view('pages.penghuni.payment.create', compact('bulanNames', 'statusPembayaran', 'tahun'));
+        return view('pages.penghuni.payment.create', compact('bulanNames', 'statusPembayaran', 'tahun', 'tanggalSekarang'));
     }
 
     /**

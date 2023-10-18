@@ -14,6 +14,9 @@
 				<form action="{{ route('pembayaran-penghuni.store') }}" method="POST" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group">
+						<label for="tipekamar">Tanggal Hari Ini : <b style="color: rgb(91, 0, 125)">{{ $tanggalSekarang }}</b></label>
+					</div>
+					<div class="form-group">
 						<label for="tipekamar">Tipe Kamar</label>
 						<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="" disabled> 
 						{{--  {{ $payment->tipe_kamar_penghuni }}  --}}

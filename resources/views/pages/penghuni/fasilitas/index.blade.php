@@ -7,10 +7,12 @@
   @csrf
   @method('put')
   <div class="row">
-      	<div class="col-12">  
+      	<div class="col-12 grid-margin stretch-card">  
           	<div class="card">
+				<div class="card-header">
+					<h4 class="card-title mt-3">Fasilitas Kamar</h4>
+				</div>
 				<div class="card-body">
-					<h4 class="card-title">Fasilitas Kamar</h4>
 					<form class="forms-sample">
 						<div class="form-group">
 							<label for="harga">Tipe Kamar</label>

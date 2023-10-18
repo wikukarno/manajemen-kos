@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('data_penghunis', function (Blueprint $table) {
             $table->id();
             $table->string('id_penghuni');
-            $table->integer('nomor_kamar_penghuni')->nullable();
-            $table->string('tipe_kamar_penghuni')->nullable();
-            $table->bigInteger('harga_kamar_penghuni')->nullable();
+            $table->string('id_kamar');
             $table->string('fasilitas')->nullable();
             $table->timestamps();
             $table->softDeletes();
