@@ -18,4 +18,9 @@ class Payment extends Model
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+
+    public function kamars()
+    {
+        return $this->belongsTo(User::class, 'id_kamar', 'id');
+    }
 }
