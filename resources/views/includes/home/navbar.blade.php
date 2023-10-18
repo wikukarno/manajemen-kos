@@ -65,7 +65,7 @@
                                             <a class="dropdown-item" href="#">
                                                 <form action="{{route('logout')}}" method="post">
                                                     @csrf
-                                                    <button class="btn btn-primary btn-sm">Keluar <i class="fa-solid fa-right-from-bracket"></i></button>
+                                                    <button class="btn btn-primary btn-md">Keluar<i class="fa-solid fa-right-from-bracket" style="margin-left: 18px; margin-right:8px"></i></button>
                                                 </form>
                                             </a>
                                         </li>
