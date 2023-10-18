@@ -106,7 +106,11 @@ class DataKamarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Kamar::findOrFail($id);
+        // untuk menampilkan ke halaman edit nya
+        return view('pages.admin.datakamar.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -114,7 +118,17 @@ class DataKamarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Kamar::findOrFail($id);
+        $item->update([
+            'nomor_kamar'=>$request->nomor_kamar,
+            'id_tipe'=>$request->id_tipe,
+            'deskripsi'=>$request->deskripsi,
+            'status'=>$request->status,
+            'slug'=>$request->slug,
+            'harga'=>$request->harga
+        ]);
+
+        return redirect()->route('data-kamar.index')->with('success', 'Data has been updated!');
     }
 
     /**
