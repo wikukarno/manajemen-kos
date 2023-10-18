@@ -26,6 +26,7 @@ use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\Admin\TipeKamarController as AdminTipeKamarController;
+use App\Http\Controllers\AkunPendaftarController;
 use App\Http\Controllers\PemesananIsiDataController;
 use App\Http\Controllers\Penghuni\FasilitasPenghuniController;
 
@@ -57,6 +58,8 @@ Route::resource('isi-data', PemesananIsiDataController::class);
 
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
+//akun
+Route::get('akun-pendaftar', [AkunPendaftarController::class, 'index'])->name('akun');
 
                                                          
 

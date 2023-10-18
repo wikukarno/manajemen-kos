@@ -78,6 +78,13 @@
 				<i class="mdi mdi-cash-multiple menu-icon"></i>
 			</a>
 		</li>
+		<li class="nav-item">
+			<a class="nav-link"
+				href="/">
+				<span class="menu-title">Halaman Utama</span>
+				<i class="mdi mdi-format-list-bulleted menu-icon"></i>
+			</a>
+		</li>
 		<li class="nav-item sidebar-actions">
 			<span class="nav-link d-grid">
 				<form action="{{ route('logout') }}" method="POST">
