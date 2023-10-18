@@ -60,7 +60,7 @@ Route::resource('isi-data', PemesananIsiDataController::class);
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
 //akun
-Route::get('akun-pendaftar', [AkunPendaftarController::class, 'index'])->name('akun');
+Route::resource('akun-pendaftar', AkunPendaftarController::class);
 
                                                          
 
@@ -97,7 +97,7 @@ Route::prefix('pendaftar')
     ->group(function () {
         Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
         Route::get('/akun', [AkunUserController::class, 'index'])->name('akun.user');
-        Route::resource('akun-pendaftar', AkunUserController::class);
+        // Route::resource('akun-pendaftar', AkunUserController::class);
     });
 
 Route::prefix('penghuni')

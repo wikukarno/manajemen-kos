@@ -55,7 +55,7 @@
                                                 <a href="{{route('penghuni.dashboard')}}" class="dropdown-item">
                                                     <i class="fas fa-user me-2 text-success"></i>Akun saya</a>
                                                 @elseif (Auth::user()->role == 'Pendaftar')
-                                                <a href="{{route('akun')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
+                                                <a href="{{route('akun-pendaftar.index')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
                                                 @else
                                                 <a href="{{route('admin.dashboard')}}" class="dropdown-item"><i class="fas fa-user me-2 text-success"></i>Akun saya</a>
                                                 @endif
