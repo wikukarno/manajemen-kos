@@ -28,6 +28,12 @@ class TipeKamarController extends Controller
                 ->editColumn('slug', function ($item) {
                     return $item->slug ?? '-';
                 })
+                ->editColumn('detail', function ($item) {
+                    return $item->detail ?? '-';
+                })
+                ->editColumn('harga', function ($item) {
+                    return $item->harga ?? '-';
+                })
                 ->editColumn('action', function ($item) {
                     return '
                                 <div class="d-flex">
@@ -69,6 +75,8 @@ class TipeKamarController extends Controller
         $item=new TipeKamar();
         $item->name=$request->name;
         $item->slug=$request->slug;
+        $item->detail=$request->detail;
+        $item->harga=$request->slug;
         
         $item->save();
 
@@ -89,7 +97,11 @@ class TipeKamarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = TipeKamar::findOrFail($id);
+        // untuk menampilkan ke halaman edit nya
+        return view('pages.admin.tipekamar.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -97,7 +109,21 @@ class TipeKamarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = TipeKamar::findOrFail($id);
+        $item->update([
+            'name'=>$request->name,
+            'slug'=>$request->slug,
+            'detail'=>$request->detail,
+            'harga'=>$request->harga
+        ]);
+
+        return redirect()->route('tipe-kamar.index')->with('success', 'Data has been updated!');
+
+        // $data=$request->all();
+        // $item = TipeKamar::findOrFail($id);
+
+        // $item->update($data);
+        // return redirect()->route('tipe-kamar.index')->with('success', 'Data has been updated!');
     }
 
     /**
