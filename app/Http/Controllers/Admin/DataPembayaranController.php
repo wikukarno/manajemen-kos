@@ -24,7 +24,7 @@ class DataPembayaranController extends Controller
                 ->editColumn('id_user', function ($item) {
                     return $item->users ? $item->users->name : '-';
                 })
-                ->editColumn('id_kamar', function ($item) {
+                ->editColumn('id_tipe', function ($item) {
                     return $item->kamars ? $item->kamars->id_tipe : '-';
                 })
                 ->editColumn('harga_bayar', function ($item) {

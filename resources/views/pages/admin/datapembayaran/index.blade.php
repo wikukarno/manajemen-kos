@@ -69,7 +69,7 @@
         columns: [
             { data: 'DT_RowIndex', name: 'id' },
             { data: 'id_user', name: 'id_user' },
-            { data: 'id_kamar', name: 'id_kamar' },
+            { data: 'id_tipe', name: 'id_tipe' },
             { data: 'harga_bayar', name: 'harga_bayar' },
             { data: 'bulan', name: 'bulan' },
             { data: 'tahun', name: 'tahun' },
