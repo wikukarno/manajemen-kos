@@ -22,9 +22,9 @@ class User extends Authenticatable
         'id',
     ];
 
-    public function payments()
+    public function users()
     {
-        return $this->hasMany(Payment::class, 'id_user');
+        return $this->belongsTo(Payment::class, 'id_user', 'id');
 
         // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
     }

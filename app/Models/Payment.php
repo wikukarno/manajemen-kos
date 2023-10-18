@@ -21,6 +21,6 @@ class Payment extends Model
 
     public function kamars()
     {
-        return $this->belongsTo(User::class, 'id_kamar', 'id');
+        return $this->belongsTo(Kamar::class, 'id_kamar', 'id');
     }
 }
