@@ -21,12 +21,14 @@ class detailKamar extends Controller
     
     public function index( Request $request, $id)
     {
+        $type = Kamar::with('type')->get();
         $kamar = Kamar::where('slug', $id)->firstOrFail();
         $user = User::all();
        
         return view('detailKamar', [
             'kamar' => $kamar,
             'user' => $user,
+            'deskripsi' => $type,
         ]);
     }
 

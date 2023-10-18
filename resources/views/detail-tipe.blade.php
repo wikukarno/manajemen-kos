@@ -9,7 +9,7 @@
         <!-- Room Start -->
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-center text-primary text-uppercase">Tipe Kamar {{$tipeKamar->name }}</h6>
+                    <h6 class="section-title text-center text-primary text-uppercase mt-5">Tipe Kamar {{$tipeKamar->name }}</h6>
                     <h1 class="mb-5">Pilihanan<span class="text-primary text-uppercase"> Kamar</span></h1>
                 </div>
 
@@ -30,25 +30,12 @@
                                     <h5 class="mb-0">{{ $kamar->tipe }}</h5>
                                    
                                 </div>
-                                <div class="d-flex mb-3">
-                                    @if ($kamar->tipe=='Tipe 1')
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1 bed</small>
-                                    @elseif ($kamar->tipe=='Tipe 2')
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>2 bed</small>
-                                    @endif
-
-                                    <small ><i class="fa fa-bath text-primary me-2"></i>Kamar mandi di dalam kamar</small>
-                                    
-                                </div>
-                               
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('detail', $kamar->slug)}}">Lihat Ditel Kamar</a>
-                                    
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-3" href="{{route('detail', $kamar->slug)}}">Cek Kamar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        
                     @endforeach
                 </div>
             </div>

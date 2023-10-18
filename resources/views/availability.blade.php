@@ -37,9 +37,8 @@
                
                 <div class="row mb-5 justify-content-center">
                     @foreach ($availabilitys as $availability)
-                    <div class="col-md-4" style="margin-bottom: 40px">
-                        <div class="room-item shadow rounded overflow-hidden">
-                            
+                    <div class="col-md-4" style="margin-bottom: 30px">
+                        <div class="room-item shadow rounded overflow-hidden"> 
                             <div class="position-relative">
                                 <img class="img-fluid" src="/image/img/room-1.jpg" alt="">
                                 <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">Rp {{ $availability->harga }}</small>
@@ -50,26 +49,14 @@
                                 <div class="d-flex justify-content-between mb-3">
                                     <h5 class="mb-0">{{ $availability->tipe }}</h5>
                                    
-                                </div>
-                                <div class="d-flex mb-3">
-                                    @if ($availability->tipe=='Tipe 1')
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1 bed</small>
-                                    @elseif ($availability->tipe=='Tipe 2')
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>2 bed</small>
-                                    @endif
-
-                                    <small ><i class="fa fa-bath text-primary me-2"></i>Kamar mandi di dalam kamar</small>
-                                    
-                                </div>
-                               
+                                </div>                               
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('detail', $availability->slug)}}">Lihat Ditel</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-3" href="{{route('detail', $availability->slug)}}">Cek Kamar</a>
                                     
                                 </div>
                             </div>
                         </div>
                     </div>
-                        
                     @endforeach
                 </div>
             </div>

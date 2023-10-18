@@ -29,6 +29,7 @@ use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\Admin\TipeKamarController as AdminTipeKamarController;
 use App\Http\Controllers\AkunPendaftarController;
 use App\Http\Controllers\PemesananIsiDataController;
+use App\Http\Controllers\Penghuni\DataPenghuniController;
 use App\Http\Controllers\Penghuni\FasilitasPenghuniController;
 
 /*
@@ -54,8 +55,7 @@ Route::get('/availability', [AvailabilityController::class, 'index'])->name('ava
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
 
 Route::resource('isi-data', PemesananIsiDataController::class);
-// Route::post('/isi-data', [PemesananIsiDataController::class, 'index'])->name('IsiData');
-// // Route::get('/isi-data')
+Route::resource('pembayaran-awal', DataPenghuniController::class);
 
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');

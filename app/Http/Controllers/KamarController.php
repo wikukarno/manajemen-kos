@@ -14,14 +14,12 @@ class KamarController extends Controller
      */
     public function index()
     {
-
+        // $type = Kamar::with('type')->get();
         $type = TipeKamar::all()->take(2);
         return view('kamar', [
                 'types' => $type
+                // 'deskripsi' => $deskripsi
         ]);
-            
-        
-
     }
 
     /**

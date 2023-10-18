@@ -107,16 +107,15 @@
                                    
                                 </div>
                                 <div class="d-flex mb-3">
-                                    @if ($tipe->tipe=='Tipe 1')
+                                    @if ($tipe->id==1)
                                     <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1 bed</small>
-                                    @elseif ($tipe->tipe=='Tipe 2')
+                                    @elseif ($tipe->id==2)
                                     <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>2 bed</small>
                                     @endif
 
                                     <small ><i class="fa fa-bath text-primary me-2"></i>Kamar mandi di dalam kamar</small>
                                     
                                 </div>
-                               
                                 <div class="d-flex justify-content-between">
                                     <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('detailTipe', $tipe->slug)}}">Lihat Kamar</a>
                                     

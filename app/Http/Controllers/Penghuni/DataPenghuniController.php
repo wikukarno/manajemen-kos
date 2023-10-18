@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Penghuni;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Kamar;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DataPenghuniController extends Controller
 {
@@ -12,7 +16,10 @@ class DataPenghuniController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::find(auth()->user()->id);
+        $kamars = Kamar::all();
+       
+        return view('PembayaranAwal', compact('kamars', 'user'));
     }
 
     /**
