@@ -71,9 +71,9 @@
 				<i class="mdi mdi-book menu-icon"></i>
 			</a>
 		</li>
-		<li class="nav-item">
+		<li class="nav-item {{ (request()->is('pemilik/data-pembayaran*') ? 'active' : '') }}">
 			<a class="nav-link"
-				href="#">
+				href="/pemilik/data-pembayaran">
 				<span class="menu-title">Pembayaran</span>
 				<i class="mdi mdi-cash-multiple menu-icon"></i>
 			</a>
