@@ -16,6 +16,10 @@ class TipeKamar extends Model
         return $this->belongsTo(Kamar::class, 'id_tipe', 'id');
     }
 
+    protected $guarded = [
+        'id',
+    ];
+
     public function sluggable(): array
     {
         return [
