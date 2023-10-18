@@ -21,6 +21,7 @@ use App\Http\Controllers\Penghuni\PaymentsController;
 use App\Http\Controllers\Penghuni\SewaKamarController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\DataPembayaranController;
 use App\Http\Controllers\Penghuni\AkunPenghuniController;
 use App\Http\Controllers\Penghuni\FormPenghuniController;
 use App\Http\Controllers\Penghuni\FormPembayaranController;
@@ -83,8 +84,11 @@ Route::prefix('pemilik')
         // untuk TipeKamar
         Route::resource('tipe-kamar', AdminTipeKamarController::class);
         Route::delete('tipe-kamar/delete', [AdminTipeKamarController::class, 'destroy']);
-        // untuk slug
+        // untuk slug tipe kamar
         Route::get('/pemilik/tipe-kamar/checkSlug', [AdminTipeKamarController::class, 'checkSlug'])->middleware('auth');
+        // untuk DataPembayaran
+        Route::resource('data-pembayaran', DataPembayaranController::class);
+        Route::delete('data-pembayaran/delete', [DataPembayaranController::class, 'destroy']);
 
     });
 
