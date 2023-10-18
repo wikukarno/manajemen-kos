@@ -19,7 +19,6 @@ class PemesananIsiDataController extends Controller
         $kamars = Kamar::all();
        
         return view('IsiData', compact('kamars', 'user'));
-        
     }
 
     /**
