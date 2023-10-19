@@ -49,14 +49,29 @@ class PaymentsController extends Controller
                     return $item->jumlah ?? '-';
                 })
                 ->editColumn('status', function ($item) {
-                    return $item->status ?? '-';
+                    $status = $item->status ?? '-';
+                    if($status === 'Lunas') {
+                        return '<div class="badge badge-success text-dark">'.$status.'</div>';
+                    } elseif($status === 'Menunggu Validasi') {
+                        return '<div class="badge badge-warning text-dark">'.$status.'</div>';
+                    } else {
+                        return '<div class="badge badge-danger text-light">'.$status.'</div>';
+                    }
                 })
                 ->editColumn('keterangan', function ($item) {
                     return $item->keterangan ?? '-';
-
+                })
+                ->editColumn('aksi', function ($item) {
+                    return '
+                                <div class="d-flex">
+                                    <a href="' . route('pembayaran-penghuni.show', $item->id) . '" title="Tampil Detail" class="btn btn-outline-primary btn-sm mb-0 mx-1 ">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div> 
+                            ';
                 })
                 // memenghilangkan tag html
-                // ->rawColumns(['action'])
+                ->rawColumns(['status', 'aksi'])
                 ->make(true);
         }
 
@@ -104,9 +119,13 @@ class PaymentsController extends Controller
         $statusPembayaran = [];
         $tanggalSekarang = Carbon::now()->isoFormat('D-MMMM-Y');
 
-        // untuk mendeteksi bulan yang status pembayarannya Lunas
+        // untuk mendeteksi bulan yang status pembayarannya Lunas berdasarkan id yang login
         foreach ($bulanNames as $bulan) {
-            $status = Payment::where('bulan', $bulan)->where('tahun', $tahun)->where('status', 'Lunas')->exists();
+            $status = Payment::where('bulan', $bulan)
+                ->where('tahun', $tahun)
+                ->where('id_user', auth()->user()->id)
+                ->where('status', 'Lunas')
+                ->exists();
             $statusPembayaran[$bulan] = $status;
         }
 
@@ -152,7 +171,8 @@ class PaymentsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item=User::find($id);
+        return view('pages.penghuni.payment.show', compact('item'));
     }
 
     /**
