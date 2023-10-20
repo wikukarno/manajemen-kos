@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="deskripsi"><b>Deskripsi</b></label>
+                  <label for="deskripsi" class="col-form-label"><b>Deskripsi</b></label>
                   <input name="deskripsi" id="deskripsi" type="text" class="form-control" placeholder="Masukkan deskripsi Kamar" autocomplete="off" required value="{{ $item->deskripsi }}" disabled/>
                 </div>
 

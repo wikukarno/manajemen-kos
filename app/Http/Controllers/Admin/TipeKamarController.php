@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\TipeKamar;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-use Egulias\EmailValidator\Warning\TLD;
 
 class TipeKamarController extends Controller
 {

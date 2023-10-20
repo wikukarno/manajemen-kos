@@ -36,11 +36,11 @@ class DataPembayaranController extends Controller
                 ->editColumn('tahun', function ($item) {
                     return $item->tahun ?? '-';
                 })
-                ->editColumn('bukti_bayar', function ($item) {
-                    return $item->bukti_bayar ?? '-';
-                })
                 ->editColumn('tanggal_bayar', function ($item) {
                     return $item->tanggal_bayar ?? '-';
+                })
+                ->editColumn('bukti_bayar', function ($item) {
+                    return $item->bukti_bayar ?? '-';
                 })
                 ->editColumn('tanggal_validasi', function ($item) {
                     return $item->tanggal_validasi ?? '-';
@@ -99,7 +99,8 @@ class DataPembayaranController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item=Payment::find($id);
+        return view('pages.admin.datapembayaran.show', compact('item'));
     }
 
     /**
@@ -107,7 +108,11 @@ class DataPembayaranController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Payment::findOrFail($id);
+        // untuk menampilkan ke halaman edit nya
+        return view('pages.admin.datapembayaran.edit', [
+            'item' => $item
+        ]);
     }
 
     /**

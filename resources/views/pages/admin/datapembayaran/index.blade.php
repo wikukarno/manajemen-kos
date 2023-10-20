@@ -26,8 +26,8 @@
                                         <th> Harga </th>
                                         <th> Bulan </th>
                                         <th> Tahun </th>
-                                        <th> Bukti </th>
                                         <th> Tanggal Bayar </th>
+                                        <th> Bukti </th>
                                         <th> Tanggal Validasi </th>
                                         <th> Status </th>
                                         <th> Keterangan </th>
@@ -73,8 +73,8 @@
             { data: 'harga_bayar', name: 'harga_bayar' },
             { data: 'bulan', name: 'bulan' },
             { data: 'tahun', name: 'tahun' },
-            { data: 'bukti_bayar', name: 'bukti_bayar' },
             { data: 'tanggal_bayar', name: 'tanggal_bayar' },
+            { data: 'bukti_bayar', name: 'bukti_bayar' },
             { data: 'tanggal_validasi', name: 'tanggal_validasi' },
             { data: 'status', name: 'status' },
             {
