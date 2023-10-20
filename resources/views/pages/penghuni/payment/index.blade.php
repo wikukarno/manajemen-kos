@@ -35,6 +35,7 @@
 								<th> Jumlah Bayar </th>
 								<th> Status </th>
 								<th> Keterangan </th>
+								<th> Aksi </th>
 							</tr>
 						</thead>
 						<tbody>
@@ -76,6 +77,7 @@
             { data: 'jumlah', name: 'jumlah' },
             { data: 'status', name: 'status' },
             { data: 'keterangan', name: 'keterangan' },
+            { data: 'aksi', name: 'aksi' },
         ],
     });
 </script>

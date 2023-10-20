@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('bukti_bayar')->nullable();
             $table->date('tanggal_bayar')->nullable();
             $table->date('tanggal_validasi')->nullable();
-            $table->enum('status', ['Menunggu Validasi', 'Lunas', 'Belum Lunas'])->default('Menunggu Validasi');
+            $table->enum('status', ['Menunggu Validasi', 'Lunas', 'Belum Lunas', 'Unggah Bukti Bayar'])->default('Menunggu Validasi');
             $table->string('keterangan')->nullable();
             $table->timestamps();
             $table->softDeletes();

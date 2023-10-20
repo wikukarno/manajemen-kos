@@ -54,6 +54,8 @@ class PaymentsController extends Controller
                         return '<div class="badge badge-success text-dark">'.$status.'</div>';
                     } elseif($status === 'Menunggu Validasi') {
                         return '<div class="badge badge-warning text-dark">'.$status.'</div>';
+                    } elseif($status === 'Unggah Bukti Bayar') {
+                        return '<div class="badge badge-info text-dark">'.$status.'</div>';
                     } else {
                         return '<div class="badge badge-danger text-light">'.$status.'</div>';
                     }
@@ -88,6 +90,8 @@ class PaymentsController extends Controller
         // jika status pembayaran 'Menunggu Validasi' maka tombol validasi di disabled
         if ($statusPembayaranBulanIni === 'Menunggu Validasi') {
             $tambahPembayaranDisabled = true; 
+        } elseif ($statusPembayaranBulanIni === 'Unggah Bukti Bayar') {
+            $tambahPembayaranDisabled = true;
         } else {
             $tambahPembayaranDisabled = false;
         }
@@ -146,11 +150,25 @@ class PaymentsController extends Controller
         $tahun = Carbon::now()->isoFormat('Y');
         $tanggalBayar = Carbon::now();
     
-        $extension = $request->file('bukti_bayar')->getClientOriginalExtension();
-        $timestamp = now()->timestamp;
-        $nama_file = $bulanBayar . '_' . $tahun . '_' . $idUser . '.' . $timestamp . '.' . $extension;
+        if ($request->hasFile('bukti_bayar')) {
+            $file = $request->file('bukti_bayar');
+        
+            if ($file->isValid()) {
+                $extension = $file->getClientOriginalExtension();
+                $timestamp = now()->timestamp;
+                $nama_file = $bulanBayar . '_' . $tahun . '_' . $idUser . '.' . $timestamp . '.' . $extension;
+        
+                $buktiBayar = $file->storeAs('assets/buktiBayar', $nama_file, 'public');
+            } 
+        } else {
+            $buktiBayar = null;
+        }
 
-        $buktiBayar = $request->file('bukti_bayar')->storeAs('assets/buktiBayar', $nama_file, 'public');
+        if ($buktiBayar == null){
+            $status = 'Unggah Bukti Bayar';
+        } else{
+            $status = 'Menunggu Validasi';
+        }
 
         Payment::create([   
             'id_user' => $idUser,
@@ -158,6 +176,7 @@ class PaymentsController extends Controller
             'tahun' => $tahun,
             'tanggal_bayar' => $tanggalBayar, 
             'bukti_bayar' => $buktiBayar,
+            'status' => $status,
         ]);
 
         // perbedaan return view sama return redirect route 
@@ -172,7 +191,8 @@ class PaymentsController extends Controller
     public function show(string $id)
     {
         $item=User::find($id);
-        return view('pages.penghuni.payment.show', compact('item'));
+        $data=Payment::findOrFail($id);
+        return view('pages.penghuni.payment.show', compact('item', 'data'));
     }
 
     /**
@@ -188,7 +208,32 @@ class PaymentsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Payment::findOrFail($id);
+        $data=$request->all();
+
+        if ($data['bukti_bayar'] == null){
+            $data['status'] = 'Unggah Bukti Bayar';
+        } else{
+            $data['status'] = 'Menunggu Validasi';
+        }
+
+        if ($request->hasFile('bukti_bayar')) {
+            $file = $request->file('bukti_bayar');
+        
+            if ($file->isValid()) {
+                $extension = $file->getClientOriginalExtension();
+                $timestamp = now()->timestamp;
+                $nama_file = $item['bulan'] . '_' . $item['tahun'] . '_' . $item['id_user'] . '.' . $timestamp . '.' . $extension;
+        
+                $data['bukti_bayar'] = $file->storeAs('assets/buktiBayar', $nama_file, 'public');
+            } 
+        } else {
+            $data['bukti_bayar'] = null;
+        }
+
+        $item->update($data);
+
+        return redirect()->route('pembayaran-penghuni.index')->with('success', 'New payment has been added!');
     }
 
     /**
