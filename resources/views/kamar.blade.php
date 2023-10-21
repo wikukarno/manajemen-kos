@@ -248,8 +248,8 @@
 
         <!-- WhatsApp -->
         <div class="row">
-            <div class="col">
-            <a class="btn btn-lg btn-primary btn-lg-square back-to-top btn-social rounded-circle border-success" style="background-color:rgb(12, 203, 12)"  href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F" id="social"><i class="fab fa-whatsapp"></i></a>
+            <div class="col" id="floating-whatsapp">
+                <a class="btn btn-lg btn-primary btn-lg-square back-to-top btn-social-plugin rounded-circle border-success" style="background-color:rgb(12, 203, 12)"  href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F" id="social" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
         

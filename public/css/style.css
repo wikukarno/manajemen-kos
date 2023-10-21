@@ -1,9 +1,8 @@
 /********** Template CSS **********/
 :root {
-    --primary: #FEA116;
+    --primary: #fea116;
     --light: #ffffff;
-;
-    --dark: #0F172B;
+    --dark: #0f172b;
 }
 
 .fw-medium {
@@ -26,36 +25,34 @@
     position: fixed;
     /* display: none; */
     left: 45px;
-    bottom: 45px;
+    bottom: 35px;
     z-index: 99;
 }
-
 
 /*** Spinner ***/
 #spinner {
     opacity: 0;
     visibility: hidden;
-    transition: opacity .2s ease-out, visibility 0s linear .2s;
+    transition: opacity 0.2s ease-out, visibility 0s linear 0.2s;
     z-index: 99999;
 }
 
 #spinner.show {
-    transition: opacity .2s ease-out, visibility 0s linear 0s;
+    transition: opacity 0.2s ease-out, visibility 0s linear 0s;
     visibility: visible;
     opacity: 1;
 }
-
 
 /*** Button ***/
 .btn {
     font-weight: 500;
     text-transform: uppercase;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .btn.btn-primary,
 .btn.btn-secondary {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .btn-square {
@@ -84,12 +81,11 @@
     border-radius: 2px;
 }
 
-
 /*** Navbar ***/
 .navbar-dark .navbar-nav .nav-link {
     margin-right: 30px;
     padding: 25px 0;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 15px;
     text-transform: uppercase;
     outline: none;
@@ -101,12 +97,11 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar-dark .navbar-nav .nav-link  {
+    .navbar-dark .navbar-nav .nav-link {
         margin-right: 0;
         padding: 10px 0;
     }
 }
-
 
 /*** Header ***/
 .carousel-caption {
@@ -114,7 +109,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 43, .7);
+    background: rgba(15, 23, 43, 0.7);
     z-index: 1;
 }
 
@@ -134,7 +129,7 @@
         position: relative;
         min-height: 450px;
     }
-    
+
     #header-carousel .carousel-item img {
         position: absolute;
         width: 100%;
@@ -150,7 +145,7 @@
 }
 
 .page-header-inner {
-    background: rgba(15, 23, 43, .7);
+    background: rgba(15, 23, 43, 0.7);
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -162,7 +157,6 @@
     margin-top: -100px !important;
     z-index: 1;
 }
-
 
 /*** Section Title ***/
 .section-title {
@@ -197,7 +191,6 @@
     display: none;
 }
 
-
 /*** Service ***/
 .service-item {
     height: 320px;
@@ -206,9 +199,9 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background: #FFFFFF;
-    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-    transition: .5s;
+    background: #ffffff;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+    transition: 0.5s;
 }
 
 .service-item:hover {
@@ -219,28 +212,28 @@
     margin: 0 auto 30px auto;
     width: 65px;
     height: 65px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .service-item i,
 .service-item h5,
 .service-item p {
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .service-item:hover i,
 .service-item:hover h5,
 .service-item:hover p {
-    color: #FFFFFF !important;
+    color: #ffffff !important;
 }
-
 
 /*** Youtube Video ***/
 .video {
     position: relative;
     height: 100%;
     min-height: 500px;
-    background: linear-gradient(rgba(15, 23, 43, .1), rgba(15, 23, 43, .1)), url(../img/video.jpg);
+    background: linear-gradient(rgba(15, 23, 43, 0.1), rgba(15, 23, 43, 0.1)),
+        url(../img/video.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -323,12 +316,10 @@
     }
 }
 
-
-
-
 /*** Testimonial ***/
 .testimonial {
-    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../img/carousel-2.jpg);
+    background: linear-gradient(rgba(15, 23, 43, 0.7), rgba(15, 23, 43, 0.7)),
+        url(../img/carousel-2.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -362,25 +353,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: #ffffff;
     background: var(--primary);
     border-radius: 2px;
     font-size: 18px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .testimonial-carousel .owl-nav .owl-prev:hover,
 .testimonial-carousel .owl-nav .owl-next:hover {
     color: var(--primary);
-    background: #FFFFFF;
+    background: #ffffff;
 }
-
 
 /*** Team ***/
 .team-item,
 .team-item .bg-primary,
 .team-item .bg-primary i {
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .team-item:hover {
@@ -394,7 +384,6 @@
 .team-item:hover .bg-primary i {
     color: var(--secondary) !important;
 }
-
 
 /*** Footer ***/
 .newsletter {
@@ -416,9 +405,9 @@
     align-items: center;
     justify-content: center;
     color: var(--light);
-    border: 1px solid #FFFFFF;
+    border: 1px solid #ffffff;
     border-radius: 35px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .footer .btn.btn-social:hover {
@@ -430,11 +419,11 @@
     margin-bottom: 5px;
     padding: 0;
     text-align: left;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 15px;
     font-weight: normal;
     text-transform: capitalize;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .footer .btn.btn-link::before {
@@ -453,7 +442,7 @@
 .footer .copyright {
     padding: 25px 0;
     font-size: 15px;
-    border-top: 1px solid rgba(256, 256, 256, .1);
+    border-top: 1px solid rgba(256, 256, 256, 0.1);
 }
 
 .footer .copyright a {
@@ -463,7 +452,7 @@
 .footer .footer-menu a {
     margin-right: 15px;
     padding-right: 15px;
-    border-right: 1px solid rgba(255, 255, 255, .3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .footer .footer-menu a:last-child {
@@ -473,16 +462,8 @@
 }
 
 #profile-image {
-    
-  width: 30px; /* Sesuaikan ukuran sesuai kebutuhan */
-  height: 30px; /* Sesuaikan ukuran sesuai kebutuhan */
-  border-radius: 50%; /* Membuat gambar berbentuk bulan purnama */
-  background-color: #000; /* Warna latar belakang hitam untuk gambar bulan */
-
-
+    width: 30px; /* Sesuaikan ukuran sesuai kebutuhan */
+    height: 30px; /* Sesuaikan ukuran sesuai kebutuhan */
+    border-radius: 50%; /* Membuat gambar berbentuk bulan purnama */
+    background-color: #000; /* Warna latar belakang hitam untuk gambar bulan */
 }
-
-
-
-
-

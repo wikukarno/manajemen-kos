@@ -12,7 +12,17 @@
 				</div>
 				<div class="nav-profile-text d-flex flex-column">
 					<span class="font-weight-bold mb-2">{{ Auth::user()->name ?? '' }}</span>
-					<span class="text-secondary text-small">{{ Auth::user()->role ?? '' }} | {{ Auth::user()->status_akun ?? '' }}</span>
+					<span class="text-secondary text-small">
+							{{ Auth::user()->role ?? '' }} | 
+							@if( Auth::user()->fasilitas != null)
+								@php
+									Auth::user()->update(['status_akun' => 'Terverifikasi']);
+								@endphp	
+								{{ Auth::user()->status_akun ?? '' }}
+							@else
+								{{ Auth::user()->status_akun ?? '' }}
+							@endif
+						</span>
 				</div>
 				{{--  <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>  --}}
 			</a>
@@ -33,7 +43,7 @@
 			  <span class="menu-title">Data Kamar</span>
 			  <i class="menu-arrow"></i>
 			  <i class="mdi mdi-hotel menu-icon"></i>
-			</a>
+			</a>	
 			<div class="collapse" id="ui-basic">
 			  <ul class="nav flex-column sub-menu">
 
@@ -134,14 +144,14 @@
 		@if (Auth::user()->role == 'Penghuni')
 			<li class="nav-item {{ (request()->is('penghuni/dashboard') ? 'active' : '') }}">
 				<a class="nav-link"
-					href="{{ route('penghuni.dashboard') }}">
+					href="/penghuni/dashboard">
 					<span class="menu-title">Dashboard</span>
 					<i class="mdi mdi-home menu-icon"></i>
 				</a>
 			</li>
 			<li class="nav-item {{ (request()->is('penghuni/form-penghuni*') ? 'active' : '') }}">
 				<a class="nav-link"
-					href="{{ route('form-penghuni.index') }}">
+					href="/penghuni/form-penghuni">
 					<span class="menu-title">Form</span>
 					<i class="mdi mdi-file-document-box menu-icon"></i>
 				</a>
@@ -149,7 +159,7 @@
 			@if(Auth::user()->status_akun == 'Belum Verifikasi')
 			<li class="nav-item {{ (request()->is('penghuni/fasilitas-penghuni*') ? 'active' : '') }}">
 				<a class="nav-link"
-					href="{{ route('fasilitas-penghuni.index') }}">
+					href="/penghuni/fasilitas-penghuni">
 					<span class="menu-title">Fasilitas Kamar</span>
 					<i class="mdi mdi-book menu-icon"></i>
 				</a>
@@ -157,7 +167,7 @@
 			@endif
 			<li class="nav-item {{ (request()->is('penghuni/pembayaran-penghuni*') ? 'active' : '') }}">
 				<a class="nav-link"
-					href="{{ route('pembayaran-penghuni.index') }}">
+					href="/penghuni/pembayaran-penghuni">
 					<span class="menu-title">Pembayaran</span>
 					<i class="mdi mdi-cash-multiple menu-icon"></i>
 				</a>

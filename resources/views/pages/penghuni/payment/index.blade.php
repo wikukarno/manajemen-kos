@@ -4,15 +4,27 @@
 
 @section('content')
 
+<div class="row" style="margin-left: 1px; margin-right:1px">
+	@if($item->fasilitas == null)
+		<div class="alert alert-warning" role="alert">
+			<h4 class="alert-heading">Pemberitahuan</h4>
+			<hr>
+			<p>Lengkapi data untuk kamar anda terlebih dahulu, isi fasilitas yang akan anda pakai selama di kos ini. <a href="{{ route('fasilitas-penghuni.index') }}" class="alert-link">Lengkapi di sini</a></p>
+		</div>	
+	@endif
+</div>
+
 <div class="row">
 	<div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title mt-3">Riwayat Pembayaran 
-					@if($tambahPembayaranDisabled)
-						<a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2 disabled">Tambah Pembayaran</a>
-					@else
-						<a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah Pembayaran</a>
+					@if($item->fasilitas != null)
+						@if($tambahPembayaranDisabled)
+							<a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2 disabled">Tambah Pembayaran</a>
+						@else
+							<a href="{{ route('pembayaran-penghuni.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah Pembayaran</a>
+						@endif
 					@endif
 					</h3>
 			</div>
@@ -47,6 +59,7 @@
 		</div>
 	</div>
 </div>
+
 @endsection
 
 @push('after-script')
@@ -64,7 +77,7 @@
         
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         
-        ordering: [[1, 'asc']],
+        ordering: [[4, 'desc']],
         ajax: {
             url: "{!! url()->current() !!}",
         },
@@ -74,7 +87,7 @@
             { data: 'tahun', name: 'tahun' },
             { data: 'tanggal_bayar', name: 'tanggal_bayar' },
             { data: 'tanggal_validasi', name: 'tanggal_validasi' },
-            { data: 'jumlah', name: 'jumlah' },
+            { data: 'harga_bayar', name: 'harga_bayar' },
             { data: 'status', name: 'status' },
             { data: 'keterangan', name: 'keterangan' },
             { data: 'aksi', name: 'aksi' },

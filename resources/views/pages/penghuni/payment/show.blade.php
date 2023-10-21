@@ -41,13 +41,8 @@
 					@if($data->bukti_bayar == null)
 						<div class="form-group">
 							<label>Unggah Bukti Transfer</label>
-							<div class="input-group col-xs-12">
-								@if ($data->bukti_bayar != null)
-                                  <img src="{{ asset('storage/'. $data->bukti_bayar) }}" class="img-fluid" id="preview-image" width="100px">
-                                @endif
-									<div class="mt-3">
-										<input class="form-control @error('bukti_bayar') is-invalid @enderror" type="file" id="bukti_bayar" name="bukti_bayar" onchange="previewImage()">
-                                  	</div>
+							<div class="mt-3">
+								<input class="form-control @error('bukti_bayar') is-invalid @enderror" type="file" id="bukti_bayar" name="bukti_bayar" onchange="previewImage()">
 							</div>
 						</div>
 						<button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
