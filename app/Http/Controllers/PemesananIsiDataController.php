@@ -135,8 +135,8 @@ class PemesananIsiDataController extends Controller
         // return back();
 
         $user = User::findOrFail($id); 
-        DataPenghuni::where('id', $id)->delete();
-        return redirect()->back()->with('message', 'Data berhasil dihapus');
+        DataPenghuni::where('id_penghuni', $id)->delete();
+        return redirect()->route('availabality')->with('message', 'Data berhasil dihapus');
         
     }
 }
