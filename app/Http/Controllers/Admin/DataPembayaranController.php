@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kamar;
 use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DataPembayaranController extends Controller
@@ -91,7 +93,45 @@ class DataPembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // // untuk mengengisi data nya
+        $payment=new Payment();
+        $user=new User();
+        $kamar=new Kamar();
+
+        $user->id_user=$request->users->id_user;
+        $kamar->id_tipe=$request->kamars->id_tipe;
+        $payment->harga_bayar=$request->harga_bayar;
+        $payment->bulan=$request->bulan;
+        $payment->tahun=$request->tahun;
+        $payment->tanggal_bayar=$request->tanggal_bayar;
+        $payment->bukti_bayar=$request->bukti_bayar;
+
+        // $payment->bukti_bayar = $request->file('bukti_bayar')->store('assets/penyewa/bukti-bayar', 'public');
+
+        $payment->tanggal_validasi=$request->tanggal_validasi;
+        $payment->status=$request->status;
+        $payment->keterangan=$request->keterangan;
+
+        $payment->save();
+        $user->save();
+        $kamar->save();
+
+        return redirect('pemilik/data-user')->with('success', 'Data Hass Been Added');
+
+        // $table->id();
+        //     $table->string('id_user');
+        //     $table->string('id_tipe');
+        //     $table->string('bulan');
+        //     $table->integer('tahun');
+        //     $table->bigInteger('harga_bayar')->nullable();
+        //     $table->string('bukti_bayar')->nullable();
+        //     $table->date('tanggal_bayar')->nullable();
+        //     $table->date('tanggal_validasi')->nullable();
+        //     $table->enum('status', ['Menunggu Validasi', 'Lunas', 'Belum Lunas', 'Unggah Bukti Bayar'])->default('Menunggu Validasi');
+        //     $table->string('keterangan')->nullable();
+        //     $table->timestamps();
+        //     $table->softDeletes();
+
     }
 
     /**

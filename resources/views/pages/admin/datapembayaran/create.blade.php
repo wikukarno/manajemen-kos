@@ -130,7 +130,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="col-form-label"><b>Bukti</b></label>
-                      <input name="bukti_bayar" id="bukti_bayar" type="file" class="form-control @error('bukti_bayar') is-invalid @enderror" placeholder="Masukkan Bukti Bayar" autocomplete="off" required value="{{ old('bukti_bayar') }}"/>
+                      <input name="bukti_bayar" id="bukti_bayar" type="file" class="form-control @error('bukti_bayar') is-invalid @enderror" placeholder="Masukkan Bukti Bayar" autocomplete="off" value="{{ old('bukti_bayar') }}"/>
                         @error('bukti_bayar')
                           {{-- untuk info yang salah yang mana --}}
                           <div class="invalid-feedback">
