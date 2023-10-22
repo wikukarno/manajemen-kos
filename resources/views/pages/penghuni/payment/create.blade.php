@@ -11,24 +11,24 @@
 				<h3 class="card-title mt-3">Pembayaran <a href="{{ route('pembayaran-penghuni.index') }}" class="float-end btn btn-outline-success btn-sm mb-2">Kembali</a></h3>
 			</div>
 			<div class="card-body">
+				<div class="form-group">
+					<label for="tipekamar">Tanggal Hari Ini : <b style="color: rgb(91, 0, 125)">{{ $tanggalSekarang }}</b></label>
+				</div>
+				<div class="form-group">
+					<label for="tipekamar">Tipe Kamar</label>
+					<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->id_tipe }}" disabled> 
+					{{--  {{ $payment->tipe_kamar_penghuni }}  --}}
+				</div>
+				<div class="form-group">
+					<label for="nomorkamar">Nomor Kamar</label>
+					<input type="number" class="form-control" id="nomorkamar" name="nomor_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->nomor_kamar }}" disabled>
+				</div>
+				<div class="form-group">
+					<label for="hargakamar">Harga Kamar</label>
+					<input type="number" class="form-control" id="hargakamar" name="harga_bayar" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->harga }}" disabled>
+				</div>
 				<form action="{{ route('pembayaran-penghuni.store') }}" method="POST" enctype="multipart/form-data">
 					@csrf
-					<div class="form-group">
-						<label for="tipekamar">Tanggal Hari Ini : <b style="color: rgb(91, 0, 125)">{{ $tanggalSekarang }}</b></label>
-					</div>
-					<div class="form-group">
-						<label for="tipekamar">Tipe Kamar</label>
-						<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="" disabled> 
-						{{--  {{ $payment->tipe_kamar_penghuni }}  --}}
-					</div>
-					<div class="form-group">
-						<label for="nomorkamar">Nomor Kamar</label>
-						<input type="number" class="form-control" id="nomorkamar" name="nomor_kamar_penghuni" placeholder="" required autocomplete="off" value="" disabled>
-					</div>
-					<div class="form-group">
-						<label for="hargakamar">Harga Kamar</label>
-						<input type="number" class="form-control" id="hargakamar" name="harga_bayar" placeholder="" required autocomplete="off" value="" disabled>
-					</div>
 					<div class="form-group">
 						<label for="bulan">Bulan</label>
 						<select class="form-select" aria-label="Default select example" name="selectedBulan">
