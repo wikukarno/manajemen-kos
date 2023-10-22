@@ -32,19 +32,26 @@
             </div>
             @endforeach
         </div>
-        <div class="col-md-2">
-          <form action="{{route('isi-data.destroy'), $penghuni->id_penghuni}}" method="POST">
-          <button class="btn btn-primary rounded-pill btn-sm" id="hapusData" onclick="konfirmasiHapus()">Batal Pemesanan</button>
-          </form>
-          <script>
-             function konfirmasiHapus() {
-                if (confirm("Yakin ingin menghapus data?")) {
-                    // Jika pengguna menekan OK, kirim permintaan penghapusan
-                    document.querySelector('form').submit();
-                }
-            }
-          </script>
-      </div>
+		<div class="col-md-2">
+			@if(session('message'))
+				<div class="alert alert-success">
+					{{ session('message') }}
+				</div>
+			@endif
+			<form action="{{ route('isi-data.destroy', $user->id) }}" method="POST" id="hapusForm">
+				@csrf
+				@method('DELETE')
+				<button class="btn btn-primary rounded-pill btn-sm" id="hapusData" onclick="konfirmasiHapus()">Batal Pemesanan</button>
+			</form>
+		</div>
+		<script>
+			function konfirmasiHapus() {
+				if (confirm("Yakin ingin menghapus data?")) {
+					// Jika pengguna menekan OK, kirim permintaan penghapusan
+					document.getElementById('hapusForm').submit();
+				}
+			}
+		</script>
         <div class="col-12 mt-4">
             <div class="card">
               <div class="card-body">
@@ -52,8 +59,8 @@
                 <p class="text-success">{{ session('success') }}</p>
                 @endif
                 <h3 class="card-title mb-5">Isi Data Pemesanan <b class="text-primary"></b></h3>
-                {{-- <form class="form-sample" action="{{ route('isi-data.update', $user->id) }}" method="POST"> --}}
-                <form class="form-sample" action="{{route('isi-data.store')}}" method="POST">
+                <form class="form-sample" action="{{ route('isi-data.update', $user->id) }}" method="POST">
+                {{-- <form class="form-sample" action="{{route('isi-data.store')}}" method="POST"> --}}
                 @csrf
                   @method('put')
                   <div class="row">

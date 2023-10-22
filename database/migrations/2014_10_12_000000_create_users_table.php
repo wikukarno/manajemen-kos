@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('profil')->nullable();
             $table->string('fasilitas')->nullable();
             $table->string('alasan_penolakan')->nullable();
+            $table->date('tgl_masuk')->nullable();
+            $table->date('tgl_keluar')->nullable();
             $table->timestamps();
             $table->softDeletes();
             // $table->id();
