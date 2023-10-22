@@ -99,27 +99,20 @@ class PemesananIsiDataController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $data = $request->only(['tempat_lahir', 'tanggal_lahir', 'alamat', 'hp2', 'wali', 'id_telegram', 'dokumen']);
-        // $data = $request->all();
+        $data=$request->all();
         $user = User::findOrFail($id);
         
         if ($request->hasFile('dokumen')) {
-            $dokumen = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
+            if (Auth::user()->dokumen != null) {
+                Storage::disk('public')->delete(Auth::user()->dokumen);
+                $data['dokumen'] = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
+            } else {
+                $data['dokumen'] = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
             }
-        else {
-            $dokumen = null;
-        }   
+        }  
         
-        // $user->update($data);
-        $user->update([
-            'tempat_lahir'=>$request->tempat_lahir,
-            'tanggal_lahir'=>$request->tanggal_lahir,
-            'alamat'=>$request->alamat,
-            'hp2'=>$request->hp2,
-            'wali'=>$request->wali,
-            'id_telegram'=>$request->id_telegram,
-            'dokumen'=>$dokumen
-        ]);
+        $user->update($data);
+
         return redirect()->route('availabality');
     }
 
