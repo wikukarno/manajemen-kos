@@ -44,10 +44,15 @@
                         <p class="fs-4">Tipe : {{ $kamar->id_tipe }}</p>
                         <p class="fs-2 text-danger">Rp. {{ $kamar->harga }}</p>
                             @auth
-                                <a type="button" class="btn text-light rounded-5 mt-5"  style="background-color: orange; width:300px" href="/isi-data">Pesan</a> 
+                            <form action="{{route('isi-data.store')}}" method="POST">
+                                @csrf
+                                <input type="text" value="{{$kamar->id}}" name="id_kamar" hidden>
+                                <button type="submit" class="btn text-light rounded-5 mt-5"  style="background-color: orange; width:300px" >Pesan</button>
+                            </form>
+                            
                             @endauth
                             @guest
-                            <a href="{{route('login')}}"><button class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm">Pesan</button></a>
+                            <a href="{{route('login')}}"><button class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm" id="btnAddToWishlist">Pesan</button></a>
 
                             @endguest
                             @if (session('success'))

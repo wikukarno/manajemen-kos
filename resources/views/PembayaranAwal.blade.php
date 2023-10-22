@@ -18,8 +18,8 @@
                     <div class="col-md-6">
                       <div class="form-group row">
                       <div class="mb-3">
-                            <label for="id" class="form-label">ID Penghuni</label>
-                            <input type="text" id="id" class="form-control" value="{{ auth()->user()->id}}" name="id" disabled>
+                            <label for="id" class="form-label">Nama Penghuni</label>
+                            <input type="text" id="id" class="form-control" value="{{ auth()->user()->name}}" name="id" disabled>
                         </div>
                       </div>
                     </div>
@@ -45,7 +45,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="harga_kamar" class="form-label">Harga Kamar</label>
-                            <input type="text" class="form-control" id="tempat_lahir" aria-describedby="tempat_lahir" name="tempat_lahir">
+                            <input type="text" class="form-control" id="tempat_lahir" aria-describedby="tempat_lahir" name="tempat_lahir" disabled>
                         </div>
                       </div>
                     </div>
@@ -96,14 +96,29 @@
                             </script>                                                               
                         </div>
                       </div>
-                    </div>         
-                </div>
+                    </div>  
+                    {{-- <div class="col-md-6">
+                      <div class="form-group row">
+                        <div class="mb-3">
+                            <label for="harga_kamar" class="form-label">Harga Kamar</label>
+                            <input type="text" class="form-control" id="tempat_lahir" aria-describedby="tempat_lahir" name="tempat_lahir" disabled>
+                        </div>
+                      </div>
+                    </div>       
+                </div> --}}
                 <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary ">Batal</button>
-                            <button type="submit" class="btn btn-primary ">kirim data</button>
+                            {{-- @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
+									<div class="col-md-6">
+										<div class="form-check">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
+											</label>
+										</div>
+									</div>
+								@endforeach --}}
                         </div>
                       </div>
                     </div>

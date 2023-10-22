@@ -55,7 +55,10 @@ Route::get('/availability', [AvailabilityController::class, 'index'])->name('ava
 Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->name('detail');
 
 Route::resource('isi-data', PemesananIsiDataController::class);
-Route::resource('pembayaran-awal', DataPenghuniController::class);
+Route::delete('isi-data', [PemesananIsiDataController::class, 'destroy']);
+
+
+// Route::resource('pembayaran-awal', DataPenghuniController::class);
 
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');

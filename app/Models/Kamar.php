@@ -6,8 +6,9 @@ use App\Models\TipeKamar;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Kamar extends Model
+class Kamar extends Authenticatable
 {
     use HasFactory, SoftDeletes;
     protected $guarded = ['id'];

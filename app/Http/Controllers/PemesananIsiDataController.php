@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPenghuni;
+use App\Models\DataPenyewa;
 use Illuminate\Http\Request;
 use App\Models\Kamar;
+use App\Models\TipeKamar;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -13,12 +16,37 @@ class PemesananIsiDataController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $id)
     {
         $user = User::find(auth()->user()->id);
-        $kamars = Kamar::all();
+        
+        //$kamar = Kamar::findOrFail($id);
+        // $item = TipeKamar::findOrFail($id);
+        
+        // $kamar = Kamar::find($id);
+        // $tipe = TipeKamar::find($id);
+
+        
+        // $kamar = Kamar::all();
+        // $item = TipeKamar::all();
+
+        $kamar = Kamar::where('id')->get();
+        // $types = TipeKamar::all();
+        
+        
+        // $item = DataPenghuni::all()->take(2);
+        $items = DataPenghuni::with('kamar')
+            ->where('id_penghuni', Auth::user()->id)
+            ->get();
+            
        
-        return view('IsiData', compact('kamars', 'user'));
+         return view('IsiData', [
+            'items' => $items,
+         
+         ] ,compact('user', 'items'));
+        
+        // return view('IsiData',
+        //  compact('user', 'kamar', 'item'));
     }
 
     /**
@@ -34,7 +62,20 @@ class PemesananIsiDataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // $kamar = Kamar::all();
+        // $tipe = TipeKamar::all();
+        
+        // return view('IsiData', [
+        //    'item' => $kamar,
+        //    'user'=> $tipe,
+        // ]);
+
+        $data["id_penghuni"] = auth()->user()->id;
+        DataPenghuni::create($data);
+        
+        return redirect()->route('isi-data.index');
+    
     }
 
     /**
@@ -87,6 +128,12 @@ class PemesananIsiDataController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $penghuni = DataPenghuni::find($id);
+        return view('IsiData', compact('penghuni'));
+        
+        DataPenghuni::where('id_penghuni', auth()->user()->id)->delete();
+        return back();
+
+        
     }
 }
