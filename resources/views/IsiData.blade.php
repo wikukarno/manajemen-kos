@@ -32,8 +32,28 @@
             </div>
             @endforeach
         </div>
-        <div class="col-md-2">
-          <form action="{{route('isi-data.destroy'), $penghuni->id_penghuni}}" method="POST">
+		<div class="col-md-2">
+			@if(session('message'))
+				<div class="alert alert-success">
+					{{ session('message') }}
+				</div>
+			@endif
+			<form action="{{ route('isi-data.destroy', $user->id) }}" method="POST" id="hapusForm">
+				@csrf
+				@method('DELETE')
+				<button class="btn btn-primary rounded-pill btn-sm" id="hapusData" onclick="konfirmasiHapus()">Batal Pemesanan</button>
+			</form>
+		</div>
+		<script>
+			function konfirmasiHapus() {
+				if (confirm("Yakin ingin menghapus data?")) {
+					// Jika pengguna menekan OK, kirim permintaan penghapusan
+					document.getElementById('hapusForm').submit();
+				}
+			}
+		</script>
+        {{--  <div class="col-md-2">
+          <form action="{{ route('isi-data.destroy', $user->id) }}" method="POST">
           <button class="btn btn-primary rounded-pill btn-sm" id="hapusData" onclick="konfirmasiHapus()">Batal Pemesanan</button>
           </form>
           <script>
@@ -44,7 +64,7 @@
                 }
             }
           </script>
-      </div>
+      	</div>  --}}
         <div class="col-12 mt-4">
             <div class="card">
               <div class="card-body">

@@ -128,12 +128,15 @@ class PemesananIsiDataController extends Controller
      */
     public function destroy(string $id)
     {
-        $penghuni = DataPenghuni::find($id);
-        return view('IsiData', compact('penghuni'));
+        // $penghuni = DataPenghuni::findOrFail($id);
+        // return view('IsiData', compact('penghuni'));
         
-        DataPenghuni::where('id_penghuni', auth()->user()->id)->delete();
-        return back();
+        // DataPenghuni::where('id_penghuni', auth()->user()->id)->delete();
+        // return back();
 
+        $user = User::findOrFail($id); 
+        DataPenghuni::where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Data berhasil dihapus');
         
     }
 }
