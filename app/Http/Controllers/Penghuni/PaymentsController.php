@@ -20,9 +20,11 @@ class PaymentsController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = Payment::query()->orderBy('created_at', 'desc')->get();
+            // $query = Payment::query()->orderBy('created_at', 'desc')->get();
             // mengambil id yang sedang login dari tabel user
-            $query = Payment::where('id_user', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+            $query = Payment::where('id_user', auth()->user()->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
 
             return datatables()->of($query)
                 ->addIndexColumn()
@@ -59,6 +61,23 @@ class PaymentsController extends Controller
                     } else {
                         return '<div class="badge badge-danger text-light">'.$status.'</div>';
                     }
+                    // $status = $item->status ?? '-';
+                    // $statusClass = '';
+                    // switch ($status) {
+                    //     case 'Lunas':
+                    //         $statusClass = 'badge-success';
+                    //         break;
+                    //     case 'Menunggu Validasi':
+                    //         $statusClass = 'badge-warning';
+                    //         break;
+                    //     case 'Unggah Bukti Bayar':
+                    //         $statusClass = 'badge-info';
+                    //         break;
+                    //     default:
+                    //         $statusClass = 'badge-danger';
+                    //         break;
+                    // }
+                    // return '<div class="badge text-dark ' . $statusClass . '">' . $status . '</div>';
                 })
                 ->editColumn('keterangan', function ($item) {
                     return $item->keterangan ?? '-';
@@ -77,8 +96,10 @@ class PaymentsController extends Controller
                 ->make(true);
         }
 
-        // untuk mengambil riwayat pembayaran   
-        $riwayatPembayaranTerakhir = Payment::latest()->first();
+        // untuk mengambil riwayat pembayaran hanya berdasarkan id yang sedang login
+        $riwayatPembayaranTerakhir = Payment::latest()
+            ->where('id_user', auth()->user()->id)
+            ->first();
 
         //jika ada pembayaran terakhir maka lakukan hal berikut
         if ($riwayatPembayaranTerakhir) {
@@ -96,10 +117,14 @@ class PaymentsController extends Controller
             $tambahPembayaranDisabled = false;
         }
 
-        return view('pages.penghuni.payment.index', compact('tambahPembayaranDisabled'),
+        $item=User::find(auth()->user()->id);
+
+        return view('pages.penghuni.payment.index', compact('tambahPembayaranDisabled', 'item'),
             [
                 // ini untuk menampilkan data pembayaran hanya untuk id yg login saat itu
-                'payments' => Payment::where('id_user', auth()->user()->id)->orderBy('created_at', 'desc')->get()
+                'payments' => Payment::where('id_user', auth()->user()->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get()
             ]
         );
     }
@@ -112,7 +137,9 @@ class PaymentsController extends Controller
         // Untuk mengambil nama dari ke 12 bulan
         $bulanNames = [];
         for ($i = 1; $i <= 12; $i++) {
-            $bulan = Carbon::create()->month($i)->locale('en')->monthName;
+            $bulan = Carbon::create()
+                ->month($i)
+                ->locale('en')->monthName;
             array_push($bulanNames, $bulan);
         }
 
@@ -156,7 +183,7 @@ class PaymentsController extends Controller
             if ($file->isValid()) {
                 $extension = $file->getClientOriginalExtension();
                 $timestamp = now()->timestamp;
-                $nama_file = $bulanBayar . '_' . $tahun . '_' . $idUser . '.' . $timestamp . '.' . $extension;
+                $nama_file = $bulanBayar . '.' . $tahun . '.' . $idUser . '.' . $timestamp . '.' . $extension;
         
                 $buktiBayar = $file->storeAs('assets/buktiBayar', $nama_file, 'public');
             } 
@@ -223,7 +250,7 @@ class PaymentsController extends Controller
             if ($file->isValid()) {
                 $extension = $file->getClientOriginalExtension();
                 $timestamp = now()->timestamp;
-                $nama_file = $item['bulan'] . '_' . $item['tahun'] . '_' . $item['id_user'] . '.' . $timestamp . '.' . $extension;
+                $nama_file = $item['bulan'] . '.' . $item['tahun'] . '.' . $item['id_user'] . '.' . $timestamp . '.' . $extension;
         
                 $data['bukti_bayar'] = $file->storeAs('assets/buktiBayar', $nama_file, 'public');
             } 

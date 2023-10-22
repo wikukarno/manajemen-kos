@@ -20,7 +20,7 @@
                             @if($item->profil != null)
                                 <img src="{{ Storage::url($item->profil) }}" alt="image" name="profil" width="150" class="rounded"/>
                             @else
-                                <img src="#" class="img-fluid w-25 h-25" alt="Foto Profil">
+                                <b>Tidak ada foto profil</b>
                             @endif
                         </div>
                     </div>

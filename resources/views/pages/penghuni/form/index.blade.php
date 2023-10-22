@@ -3,6 +3,17 @@
 @section('title', 'Form')
 
 @section('content')
+
+<div class="row" style="margin-left: 1px; margin-right:1px">
+	@if($item->fasilitas == null)
+		<div class="alert alert-warning" role="alert">
+			<h4 class="alert-heading">Pemberitahuan</h4>
+			<hr>
+			<p>Lengkapi data untuk kamar anda terlebih dahulu, isi fasilitas yang akan anda pakai selama di kos ini. <a href="{{ route('fasilitas-penghuni.index') }}" class="alert-link">Lengkapi di sini</a></p>
+		</div>	
+	@endif
+</div>
+
 <div class="row">
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
@@ -123,6 +134,8 @@
 							</div>
 						</div>
 					</div>
+
+					@if($item->fasilitas != null)
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group row mt-5">
@@ -131,7 +144,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>	
+					@endif
 				</form>
 			</div>
         </div>

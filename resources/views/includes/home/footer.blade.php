@@ -29,8 +29,8 @@
                              <div class="col-md-6">
                                 <h6 class="section-title text-start text-primary text-uppercase mb-4">follow us</h6>
                                 <div class="d-flex pt-2">
-                                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/akirakost/?hl=id"><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-outline-light btn-social" href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F"><i class="fab fa-whatsapp"></i></a>
+                                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/akirakost/?hl=id" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-outline-light btn-social" href="https://api.whatsapp.com/send?phone=6281365505655&text=Assalamualikum+ada+kamar+kosong%3F" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                     {{-- <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a> --}}
                                 </div>   
                             </div>
