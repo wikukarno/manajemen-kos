@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Lihat Data Kamar')
+@section('title', 'Detail Data Kamar')
 
 @section('content')
 
@@ -11,7 +11,7 @@
     <!-- DataTales Example -->
     <div class="card shadow">
 		<div class="card-header">
-			<h3 class="m-0 font-weight-bold mt-3">Lihat Data Kamar
+			<h3 class="m-0 font-weight-bold mt-3">Detail Data Kamar
 				<a href="{{ url('pemilik/data-kamar') }}" class="float-end btn btn-outline-success btn-sm mb-2" >View All</a>
 			</h3>
 		</div>
