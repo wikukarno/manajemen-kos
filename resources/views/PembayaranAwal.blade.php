@@ -11,7 +11,7 @@
                 <p class="text-success">{{ session('success') }}</p>
                 @endif
                 <h3 class="card-title mb-5">Pembayaran Awal <b class="text-primary"></b></h3>
-                <form class="form-sample" action="{{ route('pembayaran-awal.update', $user->id) }}" method="POST">
+                <form class="form-sample" action="{{route('')}}" method="POST">
                   @csrf
                   @method('put')
                   <div class="row">
@@ -49,87 +49,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <div class="mb-3">
-                            <label for="tanggal_lahir" class="form-label">Fasilitas</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="select-all">
-                                <label class="form-check-label" for="MasterCheckbox">All</label>  
-                            </div>       
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value=""  checked>
-                                <label class="form-check-label" for="kasur">Kasur</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkbox-item">
-                                <label class="form-check-label" for="meja">Meja</label>
-                            </div>      
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkbox-item">
-                                <label class="form-check-label" for="kursi">kursi</label>
-                            </div>      
-                            <script>
-                                    // Ambil referensi ke elemen "Select All" dan semua checkbox
-                                    const selectAllCheckbox = document.getElementById('select-all');
-                                    const checkboxes = document.querySelectorAll('.form-check-input');
-
-                                    // Tambahkan event listener untuk checkbox "Select All"
-                                    selectAllCheckbox.addEventListener('change', function() {
-                                    // Atur status centang semua checkbox sesuai dengan status checkbox "Select All"
-                                    checkboxes.forEach(checkbox => {
-                                    checkbox.checked = selectAllCheckbox.checked;
-                                        });
-                                    });
-
-                                    // Tambahkan event listener untuk semua checkbox lainnya
-                                    checkboxes.forEach(checkbox => {
-                                    checkbox.addEventListener('change', function() {
-                                    // Periksa apakah semua checkbox lainnya dicentang
-                                    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-                                    // Jika semua dicentang, centang juga checkbox "Select All", jika tidak, hilangkan centangnya
-                                    selectAllCheckbox.checked = allChecked;
-                                        });
-                                    });
-                            </script>                                                               
-                        </div>
-                      </div>
-                    </div>  
-                    {{-- <div class="col-md-6">
-                      <div class="form-group row">
-                        <div class="mb-3">
-                            <label for="harga_kamar" class="form-label">Harga Kamar</label>
-                            <input type="text" class="form-control" id="tempat_lahir" aria-describedby="tempat_lahir" name="tempat_lahir" disabled>
-                        </div>
-                      </div>
-                    </div>       
-                </div> --}}
-                <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <div class="mb-3">
-                            {{-- @foreach (['Listrik', 'Air', 'Wifi', 'Tempat Tidur', 'Kasur', 'Lemari', 'Meja Belajar', 'Kursi Belajar', 'Kipas Angin', 'Kloset Kamar Mandi', 'Keran', 'Shower'] as $fasilitas)
-									<div class="col-md-6">
-										<div class="form-check">
-											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
-											</label>
-										</div>
-									</div>
-								@endforeach --}}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <div class="mb-3">
-                            {{-- <button type="submit" class="btn btn-primary">Kirim Data</button> --}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  </div>       
+                </div>
                 </form>
               </div>
             </div>

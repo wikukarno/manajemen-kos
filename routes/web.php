@@ -58,7 +58,8 @@ Route::resource('isi-data', PemesananIsiDataController::class);
 Route::delete('isi-data', [PemesananIsiDataController::class, 'destroy']);
 
 
-// Route::resource('pembayaran-awal', DataPenghuniController::class);
+Route::resource('pembayaran-awal', PaymentsController::class);
+// Route::post('isi-data', [PemesananIsiDataController::class, 'hapus']);
 
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');

@@ -2,24 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kamar;
-use App\Models\TipeKamar;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class KamarController extends Controller
+class PembayaranAwalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $type = Kamar::with('type')->get();
-        $type = TipeKamar::all()->take(3);
-        return view('kamar', [
-                'types' => $type
-                // 'deskripsi' => $deskripsi
-        ]);
+         //
     }
 
     /**
@@ -41,18 +33,15 @@ class KamarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kamar $kamar)
+    public function show(string $id)
     {
-     return view('kamar', [
-            "kamars" => Kamar::all()
-        ]);
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kamar $kamar)
+    public function edit(string $id)
     {
         //
     }
@@ -60,7 +49,7 @@ class KamarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kamar $kamar)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -68,7 +57,7 @@ class KamarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kamar $kamar)
+    public function destroy(string $id)
     {
         //
     }

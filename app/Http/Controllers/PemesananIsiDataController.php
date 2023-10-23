@@ -132,4 +132,9 @@ class PemesananIsiDataController extends Controller
         return redirect()->route('availabality')->with('message', 'Data berhasil dihapus');
         
     }
+    public function hapus()
+    {
+        DataPenghuni::truncate();
+        return response()->json(['message' => 'Batal Pemesanan']);
+    }
 }

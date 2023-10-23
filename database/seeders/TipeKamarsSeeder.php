@@ -16,17 +16,24 @@ class TipeKamarsSeeder extends Seeder
         $types = [
             [
                 'id'=>1,
-                'name'=>"Tipe 1",
-                'slug'=>"tipe-1",
-                'detail'=>'Tempat tidur 1, Meja Belajar 1, Kamar mandi di dalam kamar',
+                'name'=>"Tipe 2",
+                'slug'=>"tipe-2",
+                'detail'=>'Ukuran kamar: 3x4 m2,Tempat tidur 1, Meja Belajar 1, lemari 1, Kamar mandi di dalam kamar (kloset duduk)',
                 'harga'=>500000
             ],
             [
                 'id'=>2,
-                'name'=>"Tipe 2",
-                'slug'=>"tipe-2",
-                'detail'=>'Tempat tidur 2, Meja Belajar 2, Kamar mandi di dalam kamar',
+                'name'=>"Tipe 3",
+                'slug'=>"tipe-3",
+                'detail'=>'Ukuran kamar: 4x6 m2,Tempat tidur 2, Meja Belajar 2, lemari 2, Kamar mandi di dalam kamar (kloset 2), bisa ditempati berdua',
                 'harga'=>700000
+            ],
+            [
+                'id'=>3,
+                'name'=>"Tipe 4",
+                'slug'=>"tipe-4",
+                'detail'=>'Ukuran kamar: 5x6, Tempat tidur 2, Meja Belajar 2, Kamar mandi di dalam kamar (kloset duduk), bisa ditempati berdua',
+                'harga'=>1000000
             ]
         ];
         TipeKamar::insert($types);
