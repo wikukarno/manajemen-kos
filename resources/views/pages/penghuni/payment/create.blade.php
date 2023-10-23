@@ -16,8 +16,7 @@
 				</div>
 				<div class="form-group">
 					<label for="tipekamar">Tipe Kamar</label>
-					<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->id_tipe }}" disabled> 
-					{{--  {{ $payment->tipe_kamar_penghuni }}  --}}
+					<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->id_tipe }}" disabled>
 				</div>
 				<div class="form-group">
 					<label for="nomorkamar">Nomor Kamar</label>
@@ -31,7 +30,7 @@
 					@csrf
 					<div class="form-group">
 						<label for="bulan">Bulan</label>
-						<select class="form-select" aria-label="Default select example" name="selectedBulan">
+						<select class="form-select" aria-label="Default select example" name="selectedBulan" required>
 							<option selected>Pembayaran Untuk Bulan</option>
 							@foreach ($bulanNames as $index => $bulan )
 								<option name="bulan" value="{{ $index + 1 }}" @if  ($bulan != now()->locale('en')->monthName && $statusPembayaran[$bulan])  disabled @endif>{{ $bulan }}</option>

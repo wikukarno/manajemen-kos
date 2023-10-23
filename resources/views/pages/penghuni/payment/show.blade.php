@@ -18,13 +18,26 @@
 				<form action="{{ route('pembayaran-penghuni.update', $data->id) }}" method="POST" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
+					@if($data->status == 'Lunas')	
+						<div class="alert alert-success" role="alert">
+							Pembayaran untuk bulan {{ $data->bulan }} tahun {{ $data->tahun }} sudah lunas.
+						</div>
+					@elseif ($data->status == 'Unggah Bukti Bayar')
+						<div class="alert alert-danger" role="alert">
+							Silahkan unggah bukti bayar terlebih dahulu.
+						</div>
+					@elseif ($data->status == 'Menunggu Validasi')
+						<div class="alert alert-warning" role="alert">
+							Silahkan menunggu validasi dari pemilik kos.
+						</div>
+					@endif
 					<div class="form-group">
 						<label for="tipekamar">Tipe Kamar</label>
-						<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="" disabled>
+						<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->id_tipe }}" disabled>
 					</div>
 					<div class="form-group">
 						<label for="nomorkamar">Nomor Kamar</label>
-						<input type="number" class="form-control" id="nomorkamar" name="nomor_kamar_penghuni" placeholder="" required autocomplete="off" value="" disabled>
+						<input type="number" class="form-control" id="nomorkamar" name="nomor_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->nomor_kamar }}" disabled>
 					</div>
 					<div class="form-group">
 						<label for="hargakamar">Harga Kamar</label>
