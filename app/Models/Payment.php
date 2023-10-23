@@ -23,4 +23,8 @@ class Payment extends Model
     {
         return $this->belongsTo(Kamar::class, 'id_tipe', 'id');
     }
+
+    function payment() {
+        return $this->belongsTo(Payment::class, 'nama_user','nomor_kamar');
+    }
 }

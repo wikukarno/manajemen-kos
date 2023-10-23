@@ -31,7 +31,12 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="col-form-label"><b>Nama Penghuni</b></label>
-										<input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama Penghuni" autocomplete="off" required value="{{ old('name') }}"/>
+										<select class="form-control @error('name') is-invalid @enderror" name="rt_name" id="name" style="height: 45px" required value="{{ old('name') }}">
+											<option value="">Pilih Nama Penghuni</option>
+											@foreach ($user as $u)
+												<option value="{{ $u->id_user }}">{{ $u->name }}</option>
+											@endforeach
+										</select>
 											@error('name')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -45,8 +50,9 @@
 										<label class="col-form-label"><b>Id Tipe</b></label>
 										<select class="form-control @error('id_tipe') is-invalid @enderror" name="id_tipe" id="id_tipe" style="height: 45px" required value="{{ old('id_tipe') }}">
 											<option value="">Pilih Id Tipe</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
+											@foreach ($tipekamar as $k)
+												<option value="{{ $k->id_kamar }}">{{ $k->name }}</option>
+											@endforeach
 										</select>
 											@error('id_tipe')
 											{{-- untuk info yang salah yang mana --}}
