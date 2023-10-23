@@ -28,6 +28,8 @@ class PaymentsController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
 
+            $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+
             return datatables()->of($query)
                 ->addIndexColumn()
                 
@@ -49,8 +51,8 @@ class PaymentsController extends Controller
                 ->editColumn('tanggal_validasi', function ($item) {
                     return $item->tanggal_validasi ?? '-';
                 })
-                ->editColumn('jumlah', function ($item) {
-                    return $item->jumlah ?? '-';
+                ->editColumn('jumlah', function ($item) use ($tipe) {
+                    return $tipe->kamar->harga ?? '-';
                 })
                 ->editColumn('status', function ($item) {
                     // $status = $item->status ?? '-';
@@ -73,10 +75,10 @@ class PaymentsController extends Controller
                             $statusClass = 'badge-warning';
                             break;
                         case 'Unggah Bukti Bayar':
-                            $statusClass = 'badge-info';
+                            $statusClass = 'badge-danger';
                             break;
                         default:
-                            $statusClass = 'badge-danger';
+                            $statusClass = 'badge-info';
                             break;
                     }
                     return '<div class="badge text-dark ' . $statusClass . '">' . $status . '</div>';
@@ -183,6 +185,7 @@ class PaymentsController extends Controller
         $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
         if ($tipe) {
             $idKamar = $tipe->id_kamar;
+            $hargaBayar = $tipe->kamar->harga;
         }
 
     
@@ -211,6 +214,7 @@ class PaymentsController extends Controller
             'id_tipe' => $idKamar,
             'bulan'=> $bulan,
             'tahun' => $tahun,
+            'harga_bayar' => $hargaBayar,
             'tanggal_bayar' => $tanggalBayar, 
             'bukti_bayar' => $buktiBayar,
             'status' => $status,
@@ -229,7 +233,9 @@ class PaymentsController extends Controller
     {
         $item=User::find($id);
         $data=Payment::findOrFail($id);
-        return view('pages.penghuni.payment.show', compact('item', 'data'));
+        $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+
+        return view('pages.penghuni.payment.show', compact('item', 'data', 'tipe'));
     }
 
     /**
