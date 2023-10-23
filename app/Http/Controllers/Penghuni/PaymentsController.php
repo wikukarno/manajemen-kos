@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Penghuni;
 
+use App\Http\Controllers\Admin\DataKamarController;
 use App\Models\User;
 use App\Models\Kamar;
 use App\Models\Payment;
+use App\Models\DataPenghuni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
@@ -51,33 +53,33 @@ class PaymentsController extends Controller
                     return $item->jumlah ?? '-';
                 })
                 ->editColumn('status', function ($item) {
-                    $status = $item->status ?? '-';
-                    if($status === 'Lunas') {
-                        return '<div class="badge badge-success text-dark">'.$status.'</div>';
-                    } elseif($status === 'Menunggu Validasi') {
-                        return '<div class="badge badge-warning text-dark">'.$status.'</div>';
-                    } elseif($status === 'Unggah Bukti Bayar') {
-                        return '<div class="badge badge-info text-dark">'.$status.'</div>';
-                    } else {
-                        return '<div class="badge badge-danger text-light">'.$status.'</div>';
-                    }
                     // $status = $item->status ?? '-';
-                    // $statusClass = '';
-                    // switch ($status) {
-                    //     case 'Lunas':
-                    //         $statusClass = 'badge-success';
-                    //         break;
-                    //     case 'Menunggu Validasi':
-                    //         $statusClass = 'badge-warning';
-                    //         break;
-                    //     case 'Unggah Bukti Bayar':
-                    //         $statusClass = 'badge-info';
-                    //         break;
-                    //     default:
-                    //         $statusClass = 'badge-danger';
-                    //         break;
+                    // if($status === 'Lunas') {
+                    //     return '<div class="badge badge-success text-dark">'.$status.'</div>';
+                    // } elseif($status === 'Menunggu Validasi') {
+                    //     return '<div class="badge badge-warning text-dark">'.$status.'</div>';
+                    // } elseif($status === 'Unggah Bukti Bayar') {
+                    //     return '<div class="badge badge-info text-dark">'.$status.'</div>';
+                    // } else {
+                    //     return '<div class="badge badge-danger text-light">'.$status.'</div>';
                     // }
-                    // return '<div class="badge text-dark ' . $statusClass . '">' . $status . '</div>';
+                    $status = $item->status ?? '-';
+                    $statusClass = '';
+                    switch ($status) {
+                        case 'Lunas':
+                            $statusClass = 'badge-success';
+                            break;
+                        case 'Menunggu Validasi':
+                            $statusClass = 'badge-warning';
+                            break;
+                        case 'Unggah Bukti Bayar':
+                            $statusClass = 'badge-info';
+                            break;
+                        default:
+                            $statusClass = 'badge-danger';
+                            break;
+                    }
+                    return '<div class="badge text-dark ' . $statusClass . '">' . $status . '</div>';
                 })
                 ->editColumn('keterangan', function ($item) {
                     return $item->keterangan ?? '-';
@@ -160,7 +162,9 @@ class PaymentsController extends Controller
             $statusPembayaran[$bulan] = $status;
         }
 
-        return view('pages.penghuni.payment.create', compact('bulanNames', 'statusPembayaran', 'tahun', 'tanggalSekarang'));
+        $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+
+        return view('pages.penghuni.payment.create', compact('bulanNames', 'statusPembayaran', 'tahun', 'tanggalSekarang', 'tipe'));
     }
 
     /**
@@ -176,6 +180,11 @@ class PaymentsController extends Controller
         $bulanBayar= $bulan;
         $tahun = Carbon::now()->isoFormat('Y');
         $tanggalBayar = Carbon::now();
+        $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+        if ($tipe) {
+            $idKamar = $tipe->id_kamar;
+        }
+
     
         if ($request->hasFile('bukti_bayar')) {
             $file = $request->file('bukti_bayar');
@@ -199,6 +208,7 @@ class PaymentsController extends Controller
 
         Payment::create([   
             'id_user' => $idUser,
+            'id_tipe' => $idKamar,
             'bulan'=> $bulan,
             'tahun' => $tahun,
             'tanggal_bayar' => $tanggalBayar, 

@@ -31,7 +31,6 @@
                                         <th> No. Hp </th>
                                         <th> Nama Wali </th>
                                         <th> No. Hp Wali </th>
-                                        <th> Username </th>
                                         <th> Id Telegram </th>
                                         <th> Mac Address </th>
                                         <th> KTP </th>
@@ -73,8 +72,28 @@
         },
         columns: [
             { data: 'DT_RowIndex', name: 'id' },
-            { data: 'name', name: 'name' },
-            { data: 'email', name: 'email' },
+            {
+                data: 'name',
+                name: 'name',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 15 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 15 ? data.substr(0, 15) + '...' : data;
+                    }
+                    return data;
+                }
+            },
+            {
+                data: 'email',
+                name: 'email',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 15 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 15 ? data.substr(0, 15) + '...' : data;
+                    }
+                    return data;
+                }
+            },
             { data: 'tempat_lahir', name: 'tempat_lahir' },
             { data: 'tanggal_lahir', name: 'tanggal_lahir' },
             { data: 'role', name: 'role' },
@@ -83,11 +102,8 @@
             { data: 'hp', name: 'hp' },
             { data: 'wali', name: 'wali' },
             { data: 'hp2', name: 'hp2' },
-            { data: 'uname', name: 'uname' },
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
-            {{--  { data: 'dokumen', name: 'dokumen' },  --}}
-            
             {
                 data: 'dokumen',
                 name: 'dokumen',
@@ -98,31 +114,12 @@
                             // Tampilkan gambar dengan lebar dan tinggi tertentu (misalnya 50px)
                             return '<img src="../storage/' + data + '" alt="Gambar" class="img-ktp">';
                         } else {
-                            return 'Tidak ada gambar';
+                            return '-';
                         }
                     }
                     return data;
                 }
             },
-
-            {{--  {
-                data: 'dokumen', // Gantilah 'dokumen' dengan nama kolom gambar di sumber data Anda
-                name: 'dokumen',
-                render: function (data, type, full, meta) {
-                    if (type === 'display') {
-                        // Periksa apakah data gambar ada
-                        if (data) {
-                            // Tampilkan gambar dengan lebar dan tinggi tertentu (misalnya 50px)
-                            // return '<img src="' + data + '" alt="Gambar" width="50" height="50">';
-                            return '<a href="../storage/' + data + '" target="_blank">Lihat Dokumen </a> <img src="' + data + '" alt="Gambar" width="50" height="50">';
-                        } else {
-                            return 'Tidak ada gambar';
-                        }
-                    }
-                    return data;
-                }
-            },  --}}
-
             {
                 data: 'fasilitas',
                 name: 'fasilitas',

@@ -22,7 +22,7 @@
 				@if(Session::has('success'))
 				<p class="text-success">{{ session('success') }}</p>
 				@endif
-				<h4 class="card-title mb-5">Tipe Kamar <b class="text-primary">{{ $item->name }}</b></h4>
+				<h4 class="card-title mb-5"><b class="text-primary">{{ $item->name }}</b></h4>
 				<form class="form-sample" action="{{ route('tipe-kamar.update', $item->id) }}" method="POST">
 					@csrf
 					@method('put')

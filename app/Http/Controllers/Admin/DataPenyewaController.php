@@ -53,9 +53,6 @@ class DataPenyewaController extends Controller
                 ->editColumn('hp2', function ($item) {
                     return $item->hp2 ?? '-';
                 })
-                ->editColumn('uname', function ($item) {
-                    return $item->uname ?? '-';
-                })
                 ->editColumn('id_telegram', function ($item) {
                     return $item->id_telegram ?? '-';
                 })
@@ -120,12 +117,9 @@ class DataPenyewaController extends Controller
         $item->hp=$request->hp;
         $item->wali=$request->wali;
         $item->hp2=$request->hp2;
-        $item->uname=$request->uname;
         $item->password=$request->password;
         $item->id_telegram=$request->id_telegram;
         $item->mac_addr=$request->mac_addr;
-        // $item->dokumen=$request->dokumen;
-        // $item->fasilitas=$request->fasilitas;
 
         $item->dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
 
@@ -208,7 +202,6 @@ class DataPenyewaController extends Controller
             'hp'=>$request->hp,
             'wali'=>$request->wali,
             'hp2'=>$request->hp2,
-            'uname'=>$request->uname,
             'id_telegram'=>$request->id_telegram,
             'mac_addr'=>$request->mac_addr,
             // 'dokumen'=>$oldFile ?? $newFile,

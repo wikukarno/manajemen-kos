@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('hp')->nullable();
             $table->string('hp2')->nullable();
             $table->string('wali')->nullable();
-            $table->string('uname')->unique()->nullable();
             $table->string('password');
             $table->string('id_telegram')->nullable();
             $table->string('mac_addr')->nullable();
@@ -35,13 +34,6 @@ return new class extends Migration
             $table->date('tgl_keluar')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            // $table->id();
-            // $table->string('name');
-            // $table->string('email')->unique();
-            // $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
-            // $table->rememberToken();
-            // $table->timestamps();
         });
     }
 

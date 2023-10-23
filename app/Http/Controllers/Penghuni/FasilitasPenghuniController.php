@@ -62,7 +62,7 @@ class FasilitasPenghuniController extends Controller
                 // 'fasilitas' => $request->fasilitas,
             ]);
 
-        return back();
+        return redirect()->route('penghuni.dashboard');
     }
 
     /**
