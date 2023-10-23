@@ -86,8 +86,6 @@
             { data: 'uname', name: 'uname' },
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
-            {{--  { data: 'dokumen', name: 'dokumen' },  --}}
-            
             {
                 data: 'dokumen',
                 name: 'dokumen',
@@ -98,31 +96,12 @@
                             // Tampilkan gambar dengan lebar dan tinggi tertentu (misalnya 50px)
                             return '<img src="../storage/' + data + '" alt="Gambar" class="img-ktp">';
                         } else {
-                            return 'Tidak ada gambar';
+                            return '-';
                         }
                     }
                     return data;
                 }
             },
-
-            {{--  {
-                data: 'dokumen', // Gantilah 'dokumen' dengan nama kolom gambar di sumber data Anda
-                name: 'dokumen',
-                render: function (data, type, full, meta) {
-                    if (type === 'display') {
-                        // Periksa apakah data gambar ada
-                        if (data) {
-                            // Tampilkan gambar dengan lebar dan tinggi tertentu (misalnya 50px)
-                            // return '<img src="' + data + '" alt="Gambar" width="50" height="50">';
-                            return '<a href="../storage/' + data + '" target="_blank">Lihat Dokumen </a> <img src="' + data + '" alt="Gambar" width="50" height="50">';
-                        } else {
-                            return 'Tidak ada gambar';
-                        }
-                    }
-                    return data;
-                }
-            },  --}}
-
             {
                 data: 'fasilitas',
                 name: 'fasilitas',

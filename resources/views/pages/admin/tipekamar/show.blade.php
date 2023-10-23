@@ -22,22 +22,65 @@
                 @if(Session::has('success'))
                   <p class="text-success">{{ session('success') }}</p>
                 @endif
-                <h4 class="card-title mb-5">Data Tipe Kamar <b class="text-primary">{{ $item->name }}</b></h4>
+                <h4 class="card-title mb-5"><b class="text-primary">{{ $item->name }}</b></h4>
                 <form class="form-sample" action="{{ url('pemilik/tipe-kamar') }}" method="POST">
-					@csrf
+                  @csrf
 					<div class="card">
-						<div class="form-group">
-							<label for="name"><b>Nama Tipe Kamar</b></label>
-							<input name="name" id="name" type="text" class="form-control" placeholder="Masukkan Nama Tipe Kamar" autocomplete="off" required value="{{ $item->name }}" disabled/>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="name"><b>Nama Tipe Kamar</b></label>
+									<input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama Tipe Kamar" autocomplete="off" required value="{{ $item->name }}" disabled/>
+										@error('name')
+										{{-- untuk info yang salah yang mana --}}
+										<div class="invalid-feedback">
+										{{ $message }}
+										</div>            
+										@enderror
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="slug" class="form-label"><b>Slug</b></label>
+									<input name="slug" id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Masukkan Slug" autocomplete="off" required value="{{ $item->slug }}" disabled/>
+										@error('slug')
+										{{-- untuk info yang salah yang mana --}}
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>            
+										@enderror
+								</div>
+							</div>
 						</div>
+
 						<div class="form-group">
-							<label for="slug" class="form-label"><b>Slug</b></label>
-							<input name="slug" id="slug" type="text" class="form-control" placeholder="Masukkan Slug" autocomplete="off" required value="{{ $item->slug }}" disabled/>
+							<label for="detail"><b>Detail</b></label>
+							<input name="detail" id="detail" type="text" class="form-control @error('detail') is-invalid @enderror" placeholder="Masukkan Detail Kamar" autocomplete="off" required value="{{ $item->detail }}" disabled/>
+								@error('detail')
+								{{-- untuk info yang salah yang mana --}}
+								<div class="invalid-feedback">
+								{{ $message }}
+								</div>            
+								@enderror
 						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="harga" class="form-label"><b>Harga</b></label>
+									<input name="harga" id="harga" type="text" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan Harga" autocomplete="off" required value="{{ $item->harga }}" disabled/>
+										@error('harga')
+										{{-- untuk info yang salah yang mana --}}
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>            
+										@enderror
+								</div>
+							</div>
+						</div>
+
 					</div>
-					<td colspan="2">
-						<input type="submit" class="float-end btn btn-gradient-primary btn-sm">
-					</td>
                 </form>
               </div>
             </div>
