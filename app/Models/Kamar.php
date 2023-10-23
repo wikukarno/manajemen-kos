@@ -19,5 +19,11 @@ class Kamar extends Authenticatable
 
         // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
     }
+    public function galleries()
+    {
+        return $this->belongsTo(Galleries::class, 'id_kamar', 'id');
+
+        // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
+    }
 
 }

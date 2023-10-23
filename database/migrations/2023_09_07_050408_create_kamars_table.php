@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('slug');
             $table->bigInteger('harga');
+            $table->string('galleries')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

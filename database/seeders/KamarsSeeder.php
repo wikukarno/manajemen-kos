@@ -22,6 +22,7 @@ class KamarsSeeder extends Seeder
                 'status'=>"Tersedia",
                 'slug'=>"no-1",
                 'harga'=>"500000",
+                
             ],
             [
                 'id'=>2,

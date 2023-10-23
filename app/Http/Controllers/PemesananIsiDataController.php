@@ -20,21 +20,9 @@ class PemesananIsiDataController extends Controller
     {
         $user = User::find(auth()->user()->id);
         
-        //$kamar = Kamar::findOrFail($id);
-        // $item = TipeKamar::findOrFail($id);
-        
-        // $kamar = Kamar::find($id);
-        // $tipe = TipeKamar::find($id);
-
-        
-        // $kamar = Kamar::all();
-        // $item = TipeKamar::all();
+   
 
         $kamar = Kamar::where('id')->get();
-        // $types = TipeKamar::all();
-        
-        
-        // $item = DataPenghuni::all()->take(2);
         $items = DataPenghuni::with('kamar')
             ->where('id_penghuni', Auth::user()->id)
             ->get();

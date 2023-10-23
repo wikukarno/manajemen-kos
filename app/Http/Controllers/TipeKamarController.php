@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galleries;
 use App\Models\TipeKamar;
 use Illuminate\Http\Request;
 use App\Models\Kamar;
@@ -15,10 +16,12 @@ class TipeKamarController extends Controller
     {
          $kamar = Kamar::all();
          $tipeKamar = TipeKamar::all();
+         $galleries = Galleries::all();
        
         return view('kamar', [
             'kamar' => $kamar,
-            'type' => $tipeKamar
+            'type' => $tipeKamar,
+            'galleries' => $galleries
         ]);
     }
     public function detailTipe(Request $request, $slug)
