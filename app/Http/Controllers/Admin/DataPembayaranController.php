@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\DataPenghuni;
+// use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Kamar;
 use App\Models\Payment;
 use App\Models\TipeKamar;
-use App\Models\User;
+use App\Models\DataPenghuni;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Carbon;
 
 class DataPembayaranController extends Controller
 {
@@ -85,13 +87,27 @@ class DataPembayaranController extends Controller
      */
     public function create()
     {
+        // Untuk mengambil nama dari ke 12 bulan
+        $bulanNames = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $bulan = Carbon::create()
+                ->month($i)
+                ->locale('en')->monthName;
+            array_push($bulanNames, $bulan);
+        }
+
+        // Dapatkan tahun saat ini
+        $tahun = Carbon::now()->isoFormat('Y');
+
+        $tipekamar=TipeKamar::all();
         $payment=Payment::all();
         $user=User::where('role', 'penghuni')->get();
         $kamar=Kamar::all();
-        $tipekamar=TipeKamar::all();
+
+        $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
 
         // untuk mengubah bagian create nya
-        return view('pages.admin.datapembayaran.create', compact('payment','user','kamar','tipekamar'));
+        return view('pages.admin.datapembayaran.create', compact('payment','user','kamar','tipekamar','bulanNames','tahun','tipe'));
     }
 
     /**

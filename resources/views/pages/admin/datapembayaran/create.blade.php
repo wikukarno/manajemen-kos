@@ -28,6 +28,7 @@
 						<div class="card">
 
 							<div class="row">
+
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="col-form-label"><b>Nama Penghuni</b></label>
@@ -38,62 +39,54 @@
 											@endforeach
 										</select>
 											@error('name')
-											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
 												{{ $message }}
 											</div>            
 											@enderror
 									</div>
 								</div>
+
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="col-form-label"><b>Id Tipe</b></label>
-										<select class="form-control @error('id_tipe') is-invalid @enderror" name="id_tipe" id="id_tipe" style="height: 45px" required value="{{ old('id_tipe') }}">
+							  			<select class="form-control @error('id_tipe') is-invalid @enderror" name="id_tipe" id="id_tipe" style="height: 45px" required value="{{ old('id_tipe') }}" disabled>
 											<option value="">Pilih Id Tipe</option>
 											@foreach ($tipekamar as $k)
 												<option value="{{ $k->id_kamar }}">{{ $k->name }}</option>
 											@endforeach
 										</select>
 											@error('id_tipe')
-											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
 												{{ $message }}
 											</div>            
 											@enderror
+
 									</div>
 								</div>
-							</div>
 
+							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="col-form-label"><b>Harga</b></label>
-										<input name="harga_bayar" id="harga_bayar" type="text" class="form-control @error('harga_bayar') is-invalid @enderror" placeholder="Masukkan Harga" autocomplete="off" required value="{{ old('harga_bayar') }}"/>
+										<input name="harga_bayar" id="harga_bayar" type="text" class="form-control @error('harga_bayar') is-invalid @enderror" placeholder="Masukkan Harga" autocomplete="off" required value="{{ old('harga_bayar') }}" disabled/>
 											@error('harga_bayar')
-											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
 												{{ $message }}
 											</div>            
 											@enderror
+											
 									</div>
-								</div>
+								</div>						
+
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Bulan</b></label>
 									<select class="form-control @error('bulan') is-invalid @enderror" name="bulan" id="bulan" style="height: 45px" required value="{{ old('bulan') }}">
 										<option value="">Pilih Bulan Bayar</option>
-										<option value="Januari">Januari</option>
-										<option value="Februari">Februari</option>
-										<option value="Maret">Maret</option>
-										<option value="April">April</option>
-										<option value="Mai">Mai</option>
-										<option value="Juni">Juni</option>
-										<option value="Juli">Juli</option>
-										<option value="Agustus">Agustus</option>
-										<option value="September">September</option>
-										<option value="Oktober">Oktober</option>
-										<option value="November">November</option>
-										<option value="Desember">Desember</option>
+										@foreach ($bulanNames as $index => $bulan )
+											<option name="bulan" value="{{ $index + 1 }}">{{ $bulan }}</option>
+										@endforeach
 									</select>
 										@error('bulan')
 										{{-- untuk info yang salah yang mana --}}
@@ -109,13 +102,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								<label class="col-form-label"><b>Tahun</b></label>
-								<input name="tahun" id="tahun" type="text" class="form-control @error('tahun') is-invalid @enderror" placeholder="Masukkan Tahun Bayar" autocomplete="off" required value="{{ old('tahun') }}"/>
-									@error('tahun')
-									{{-- untuk info yang salah yang mana --}}
-									<div class="invalid-feedback">
-										{{ $message }}
-									</div>            
-									@enderror
+								<input name="tahun" id="tahun" type="text" class="form-control" placeholder="Masukkan Tahun Bayar" autocomplete="off" required value="{{ $tahun }}" disabled/>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -206,3 +193,7 @@
 <!-- /.container-fluid -->
 
 @endsection
+
+@push('after-script')
+
+@endpush
