@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DataPenghuni;
+use App\Models\Kamar;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Mime\Part\DataPart;
 
 class DataPenyewaController extends Controller
 {
@@ -59,6 +63,9 @@ class DataPenyewaController extends Controller
                 ->editColumn('mac_addr', function ($item) {
                     return $item->mac_addr ?? '-';
                 })
+                ->editColumn('id_kamar', function ($item) {
+                    return $item->kamar ? $item->kamar->nomor_kamar : '-';
+                })
                 ->editColumn('dokumen', function ($item) {
                     return $item->dokumen ?? '-';
                 })
@@ -96,8 +103,10 @@ class DataPenyewaController extends Controller
     public function create()
     {
         $item=User::find(auth()->user()->id);
-        // untuk mengubah bagian create nya
-        return view('pages.admin.datapenyewa.create', compact('item'));
+        $nomor=DataPenghuni::where('id_penghuni', auth()->user()->id);
+
+        $kamar=Kamar::all();
+        return view('pages.admin.datapenyewa.create', compact('item','nomor','kamar'));
     }
 
     /**
@@ -134,6 +143,38 @@ class DataPenyewaController extends Controller
         $item->fasilitas = $fasilitasString;
 
         $item->save();
+
+        // untuk data penghuni nomor kamar
+        // $idUser=Auth::user()->id;
+        // $kamar=Kamar::all();
+        // $data=DataPenghuni::where('id_kamar', $kamar);
+        // if($data){
+        //     $idKamar = $data->id_kamar;
+        // }
+        $user = Auth::user()->id; // Mengambil pengguna yang sedang login
+        // $kamar = $user->kamar; // Mengambil kamar yang terkait dengan pengguna
+    
+        // if ($kamar) {
+        //     // Jika pengguna memiliki kamar, maka kita dapat membuat data penghuni
+        //     DataPenghuni::create([
+        //         'id_user' => $user->id,
+        //         'id_kamar' => $kamar->id,
+        //     ]);
+
+        // DataPenghuni::create([
+        //     'id_user'=> $idUser,
+        //     'id_kamar'=> $idKamar
+        // ]);
+
+        // Cari kamar berdasarkan nomor kamar
+        $kamar = Kamar::where('nomor_kamar', $request->nomor_kamar)->first();
+
+        // Tambahkan data ke tabel "data_penghuni"
+        $dataPenghuni = new DataPenghuni;
+        $dataPenghuni->id_user = $user;
+        $dataPenghuni->id_kamar = $kamar->id;
+        $dataPenghuni->save();
+
         return redirect('pemilik/data-penyewa')->with('success', 'Data Hass Been Added');
     }
 

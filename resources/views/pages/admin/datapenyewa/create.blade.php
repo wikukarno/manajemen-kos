@@ -196,15 +196,30 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Mac Address</b></label>
-									<input name="mac_addr" id="mac_addr" type="text" class="form-control @error('mac_addr') is-invalid @enderror" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" required value="{{ old('mac_addr') }}"/>
-									@error('mac_addr')
-										{{-- untuk info yang salah yang mana --}}
-										<div class="invalid-feedback">
-										{{ $message }}
-										</div>            
-									@enderror
+									<input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" value="{{ old('mac_addr') }}"/>
+									
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Nomor Kamar</b></label>
+									<select class="form-control @error('nomor_kamar') is-invalid @enderror" name="nomor_kamar" id="nomor_kamar" style="height: 45px" required value="{{ old('nomor_kamar') }}">
+										<option value="">Pilih Nomor Kamar</option>
+										@foreach ($kamar as $n)
+											<option value="{{ $n->id_kamar }}">{{ $n->nomor_kamar }}</option>
+										@endforeach
+									</select>
+										@error('nomor_kamar')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>            
+										@enderror
+									
+								</div>
+							</div>
+						</div>	
+						
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>KTP</b></label>
@@ -225,7 +240,8 @@
 										</div>
 								</div>
 							</div>
-						</div>				
+						</div>
+						
 						<div class="form-group">
 							<label for="fasilitas"><b>Fasilitas</b></label>							
 							<div class="row">

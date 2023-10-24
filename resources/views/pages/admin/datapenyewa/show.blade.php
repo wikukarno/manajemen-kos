@@ -196,6 +196,16 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
+									<label class="col-form-label"><b>Nomor Kamar</b></label>
+									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control @error('nomor_kamar') is-invalid @enderror" placeholder="Masukkan Nomor Kamar" autocomplete="off" required value="{{ $item->nomor_kamar }}" disabled/>
+									
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
 									<label class="col-form-label"><b>KTP</b></label>
 										<div class="mt-2 justify-content-center">
 											@if ($item->dokumen != null)
@@ -206,7 +216,8 @@
 										</div>
 								</div>
 							</div>
-						</div>				
+						</div>
+						
 						<div class="form-group">
 							<label for="fasilitas"><b>Fasilitas</b></label>							
 							<div class="row">

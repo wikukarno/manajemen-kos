@@ -33,6 +33,7 @@
                                         <th> No. Hp Wali </th>
                                         <th> Id Telegram </th>
                                         <th> Mac Address </th>
+                                        <th> Nomor Kamar </th>
                                         <th> KTP </th>
                                         <th> Fasilitas </th>
                                         <th> Action </th>
@@ -104,6 +105,7 @@
             { data: 'hp2', name: 'hp2' },
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
+            { data: 'id_kamar', name: 'id_kamar' },
             {
                 data: 'dokumen',
                 name: 'dokumen',
