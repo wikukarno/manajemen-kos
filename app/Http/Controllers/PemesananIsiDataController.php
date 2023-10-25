@@ -92,13 +92,11 @@ class PemesananIsiDataController extends Controller
         $user = User::findOrFail($id);
         
         if ($request->hasFile('dokumen')) {
-            if (Auth::user()->dokumen != null) {
-                Storage::disk('public')->delete(Auth::user()->dokumen);
-                $data['dokumen'] = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
-            } else {
-                $data['dokumen'] = $request->file('dokumen')->store('assets/penghuni/ktp', 'public');
+            if ($data['dokumen'] != null) {
+                Storage::disk('public')->delete($data['dokumen']);
+                $data['dokumen'] = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
             }
-        }  
+        }
         
         $user->update($data);
 

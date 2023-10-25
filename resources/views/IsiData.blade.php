@@ -59,7 +59,7 @@
                 <p class="text-success">{{ session('success') }}</p>
                 @endif
                 <h3 class="card-title mb-5">Isi Data Pemesanan <b class="text-primary"></b></h3>
-                <form class="form-sample" action="{{ route('isi-data.update', $user->id) }}" method="POST">
+                <form class="form-sample" action="{{ route('isi-data.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                 {{-- <form class="form-sample" action="{{route('isi-data.store')}}" method="POST"> --}}
                 @csrf
                   @method('put')

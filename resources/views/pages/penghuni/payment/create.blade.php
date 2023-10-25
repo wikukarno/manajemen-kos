@@ -16,7 +16,7 @@
 				</div>
 				<div class="form-group">
 					<label for="tipekamar">Tipe Kamar</label>
-					<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $tipe->kamar->id_tipe }}" disabled>
+					<input type="string" class="form-control" id="tipekamar" name="tipe_kamar_penghuni" placeholder="" required autocomplete="off" value="{{ $namaTipe->name }}" disabled>
 				</div>
 				<div class="form-group">
 					<label for="nomorkamar">Nomor Kamar</label>

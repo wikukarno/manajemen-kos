@@ -171,7 +171,7 @@ class DataPenyewaController extends Controller
 
         // Tambahkan data ke tabel "data_penghuni"
         $dataPenghuni = new DataPenghuni;
-        $dataPenghuni->id_user = $user;
+        $dataPenghuni->id_penghuni = $user;
         $dataPenghuni->id_kamar = $kamar->id;
         $dataPenghuni->save();
 

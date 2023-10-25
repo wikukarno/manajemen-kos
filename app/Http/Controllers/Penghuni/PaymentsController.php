@@ -165,8 +165,9 @@ class PaymentsController extends Controller
         }
 
         $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+        $namaTipe = $tipe->kamar->type;
 
-        return view('pages.penghuni.payment.create', compact('bulanNames', 'statusPembayaran', 'tahun', 'tanggalSekarang', 'tipe'));
+        return view('pages.penghuni.payment.create', compact('bulanNames', 'statusPembayaran', 'tahun', 'tanggalSekarang', 'tipe', 'namaTipe'));
     }
 
     /**
