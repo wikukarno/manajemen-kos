@@ -44,18 +44,26 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
+									<label class="col-form-label"><b>Tipe Kamar</b></label>
+									<input type="text" class="form-control" id="tipekamar" name="tipekamar" value="" disabled>
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
 									<label class="col-form-label"><b>Email Address</b></label>
 									<input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email" autocomplete="off" required value="{{ $item->email }}"/>
 										@error('email')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
-											{{ $message }}
+												{{ $message }}
 											</div>            
 										@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tempat Lahir</b></label>
@@ -63,11 +71,14 @@
 										@error('tempat_lahir')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
-											{{ $message }}
+												{{ $message }}
 											</div>            
 										@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tanggal Lahir</b></label>
@@ -75,13 +86,11 @@
 										@error('tanggal_lahir')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
-											{{ $message }}
+												{{ $message }}
 											</div>            
 										@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label" ><b>Role</b></label>
@@ -94,11 +103,14 @@
 										@error('role')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
-											{{ $message }}
+												{{ $message }}
 											</div>            
 										@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Status Akun</b></label>
@@ -111,13 +123,11 @@
 										@error('status_akun')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
-											{{ $message }}
+												{{ $message }}
 											</div>            
 										@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Alamat</b></label>
@@ -125,11 +135,14 @@
 									@error('alamat')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
-										{{ $message }}
+											{{ $message }}
 										</div>            
 									@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone</b></label>
@@ -137,13 +150,11 @@
 									@error('hp')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
-										{{ $message }}
+											{{ $message }}
 										</div>            
 									@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nama Wali</b></label>
@@ -151,11 +162,14 @@
 									@error('wali')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
-										{{ $message }}
+											{{ $message }}
 										</div>            
 									@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone Wali</b></label>
@@ -163,13 +177,11 @@
 									@error('hp2')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
-										{{ $message }}
+											{{ $message }}
 										</div>            
 									@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Password</b></label>
@@ -177,11 +189,14 @@
 										@error('password')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
-											{{ $message }}
+												{{ $message }}
 											</div>            
 										@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Id Telegram</b></label>
@@ -189,23 +204,39 @@
 									@error('id_telegram')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
-										{{ $message }}
+											{{ $message }}
 										</div>            
 									@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Mac Address</b></label>
-									<input name="mac_addr" id="mac_addr" type="text" class="form-control @error('mac_addr') is-invalid @enderror" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" required value="{{ $item->mac_addr }}"/>
-									@error('mac_addr')
-										{{-- untuk info yang salah yang mana --}}
-										<div class="invalid-feedback">
-										{{ $message }}
-										</div>            
-									@enderror
+									<input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" value="{{ $item->mac_addr }}"/>
+								</div>
+							</div>
+						</div>	
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Tipe Kamar</b></label>
+									<input name="tipekamar" id="tipekamar" type="text" class="form-control" disabled required value="{{ $namaTipe->name }}"/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Nomor Kamar</b></label>
+									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $kamar->kamar->nomor_kamar }} " disabled/>
+								</div>
+							</div>
+						</div>		
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Harga Kamar</b></label>
+									<input name="hargakamar" id="hargakamar" type="text" class="form-control" disabled required value="{{ $kamar->kamar->harga }}"/>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -228,7 +259,8 @@
 										</div>
 								</div>
 							</div>
-						</div>				
+						</div>
+
 						<div class="form-group">
 							<label for="fasilitas"><b>Fasilitas</b></label>							
 							<div class="row">

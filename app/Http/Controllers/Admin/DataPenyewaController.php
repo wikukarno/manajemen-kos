@@ -30,6 +30,25 @@ class DataPenyewaController extends Controller
                 ->editColumn('name', function ($item) {
                     return $item->name ?? '-';
                 })
+                ->editColumn('nama_tipe', function ($item) {
+                    $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
+                    $namaTipe =  $kamar->kamar->type;
+                    $nama = $namaTipe->name;
+                
+                    return $nama ?? '-';
+                })
+                ->editColumn('nomor_kamar', function ($item) {
+                    $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
+                    $nomor =  $kamar->kamar->nomor_kamar;
+                
+                    return $nomor ?? '-';
+                })
+                ->editColumn('harga_kamar', function ($item) {
+                    $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
+                    $harga =  $kamar->kamar->harga;
+                
+                    return $harga ?? '-';
+                })
                 ->editColumn('email', function ($item) {
                     return $item->email ?? '-';
                 })
@@ -105,8 +124,7 @@ class DataPenyewaController extends Controller
         $item=User::find(auth()->user()->id);
         $nomor=DataPenghuni::where('id_penghuni', auth()->user()->id);
 
-        $kamar=Kamar::all();
-        return view('pages.admin.datapenyewa.create', compact('item','nomor','kamar'));
+        return view('pages.admin.datapenyewa.create', compact('item','nomor','kamar', 'tipe', 'namaTipe'));
     }
 
     /**
@@ -144,37 +162,6 @@ class DataPenyewaController extends Controller
 
         $item->save();
 
-        // untuk data penghuni nomor kamar
-        // $idUser=Auth::user()->id;
-        // $kamar=Kamar::all();
-        // $data=DataPenghuni::where('id_kamar', $kamar);
-        // if($data){
-        //     $idKamar = $data->id_kamar;
-        // }
-        $user = Auth::user()->id; // Mengambil pengguna yang sedang login
-        // $kamar = $user->kamar; // Mengambil kamar yang terkait dengan pengguna
-    
-        // if ($kamar) {
-        //     // Jika pengguna memiliki kamar, maka kita dapat membuat data penghuni
-        //     DataPenghuni::create([
-        //         'id_user' => $user->id,
-        //         'id_kamar' => $kamar->id,
-        //     ]);
-
-        // DataPenghuni::create([
-        //     'id_user'=> $idUser,
-        //     'id_kamar'=> $idKamar
-        // ]);
-
-        // Cari kamar berdasarkan nomor kamar
-        $kamar = Kamar::where('nomor_kamar', $request->nomor_kamar)->first();
-
-        // Tambahkan data ke tabel "data_penghuni"
-        $dataPenghuni = new DataPenghuni;
-        $dataPenghuni->id_penghuni = $user;
-        $dataPenghuni->id_kamar = $kamar->id;
-        $dataPenghuni->save();
-
         return redirect('pemilik/data-penyewa')->with('success', 'Data Hass Been Added');
     }
 
@@ -193,9 +180,15 @@ class DataPenyewaController extends Controller
     public function edit(string $id)
     {
         $item = User::findOrFail($id);
+
+        $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
+        $namaTipe = $kamar->kamar->type;
+
         // untuk menampilkan ke halaman edit nya
         return view('pages.admin.datapenyewa.edit', [
-            'item' => $item
+            'item' => $item,
+            'kamar' => $kamar,
+            'namaTipe' => $namaTipe
         ]);
     }
 

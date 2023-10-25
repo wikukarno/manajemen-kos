@@ -23,6 +23,8 @@
                                         <th> No </th>
                                         <th> Nama Lengkap </th>
                                         <th> Tipe Kamar </th>
+                                        <th> Nomor Kamar </th>
+                                        <th> Harga Kamar </th>
                                         <th> Email </th>
                                         <th> Tempat Lahir </th>
                                         <th> Tanggal Lahir </th>
@@ -84,7 +86,9 @@
                     return data;
                 }
             },
-            { data: 'id_kamar', name: 'id_kamar' },
+            { data: 'nama_tipe', name: 'nama_tipe' },
+            { data: 'nomor_kamar', name: 'nomor_kamar' },
+            { data: 'harga_kamar', name: 'harga_kamar' },
             {
                 data: 'email',
                 name: 'email',
