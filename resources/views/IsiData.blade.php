@@ -28,7 +28,12 @@
             </div>
             <div class="mb-3">
               <label for="harga_kamar" class="form-label">Deskripsi Kamar</label>
-              <input type="text" id="harga_kamar" class="form-control" value="{{$item->kamar->deskripsi}}" name="harga_kamar" disabled>
+              <div class="mb-3">
+                {{$item->kamar->deskripsi}}
+              </div>
+              {{-- <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled>{{$item->kamar->deskripsi}}</textarea>
+              </div> --}}
             </div>
             @endforeach
         </div>
@@ -164,6 +169,7 @@
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Kirim Data</button>
+                  
               </div>
             </div>
         </div>

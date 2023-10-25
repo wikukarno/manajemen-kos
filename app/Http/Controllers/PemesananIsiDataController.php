@@ -102,7 +102,7 @@ class PemesananIsiDataController extends Controller
         
         $user->update($data);
 
-        return redirect()->route('home')->with('message', 'verifikasi');
+        return view('verifikasi');
     }
 
     /**
@@ -125,5 +125,12 @@ class PemesananIsiDataController extends Controller
     {
         DataPenghuni::truncate();
         return response()->json(['message' => 'Batal Pemesanan']);
+    }
+
+        public function verifikasi()
+    {
+        return view('verifikasi', [
+            "kamars" => Kamar::all()
+        ]);
     }
 }

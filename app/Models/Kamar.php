@@ -25,5 +25,11 @@ class Kamar extends Authenticatable
 
         // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
     }
+    public function penyewa()
+    {
+        return $this->belongsTo(DataPenyewa::class, 'id_penyewa', 'id');
+
+        // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
+    }
 
 }

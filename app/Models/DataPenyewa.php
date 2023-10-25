@@ -23,4 +23,11 @@ class DataPenyewa extends Model
     // {
     //     return DB::table('data_users')->get();
     // }
+
+    public function penyewa()
+    {
+        return $this->belongsTo(DataPenyewa::class, 'id_penyewa', 'id');
+
+        // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
+    }
 }

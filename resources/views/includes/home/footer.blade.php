@@ -2,12 +2,12 @@
         <div class="container-fluid bg-dark text-light footer wow fadeIn mt-5" data-wow-delay="0.1s">
             <div class="container pb-5">
                 <div class="row g-6">
-                    <div class="col-md-6 col-lg-3">
+                    {{-- <div class="col-md-6 col-lg-3">
                         <div class="rounded p-4">
                              <h2 class="text-start text-primary text-uppercase mb-4">Akira Kos  </h2>
                             <img src="../image/img/AKIRA.jpg" alt="" style="width: 180px; height:180px">
                         </div>
-                    </div>
+                     </div> --}}
                     <div class="col-md-6 col-lg-3">
                         <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
                         <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>350 M dari Universitas Islam Riau | Jl.Surya Baru No.17 Marpoyan</p>

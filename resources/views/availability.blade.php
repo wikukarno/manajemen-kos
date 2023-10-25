@@ -37,6 +37,7 @@
                
                 <div class="row mb-5 justify-content-center">
                     @foreach ($availabilitys as $availability)
+                    @if ($availability->status == 'Tersedia')
                     <div class="col-md-4" style="margin-bottom: 30px">
                         <div class="room-item shadow rounded overflow-hidden"> 
                             <div class="position-relative">
@@ -52,11 +53,11 @@
                                 </div>                               
                                 <div class="d-flex justify-content-between">
                                     <a class="btn btn-sm btn-dark rounded py-2 px-3" href="{{route('detail', $availability->slug)}}">Cek Kamar</a>
-                                    
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
