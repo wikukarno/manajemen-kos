@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPenyewa;
 use App\Models\Kamar;
 use App\Models\TipeKamar;
 use Illuminate\Http\Request;
@@ -62,8 +63,28 @@ class KamarController extends Controller
      */
     public function update(Request $request, Kamar $kamar)
     {
-        //
+
+        $kamar = Kamar::find($kamar->id_penyewa);
+        // if ($kamar->id_penyewa !== null) {
+        //    $kamar->update(['status' => 'tidak tersedia']); 
+        // }
+
+        // if ($kamar->has('id_penyewa')) {
+        //     $kamar->update(['status' => 'Tidak tersedia']);
+        // } else {
+        //     $kamar->update(['status' => 'Tersedia']);
+        // }
+
+        if ($request->has('id_penyewa')) {
+            if($kamar->id_penyewa != null);
+            $kamar->update(['status' => 'Tidak tersedia']);
+        } else {
+            $kamar->update(['status' => 'Tersedia']);   
+        }
     }
+            
+        
+    
 
     /**
      * Remove the specified resource from storage.

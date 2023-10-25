@@ -31,6 +31,7 @@ use App\Http\Controllers\AkunPendaftarController;
 use App\Http\Controllers\PemesananIsiDataController;
 use App\Http\Controllers\Penghuni\DataPenghuniController;
 use App\Http\Controllers\Penghuni\FasilitasPenghuniController;
+use App\Http\Controllers\VerifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,9 @@ Route::get('/availability/detail-kamar/{slug}', [detailKamar::class, 'index'])->
 
 Route::resource('isi-data', PemesananIsiDataController::class);
 Route::delete('isi-data', [PemesananIsiDataController::class, 'destroy']);
+
+// Route::get('/verifikasi', [VerifikasiController::class, 'index']);
+Route::resource('verifikasi', VerifikasiController::class);
 
 
 Route::resource('pembayaran-awal', PaymentsController::class);
