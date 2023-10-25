@@ -41,6 +41,25 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
+									<label class="col-form-label"><b>Nomor Kamar</b></label>
+									<select class="form-control @error('nomor_kamar') is-invalid @enderror" name="nomor_kamar" id="nomor_kamar" style="height: 45px" value="{{ old('nomor_kamar') }}">
+										<option value="">Pilih Nomor Kamar</option>
+										@foreach ($kamar as $n)
+											<option value="{{ $n->id_kamar }}">{{ $n->nomor_kamar }}</option>
+										@endforeach
+									</select>
+										@error('nomor_kamar')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>            
+										@enderror
+									
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
 									<label class="col-form-label"><b>Email Address</b></label>
 									<input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email" autocomplete="off" required value="{{ old('email') }}"/>
 										@error('email')
@@ -51,8 +70,6 @@
 										@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tempat Lahir</b></label>
@@ -65,6 +82,9 @@
 										@enderror
 								</div>
 							</div>
+							
+						</div>
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tanggal Lahir</b></label>
@@ -77,8 +97,6 @@
 										@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label" ><b>Role</b></label>
@@ -96,6 +114,9 @@
 										@enderror
 								</div>
 							</div>
+							
+						</div>
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Status Akun</b></label>
@@ -113,8 +134,6 @@
 										@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Alamat</b></label>
@@ -127,6 +146,9 @@
 									@enderror
 								</div>
 							</div>
+							
+						</div>
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone</b></label>
@@ -139,8 +161,6 @@
 									@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nama Wali</b></label>
@@ -153,6 +173,9 @@
 									@enderror
 								</div>
 							</div>
+							
+						</div>
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone Wali</b></label>
@@ -165,8 +188,6 @@
 									@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Password</b></label>
@@ -179,6 +200,9 @@
 										@enderror
 								</div>
 							</div>
+							
+						</div>
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Id Telegram</b></label>
@@ -191,8 +215,6 @@
 									@enderror
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Mac Address</b></label>
@@ -200,23 +222,7 @@
 									
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="col-form-label"><b>Nomor Kamar</b></label>
-									<select class="form-control @error('nomor_kamar') is-invalid @enderror" name="nomor_kamar" id="nomor_kamar" style="height: 45px" required value="{{ old('nomor_kamar') }}">
-										<option value="">Pilih Nomor Kamar</option>
-										@foreach ($kamar as $n)
-											<option value="{{ $n->id_kamar }}">{{ $n->nomor_kamar }}</option>
-										@endforeach
-									</select>
-										@error('nomor_kamar')
-										<div class="invalid-feedback">
-											{{ $message }}
-										</div>            
-										@enderror
-									
-								</div>
-							</div>
+							
 						</div>	
 						
 						<div class="row">

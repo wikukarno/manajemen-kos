@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Penghuni;
 
 use App\Models\User;
+use App\Models\DataPenghuni;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Kamar;
 
 class FasilitasPenghuniController extends Controller
 {
@@ -14,7 +16,9 @@ class FasilitasPenghuniController extends Controller
     public function index()
     {
         $item=User::find(auth()->user()->id);
-        return view('pages.penghuni.fasilitas.index', compact('item'));
+        $kamar = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+        $namaTipe = $kamar->kamar->type;
+        return view('pages.penghuni.fasilitas.index', compact('item', 'kamar', 'namaTipe'));
     }
 
     /**

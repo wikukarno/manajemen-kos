@@ -22,6 +22,7 @@
                                     <tr>
                                         <th> No </th>
                                         <th> Nama Lengkap </th>
+                                        <th> Tipe Kamar </th>
                                         <th> Email </th>
                                         <th> Tempat Lahir </th>
                                         <th> Tanggal Lahir </th>
@@ -33,7 +34,6 @@
                                         <th> No. Hp Wali </th>
                                         <th> Id Telegram </th>
                                         <th> Mac Address </th>
-                                        <th> Nomor Kamar </th>
                                         <th> KTP </th>
                                         <th> Fasilitas </th>
                                         <th> Action </th>
@@ -84,6 +84,7 @@
                     return data;
                 }
             },
+            { data: 'id_kamar', name: 'id_kamar' },
             {
                 data: 'email',
                 name: 'email',
@@ -105,7 +106,6 @@
             { data: 'hp2', name: 'hp2' },
             { data: 'id_telegram', name: 'id_telegram' },
             { data: 'mac_addr', name: 'mac_addr' },
-            { data: 'id_kamar', name: 'id_kamar' },
             {
                 data: 'dokumen',
                 name: 'dokumen',

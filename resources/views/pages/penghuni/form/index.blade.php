@@ -38,9 +38,9 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label">Uname</label>
+								<label class="col-sm-3 col-form-label">Tanggal Masuk</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->uname }}" disabled>
+									<input type="date" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ auth()->user()->tgl_masuk}}" disabled>
 								</div>
 							</div>
 						</div>

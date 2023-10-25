@@ -16,15 +16,15 @@
 					<form class="forms-sample">
 						<div class="form-group">
 							<label for="harga">Tipe Kamar</label>
-							<input type="text" class="form-control" id="tipe" placeholder="" name="tipe" disabled>
+							<input type="text" class="form-control" id="tipe" placeholder="" name="tipe" value="{{ $namaTipe->name }}" disabled>
 						</div>
 						<div class="form-group">
 							<label for="harga">Nomor Kamar</label>
-							<input type="text" class="form-control" id="nomor" placeholder="" name="nomor" disabled>
+							<input type="text" class="form-control" id="nomor" placeholder="" name="nomor" value="{{ $kamar->kamar->nomor_kamar }}" disabled>
 						</div>
 						<div class="form-group">
 							<label for="harga">Harga Kamar</label>
-							<input type="text" class="form-control" id="harga" placeholder="" name="harga" disabled>
+							<input type="text" class="form-control" id="harga" placeholder="" name="harga" value="{{ $kamar->kamar->harga }}" disabled>
 						</div>
 						<div class="form-group">
 							<label for="fasilitas">Fasilitas</label>
