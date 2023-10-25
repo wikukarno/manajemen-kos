@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataPenghuni;
-use App\Models\DataPenyewa;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Kamar;
 use App\Models\TipeKamar;
-use App\Models\User;
+use App\Models\DataPenyewa;
+use App\Models\DataPenghuni;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -101,7 +102,7 @@ class PemesananIsiDataController extends Controller
         
         $user->update($data);
 
-        return redirect()->route('availabality');
+        return redirect()->route('home')->with('message', 'verifikasi');
     }
 
     /**
