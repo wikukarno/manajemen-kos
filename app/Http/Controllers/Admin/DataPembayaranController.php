@@ -31,34 +31,14 @@ class DataPembayaranController extends Controller
                     return $item->users ? $item->users->name : '-';
                 })
                 ->editColumn('tipe_kamar', function ($item) {
-                    // return $item->id_tipe  ?? '-';
-                    // if ($item->kamars && $item->kamars->id_tipe) {
-                    //     return $item->kamars->id_tipe;
-                    // }
-                    // return '-';
-                    // return $item->kamars->type->name;
-                    // $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
-                    // $namaTipe =  $kamar->kamars->type;
-                    // $nama = $namaTipe->name;
-                
-                    // return $nama ?? '-';
                     return $item->kamars->type->name;
                 })
                 ->editColumn('nomor_kamar', function ($item) {
-                    return $item->nomor_kamar ?? '-';
+                    return $item->kamars->nomor_kamar ?? '-';
                 })
                 ->editColumn('harga_kamar', function ($item) {
-                    return $item->harga_bayar ?? '-';
+                    return $item->kamars->harga ?? '-';
                 })
-                // ->editColumn('id_user', function ($item) {
-                //     return $item->users ? $item->users->name : '-';
-                // })
-                // ->editColumn('id_tipe', function ($item) {
-                //     return $item->kamars ? $item->kamars->id_tipe : '-';
-                // })
-                // ->editColumn('harga_bayar', function ($item) {
-                //     return $item->harga_bayar ?? '-';
-                // })
                 ->editColumn('bulan', function ($item) {
                     return $item->bulan ?? '-';
                 })
