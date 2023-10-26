@@ -21,21 +21,37 @@ class DataPembayaranController extends Controller
     {
         if (request()->ajax()) {
             // $query = Payment::query();
-            $query = Payment::with('users','kamars');
+            $query = Payment::with('users','kamars','datakamars');
             
 
             return datatables()->of($query)
                 ->addIndexColumn()
 
-                ->editColumn('id_user', function ($item) {
+                ->editColumn('nama_penghuni', function ($item) {
                     return $item->users ? $item->users->name : '-';
                 })
-                ->editColumn('id_tipe', function ($item) {
-                    return $item->kamars ? $item->kamars->id_tipe : '-';
+                ->editColumn('tipe_kamar', function ($item) {
+                    // return $item->id_tipe  ?? '-';
+                    if ($item->kamars && $item->kamars->id_tipe) {
+                        return $item->kamars->id_tipe;
+                    }
+                    return '-';
                 })
-                ->editColumn('harga_bayar', function ($item) {
+                ->editColumn('nomor_kamar', function ($item) {
+                    return $item->nomor_kamar ?? '-';
+                })
+                ->editColumn('harga_kamar', function ($item) {
                     return $item->harga_bayar ?? '-';
                 })
+                // ->editColumn('id_user', function ($item) {
+                //     return $item->users ? $item->users->name : '-';
+                // })
+                // ->editColumn('id_tipe', function ($item) {
+                //     return $item->kamars ? $item->kamars->id_tipe : '-';
+                // })
+                // ->editColumn('harga_bayar', function ($item) {
+                //     return $item->harga_bayar ?? '-';
+                // })
                 ->editColumn('bulan', function ($item) {
                     return $item->bulan ?? '-';
                 })

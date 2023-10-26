@@ -181,24 +181,32 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row">							
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Mac Address</b></label>
-									<input name="mac_addr" id="mac_addr" type="text" class="form-control @error('mac_addr') is-invalid @enderror" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" required value="{{ $item->mac_addr }}" disabled/>
-									@error('mac_addr')
-										{{-- untuk info yang salah yang mana --}}
-										<div class="invalid-feedback">
-										{{ $message }}
-										</div>            
-									@enderror
+									<input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" value="{{ $item->mac_addr }}" disabled/>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
+									<label class="col-form-label"><b>Tipe Kamar</b></label>
+									<input name="tipekamar" id="tipekamar" type="text" class="form-control" disabled required value="{{ $namaTipe->name }}"/>
+								</div>
+							</div>
+						</div>	
+
+						<div class="row">							
+							<div class="col-md-6">
+								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Kamar</b></label>
-									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control @error('nomor_kamar') is-invalid @enderror" placeholder="Masukkan Nomor Kamar" autocomplete="off" required value="{{ $item->nomor_kamar }}" disabled/>
-									
+									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $kamar->kamar->nomor_kamar }} " disabled/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Harga Kamar</b></label>
+									<input name="hargakamar" id="hargakamar" type="text" class="form-control" disabled required value="{{ $kamar->kamar->harga }}"/>
 								</div>
 							</div>
 						</div>

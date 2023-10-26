@@ -171,7 +171,11 @@ class DataPenyewaController extends Controller
     public function show(string $id)
     {
         $item=User::find($id);
-        return view('pages.admin.datapenyewa.show', compact('item'));
+
+        $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
+        $namaTipe = $kamar->kamar->type;
+
+        return view('pages.admin.datapenyewa.show', compact('item','kamar','namaTipe'));
     }
 
     /**

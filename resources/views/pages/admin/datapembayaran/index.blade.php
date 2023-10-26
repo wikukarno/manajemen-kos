@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mt-3"><b>Data Pembayaran </b><a href="{{ route('data-pembayaran.create') }}" class="float-end btn btn-outline-success btn-sm mb-2">Tambah</a></h3>
+                        <h3 class="card-title mt-3"><b>Data Pembayaran </b></h3>
                     </div>
 
                     <div class="card-body">
@@ -21,9 +21,10 @@
                                 <thead>
                                     <tr>
                                         <th> No </th>
-                                        <th> Nama </th>
-                                        <th> Tipe </th>
-                                        <th> Harga </th>
+                                        <th> Nama Penghuni </th>
+                                        <th> Tipe Kamar </th>
+                                        <th> Nomor Kamar </th>
+                                        <th> Harga Kamar </th>
                                         <th> Bulan </th>
                                         <th> Tahun </th>
                                         <th> Tanggal Bayar </th>
@@ -68,9 +69,11 @@
         },
         columns: [
             { data: 'DT_RowIndex', name: 'id' },
-            { data: 'id_user', name: 'id_user' },
-            { data: 'id_tipe', name: 'id_tipe' },
-            { data: 'harga_bayar', name: 'harga_bayar' },
+            
+            { data: 'nama_penghuni', name: 'nama_penghuni' },
+            { data: 'tipe_kamar', name: 'tipe_kamar' },
+            { data: 'nomor_kamar', name: 'nomor_kamar' },
+            { data: 'harga_kamar', name: 'harga_kamar' },
             { data: 'bulan', name: 'bulan' },
             { data: 'tahun', name: 'tahun' },
             { data: 'tanggal_bayar', name: 'tanggal_bayar' },

@@ -25,6 +25,9 @@ class User extends Authenticatable
     public function users()
     {
         return $this->belongsTo(Payment::class, 'id_user', 'id');
+        // id_user => dari model user
+        // id => dari model payment 
+        
 
         // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
     }

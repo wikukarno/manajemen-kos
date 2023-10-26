@@ -16,6 +16,9 @@ class Kamar extends Authenticatable
     public function type()
     {
         return $this->belongsTo(TipeKamar::class, 'id_tipe', 'id');
+        // id_tipe => dari model kamar
+        // id => dari model tipe kamar
+        
 
         // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
     }
