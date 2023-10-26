@@ -22,74 +22,61 @@ class DataPenyewaController extends Controller
 
         if (request()->ajax()) {
             // $query = User::query();
-            $query = User::where('role', 'penghuni');
+            $query = DataPenghuni::with('kamar','kamar.type', 'user')->get();
 
             return datatables()->of($query)
                 ->addIndexColumn()
                 
                 ->editColumn('name', function ($item) {
-                    return $item->name ?? '-';
+                    return $item->user->name ?? '-';
                 })
                 ->editColumn('nama_tipe', function ($item) {
-                    $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
-                    $namaTipe =  $kamar->kamar->type;
-                    $nama = $namaTipe->name;
-                
-                    return $nama ?? '-';
+                    return $item->kamar->type->name ?? '-';
                 })
                 ->editColumn('nomor_kamar', function ($item) {
-                    $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
-                    $nomor =  $kamar->kamar->nomor_kamar;
-                
-                    return $nomor ?? '-';
+                    return $item->kamar->nomor_kamar ?? '-';
                 })
                 ->editColumn('harga_kamar', function ($item) {
-                    $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
-                    $harga =  $kamar->kamar->harga;
-                
-                    return $harga ?? '-';
+                    return $item->kamar->harga ?? '-';
                 })
                 ->editColumn('email', function ($item) {
-                    return $item->email ?? '-';
+                    return $item->user->email ?? '-';
                 })
                 ->editColumn('tempat_lahir', function ($item) {
-                    return $item->tempat_lahir ?? '-';
+                    return $item->user->tempat_lahir ?? '-';
                 })
                 ->editColumn('tanggal_lahir', function ($item) {
-                    return $item->tanggal_lahir ?? '-';
+                    return $item->user->tanggal_lahir ?? '-';
                 })
                 ->editColumn('role', function ($item) {
-                    return $item->role ?? '-';
+                    return $item->user->role ?? '-';
                 })
                 ->editColumn('status_akun', function ($item) {
-                    return $item->status_akun ?? '-';
+                    return $item->user->status_akun ?? '-';
                 })
                 ->editColumn('alamat', function ($item) {
-                    return $item->alamat ?? '-';
+                    return $item->user->alamat ?? '-';
                 })
                 ->editColumn('hp', function ($item) {
-                    return $item->hp ?? '-';
+                    return $item->user->hp ?? '-';
                 })
                 ->editColumn('wali', function ($item) {
-                    return $item->wali ?? '-';
+                    return $item->user->wali ?? '-';
                 })
                 ->editColumn('hp2', function ($item) {
-                    return $item->hp2 ?? '-';
+                    return $item->user->hp2 ?? '-';
                 })
                 ->editColumn('id_telegram', function ($item) {
-                    return $item->id_telegram ?? '-';
+                    return $item->user->id_telegram ?? '-';
                 })
                 ->editColumn('mac_addr', function ($item) {
-                    return $item->mac_addr ?? '-';
-                })
-                ->editColumn('id_kamar', function ($item) {
-                    return $item->kamar ? $item->kamar->nomor_kamar : '-';
+                    return $item->user->mac_addr ?? '-';
                 })
                 ->editColumn('dokumen', function ($item) {
-                    return $item->dokumen ?? '-';
+                    return $item->user->dokumen ?? '-';
                 })
                 ->editColumn('fasilitas', function ($item) {
-                    return $item->fasilitas ?? '-';
+                    return $item->user->fasilitas ?? '-';
                 })
                 ->editColumn('action', function ($item) {
                     return '

@@ -16,4 +16,8 @@ class DataPenghuni extends Model
     {
         return $this->belongsTo(Kamar::class, 'id_kamar', 'id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_penghuni', 'id');
+    }
 }
