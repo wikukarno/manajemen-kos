@@ -28,20 +28,4 @@ class Payment extends Model
         return $this->belongsTo(Kamar::class, 'id_tipe', 'id');
     }
 
-    public function payment() {
-        return $this->belongsTo(Payment::class, 'nama_user','nomor_kamar');
-    }
-
-    public function penyewa()
-    {
-        return $this->belongsTo(DataPenyewa::class, 'id_penyewa', 'id');
-
-        // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
-    }
-    public function datakamars()
-    {
-        return $this->belongsTo(TipeKamar::class, 'id_tipe', 'id');
-
-        // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
-    }    
 }

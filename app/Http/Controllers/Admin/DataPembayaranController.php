@@ -21,7 +21,7 @@ class DataPembayaranController extends Controller
     {
         if (request()->ajax()) {
             // $query = Payment::query();
-            $query = Payment::with('users','kamars','datakamars');
+            $query = Payment::with('users','kamars','type')->get();
             
 
             return datatables()->of($query)
@@ -32,10 +32,17 @@ class DataPembayaranController extends Controller
                 })
                 ->editColumn('tipe_kamar', function ($item) {
                     // return $item->id_tipe  ?? '-';
-                    if ($item->kamars && $item->kamars->id_tipe) {
-                        return $item->kamars->id_tipe;
-                    }
-                    return '-';
+                    // if ($item->kamars && $item->kamars->id_tipe) {
+                    //     return $item->kamars->id_tipe;
+                    // }
+                    // return '-';
+                    // return $item->kamars->type->name;
+                    // $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
+                    // $namaTipe =  $kamar->kamars->type;
+                    // $nama = $namaTipe->name;
+                
+                    // return $nama ?? '-';
+                    return $item->kamars->type->name;
                 })
                 ->editColumn('nomor_kamar', function ($item) {
                     return $item->nomor_kamar ?? '-';

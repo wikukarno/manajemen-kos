@@ -35,8 +35,8 @@ class UserSeeder extends Seeder
                 'email'=>"agata@gmail.com",
                 'name'=>"agata",
                 'password'=>bcrypt('123'),
-                'role'=>"Penghuni",
-                'status_akun'=>"Terverifikasi",
+                'role'=>"Pendaftar",
+                'status_akun'=>"Belum Verifikasi",
             ],
             [
                 'id'=>4,
