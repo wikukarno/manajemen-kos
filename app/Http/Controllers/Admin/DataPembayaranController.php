@@ -21,7 +21,7 @@ class DataPembayaranController extends Controller
     {
         if (request()->ajax()) {
             // $query = Payment::query();
-            $query = Payment::with('users','kamars','type')->get();
+            $query = Payment::with('users','kamars.type')->get();
             
 
             return datatables()->of($query)
