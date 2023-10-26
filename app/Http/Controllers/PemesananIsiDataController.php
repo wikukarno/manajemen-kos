@@ -97,7 +97,7 @@ class PemesananIsiDataController extends Controller
         
         $user->update($data);
 
-        return view('PembayaranAwal');
+        return redirect()->route('pembayaran-pertama.create');
     }
 
     /**

@@ -22,16 +22,9 @@ class PembayaranAwalController extends Controller
     {
         $user = User::find(auth()->user()->id);
         $kamar = Kamar::where('id')->get();
-        $items = DataPenghuni::with('kamar')
-            ->where('id_penghuni', Auth::user()->id)
-            ->get();
             
        
-         return view('PembayaranAwal', [
-            'items' => $items,
-            'kamar' => $kamar,
-         
-         ] ,compact('user', 'items', 'kamar'));
+         return view('PembayaranAwal', compact('user', 'tipe', 'kamar'));
     }
 
     /**
@@ -39,7 +32,9 @@ class PembayaranAwalController extends Controller
      */
     public function create()
     {
-        //
+        $tipe = DataPenghuni::with('kamar.type')->where('id_penghuni', Auth::user()->id)->first();
+       
+         return view('PembayaranAwal', compact('tipe'));
     }
 
     /**
@@ -47,7 +42,7 @@ class PembayaranAwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         return view('PembayaranAwal', compact('tipe'));
     }
 
     /**
@@ -71,7 +66,7 @@ class PembayaranAwalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**

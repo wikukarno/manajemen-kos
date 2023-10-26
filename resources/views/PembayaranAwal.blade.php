@@ -11,9 +11,8 @@
                 <p class="text-success">{{ session('success') }}</p>
                 @endif
                 <h3 class="card-title mb-5">Pembayaran Awal <b class="text-primary"></b></h3>
-                <form class="form-sample" action="" method="POST">
+                <form class="form-sample" action="{{ route('pembayaran-pertama.store') }}" method="POST">
                   @csrf
-                  @method('put')
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
@@ -27,7 +26,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="nomor_kamar" class="form-label">Nomor Kamar</label>
-                            <input type="number" id="nomor_kamar" class="form-control" value="" name="nomor_kamar" disabled>
+                            <input type="number" id="nomor_kamar" class="form-control"  name="nomor_kamar" value="{{ $tipe->kamar->nomor_kamar }}" disabled>
                         </div>
                       </div>
                     </div>
@@ -37,7 +36,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="tipe_kamar" class="form-label">Tipe Kamar</label>
-                            <input type="number" class="form-control" id="tipe_kamar" aria-describedby="tipe_kamar" value="" name="tipe_kamar" disabled>
+                            <input type="number" class="form-control" id="tipe_kamar" aria-describedby="tipe_kamar" name="tipe_kamar" value="{{ $tipe->kamar->id_tipe }}" disabled>
                         </div>
                       </div>
                     </div>
@@ -45,7 +44,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="harga_kamar" class="form-label">Harga Kamar</label>
-                            <input type="text" class="form-control" id="tempat_lahir" aria-describedby="tempat_lahir" name="tempat_lahir" disabled>
+                            <input type="text" class="form-control" id="tempat_lahir" aria-describedby="tempat_lahir" name="tempat_lahir" value="{{ $tipe->kamar->harga }}" disabled>
                         </div>
                       </div>
                     </div>

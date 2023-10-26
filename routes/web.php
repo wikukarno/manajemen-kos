@@ -28,6 +28,7 @@ use App\Http\Controllers\Penghuni\FormPembayaranController;
 use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\Admin\TipeKamarController as AdminTipeKamarController;
 use App\Http\Controllers\AkunPendaftarController;
+use App\Http\Controllers\PembayaranAwalController;
 use App\Http\Controllers\PemesananIsiDataController;
 use App\Http\Controllers\Penghuni\DashboardPenghuniController;
 use App\Http\Controllers\Penghuni\DataPenghuniController;
@@ -63,8 +64,9 @@ Route::delete('isi-data', [PemesananIsiDataController::class, 'destroy']);
 Route::resource('verifikasi', VerifikasiController::class);
 
 
-Route::resource('pembayaran-awal', PaymentsController::class);
+// Route::resource('pembayaran-awal', PembayaranAwalController::class);
 // Route::post('isi-data', [PemesananIsiDataController::class, 'hapus']);
+Route::resource('pembayaran-pertama', PembayaranAwalController::class);
 
 // tipe kamar
 Route::get('/detail-tipe/{tipe}', [TipeKamarController::class, 'detailTipe'])->name('detailTipe');
