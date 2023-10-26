@@ -2,7 +2,8 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 	<div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
 		<a class="navbar-brand brand-logo" href="/">
-			<img src="#" style="max-height: 50px !important" alt="logo" />
+			<img src="../image/img/AKIRA.jpg" style="width: 50px; height:50px; !important" alt="logo" />
+			<h6 class="m-0 text-uppercase">Akira Kos</h6>
 		</a>
 		<a class="navbar-brand brand-logo-mini" href="/">
 			<img src="#"

@@ -11,7 +11,7 @@
                 <p class="text-success">{{ session('success') }}</p>
                 @endif
                 <h3 class="card-title mb-5">Pembayaran Awal <b class="text-primary"></b></h3>
-                <form class="form-sample" action="{{route('')}}" method="POST">
+                <form class="form-sample" action="" method="POST">
                   @csrf
                   @method('put')
                   <div class="row">
@@ -27,7 +27,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="nomor_kamar" class="form-label">Nomor Kamar</label>
-                            <input type="number" id="nomor_kamar" class="form-control" value="" name="nomor_kamar" disabled>
+                            <input type="number" id="nomor_kamar" class="form-control" value="{{$kamar->nomor_kamar}}" name="nomor_kamar" disabled>
                         </div>
                       </div>
                     </div>

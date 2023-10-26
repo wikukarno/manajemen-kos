@@ -48,11 +48,18 @@
                                 @csrf
                                 <input type="text" value="{{$kamar->id}}" name="id_kamar" hidden>
                                 <button type="submit" class="btn text-light rounded-5 mt-5"  style="background-color: orange; width:300px" >Pesan</button>
+                                
                             </form>
+                            @if (session('error'))
+                            <div class="alert alert-danger mt-3" style="width:380px">
+                                {{ session('error') }}
+                            </div>
+                                
+                            @endif
                             
                             @endauth
                             @guest
-                            <a href="{{route('login')}}"><button class="btn text-light rounded-5 mt-5" style="background-color: orange; width:5cm" id="btnAddToWishlist">Pesan</button></a>
+                            
 
                             @endguest
                             @if (session('success'))

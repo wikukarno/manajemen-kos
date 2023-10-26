@@ -44,9 +44,7 @@ class KamarController extends Controller
      */
     public function show(Kamar $kamar)
     {
-     return view('kamar', [
-            "kamars" => Kamar::all()
-        ]);
+        //
 
     }
 

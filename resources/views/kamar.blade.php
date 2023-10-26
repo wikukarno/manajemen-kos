@@ -14,7 +14,7 @@
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Akira Kos</h6>
-                                <h1 class="display-3 text-white mb-4 animated slideInDown">Kos Nyaman dan Murah</h1>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">Kosan Putri Executive</h1>
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,6 @@
                                 </div>
                             </div>
                             <h5 class="mb-3">Free Wi-Fi</h5>
-                            
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
