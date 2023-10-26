@@ -12,6 +12,14 @@
 			<p>Lengkapi data untuk kamar anda terlebih dahulu, isi fasilitas yang akan anda pakai selama di kos ini. <a href="{{ route('fasilitas-penghuni.index') }}" class="alert-link">Lengkapi di sini</a></p>
 		</div>	
 	@endif
+	@if($riwayatPembayaranTerakhir == null)
+		<div class="alert alert-warning" role="alert">
+			<h4 class="alert-heading">Pemberitahuan</b></h4>
+			<hr>
+			<p>Silahkan melakukan pembayaran pertama <a href="{{ route('pembayaran-penghuni.create') }}" class="alert-link">Tambah Pembayaran</a></p>
+			<p class="mb-0"></p>
+		</div>
+  	@endif
 </div>
 
 <div class="row">

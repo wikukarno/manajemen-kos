@@ -123,7 +123,7 @@ class PaymentsController extends Controller
 
         $item=User::find(auth()->user()->id);
 
-        return view('pages.penghuni.payment.index', compact('tambahPembayaranDisabled', 'item'),
+        return view('pages.penghuni.payment.index', compact('tambahPembayaranDisabled', 'item', 'riwayatPembayaranTerakhir'),
             [
                 // ini untuk menampilkan data pembayaran hanya untuk id yg login saat itu
                 'payments' => Payment::where('id_user', auth()->user()->id)

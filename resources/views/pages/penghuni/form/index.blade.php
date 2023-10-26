@@ -12,6 +12,14 @@
 			<p>Lengkapi data untuk kamar anda terlebih dahulu, isi fasilitas yang akan anda pakai selama di kos ini. <a href="{{ route('fasilitas-penghuni.index') }}" class="alert-link">Lengkapi di sini</a></p>
 		</div>	
 	@endif
+	@if($riwayatPembayaranTerakhir == null)
+		<div class="alert alert-warning" role="alert">
+			<h4 class="alert-heading">Pemberitahuan</b></h4>
+			<hr>
+			<p>Silahkan melakukan pembayaran pertama <a href="{{ route('pembayaran-penghuni.create') }}" class="alert-link">Tambah Pembayaran</a></p>
+			<p class="mb-0"></p>
+		</div>
+  	@endif
 </div>
 
 <div class="row">
@@ -113,6 +121,24 @@
 								<label class="col-sm-3 col-form-label">Tanggal Lahir</label>
 								<div class="col-sm-9">
 									<input type="date" class="form-control" id="tanggallahir" name="tanggal_lahir" value="{{ auth()->user()->tanggal_lahir }}" disabled>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label">Tipe Kamar</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="tempatlahir" name="tempat_lahir" value="{{ $namaTipe->name }}" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label">Nomor Kamar</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="tanggallahir" name="tanggal_lahir" value="{{ $kamar->kamar->nomor_kamar }}" disabled>
 								</div>
 							</div>
 						</div>

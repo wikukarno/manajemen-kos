@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Penghuni;
 
 use App\Models\User;
+use App\Models\Payment;
+use App\Models\DataPenghuni;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +18,14 @@ class FormPenghuniController extends Controller
     public function index()
     {
         $item=User::find(auth()->user()->id);
+        $kamar = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+        $namaTipe = $kamar->kamar->type;
+
+        $riwayatPembayaranTerakhir = Payment::latest()
+            ->where('id_user', auth()->user()->id)
+            ->first();
         
-        return view('pages.penghuni.form.index', compact('item'));
+        return view('pages.penghuni.form.index', compact('item', 'kamar', 'namaTipe', 'riwayatPembayaranTerakhir'));
     }
 
     /**
@@ -60,6 +68,8 @@ class FormPenghuniController extends Controller
     {
         $data=$request->all();
         $item = User::findOrFail($id);
+        $kamar = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+        $namaTipe = $kamar->kamar->type;
 
         if ($request->hasFile('dokumen')) {
             if (Auth::user()->dokumen != null) {
@@ -71,7 +81,7 @@ class FormPenghuniController extends Controller
         }
 
         $item->update($data);
-        return redirect()->route('form-penghuni.index')->with('success', 'Data has been updated!');
+        return redirect()->route('form-penghuni.index')->with('success', 'Data has been updated!')->with('kamar', 'namaTipe');
     }
 
     /**

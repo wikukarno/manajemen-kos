@@ -6,13 +6,21 @@
 
 <div class="row" style="margin-left: 1px; margin-right:1px">
 	@if($item->fasilitas == null)
-	<div class="alert alert-warning" role="alert">
-		<h4 class="alert-heading">Selamat datang <b>{{ Auth::user()->name }}</b></h4>
-		<hr>
-		<p>Lengkapi data untuk kamar anda, isi fasilitas yang akan anda pakai selama di kos ini. <a href="{{ route('fasilitas-penghuni.index') }}" class="alert-link">Lengkapi di sini</a></p>
-		<p class="mb-0"></p>
-	</div>
-  @endif
+		<div class="alert alert-warning" role="alert">
+			<h4 class="alert-heading">Selamat datang <b>{{ Auth::user()->name }}</b></h4>
+			<hr>
+			<p>Lengkapi data untuk kamar anda, isi fasilitas yang akan anda pakai selama di kos ini. <a href="{{ route('fasilitas-penghuni.index') }}" class="alert-link">Lengkapi di sini</a></p>
+			<p class="mb-0"></p>
+		</div>
+  	@endif
+	@if($riwayatPembayaranTerakhir == null)
+	  <div class="alert alert-warning" role="alert">
+		  <h4 class="alert-heading">Pemberitahuan</b></h4>
+		  <hr>
+		  <p>Silahkan melakukan pembayaran pertama <a href="{{ route('pembayaran-penghuni.create') }}" class="alert-link">Tambah Pembayaran</a></p>
+		  <p class="mb-0"></p>
+	  </div>
+	@endif
 </div>
 
 <div class="row">

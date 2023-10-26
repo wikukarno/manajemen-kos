@@ -29,6 +29,7 @@ use App\Http\Controllers\Penghuni\DahsboardPenghuniController;
 use App\Http\Controllers\Admin\TipeKamarController as AdminTipeKamarController;
 use App\Http\Controllers\AkunPendaftarController;
 use App\Http\Controllers\PemesananIsiDataController;
+use App\Http\Controllers\Penghuni\DashboardPenghuniController;
 use App\Http\Controllers\Penghuni\DataPenghuniController;
 use App\Http\Controllers\Penghuni\FasilitasPenghuniController;
 use App\Http\Controllers\VerifikasiController;
@@ -111,7 +112,7 @@ Route::prefix('pendaftar')
 Route::prefix('penghuni')
 ->middleware(['auth', 'penghuni'])
     ->group(function () {
-        Route::get('/dashboard', [DahsboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
+        Route::get('/dashboard', [DashboardPenghuniController::class, 'index'])->name('penghuni.dashboard');
         Route::get('/akun', [AkunPenghuniController::class, 'index'])->name('akun.penghuni');
         Route::resource('akun-penghuni', AkunPenghuniController::class);
         Route::resource('form-penghuni', FormPenghuniController::class);
