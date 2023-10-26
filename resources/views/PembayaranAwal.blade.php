@@ -27,7 +27,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="nomor_kamar" class="form-label">Nomor Kamar</label>
-                            <input type="number" id="nomor_kamar" class="form-control" value="{{$kamar->nomor_kamar}}" name="nomor_kamar" disabled>
+                            <input type="number" id="nomor_kamar" class="form-control" value="" name="nomor_kamar" disabled>
                         </div>
                       </div>
                     </div>

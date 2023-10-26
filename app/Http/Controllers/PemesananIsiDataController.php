@@ -20,9 +20,6 @@ class PemesananIsiDataController extends Controller
     public function index(Request $id)
     {
         $user = User::find(auth()->user()->id);
-        
-   
-
         $kamar = Kamar::where('id')->get();
         $items = DataPenghuni::with('kamar')
             ->where('id_penghuni', Auth::user()->id)
@@ -100,7 +97,7 @@ class PemesananIsiDataController extends Controller
         
         $user->update($data);
 
-        return view('verifikasi');
+        return view('PembayaranAwal');
     }
 
     /**
