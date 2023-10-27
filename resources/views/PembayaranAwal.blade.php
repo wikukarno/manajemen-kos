@@ -36,7 +36,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="tipe_kamar" class="form-label">Tipe Kamar</label>
-                            <input type="text" class="form-control" id="tipe_kamar" aria-describedby="tipe_kamar" name="tipe_kamar" value="{{ $tipe->kamar->id_tipe }}" disabled>
+                            <input type="text" class="form-control" id="tipe_kamar" aria-describedby="tipe_kamar" name="tipe_kamar" value="{{ $tipe->kamar->type->name }}" disabled>
                         </div>
                       </div>
                     </div>
@@ -54,7 +54,13 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="bulan" class="form-label">Bulan</label>
-                            <input type="date" class="form-control" id="bulan" aria-describedby="bulan" name="bulan">
+                            {{--  <input type="date" class="form-control" id="bulan" aria-describedby="bulan" name="bulan">  --}}
+							<select class="form-select" aria-label="Default select example" name="selectedBulan" required>
+								<option selected>Pembayaran Untuk Bulan</option>
+								@foreach ($bulanNames as $index => $bulan )
+									<option name="bulan" value="{{ $index + 1 }}">{{ $bulan }}</option>
+								@endforeach
+							</select>
                         </div>
                       </div>
                     </div>
@@ -62,7 +68,7 @@
                       <div class="form-group row">
                         <div class="mb-3">
                             <label for="tahun" class="form-label">Tahun</label>
-                            <input type="date" class="form-control" id="tahun" aria-describedby="tahun" name="tahun">
+                            <input type="number" class="form-control" id="tahun" aria-describedby="tahun" name="tahun" value="{{ $tahun }}">
                         </div>
                       </div>
                     </div>
@@ -73,14 +79,6 @@
                         <div class="mb-3">
                             <label for="bukti_bayar" class="form-label">Bukti bayar</label>
                             <input type="file" class="form-control" id="bukti_bayar" aria-describedby="bukti_bayar" name="bukti_bayar">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <div class="mb-3">
-                            <label for="tanggal_bayar" class="form-label">Tanggal bayar</label>
-                            <input type="date" class="form-control" id="tanggal_bayar" aria-describedby="tanggal_bayar" name="tanggal_bayar">
                         </div>
                       </div>
                     </div>

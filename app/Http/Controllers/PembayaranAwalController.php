@@ -34,9 +34,21 @@ class PembayaranAwalController extends Controller
      */
     public function create()
     {
+         // Untuk mengambil nama dari ke 12 bulan
+         $bulanNames = [];
+         for ($i = 1; $i <= 12; $i++) {
+             $bulan = Carbon::create()
+                 ->month($i)
+                 ->locale('en')->monthName;
+             array_push($bulanNames, $bulan);
+         }
+
+        // Dapatkan tahun saat ini
+        $tahun = Carbon::now()->isoFormat('Y');
+
         $tipe = DataPenghuni::with('kamar.type')->where('id_penghuni', Auth::user()->id)->first();
        
-         return view('PembayaranAwal', compact('tipe'));
+         return view('PembayaranAwal', compact('tipe', 'tahun', 'bulanNames'));
     }
 
     /**
