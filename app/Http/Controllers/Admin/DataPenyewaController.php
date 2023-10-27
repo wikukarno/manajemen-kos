@@ -174,16 +174,24 @@ class DataPenyewaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
         $penghuni = DataPenghuni::with(['kamar', 'user'])->findOrFail($id);
         // $tipe_kamar = TipeKamar::orderBy('name', 'ASC')->get();
-        // $query = User::where('status', 'pendaftar');
+        // $query = Kamar::where('status', 'Tersedia');
 
         $tipe_kamar = TipeKamar::orderBy('name', 'ASC')->get();
 
-        $query = User::where('status', 'pendaftar')
-            ->whereIn('tipe_kamar_id', $tipe_kamar->pluck('id'));
+        // $keyword = $request->query('id');
+        // $nomor_kamar = $request->input('tipekamar');
+
+        // $data = Kamar::where('nomor_kamar', $request->$nomor_kamar)->get();
+
+        $query = Kamar::where('status', 'Tersedia')
+            ->whereIn('nomor_kamar', $tipe_kamar->pluck('id'))
+            ->whereIn('id_tipe', $tipe_kamar->pluck('id'))
+            ->get();
+            // dd($query);
         
         // untuk menampilkan ke halaman edit nya
         return view('pages.admin.datapenyewa.edit', compact('penghuni', 'tipe_kamar', 'query'));
@@ -210,7 +218,7 @@ class DataPenyewaController extends Controller
     {
         $keyword = $request->query('id');
 
-        $data = Kamar::where('nomor_kamar', $request->$keyword)->first();
+        $data = Kamar::where('nomor_kamar', $request->$keyword)->get();
         
         return response($data);
     }

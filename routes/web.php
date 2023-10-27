@@ -80,30 +80,30 @@ Route::resource('akun-pendaftar', AkunPendaftarController::class);
 Route::prefix('pemilik')
 ->middleware(['auth', 'admin'])
     ->group(function () {
+        // get buat sendiri
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
         Route::get('/akun', [AkunAdminController::class, 'index'])->name('akun.admin');
-        Route::resource('akun-admin', AkunAdminController::class);
-        // untuk DataUser
-        Route::resource('data-user', DataUserController::class);
-        Route::delete('data-user/delete', [DataUserController::class, 'destroy']);
-        // untuk DataPenghuni
         Route::get('/data-penyewa/kamar', [DataPenyewaController::class, 'getKamar'])->name('admin.kamar');
-        Route::get('/data-penyewa/kamar/nomorkamar', [DataPenyewaController::class, 'getNomorKamar'])->name('admin.kamar.nomorkamar');
-        Route::resource('data-penyewa', DataPenyewaController::class);
-        // Route::get('/data-penyewa/get-kamar', [DataPenyewaController::class, 'get_kamar'])->name('admin.get-kamar');
-        Route::delete('data-penyewa/delete', [DataPenyewaController::class, 'destroy']);
-        // untuk DataKamar
-        Route::resource('data-kamar', DataKamarController::class);
-        Route::delete('data-kamar/delete', [DataKamarController::class, 'destroy']);
-        // untuk TipeKamar
-        Route::resource('tipe-kamar', AdminTipeKamarController::class);
-        Route::delete('tipe-kamar/delete', [AdminTipeKamarController::class, 'destroy']);
-        // untuk slug tipe kamar
+        Route::get('/data-penyewa/kamar', [DataPenyewaController::class, 'getNomorKamar'])->name('admin.kamar.nomorkamar');
+        
+        // slug
         Route::get('/pemilik/tipe-kamar/checkSlug', [AdminTipeKamarController::class, 'checkSlug'])->middleware('auth');
-        // untuk DataPembayaran
-        Route::resource('data-pembayaran', DataPembayaranController::class);
+        
+        // Delete
+        Route::delete('data-user/delete', [DataUserController::class, 'destroy']);
+        Route::delete('data-penyewa/delete', [DataPenyewaController::class, 'destroy']);
+        Route::delete('data-kamar/delete', [DataKamarController::class, 'destroy']);
+        Route::delete('tipe-kamar/delete', [AdminTipeKamarController::class, 'destroy']);
         Route::delete('data-pembayaran/delete', [DataPembayaranController::class, 'destroy']);
 
+        // untuk resource
+        Route::resource('akun-admin', AkunAdminController::class);
+        Route::resource('data-user', DataUserController::class);
+        Route::resource('data-penyewa', DataPenyewaController::class);
+        Route::resource('data-kamar', DataKamarController::class);
+        Route::resource('tipe-kamar', AdminTipeKamarController::class);
+        Route::resource('data-pembayaran', DataPembayaranController::class);
+        
     });
 
 Route::prefix('pendaftar')

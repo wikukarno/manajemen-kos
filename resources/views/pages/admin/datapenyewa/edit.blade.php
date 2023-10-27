@@ -63,9 +63,11 @@
 									{{--  <input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}" />  --}}
 									<select class="form-control" name="nomor_kamar" id="nomor_kamar" style="height: 45px">
 										<option value="{{ $penghuni->kamar->nomor_kamar }}">{{ $penghuni->kamar->nomor_kamar }}</option>
-										@foreach ($tipe_kamar as $nomor)
+
+										@foreach ($query as $nomor)
 											<option value="{{ $nomor->id }}">{{ $nomor->nomor_kamar }}</option>
 										@endforeach
+										
 									</select>
 								</div>
 							</div>
@@ -386,7 +388,7 @@
         if (idNomorKamar != '' && idNomorKamar != null) {
             $.ajax({
                 type: 'GET',
-                url: "{{ url('/pemilik/data-penyewa/kamar/nomorkamar') }}",
+                url: "{{ url('/pemilik/data-penyewa/kamar') }}",
                 data: {
                     id: idNomorKamar
                 },
