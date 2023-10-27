@@ -8,7 +8,7 @@
  
                  <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title text-center text-primary text-uppercase">Kamar Tersedia</h6>
-                    <h1 class="mb-5">Pilihanan<span class="text-primary text-uppercase"> Kamar</span></h1>
+                    <h1 class="mb-5">Pilihan<span class="text-primary text-uppercase"> Kamar</span></h1>
                 </div>
                 <div class="row mb-5 justify-content-start">
                     <div class="col-md-6">
@@ -41,7 +41,7 @@
                         
                     <div class="col-md-6 mt-3">
                         <h3 class="text-secondary mt-2">Nomor Kamar : {{$kamar->nomor_kamar}} </h3>
-                        <p class="fs-4">Tipe : {{ $kamar->id_tipe }}</p>
+                        <p class="fs-4">{{ $typekamar }}</p>
                         <p class="fs-2 text-danger">Rp. {{ $kamar->harga }}</p>
                             @auth
                             <form action="{{route('isi-data.store')}}" method="POST">
