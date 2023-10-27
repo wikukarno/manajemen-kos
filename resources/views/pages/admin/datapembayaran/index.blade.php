@@ -70,7 +70,17 @@
         columns: [
             { data: 'DT_RowIndex', name: 'id' },
             
-            { data: 'nama_penghuni', name: 'nama_penghuni' },
+            {
+                data: 'nama_penghuni',
+                name: 'nama_penghuni',
+                render: function (data, type, full, meta) {
+                    if (type === 'display') {
+                        // Batasi teks hingga 20 karakter dan tambahkan elipsis jika lebih panjang
+                        return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                    }
+                    return data;
+                }
+            },
             { data: 'tipe_kamar', name: 'tipe_kamar' },
             { data: 'nomor_kamar', name: 'nomor_kamar' },
             { data: 'harga_kamar', name: 'harga_kamar' },

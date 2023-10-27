@@ -15,7 +15,7 @@ return new class extends Migration
            $table->id();
             $table->integer('nomor_kamar');
             $table->string('id_tipe');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->integer('id_penyewa')->nullable();
             $table->string('status');
             $table->string('slug');

@@ -44,7 +44,7 @@
 
 						<div class="form-group">
 							<label for="deskripsi" class="col-form-label"><b>Deskripsi</b></label>
-							<input name="deskripsi" id="deskripsi" type="text" class="form-control" placeholder="Masukkan deskripsi Kamar" autocomplete="off" required value="{{ $item->deskripsi }}" disabled/>
+							<textarea name="deskripsi" id="deskripsi" type="text" class="form-control" placeholder="Masukkan deskripsi Kamar" autocomplete="off" required disabled>{{ $item->deskripsi }}</textarea>
 						</div>
 
 						<div class="row">

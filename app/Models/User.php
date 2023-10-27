@@ -13,24 +13,19 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $guarded = [
-        'id',
-    ];
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 
-    public function users()
-    {
-        return $this->belongsTo(Payment::class, 'id_user', 'id');
-        // id_user => dari model user
-        // id => dari model payment 
+    // public function users()
+    // {
+    //     return $this->belongsTo(Payment::class, 'id_user', 'id');
+    //     // id_user => dari model user
+    //     // id => dari model payment 
         
 
-        // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
-    }
+    //     // note: scribe di atas digunakan untuk relasi dari tabel kamar ke tabel tipe kamar dimana relasi ini one to one 
+    // }
 
     /**
      * The attributes that should be hidden for serialization.

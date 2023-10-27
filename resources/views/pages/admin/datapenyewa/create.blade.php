@@ -41,6 +41,25 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
+									<label class="col-form-label"><b>Tipe Kamar</b></label>
+									<select class="form-control @error('id_tipe') is-invalid @enderror" name="id_tipe" id="id_tipe" style="height: 45px">
+										<option value="">Pilih Nomor Kamar</option>
+										@foreach ($tipe as $n)
+											<option value="{{ $n->id_kamar }}">{{ $n->name }}</option>
+										@endforeach
+									</select>
+										@error('id_tipe')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>            
+										@enderror
+									
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Kamar</b></label>
 									<select class="form-control @error('nomor_kamar') is-invalid @enderror" name="nomor_kamar" id="nomor_kamar" style="height: 45px" value="{{ old('nomor_kamar') }}">
 										<option value="">Pilih Nomor Kamar</option>
@@ -54,6 +73,18 @@
 										</div>            
 										@enderror
 									
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Harga Kamar</b></label>
+										<input name="harga" id="harga" type="text" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan Nama" autocomplete="off" required value="{{ old('harga') }}"/>
+										@error('harga')
+											{{-- untuk info yang salah yang mana --}}
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>            
+										@enderror
 								</div>
 							</div>
 						</div>

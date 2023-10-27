@@ -61,7 +61,7 @@
 
 							<div class="form-group">
 								<label for="deskripsi" class="col-form-label"><b>Deskripsi</b></label>
-								<input name="deskripsi" id="deskripsi" type="text" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukkan deskripsi Kamar" autocomplete="off" required value="{{ $item->deskripsi }}"/>
+								<textarea name="deskripsi" id="deskripsi" type="text" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukkan deskripsi Kamar" autocomplete="off" required>{{ $item->deskripsi }}</textarea>
 									@error('deskripsi')
 									{{-- untuk info yang salah yang mana --}}
 									<div class="invalid-feedback">

@@ -47,6 +47,7 @@
 										<option value="">Pilih</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
+										<option value="3">3</option>
 									</select>
 									@error('id_tipe')
 										{{-- untuk info yang salah yang mana --}}
@@ -60,7 +61,7 @@
 
 							<div class="form-group">
 							<label for="deskripsi" class="col-form-label"><b>Deskripsi</b></label>
-							<input name="deskripsi" id="deskripsi" type="text" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukkan deskripsi Kamar" autocomplete="off" required value="{{ old('deskripsi') }}"/>
+							<textarea name="deskripsi" id="deskripsi" type="text" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukkan deskripsi Kamar" autocomplete="off" required value="{{ old('deskripsi') }}"></textarea>
 								@error('deskripsi')
 								{{-- untuk info yang salah yang mana --}}
 								<div class="invalid-feedback">

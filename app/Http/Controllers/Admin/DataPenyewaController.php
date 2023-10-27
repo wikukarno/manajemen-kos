@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DataPenghuni;
 use App\Models\Kamar;
+use App\Models\Payment;
+use App\Models\TipeKamar;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -110,8 +112,10 @@ class DataPenyewaController extends Controller
     {
         $item=User::find(auth()->user()->id);
         $nomor=DataPenghuni::where('id_penghuni', auth()->user()->id);
+        $kamar=Kamar::all();
+        $tipe=TipeKamar::all();
 
-        return view('pages.admin.datapenyewa.create', compact('item','nomor','kamar', 'tipe', 'namaTipe'));
+        return view('pages.admin.datapenyewa.create', compact('item','nomor','kamar','tipe'));
     }
 
     /**
@@ -157,12 +161,14 @@ class DataPenyewaController extends Controller
      */
     public function show(string $id)
     {
-        $item=User::find($id);
+        $item=User::findOrFail($id);
 
-        $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
-        $namaTipe = $kamar->kamar->type;
+        $kamar = DataPenghuni::where('id_penghuni', $item->id)->get();
+        // $namaTipe = $kamar->kamar->type;
+        // $namaTipe = TipeKamar::all();
 
-        return view('pages.admin.datapenyewa.show', compact('item','kamar','namaTipe'));
+
+        return view('pages.admin.datapenyewa.show', compact('item','kamar','tipekamar'));
     }
 
     /**
@@ -170,17 +176,34 @@ class DataPenyewaController extends Controller
      */
     public function edit(string $id)
     {
-        $item = User::findOrFail($id);
+        // $item = User::findOrFail($id);
+        $penghuni = DataPenghuni::with(['kamar', 'user'])->findOrFail($id);
+        $tipe_kamar = TipeKamar::orderBy('name', 'ASC')->get();
+        // $data = Payment::findOrFail($id);
 
-        $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
-        $namaTipe = $kamar->kamar->type;
-
+        // $kamar = DataPenghuni::where('id_penghuni', $item->id)->first();
+        // $tipekamar = DataPenghuni::with('kamar','kamar.type', 'user')->get();
+        // $namaTipe = $kamar->kamar->type;
+        
         // untuk menampilkan ke halaman edit nya
-        return view('pages.admin.datapenyewa.edit', [
-            'item' => $item,
-            'kamar' => $kamar,
-            'namaTipe' => $namaTipe
-        ]);
+        return view('pages.admin.datapenyewa.edit', compact('penghuni', 'tipe_kamar'));
+    }
+
+    public function getKamar(Request $request)
+    {
+        if (request()->ajax()) {
+            try {
+                $data = Kamar::where('id_tipe', $request->id)->first();
+
+                $results = (['status' => true, 'data' => $data]);
+            } catch (\Throwable $th) {
+                $results = (['status' => false, 'message' => 'Terjadi kesalahan. ' . $th->getMessage()]);
+            }
+        } else {
+            abort(404);
+        }
+
+        return response()->json($results);
     }
 
     /**

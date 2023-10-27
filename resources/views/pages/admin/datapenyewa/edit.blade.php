@@ -23,9 +23,9 @@
 					@if(Session::has('success'))
 					<p class="text-success">{{ session('success') }}</p>
 					@endif
-					<h4 class="card-title mb-5"><b class="text-primary">{{ $item->name }}</b></h4>
+					<h4 class="card-title mb-5"><b class="text-primary">{{ $penghuni->user->name }}</b></h4>
 					{{--  <form class="form-sample" action="{{ url('pemilik/data-penyewa') }}" method="POST">  --}}
-					<form action="{{ route('data-penyewa.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+					<form action="{{ route('data-penyewa.update', $penghuni->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						@method('PUT')
 
@@ -33,7 +33,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nama Lengkap</b></label>
-										<input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama" autocomplete="off" required value="{{ $item->name }}"/>
+										<input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama" autocomplete="off" required value="{{ $penghuni->user->name }}" disabled/>
 										@error('name')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -42,6 +42,36 @@
 										@enderror
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Tipe Kamar</b></label>
+									{{--  <input name="tipekamar" id="tipekamar" type="text" class="form-control" value="{{ $item->kamar }}" disabled required/>  --}}
+									<select class="form-control" name="tipekamar" id="tipekamar">
+										<option value="{{ $penghuni->kamar->type->id }}">{{ $penghuni->kamar->type->name }}</option>
+										@foreach ($tipe_kamar as $item)
+											<option value="{{ $item->id }}">{{ $item->name }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>							
+						</div>
+
+						<div class="row">							
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Nomor Kamar</b></label>
+									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}"  disabled/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label"><b>Harga Kamar</b></label>
+									<input name="hargakamar" id="hargakamar" type="text" class="form-control" value="{{ $penghuni->kamar->harga }}" disabled required/>
+								</div>
+							</div>
+						</div>	
+
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Email Address</b></label>
@@ -54,9 +84,6 @@
 										@enderror
 								</div>
 							</div>
-						</div>
-
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tempat Lahir</b></label>
@@ -69,6 +96,9 @@
 										@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">		
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tanggal Lahir</b></label>
@@ -80,10 +110,7 @@
 											</div>            
 										@enderror
 								</div>
-							</div>
-						</div>
-
-						<div class="row">							
+							</div>					
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label" ><b>Role</b></label>
@@ -100,7 +127,10 @@
 											</div>            
 										@enderror
 								</div>
-							</div>
+							</div>							
+						</div>
+
+						<div class="row">				
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Status Akun</b></label>
@@ -117,10 +147,7 @@
 											</div>            
 										@enderror
 								</div>
-							</div>
-						</div>
-
-						<div class="row">							
+							</div>			
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Alamat</b></label>
@@ -132,7 +159,10 @@
 										</div>            
 									@enderror
 								</div>
-							</div>
+							</div>							
+						</div>
+
+						<div class="row">			
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone</b></label>
@@ -144,10 +174,7 @@
 										</div>            
 									@enderror
 								</div>
-							</div>
-						</div>
-
-						<div class="row">							
+							</div>				
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nama Wali</b></label>
@@ -160,6 +187,9 @@
 									@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">		
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone Wali</b></label>
@@ -171,10 +201,7 @@
 										</div>            
 									@enderror
 								</div>
-							</div>
-						</div>
-
-						<div class="row">							
+							</div>				
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Password</b></label>
@@ -187,6 +214,9 @@
 										@enderror
 								</div>
 							</div>
+						</div>
+
+						<div class="row">			
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Id Telegram</b></label>
@@ -198,38 +228,14 @@
 										</div>            
 									@enderror
 								</div>
-							</div>
-						</div>
-
-						<div class="row">							
+							</div>				
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Mac Address</b></label>
 									<input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" value="{{ $item->mac_addr }}"/>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="col-form-label"><b>Tipe Kamar</b></label>
-									<input name="tipekamar" id="tipekamar" type="text" class="form-control" disabled required value="{{ $namaTipe->name }}"/>
-								</div>
-							</div>
 						</div>	
-
-						<div class="row">							
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="col-form-label"><b>Nomor Kamar</b></label>
-									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $kamar->kamar->nomor_kamar }} " disabled/>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="col-form-label"><b>Harga Kamar</b></label>
-									<input name="hargakamar" id="hargakamar" type="text" class="form-control" disabled required value="{{ $kamar->kamar->harga }}"/>
-								</div>
-							</div>
-						</div>		
 
 						<div class="row">
 							<div class="col-md-6">
@@ -328,6 +334,41 @@
       checkboxes.forEach(function (checkbox) {
           checkbox.checked = document.querySelector('.select-all-checkbox').checked;
       });
+  });
+
+  $('#tipekamar').change(function() {
+    let idTipeKamar = $('#tipekamar option:selected').val();
+	console.log(idTipeKamar);
+
+        if (idTipeKamar != '' && idTipeKamar != null) {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/pemilik/data-penyewa/kamar') }}",
+                data: {
+                    id: idTipeKamar
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    $('.preloader').fadeIn();
+                },
+                success: function(res) {
+                    if (res.status == true) {
+                        $('#nomor_kamar').val(res.data.nomor_kamar);
+                        $('#hargakamar').val(res.data.harga);
+                    } else if (res.status == false) {
+                        alert(res.message);
+                    } else {
+                        alert(res.responseJSON.message);
+                    }
+                },
+                error: function(res) {
+                    alert(res.responseJSON.message);
+                },
+                complete: function() {
+                    $('.preloader').fadeOut();
+                }
+            });
+        }
   });
 </script>
 
