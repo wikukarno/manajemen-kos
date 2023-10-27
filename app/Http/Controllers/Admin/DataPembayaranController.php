@@ -127,7 +127,8 @@ class DataPembayaranController extends Controller
     public function show(string $id)
     {
         $item=Payment::find($id);
-        return view('pages.admin.datapembayaran.show', compact('item'));
+        $tipe=TipeKamar::all();
+        return view('pages.admin.datapembayaran.show', compact('item', 'tipe'));
     }
 
     /**

@@ -16,8 +16,7 @@ return new class extends Migration
             $table->integer('nomor_kamar');
             $table->string('id_tipe');
             $table->text('deskripsi');
-            $table->integer('id_penyewa')->nullable();
-            $table->string('status');
+            $table->enum('status', ['Tersedia', 'Tidak Tersedia'])->default('Tersedia');
             $table->string('slug');
             $table->bigInteger('harga');
             $table->string('galleries')->nullable();

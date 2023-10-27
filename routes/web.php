@@ -88,6 +88,7 @@ Route::prefix('pemilik')
         Route::delete('data-user/delete', [DataUserController::class, 'destroy']);
         // untuk DataPenghuni
         Route::get('/data-penyewa/kamar', [DataPenyewaController::class, 'getKamar'])->name('admin.kamar');
+        Route::get('/data-penyewa/kamar/nomorkamar', [DataPenyewaController::class, 'getNomorKamar'])->name('admin.kamar.nomorkamar');
         Route::resource('data-penyewa', DataPenyewaController::class);
         // Route::get('/data-penyewa/get-kamar', [DataPenyewaController::class, 'get_kamar'])->name('admin.get-kamar');
         Route::delete('data-penyewa/delete', [DataPenyewaController::class, 'destroy']);

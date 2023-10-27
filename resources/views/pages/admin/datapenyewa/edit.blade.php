@@ -46,7 +46,7 @@
 								<div class="form-group">
 									<label class="col-form-label"><b>Tipe Kamar</b></label>
 									{{--  <input name="tipekamar" id="tipekamar" type="text" class="form-control" value="{{ $item->kamar }}" disabled required/>  --}}
-									<select class="form-control" name="tipekamar" id="tipekamar">
+									<select class="form-control" name="tipekamar" id="tipekamar" style="height: 45px">
 										<option value="{{ $penghuni->kamar->type->id }}">{{ $penghuni->kamar->type->name }}</option>
 										@foreach ($tipe_kamar as $item)
 											<option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -60,7 +60,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Kamar</b></label>
-									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}" />
+									{{--  <input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}" />  --}}
+									<select class="form-control" name="nomor_kamar" id="nomor_kamar" style="height: 45px">
+										<option value="{{ $penghuni->kamar->nomor_kamar }}">{{ $penghuni->kamar->nomor_kamar }}</option>
+										@foreach ($tipe_kamar as $nomor)
+											<option value="{{ $nomor->id }}">{{ $nomor->nomor_kamar }}</option>
+										@endforeach
+									</select>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -336,6 +342,7 @@
       });
   });
 
+// Untuk TipeKamar
   $('#tipekamar').change(function() {
     let idTipeKamar = $('#tipekamar option:selected').val();
 	console.log(idTipeKamar);
@@ -346,6 +353,42 @@
                 url: "{{ url('/pemilik/data-penyewa/kamar') }}",
                 data: {
                     id: idTipeKamar
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    $('.preloader').fadeIn();
+                },
+                success: function(res) {
+                    if (res.status == true) {
+                        $('#nomor_kamar').val(res.data.nomor_kamar);
+                        $('#hargakamar').val(res.data.harga);
+                    } else if (res.status == false) {
+                        alert(res.message);
+                    } else {
+                        alert(res.responseJSON.message);
+                    }
+                },
+                error: function(res) {
+                    alert(res.responseJSON.message);
+                },
+                complete: function() {
+                    $('.preloader').fadeOut();
+                }
+            });
+        }
+  });
+
+  //untuk NomorKamar
+  $('#nomor_kamar').change(function() {
+    let idNomorKamar = $('#nomor_kamar option:selected').val();
+	console.log(idNomorKamar);
+
+        if (idNomorKamar != '' && idNomorKamar != null) {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/pemilik/data-penyewa/kamar/nomorkamar') }}",
+                data: {
+                    id: idNomorKamar
                 },
                 dataType: 'json',
                 beforeSend: function() {
