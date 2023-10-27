@@ -206,6 +206,13 @@ class DataPenyewaController extends Controller
         return response()->json($results);
     }
 
+    public function getNomorKamar(Request $request)
+    {
+        $keyword = $request->query('id');
+
+        
+    }
+
     /**
      * Update the specified resource in storage.
      */

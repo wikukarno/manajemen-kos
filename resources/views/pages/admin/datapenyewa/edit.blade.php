@@ -60,7 +60,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Kamar</b></label>
-									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}"  disabled/>
+									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}" />
 								</div>
 							</div>
 							<div class="col-md-6">
