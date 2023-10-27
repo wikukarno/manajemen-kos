@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penghuni;
 
 use App\Http\Controllers\Controller;
+use App\Models\DataPenghuni;
 use Illuminate\Http\Request;
 use App\Models\Kamar;
 use App\Models\User;

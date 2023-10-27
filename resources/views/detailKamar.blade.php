@@ -56,11 +56,10 @@
                             </div>
                                 
                             @endif
-                            
                             @endauth
                             @guest
-                            
-
+                            {{-- <button ></button> --}}
+                                <a type="button" class="btn text-light rounded-5 mt-5"  style="background-color: orange; width:300px"  href="/login">Pesan</a>
                             @endguest
                             @if (session('success'))
                             <div class="alert alert-success">

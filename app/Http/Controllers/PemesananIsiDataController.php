@@ -20,6 +20,9 @@ class PemesananIsiDataController extends Controller
     public function index(Request $id)
     {
         $user = User::find(auth()->user()->id);
+        
+   
+
         $kamar = Kamar::where('id')->get();
         $items = DataPenghuni::with('kamar')
             ->where('id_penghuni', Auth::user()->id)
@@ -30,9 +33,7 @@ class PemesananIsiDataController extends Controller
             'items' => $items,
          
          ] ,compact('user', 'items'));
-        
-        // return view('IsiData',
-        //  compact('user', 'kamar', 'item'));
+
     }
 
     /**
@@ -49,16 +50,20 @@ class PemesananIsiDataController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // $kamar = Kamar::all();
-        // $tipe = TipeKamar::all();
-        
-        // return view('IsiData', [
-        //    'item' => $kamar,
-        //    'user'=> $tipe,
-        // ]);
-
         $data["id_penghuni"] = auth()->user()->id;
+
+        $id_penghuni["id_penghuni"] = auth()->user()->id;
+        $penghuni = DataPenghuni::where('id_penghuni', $id_penghuni)->first();
+        
+
+        if ($penghuni) {
+            return redirect()->back()->with('error', 'Anda tidak diizinkan untuk memesan kamar lagi');
+        };
+        
         DataPenghuni::create($data);
+        
+      
+        
         
         return redirect()->route('isi-data.index');
     
@@ -78,7 +83,7 @@ class PemesananIsiDataController extends Controller
     public function edit(string $id)
     {
         //
-    }
+    }   
 
     /**
      * Update the specified resource in storage.
@@ -96,8 +101,8 @@ class PemesananIsiDataController extends Controller
         }
         
         $user->update($data);
-
         return redirect()->route('pembayaran-pertama.create');
+        // return view('PembayaranAwal');
     }
 
     /**
@@ -105,13 +110,7 @@ class PemesananIsiDataController extends Controller
      */
     public function destroy(string $id)
     {
-        // $penghuni = DataPenghuni::findOrFail($id);
-        // return view('IsiData', compact('penghuni'));
-        
-        // DataPenghuni::where('id_penghuni', auth()->user()->id)->delete();
-        // return back();
-
-        $user = User::findOrFail($id); 
+        // $user = User::findOrFail($id); 
         DataPenghuni::where('id_penghuni', $id)->delete();
         return redirect()->route('availabality')->with('message', 'Data berhasil dihapus');
         

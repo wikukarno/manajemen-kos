@@ -6,8 +6,10 @@ use App\Models\User;
 use App\Models\Kamar;
 use App\Models\TipeKamar;
 use App\Models\DataPenyewa;
+use App\Models\Payment;
 use App\Models\DataPenghuni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -42,7 +44,57 @@ class PembayaranAwalController extends Controller
      */
     public function store(Request $request)
     {
-         return view('PembayaranAwal', compact('tipe'));
+        // mengambil nama bulan berdasarkan nama bulan yang dipilih melalui select  
+        $selectedBulan = $request->input('selectedBulan');
+        $bulan = Carbon::create()->month($selectedBulan)->isoFormat('MMMM');
+
+        $idUser= Auth::user()->id;
+        $bulanBayar= $bulan;
+        $tahun = Carbon::now()->isoFormat('Y');
+        $tanggalBayar = Carbon::now();
+        $tipe = DataPenghuni::where('id_penghuni', auth()->user()->id)->first();
+        if ($tipe) {
+            $idKamar = $tipe->id_kamar;
+            $hargaBayar = $tipe->kamar->harga;
+        }
+
+    
+        if ($request->hasFile('bukti_bayar')) {
+            $file = $request->file('bukti_bayar');
+        
+            if ($file->isValid()) {
+                $extension = $file->getClientOriginalExtension();
+                $timestamp = now()->timestamp;
+                $nama_file = $bulanBayar . '.' . $tahun . '.' . $idUser . '.' . $timestamp . '.' . $extension;
+        
+                $buktiBayar = $file->storeAs('assets/buktiBayar', $nama_file, 'public');
+            } 
+        } else {
+            $buktiBayar = null;
+        }
+
+        if ($buktiBayar == null){
+            $status = 'Unggah Bukti Bayar';
+        } else{
+            $status = 'Menunggu Validasi';
+        }
+
+        Payment::create([   
+            'id_user' => $idUser,
+            'id_tipe' => $idKamar,
+            'bulan'=> $bulan,
+            'tahun' => $tahun,
+            'harga_bayar' => $hargaBayar,
+            'tanggal_bayar' => $tanggalBayar, 
+            'bukti_bayar' => $buktiBayar,
+            'status' => $status,
+        ]);
+
+        // perbedaan return view sama return redirect route 
+        // return view untuk melihat ke halaman tersebut dengan isi dari form yang masih ada
+        // sedangkan return redirect itu untuk melempar kita ke halaman yg dituju dengan data yang sudah di kirimkan
+        // return redirect()->route('pembayaran-penghuni.index')->with('success', 'New payment has been added!');
+         return view('verifikasi', compact('tipe'));
     }
 
     /**
@@ -74,6 +126,8 @@ class PembayaranAwalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DataPenghuni::with('data_penghunis', 'payments')
+                        ->where('id_penghuni', Auth::user()->id)
+                        ->delete();
     }
 }
