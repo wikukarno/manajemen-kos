@@ -17,16 +17,7 @@ class GalleriesController extends Controller
      */
     public function index()
     {
-        $kamar = Kamar::where('id')->get();
-        $galleries = Galleries::with('kamar')
-            ->where('id_kamar')
-            ->get();
-            
-       
-         return view('IsiData', [
-            'galleries' => $galleries,
-         
-         ] ,compact('galleries'));
+        
         
     }
 

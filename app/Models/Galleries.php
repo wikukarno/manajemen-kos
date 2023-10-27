@@ -14,6 +14,6 @@ class Galleries extends Model
     
     public function kamar()
     {
-        return $this->belongsTo(Kamar::class, 'id_kamar', 'id');
+        return $this->belongsTo(Galleries::class, 'id_kamar', 'id');
     }
 }

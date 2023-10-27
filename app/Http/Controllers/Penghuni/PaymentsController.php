@@ -252,6 +252,7 @@ class PaymentsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $kamar = Kamar::all();
         $item = Payment::findOrFail($id);
         $data=$request->all();
 
@@ -276,6 +277,14 @@ class PaymentsController extends Controller
         }
 
         $item->update($data);
+        
+        $id_kamar = $kamar->id;
+        $kamar =   Kamar::find($id_kamar);
+        if ($data == 'Lunas') {
+            $kamar->status = 'Tidak tersedia';
+            $kamar->save();
+        }
+        
 
         return redirect()->route('pembayaran-penghuni.index')->with('success', 'New payment has been added!');
     }
