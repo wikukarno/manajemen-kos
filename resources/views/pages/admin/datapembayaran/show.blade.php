@@ -22,7 +22,7 @@
 				@if(Session::has('success'))
 				<p class="text-success">{{ session('success') }}</p>
 				@endif
-				<h4 class="card-title mb-5">Data Pembayaran <u class="text-primary"><b>{{ $item->users->name }}</b></u></h4>
+				<h4 class="card-title mb-5"><b class="text-primary">{{ $item->users->name }}</b></h4>
 				<form class="form-sample" action="{{ url('pemilik/data-pembayaran') }}" method="POST">
 					@csrf
 					<div class="card">

@@ -161,14 +161,13 @@ class DataPenyewaController extends Controller
      */
     public function show(string $id)
     {
-        $item=User::findOrFail($id);
+        $user=User::findOrFail($id);
 
-        $kamar = DataPenghuni::where('id_penghuni', $item->id)->get();
-        // $namaTipe = $kamar->kamar->type;
-        // $namaTipe = TipeKamar::all();
+        $kamar = DataPenghuni::where('id_penghuni', $user->id)->get();
+        $penghuni = DataPenghuni::with(['kamar', 'user'])->findOrFail($id);
 
 
-        return view('pages.admin.datapenyewa.show', compact('item','kamar'));
+        return view('pages.admin.datapenyewa.show', compact('user','kamar','penghuni'));
     }
 
     /**
@@ -194,7 +193,7 @@ class DataPenyewaController extends Controller
             // dd($query);
         
         // untuk menampilkan ke halaman edit nya
-        return view('pages.admin.datapenyewa.edit', compact('penghuni', 'tipe_kamar', 'query'));
+        return view('pages.admin.datapenyewa.edit', compact('penghuni', 'tipe_kamar','query'));
     }
 
     public function getKamar(Request $request)
@@ -228,7 +227,8 @@ class DataPenyewaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = User::findOrFail($id);
+        $item = DataPenghuni::findOrFail($id);
+        
        // kode bag wiku
     //     if ($request->hasFile('dokumen')){
     //         if($item->dokumen != null){
@@ -240,39 +240,72 @@ class DataPenyewaController extends Controller
     //         $oldFile = $item->dokumen;
     //    }
 
-        // untuk ktp
+        // // untuk ktp
+        // if ($request->hasFile('dokumen')) {
+        //     if ($item->user->dokumen != null) {
+        //         Storage::disk('public')->delete($item->user->dokumen);
+        //         $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+        //     }
+        //     // $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+        // }else{
+        //     $dokumen = $item->user->dokumen;
+        // }
+
+        // // untuk fasilitas
+        // // Ambil data dari form
+        // $fasilitasArray = $request->input('fasilitas', []);
+        // // Gabungkan data menjadi satu string
+        // $fasilitasString = implode(',', $fasilitasArray);
+
+        // Mengelola upload dokumen KTP
         if ($request->hasFile('dokumen')) {
-            if ($item->dokumen != null) {
-                Storage::disk('public')->delete($item->dokumen);
-                $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+            // Menghapus dokumen lama jika ada
+            if ($item->user->dokumen != null) {
+                Storage::disk('public')->delete($item->user->dokumen);
             }
-            // $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
-        }else{
-            $dokumen = $item->dokumen;
+
+            // Menyimpan dokumen baru
+            $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
+        } else {
+            $dokumen = $item->user->dokumen; // Jika tidak ada perubahan, gunakan dokumen yang sudah ada
         }
 
-        // untuk fasilitas
-        // Ambil data dari form
+        // Mengelola fasilitas
         $fasilitasArray = $request->input('fasilitas', []);
-        // Gabungkan data menjadi satu string
         $fasilitasString = implode(',', $fasilitasArray);
 
         $item->update([
-            'nama'=>$request->name,
-            'tempat_lahir'=>$request->tempat_lahir,
-            'tanggal_lahir'=>$request->tanggal_lahir,
-            'role'=>$request->role,
-            'status_akun'=>$request->status_akun,
-            'alamat'=>$request->alamat,
-            'hp'=>$request->hp,
-            'wali'=>$request->wali,
-            'hp2'=>$request->hp2,
-            'id_telegram'=>$request->id_telegram,
-            'mac_addr'=>$request->mac_addr,
-            // 'dokumen'=>$oldFile ?? $newFile,
-            'dokumen'=>$dokumen,
-            'fasilitas'=>$fasilitasString
+            'nama' => $request->input('name'),
+            'tempat_lahir' => $request->input('tempat_lahir'),
+            'tanggal_lahir' => $request->input('tanggal_lahir'),
+            'role' => $request->input('role'),
+            'status_akun' => $request->input('status_akun'),
+            'alamat' => $request->input('alamat'),
+            'hp' => $request->input('hp'),
+            'wali' => $request->input('wali'),
+            'hp2' => $request->input('hp2'),
+            'id_telegram' => $request->input('id_telegram'),
+            'mac_addr' => $request->input('mac_addr'),
+            'dokumen' => $dokumen, // Menyimpan nama file dokumen KTP baru
+            'fasilitas' => $fasilitasString
         ]);
+
+        // $item->update([
+        //     'nama'=>$request->name,
+        //     'tempat_lahir'=>$request->tempat_lahir,
+        //     'tanggal_lahir'=>$request->tanggal_lahir,
+        //     'role'=>$request->role,
+        //     'status_akun'=>$request->status_akun,
+        //     'alamat'=>$request->alamat,
+        //     'hp'=>$request->hp,
+        //     'wali'=>$request->wali,
+        //     'hp2'=>$request->hp2,
+        //     'id_telegram'=>$request->id_telegram,
+        //     'mac_addr'=>$request->mac_addr,
+        //     // 'dokumen'=>$oldFile ?? $newFile,
+        //     'dokumen'=>$dokumen,
+        //     'fasilitas'=>$fasilitasString
+        // ]);
 
         return redirect()->route('data-penyewa.index')->with('success', 'Data has been updated!');
     }
@@ -282,15 +315,15 @@ class DataPenyewaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $item = User::findOrFail($request->id);
+        $item = DataPenghuni::findOrFail($request->id);
         
         if ($item) {
 
-            if($item->dokumen){
-                Storage::disk('public')->delete($item->dokumen);
+            if($item->user->dokumen){
+                Storage::disk('public')->delete($item->user->dokumen);
             }
 
-            $item->delete();
+            $item->user->delete();
 
             return Response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
         } else {

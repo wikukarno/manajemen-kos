@@ -64,9 +64,9 @@
 									<select class="form-control" name="nomor_kamar" id="nomor_kamar" style="height: 45px">
 										<option value="{{ $penghuni->kamar->nomor_kamar }}">{{ $penghuni->kamar->nomor_kamar }}</option>
 
-										@foreach ($query as $nomor)
+										{{--  @foreach ($query as $nomor)
 											<option value="{{ $nomor->id }}">{{ $nomor->nomor_kamar }}</option>
-										@endforeach
+										@endforeach  --}}
 										
 									</select>
 								</div>
@@ -83,7 +83,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Email Address</b></label>
-									<input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email" autocomplete="off" required value="{{ $item->email }}"/>
+									<input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email" autocomplete="off" required value="{{ $penghuni->user->email }}" disabled/>
 										@error('email')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -95,7 +95,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tempat Lahir</b></label>
-										<input name="tempat_lahir" id="tempat_lahir" type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" placeholder="Masukkan Tempat Lahir" autocomplete="off" required value="{{ $item->tempat_lahir }}"/>
+										<input name="tempat_lahir" id="tempat_lahir" type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" placeholder="Masukkan Tempat Lahir" autocomplete="off" required value="{{ $penghuni->user->tempat_lahir }}" disabled/>
 										@error('tempat_lahir')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -110,7 +110,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tanggal Lahir</b></label>
-										<input name="tanggal_lahir" id="tanggal_lahir" type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" autocomplete="off" required value="{{ $item->tanggal_lahir }}"/>
+										<input name="tanggal_lahir" id="tanggal_lahir" type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" autocomplete="off" required value="{{ $penghuni->user->tanggal_lahir }}"/>
 										@error('tanggal_lahir')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -123,11 +123,12 @@
 								<div class="form-group">
 									<label class="col-form-label" ><b>Role</b></label>
 										<select class="form-control @error('role') is-invalid @enderror" name="role" id="role" style="height: 45px" required>
-											<option value="{{ $item->role }}">{{ $item->role }}</option>
+											<option value="{{ $penghuni->user->role }}">{{ $penghuni->user->role }}</option>
 											<option value="Pemilik">Pemilik</option>
 											<option value="Pendaftar">Pendaftar</option>
 											<option value="Penghuni">Penghuni</option>
 										</select>
+
 										@error('role')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -143,7 +144,7 @@
 								<div class="form-group">
 									<label class="col-form-label"><b>Status Akun</b></label>
 										<select class="form-control @error('status_akun') is-invalid @enderror" name="status_akun" id="status_akun" style="height: 45px" required>
-											<option value="{{ $item->status_akun }}">{{ $item->status_akun }}</option>
+											<option value="{{ $penghuni->user->status_akun }}">{{ $penghuni->user->status_akun }}</option>
 											<option value="Terverifikasi">Terverifikasi</option>
 											<option value="Belum Verifikasi">Tidak Terverifikasi</option>
 											<option value="Diblokir">Ditolak</option>
@@ -159,7 +160,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Alamat</b></label>
-									<textarea name="alamat" id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" placeholder="Jl. xxxxx No.xx RT/RW xx/xx" autocomplete="off" required>{{ $item->alamat }}</textarea>
+									<textarea name="alamat" id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" placeholder="Jl. xxxxx No.xx RT/RW xx/xx" autocomplete="off" required>{{ $penghuni->user->alamat }}</textarea>
 									@error('alamat')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -174,7 +175,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone</b></label>
-									<input name="hp" id="hp" type="text" class="form-control @error('hp') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $item->hp }}"/>
+									<input name="hp" id="hp" type="text" class="form-control @error('hp') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $penghuni->user->hp }}"/>
 									@error('hp')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -186,7 +187,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nama Wali</b></label>
-									<input name="wali" id="wali" type="text" class="form-control @error('wali') is-invalid @enderror" placeholder="Masukkan Nama Wali" autocomplete="off" required value="{{ $item->wali }}"/>
+									<input name="wali" id="wali" type="text" class="form-control @error('wali') is-invalid @enderror" placeholder="Masukkan Nama Wali" autocomplete="off" required value="{{ $penghuni->user->wali }}"/>
 									@error('wali')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -201,7 +202,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone Wali</b></label>
-									<input name="hp2" id="hp2" type="text" class="form-control @error('hp2') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $item->hp2 }}"/>
+									<input name="hp2" id="hp2" type="text" class="form-control @error('hp2') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $penghuni->user->hp2 }}"/>
 									@error('hp2')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -213,7 +214,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Password</b></label>
-										<input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Min. 8" required value="{{ $item->password }}" autocomplete="off" disabled/>
+										<input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Min. 8" required value="{{ $penghuni->user->password }}" autocomplete="off" disabled/>
 										@error('password')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -228,7 +229,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Id Telegram</b></label>
-									<input name="id_telegram" id="id_telegram" type="text" class="form-control @error('id_telegram') is-invalid @enderror" placeholder="Masukkan Id Telegram" autocomplete="off" required value="{{ $item->id_telegram }}"/>
+									<input name="id_telegram" id="id_telegram" type="text" class="form-control @error('id_telegram') is-invalid @enderror" placeholder="Masukkan Id Telegram" autocomplete="off" required value="{{ $penghuni->user->id_telegram }}"/>
 									@error('id_telegram')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -240,7 +241,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Mac Address</b></label>
-									<input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" value="{{ $item->mac_addr }}"/>
+									<input name="mac_addr" id="mac_addr" type="text" class="form-control" placeholder="00-B0-xx-xx-xx-26" autocomplete="off" value="{{ $penghuni->user->mac_addr }}"/>
 								</div>
 							</div>
 						</div>	
@@ -250,8 +251,8 @@
 								<div class="form-group">
 									<label class="col-form-label"><b>KTP</b></label>
 										<div class="mt-2 justify-content-center">
-											@if ($item->dokumen != null)
-												<img src="{{ asset('storage/'. $item->dokumen) }}" class="img-fluid" id="preview-image" width="100px">
+											@if ($penghuni->user->dokumen != null)
+												<img src="{{ asset('storage/'. $penghuni->user->dokumen) }}" class="img-fluid" id="preview-image" width="100px">
 											@else
 												<img src="" class="img-fluid" id="preview-image" width="100px">
 											@endif
@@ -285,7 +286,7 @@
 									<div class="col-md-6">
 										<div class="form-check">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $item->fasilitas))) checked @endif> {{ $fasilitas }}
+												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $penghuni->user->fasilitas))) checked @endif> {{ $fasilitas }}
 											</label>
 										</div>
 									</div>
