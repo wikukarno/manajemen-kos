@@ -22,7 +22,7 @@
 				@if(Session::has('success'))
 				<p class="text-success">{{ session('success') }}</p>
 				@endif
-				<h4 class="card-title mb-5"><b class="text-primary">{{ $item->users->name }}</b></h4>
+				<h4 class="card-title mb-5">Pembayaran <b class="text-primary">{{ $item->users->name }}</b></h4>
 				<form class="form-sample" action="{{ url('pemilik/data-pembayaran') }}" method="POST">
 					@csrf
 					<div class="card">
@@ -82,7 +82,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								<label class="col-form-label"><b>Bukti</b></label>
-								<input name="bukti_bayar" id="bukti_bayar" type="file" class="form-control" autocomplete="off" required value="{{ old('bukti_bayar') }}"/>
+								<input name="bukti_bayar" id="bukti_bayar" type="file" class="form-control" autocomplete="off" value="{{ old('bukti_bayar') }}"/>
 								</div>
 							</div>
 						</div>
@@ -99,10 +99,10 @@
 								<label class="col-form-label"><b>Status</b></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" style="height: 45px" required>
                                     <option value="{{ $item->status }}">{{ $item->status }}</option>
-                                    <option value="Terverifikasi">Terverifikasi</option>
-                                    <option value="Belum Verifikasi">Tidak Terverifikasi</option>
-                                    <option value="Diblokir">Ditolak</option>
-                                </select>
+                                    <option value="Menunggu Validasi">Menunggu Validasi</option>
+                                    <option value="Lunas">Lunas</option>
+                                    <option value="Belum Lunas">Belum Lunas</option>
+                                    <option value="Unggah Bukti Bayar">Unggah Bukti Bayar</option>                                </select>
 								</div>
 							</div>
 						</div>

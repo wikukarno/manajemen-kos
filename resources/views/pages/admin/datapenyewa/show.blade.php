@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Detail Data Penyewa')
+@section('title', 'Detail Data Penghuni')
 
 @section('content')
 
@@ -11,7 +11,7 @@
     <!-- DataTales Example -->
     <div class="card shadow">
 		<div class="card-header">
-			<h3 class="m-0 font-weight-bold mt-3">Detail Data Penyewa
+			<h3 class="m-0 font-weight-bold mt-3">Detail Data Penghuni
 				<a href="{{ url('pemilik/data-penyewa') }}" class="float-end btn btn-outline-success btn-sm mb-2" >View All</a>
 			</h3>
 		</div>
@@ -22,7 +22,7 @@
 					@if(Session::has('success'))
 					<p class="text-success">{{ session('success') }}</p>
 					@endif
-					<h4 class="card-title mb-5"><b class="text-primary">{{ $penghuni->user->name }}</b></h4>
+					<h4 class="card-title mb-5">Penghuni <b class="text-primary">{{ $penghuni->user->name }}</b></h4>
 					<form class="form-sample" action="{{ url('pemilik/data-penyewa') }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						<div class="row">
@@ -145,7 +145,8 @@
 											@if ($penghuni->user->dokumen != null)
 												<img src="{{ asset('storage/'. $penghuni->user->dokumen) }}" class="img-fluid" id="preview-image">
 											@else
-												<img src="" class="img-fluid" id="preview-image">
+												{{--  <img src="" class="img-fluid" id="preview-image">  --}}
+												<p><b>Tidak ada file KTP</b></p>
 											@endif
 										</div>
 								</div>
@@ -169,7 +170,8 @@
 									<div class="col-md-6">
 										<div class="form-check">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $penghuni->user->fasilitas))) checked @else disabled @endif> {{ $fasilitas }}
+												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $penghuni->user->fasilitas))) checked @endif disabled> {{ $fasilitas }}
+												{{--  @else disabled  --}}
 											</label>
 										</div>
 									</div>

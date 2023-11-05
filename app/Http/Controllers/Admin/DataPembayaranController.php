@@ -69,9 +69,7 @@ class DataPembayaranController extends Controller
                                     <a href="' . route('data-pembayaran.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataPembayaran(' . $item->id . ')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    
                                 </div> 
                             ';
 
@@ -79,6 +77,10 @@ class DataPembayaranController extends Controller
                 // memenghilangkan tag html
                 ->rawColumns(['action'])
                 ->make(true);
+
+                // <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataPembayaran(' . $item->id . ')">
+                //     <i class="fas fa-trash"></i>
+                // </button>
         }
 
         $item=Payment::find(auth()->user()->id);

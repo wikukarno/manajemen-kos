@@ -12,7 +12,7 @@
     <div class="card shadow">
 
 		<div class="card-header">
-			<h3 class="m-0 font-weight-bold mt-3">Edit Data Pendaftar
+			<h3 class="m-0 font-weight-bold mt-3">Edit Data User
 				<a href="{{ url('pemilik/data-user') }}" class="float-end btn btn-outline-success btn-sm mb-2" >View All</a>
 			</h3>
 		</div>
@@ -23,7 +23,7 @@
 					@if(Session::has('success'))
 					<p class="text-success">{{ session('success') }}</p>
 					@endif
-					<h4 class="card-title mb-5">Data Pendaftar <b class="text-primary">{{ $item->name }}</b></h4>
+					<h4 class="card-title mb-5">User <b class="text-primary">{{ $item->name }}</b></h4>
 					{{--  <form class="form-sample" action="{{ url('pemilik/data-user') }}" method="POST">  --}}
 					<form action="{{ route('data-user.update', $item->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf

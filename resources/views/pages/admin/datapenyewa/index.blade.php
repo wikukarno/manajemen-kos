@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Data Penghuni')
 
 @section('content')
 <section class="main-content">
@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mt-3"><b>Data Penyewa </b></h3>
+                        <h3 class="card-title mt-3"><b>Data Penghuni </b></h3>
                     </div>
                     
                     <div class="card-body">
@@ -118,7 +118,7 @@
                         // Periksa apakah data gambar ada
                         if (data) {
                             // Tampilkan gambar dengan lebar dan tinggi tertentu (misalnya 50px)
-                            return '<img src="../storage/' + data + '" alt="Gambar" class="img-ktp">';
+                            return '<img src="../storage/' + data + '" class="img-ktp">';
                         } else {
                             return '-';
                         }

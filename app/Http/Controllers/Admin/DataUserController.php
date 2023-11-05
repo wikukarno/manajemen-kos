@@ -48,9 +48,7 @@ class DataUserController extends Controller
                                     <a href="' . route('data-user.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataUser(' . $item->id . ')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    
                                 </div> 
                             ';
 
@@ -58,6 +56,10 @@ class DataUserController extends Controller
                 // memenghilangkan tag html
                 ->rawColumns(['action'])
                 ->make(true);
+
+                // <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataUser(' . $item->id . ')">
+                //     <i class="fas fa-trash"></i>
+                // </button>
         }
 
         $item=User::find(auth()->user()->id);

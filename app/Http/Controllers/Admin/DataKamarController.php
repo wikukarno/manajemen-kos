@@ -47,9 +47,7 @@ class DataKamarController extends Controller
                                     <a href="' . route('data-kamar.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataKamar(' . $item->id . ')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    
                                 </div> 
                             ';
 
@@ -57,6 +55,11 @@ class DataKamarController extends Controller
                 // memenghilangkan tag html
                 ->rawColumns(['action'])
                 ->make(true);
+                
+                // <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataKamar(' . $item->id . ')">
+                //     <i class="fas fa-trash"></i>
+                // </button>
+
         }
 
         $item=Kamar::find(auth()->user()->id);

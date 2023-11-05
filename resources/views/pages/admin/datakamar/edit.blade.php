@@ -22,7 +22,7 @@
 					@if(Session::has('success'))
 					<p class="text-success">{{ session('success') }}</p>
 					@endif
-					<h4 class="card-title mb-5">Data Kamar <b class="text-primary">{{ $item->nomor_kamar }}</b></h4>
+					<h4 class="card-title mb-5">Kamar <b class="text-primary">{{ $item->nomor_kamar }}</b></h4>
 					<form class="form-sample" action="{{ route('data-kamar.update', $item->id) }}" method="POST">
 						@csrf
 						@method('put')
@@ -48,6 +48,7 @@
 											<option value="{{ $item->id_tipe }}">{{ $item->id_tipe }}</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
+											<option value="3">3</option>
 										</select>
 										@error('id_tipe')
 											{{-- untuk info yang salah yang mana --}}
@@ -90,7 +91,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="col-form-label"><b>Slug</b></label>
-										<input name="slug" id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Masukkan Slug" autocomplete="off" required value="{{ $item->slug }}"/>
+										<input name="slug" id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Masukkan Slug (no-1)" autocomplete="off" required value="{{ $item->slug }}"/>
 										@error('slug')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">

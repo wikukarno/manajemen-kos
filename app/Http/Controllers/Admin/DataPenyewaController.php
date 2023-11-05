@@ -89,9 +89,7 @@ class DataPenyewaController extends Controller
                                     <a href="' . route('data-penyewa.edit', $item->id) . '" title="Edit Data" class="btn btn-outline-warning btn-sm mb-0 mx-1">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataPenyewa(' . $item->id . ')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    
                                 </div> 
                             ';
 
@@ -99,6 +97,10 @@ class DataPenyewaController extends Controller
                 // memenghilangkan tag html
                 ->rawColumns(['action'])
                 ->make(true);
+
+                // <button type="button" class="btn btn-outline-danger btn-sm mb-0 mx-1" title="Delete" onClick="btnDeleteDataPenyewa(' . $item->id . ')">
+                //     <i class="fas fa-trash"></i>
+                // </button>
         }
 
         $item=User::find(auth()->user()->id);
@@ -175,6 +177,7 @@ class DataPenyewaController extends Controller
      */
     public function edit(Request $request, string $id)
     {
+        $user=User::find($id);
         $penghuni = DataPenghuni::with(['kamar', 'user'])->findOrFail($id);
         // $tipe_kamar = TipeKamar::orderBy('name', 'ASC')->get();
         // $query = Kamar::where('status', 'Tersedia');
@@ -193,7 +196,7 @@ class DataPenyewaController extends Controller
             // dd($query);
         
         // untuk menampilkan ke halaman edit nya
-        return view('pages.admin.datapenyewa.edit', compact('penghuni', 'tipe_kamar','query'));
+        return view('pages.admin.datapenyewa.edit', compact('penghuni', 'tipe_kamar','query','user'));
     }
 
     public function getKamar(Request $request)
@@ -227,7 +230,7 @@ class DataPenyewaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = DataPenghuni::findOrFail($id);
+        $penghuni = DataPenghuni::findOrFail($id);
         
        // kode bag wiku
     //     if ($request->hasFile('dokumen')){
@@ -260,21 +263,21 @@ class DataPenyewaController extends Controller
         // Mengelola upload dokumen KTP
         if ($request->hasFile('dokumen')) {
             // Menghapus dokumen lama jika ada
-            if ($item->user->dokumen != null) {
-                Storage::disk('public')->delete($item->user->dokumen);
+            if ($penghuni->user->dokumen != null) {
+                Storage::disk('public')->delete($penghuni->user->dokumen);
             }
 
             // Menyimpan dokumen baru
             $dokumen = $request->file('dokumen')->store('assets/penyewa/dokumen-ktp', 'public');
         } else {
-            $dokumen = $item->user->dokumen; // Jika tidak ada perubahan, gunakan dokumen yang sudah ada
+            $dokumen = $penghuni->user->dokumen; // Jika tidak ada perubahan, gunakan dokumen yang sudah ada
         }
 
         // Mengelola fasilitas
         $fasilitasArray = $request->input('fasilitas', []);
         $fasilitasString = implode(',', $fasilitasArray);
 
-        $item->update([
+        $penghuni->update([
             'nama' => $request->input('name'),
             'tempat_lahir' => $request->input('tempat_lahir'),
             'tanggal_lahir' => $request->input('tanggal_lahir'),

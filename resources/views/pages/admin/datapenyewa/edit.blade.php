@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Data Penyewa')
+@section('title', 'Edit Data Penghuni')
 
 @section('content')
 
@@ -12,7 +12,7 @@
     <div class="card shadow">
 
 		<div class="card-header">
-			<h3 class="m-0 font-weight-bold mt-3">Edit Data Penyewa
+			<h3 class="m-0 font-weight-bold mt-3">Edit Data Penghuni
 				<a href="{{ url('pemilik/data-penyewa') }}" class="float-end btn btn-outline-success btn-sm mb-2" >View All</a>
 			</h3>
 		</div>
@@ -23,7 +23,7 @@
 					@if(Session::has('success'))
 					<p class="text-success">{{ session('success') }}</p>
 					@endif
-					<h4 class="card-title mb-5"><b class="text-primary">{{ $penghuni->user->name }}</b></h4>
+					<h4 class="card-title mb-5">Penghuni <b class="text-primary">{{ $penghuni->user->name }}</b></h4>
 					{{--  <form class="form-sample" action="{{ url('pemilik/data-penyewa') }}" method="POST">  --}}
 					<form action="{{ route('data-penyewa.update', $penghuni->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
@@ -45,13 +45,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tipe Kamar</b></label>
-									{{--  <input name="tipekamar" id="tipekamar" type="text" class="form-control" value="{{ $item->kamar }}" disabled required/>  --}}
-									<select class="form-control" name="tipekamar" id="tipekamar" style="height: 45px">
+									<input name="tipekamar" id="tipekamar" type="text" class="form-control" value="{{ $penghuni->kamar->type->name }}" disabled required/>
+									{{--  <select class="form-control" name="tipekamar" id="tipekamar" style="height: 45px" disabled>
 										<option value="{{ $penghuni->kamar->type->id }}">{{ $penghuni->kamar->type->name }}</option>
 										@foreach ($tipe_kamar as $item)
 											<option value="{{ $item->id }}">{{ $item->name }}</option>
 										@endforeach
-									</select>
+									</select>  --}}
 								</div>
 							</div>							
 						</div>
@@ -60,15 +60,15 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Kamar</b></label>
-									{{--  <input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}" />  --}}
-									<select class="form-control" name="nomor_kamar" id="nomor_kamar" style="height: 45px">
+									<input name="nomor_kamar" id="nomor_kamar" type="text" class="form-control" value="{{ $penghuni->kamar->nomor_kamar }}" disabled/>
+									{{--  <select class="form-control" name="nomor_kamar" id="nomor_kamar" style="height: 45px">
 										<option value="{{ $penghuni->kamar->nomor_kamar }}">{{ $penghuni->kamar->nomor_kamar }}</option>
 
-										{{--  @foreach ($query as $nomor)
+										@foreach ($query as $nomor)
 											<option value="{{ $nomor->id }}">{{ $nomor->nomor_kamar }}</option>
-										@endforeach  --}}
+										@endforeach
 										
-									</select>
+									</select>  --}}
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -110,7 +110,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Tanggal Lahir</b></label>
-										<input name="tanggal_lahir" id="tanggal_lahir" type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" autocomplete="off" required value="{{ $penghuni->user->tanggal_lahir }}"/>
+										<input name="tanggal_lahir" id="tanggal_lahir" type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" autocomplete="off" required value="{{ $penghuni->user->tanggal_lahir }}" disabled/>
 										@error('tanggal_lahir')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -122,12 +122,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label" ><b>Role</b></label>
-										<select class="form-control @error('role') is-invalid @enderror" name="role" id="role" style="height: 45px" required>
+									<input name="role" id="role" type="text" class="form-control @error('role') is-invalid @enderror" placeholder="Masukkan Role" autocomplete="off" required value="{{ $penghuni->user->role }}" disabled/>
+										{{--  <select class="form-control @error('role') is-invalid @enderror" name="role" id="role" style="height: 45px" required>
 											<option value="{{ $penghuni->user->role }}">{{ $penghuni->user->role }}</option>
 											<option value="Pemilik">Pemilik</option>
 											<option value="Pendaftar">Pendaftar</option>
 											<option value="Penghuni">Penghuni</option>
-										</select>
+										</select>  --}}
 
 										@error('role')
 											{{-- untuk info yang salah yang mana --}}
@@ -143,12 +144,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Status Akun</b></label>
-										<select class="form-control @error('status_akun') is-invalid @enderror" name="status_akun" id="status_akun" style="height: 45px" required>
+									<input name="status_akun" id="status_akun" type="text" class="form-control @error('status_akun') is-invalid @enderror" placeholder="Masukkan Status Akun" autocomplete="off" required value="{{ $penghuni->user->status_akun }}" disabled/>
+										{{--  <select class="form-control @error('status_akun') is-invalid @enderror" name="status_akun" id="status_akun" style="height: 45px" required>
 											<option value="{{ $penghuni->user->status_akun }}">{{ $penghuni->user->status_akun }}</option>
 											<option value="Terverifikasi">Terverifikasi</option>
 											<option value="Belum Verifikasi">Tidak Terverifikasi</option>
 											<option value="Diblokir">Ditolak</option>
-										</select>
+										</select>  --}}
 										@error('status_akun')
 											{{-- untuk info yang salah yang mana --}}
 											<div class="invalid-feedback">
@@ -160,7 +162,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Alamat</b></label>
-									<textarea name="alamat" id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" placeholder="Jl. xxxxx No.xx RT/RW xx/xx" autocomplete="off" required>{{ $penghuni->user->alamat }}</textarea>
+									<textarea name="alamat" id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" placeholder="Jl. xxxxx No.xx RT/RW xx/xx" autocomplete="off" required disabled>{{ $penghuni->user->alamat }}</textarea>
 									@error('alamat')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -175,7 +177,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone</b></label>
-									<input name="hp" id="hp" type="text" class="form-control @error('hp') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $penghuni->user->hp }}"/>
+									<input name="hp" id="hp" type="text" class="form-control @error('hp') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $penghuni->user->hp }}" disabled/>
 									@error('hp')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -187,7 +189,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nama Wali</b></label>
-									<input name="wali" id="wali" type="text" class="form-control @error('wali') is-invalid @enderror" placeholder="Masukkan Nama Wali" autocomplete="off" required value="{{ $penghuni->user->wali }}"/>
+									<input name="wali" id="wali" type="text" class="form-control @error('wali') is-invalid @enderror" placeholder="Masukkan Nama Wali" autocomplete="off" required value="{{ $penghuni->user->wali }}" disabled/>
 									@error('wali')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -202,7 +204,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Nomor Handphone Wali</b></label>
-									<input name="hp2" id="hp2" type="text" class="form-control @error('hp2') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $penghuni->user->hp2 }}"/>
+									<input name="hp2" id="hp2" type="text" class="form-control @error('hp2') is-invalid @enderror" placeholder="0821xxxxxx73" autocomplete="off" required value="{{ $penghuni->user->hp2 }}" disabled/>
 									@error('hp2')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -229,7 +231,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-form-label"><b>Id Telegram</b></label>
-									<input name="id_telegram" id="id_telegram" type="text" class="form-control @error('id_telegram') is-invalid @enderror" placeholder="Masukkan Id Telegram" autocomplete="off" required value="{{ $penghuni->user->id_telegram }}"/>
+									<input name="id_telegram" id="id_telegram" type="text" class="form-control @error('id_telegram') is-invalid @enderror" placeholder="Masukkan Id Telegram" autocomplete="off" required value="{{ $penghuni->user->id_telegram }}" disabled/>
 									@error('id_telegram')
 										{{-- untuk info yang salah yang mana --}}
 										<div class="invalid-feedback">
@@ -252,18 +254,19 @@
 									<label class="col-form-label"><b>KTP</b></label>
 										<div class="mt-2 justify-content-center">
 											@if ($penghuni->user->dokumen != null)
-												<img src="{{ asset('storage/'. $penghuni->user->dokumen) }}" class="img-fluid" id="preview-image" width="100px">
+												<img src="{{ asset('storage/'. $penghuni->user->dokumen) }}" class="img-fluid" id="preview-image" width="250px">
 											@else
-												<img src="" class="img-fluid" id="preview-image" width="100px">
+												{{--  <img src="" class="img-fluid" id="preview-image">  --}}
+												<p style="color: red"><b>Tidak ada file KTP</b></p>
 											@endif
-												<div class="mt-3">
+												{{--  <div class="mt-3">
 													<input class="form-control @error('dokumen') is-invalid @enderror" type="file" id="dokumen" name="dokumen" onchange="previewImage()" >
 													@error('dokumen')
 													<div class="invalid-feedback">
 														{{ $message }}
 													</div>
 													@enderror
-												</div>
+												</div>  --}}
 										</div>
 								</div>
 							</div>
@@ -345,7 +348,7 @@
       });
   });
 
-// Untuk TipeKamar
+{{--  // Untuk TipeKamar
   $('#tipekamar').change(function() {
     let idTipeKamar = $('#tipekamar option:selected').val();
 	console.log(idTipeKamar);
@@ -415,7 +418,7 @@
                 }
             });
         }
-  });
+  });  --}}
 </script>
 
 @endpush
