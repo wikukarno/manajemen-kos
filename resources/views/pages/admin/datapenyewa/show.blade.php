@@ -143,7 +143,7 @@
 									<label class="col-form-label"><b>KTP</b></label>
 										<div class="mt-2 justify-content-center">
 											@if ($penghuni->user->dokumen != null)
-												<img src="{{ asset('storage/'. $penghuni->user->dokumen) }}" class="img-fluid" id="preview-image">
+												<img src="{{ asset('storage/'. $penghuni->user->dokumen) }}" class="img-fluid" id="preview-image" width="350px">
 											@else
 												{{--  <img src="" class="img-fluid" id="preview-image">  --}}
 												<p><b>Tidak ada file KTP</b></p>

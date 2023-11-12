@@ -13,7 +13,7 @@
           Transaksi
           <i class="mdi mdi-chart-line mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">250</h2>
+        <h2 class="mb-5">0</h2>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
           Layanan
           <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">270</h2>
+        <h2 class="mb-5">0</h2>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
           <i class="mdi mdi-diamond mdi-24px float-right"></i>
         </h4>
         <h2 class="mb-5">
-          290
+          0
         </h2>
       </div>
     </div>

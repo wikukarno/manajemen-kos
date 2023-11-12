@@ -115,7 +115,7 @@
 								<div class="form-group">
 									<label class="col-form-label"><b>Alasan Penolakan</b></label>
 									{{--  <input type="text-area" class="form-control" placeholder="Masukkan Alasan Penolakan"/>  --}}
-									<td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan" autocomplete="off" value="{{ $item->alasan_penolakan }}"></textarea><p style="font-size: 10px"><b>Catatan : </b> Max:255 karakter. Diisi jika status akun di tolak</p></td>
+									<td><textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" placeholder="Masukkan Alasan Penolakan" autocomplete="off">{{ $item->alasan_penolakan }}</textarea><p style="font-size: 10px"><b>Catatan : </b> Max:255 karakter. Diisi jika status akun di tolak</p></td>
 								</div>
 							</div>
 						</div>

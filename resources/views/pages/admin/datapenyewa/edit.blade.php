@@ -279,7 +279,7 @@
 								<div class="col-md-6">
 									<div class="form-check">
 										<label class="form-check-label">
-											<input type="checkbox" class="form-check-input select-all-checkbox"> Pilih Semua
+											<input type="checkbox" class="form-check-input select-all-checkbox" disabled> Pilih Semua
 										</label>
 									</div>
 								</div>
@@ -289,7 +289,7 @@
 									<div class="col-md-6">
 										<div class="form-check">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $penghuni->user->fasilitas))) checked @endif> {{ $fasilitas }}
+												<input type="checkbox" class="form-check-input" name="fasilitas[]" value="{{ $fasilitas }}" @if (in_array($fasilitas, explode(',', $penghuni->user->fasilitas))) checked @endif disabled> {{ $fasilitas }}
 											</label>
 										</div>
 									</div>
