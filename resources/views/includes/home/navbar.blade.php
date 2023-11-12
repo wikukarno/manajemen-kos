@@ -4,7 +4,7 @@
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
                     <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
 
-                        <img src="../image/img/AKIRA.jpg" alt="" style="width: 50px; height:50px; margin-right:9px" class="img-fluid ms-2 rounded-circle">
+                        <img src="{{asset('../image/img/AKIRA.jpg')}}" alt="" style="width: 50px; height:50px; margin-right:9px" class="img-fluid ms-2 rounded-circle">
                         <h2 class="m-0 text-primary text-uppercase">Akira Kos</h2>
                     </a>
                 </div>

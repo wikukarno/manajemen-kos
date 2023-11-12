@@ -86,7 +86,7 @@
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title text-center text-primary text-uppercase">Tipe Kamar</h6>
-                    <h1 class="mb-5">Pilihanan<span class="text-primary text-uppercase"> Tipe Kamar</span></h1>
+                    <h1 class="mb-5">Pilihan<span class="text-primary text-uppercase"> Tipe Kamar</span></h1>
                 </div>
 
                

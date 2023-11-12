@@ -282,7 +282,7 @@ class PaymentsController extends Controller
         $kamar =   Kamar::find($id_kamar);
         if ($data == 'Lunas') {
             $kamar->status = 'Tidak tersedia';
-            $kamar->save();
+            $kamar->update();
         }
         
 
